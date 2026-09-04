@@ -6,8 +6,8 @@
 
 <!-- ============ SEO META ============ -->
 <title>Kapper Admin — Panel Pengelolaan Barbershop</title>
-<meta name="description" content="Panel admin Kapper: kelola layanan, cabang barbershop, voucher topup, booking member, loyalty, produk, notifikasi broadcast, dan penarikan tunai.">
-<meta name="keywords" content="kapper admin, panel admin barbershop, kelola kappoint, voucher topup, booking barbershop">
+<meta name="description" content="Panel admin Kapper: kelola layanan, cabang barbershop, voucher topup, booking member, loyalty, produk dengan upload foto Cloudinary, notifikasi broadcast, dan penarikan tunai.">
+<meta name="keywords" content="kapper admin, panel admin barbershop, kelola kappoint, voucher topup, cloudinary, booking barbershop">
 <meta name="author" content="Kapper Indonesia">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0B0B0C">
@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Kelola layanan, cabang, voucher, booking, loyalty, produk, dan akun member Kapper.">
 <meta name="twitter:image" content="ogkapper.jpg">
 
-<!-- ============ FAVICON (SVG instan, dioverride PNG canvas saat load) ============ -->
+<!-- ============ FAVICON ============ -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23ffffff'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="icon" type="image/png" id="favicon" href="">
 <link rel="apple-touch-icon" id="appleIcon" href="">
@@ -173,7 +173,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .bc-box{border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:16px;padding:16px;text-align:center}
 .bc-box img{max-width:100%;max-height:200px;border-radius:10px;background:#fff;padding:8px;margin:0 auto 10px;display:block}
 
-.pr-prev{border:1.5px dashed var(--line);border-radius:14px;background:#FAFAF7;height:150px;display:grid;place-items:center;overflow:hidden;transition:.2s}
+.pr-prev{border:1.5px dashed var(--line);border-radius:14px;background:#FAFAF7;height:150px;display:grid;place-items:center;overflow:hidden;transition:.2s;cursor:pointer}
 .pr-prev img{width:100%;height:100%;object-fit:cover}
 .pr-prev svg{width:26px;height:26px;color:var(--muted);opacity:.5}
 .pr-prev.has{border-style:solid;border-color:var(--ink)}
@@ -221,6 +221,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   <div class="login-bg"></div>
   <div class="login-card">
     <div class="login-logo">
+      <span class="login-mark"><i data-lucide="scissors"></i></span>
       <div>
         <div class="side-name">KAPPER <span style="color:var(--blue)">Admin</span></div>
         <div class="side-sub">PANEL PENGELOLAAN</div>
@@ -249,6 +250,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   <header class="topbar">
     <div class="topbar-in">
       <a class="brand" href="#" onclick="return false">
+        <span class="login-mark"><i data-lucide="scissors"></i></span>
         <span>
           <span class="side-name">KAPPER</span><br>
           <span class="side-sub">ADMIN PANEL</span>
@@ -368,7 +370,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         </form>
         <div class="card">
           <h3 class="display" style="font-size:17px">Barcode pengajuan topup</h3>
-          <p class="hint" style="margin-top:4px">Gambar QRIS/barcode ini yang dipakai member saat mengajukan top up. Tersimpan di <span class="mono">config/topup</span>.</p>
+          <p class="hint" style="margin-top:4px">Gambar diunggah ke Cloudinary, linknya disimpan di <span class="mono">config/topup</span>.</p>
           <div id="bcPreview" style="margin-top:14px"></div>
           <input type="file" id="bcFile" accept="image/*" hidden>
           <div style="display:flex;gap:8px;margin-top:14px">
@@ -454,14 +456,14 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-product" hidden>
       <div class="page-head">
         <h1 class="page-title display">Product</h1>
-        <p class="page-sub">Koleksi <span class="mono">products</span> — foto bisa diupload langsung (tersimpan di dokumen), atau pakai seed gambar sebagai fallback.</p>
+        <p class="page-sub">Foto diunggah ke <b>Cloudinary</b> (cloud <span class="mono">o9nnrrra</span> · preset <span class="mono">kapper.studio</span>) — yang tersimpan di Firestore hanya link CDN-nya.</p>
       </div>
       <div class="grid2">
         <form class="card" id="formProduct">
           <h3 class="display" style="font-size:17px" id="prodFormTitle">Tambah produk</h3>
           <input type="hidden" id="prEditId" value="">
           <label class="f-label">Foto produk</label>
-          <div class="pr-prev" id="prPrev"><i data-lucide="image"></i></div>
+          <div class="pr-prev" id="prPrev" title="Klik untuk pilih foto"><i data-lucide="image"></i></div>
           <input type="file" id="prFile" accept="image/*" hidden>
           <div style="display:flex;gap:8px;margin-top:10px">
             <button type="button" class="btn btn-line btn-sm" id="btnPrUpload"><i data-lucide="upload"></i>Upload Foto</button>
@@ -566,7 +568,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
                 <button type="button" class="btn btn-line btn-sm" id="pfUpload"><i data-lucide="camera"></i>Ubah Foto</button>
                 <button type="button" class="btn btn-danger btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
               </div>
-              <p class="hint" style="margin-top:7px">JPG/PNG, otomatis dipotong bulat. Tersimpan di <span class="mono">admins/{uid}</span>.</p>
+              <p class="hint" style="margin-top:7px">JPG/PNG — di-crop bulat, diunggah ke Cloudinary, link disimpan di <span class="mono">admins/{uid}</span>.</p>
               <input type="file" id="pfFile" accept="image/*" hidden>
             </div>
           </div>
@@ -599,6 +601,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
             <div class="kv"><span>Peran</span><b>SUPERADMIN</b></div>
             <div class="kv"><span>UID</span><b id="pfUid">—</b></div>
             <div class="kv"><span>Login via</span><b>EMAIL / PASSWORD</b></div>
+            <div class="kv"><span>Penyimpanan foto</span><b>CLOUDINARY</b></div>
             <div class="kv"><span>Akun dibuat</span><b id="pfSince">—</b></div>
           </div>
         </div>
@@ -647,6 +650,62 @@ const db = getFirestore(app);
 const secApp = initializeApp(firebaseConfig, 'kapper-admin-secondary');
 const secAuth = getAuth(secApp);
 
+/* ================= CLOUDINARY =================
+   Upload UNSIGNED dari browser: hanya butuh cloud_name + upload_preset.
+   API Secret TIDAK dipakai & TIDAK boleh ditaruh di kode frontend. */
+const CLD = { cloud: 'o9nnrrra', preset: 'kapper.studio', folder: 'kapper' };
+
+async function cloudinaryUpload(fileOrBlob, name) {
+  const fd = new FormData();
+  fd.append('file', fileOrBlob, name || 'upload.jpg');
+  fd.append('upload_preset', CLD.preset);
+  fd.append('folder', CLD.folder);
+  const r = await fetch(`https://api.cloudinary.com/v1_1/${CLD.cloud}/image/upload`, {
+    method: 'POST', body: fd
+  });
+  if (!r.ok) {
+    let m = 'Upload Cloudinary gagal (' + r.status + ')';
+    try { const j = await r.json(); if (j?.error?.message) m += ': ' + j.error.message; } catch (e) {}
+    throw new Error(m);
+  }
+  const j = await r.json();
+  if (!j.secure_url) throw new Error('Cloudinary tidak mengembalikan URL.');
+  return j.secure_url;   /* link CDN yang disimpan ke Firestore */
+}
+
+/* Util gambar */
+function loadImg(file) {
+  return new Promise((res, rej) => {
+    const i = new Image();
+    i.onload = () => res(i);
+    i.onerror = () => { URL.revokeObjectURL(i.src); rej(new Error('Gagal membaca gambar.')); };
+    i.src = URL.createObjectURL(file);
+  });
+}
+function canvasBlob(c) {
+  return new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('Gagal memproses gambar.')), 'image/jpeg', .85));
+}
+/* Kompres sisi lebar tertentu → Blob (dipakai barcode) */
+async function shrinkToBlob(file, maxW) {
+  const img = await loadImg(file);
+  const r = Math.min(1, maxW / Math.max(img.width, img.height));
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.width * r); c.height = Math.round(img.height * r);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  URL.revokeObjectURL(img.src);
+  return canvasBlob(c);
+}
+/* Crop bulat → Blob (dipakai avatar admin) */
+async function avatarToBlob(file) {
+  const img = await loadImg(file);
+  const s = 512, c = document.createElement('canvas'); c.width = c.height = s;
+  const x = c.getContext('2d');
+  const rr = Math.max(s / img.width, s / img.height), w = img.width * rr, h = img.height * rr;
+  x.drawImage(img, (s - w) / 2, (s - h) / 2, w, h);
+  URL.revokeObjectURL(img.src);
+  return canvasBlob(c);
+}
+
 /* ================= UTIL ================= */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const idFmt=n=>(n||0).toLocaleString('id-ID');
@@ -690,33 +749,6 @@ function openModal(id){$('#'+id).classList.add('open')}
 function closeModal(m){m.classList.remove('open')}
  $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))closeModal(m)}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal.open').forEach(closeModal);closeDrops()}});
-
-function fileToDataURL(file,maxW,cb){
-  const img=new Image();
-  img.onload=()=>{
-    const r=Math.min(1,maxW/Math.max(img.width,img.height));
-    const c=document.createElement('canvas');
-    c.width=Math.round(img.width*r); c.height=Math.round(img.height*r);
-    c.getContext('2d').drawImage(img,0,0,c.width,c.height);
-    URL.revokeObjectURL(img.src);
-    cb(c.toDataURL('image/jpeg',.82));
-  };
-  img.onerror=()=>toast('err','Gagal membaca gambar.');
-  img.src=URL.createObjectURL(file);
-}
-function fileToAvatar(file,cb){
-  const img=new Image();
-  img.onload=()=>{
-    const s=256,c=document.createElement('canvas');c.width=c.height=s;
-    const x=c.getContext('2d');
-    const r=Math.max(s/img.width,s/img.height),w=img.width*r,h=img.height*r;
-    x.drawImage(img,(s-w)/2,(s-h)/2,w,h);
-    URL.revokeObjectURL(img.src);
-    cb(c.toDataURL('image/jpeg',.82));
-  };
-  img.onerror=()=>toast('err','Gagal membaca gambar.');
-  img.src=URL.createObjectURL(file);
-}
 
 /* ================= FAVICON PNG ================= */
 (function(){
@@ -851,14 +883,16 @@ function loadProfile(){
   const f=e.target.files[0]; e.target.value='';
   if(!f)return;
   if(!f.type.startsWith('image/'))return toast('err','File harus gambar.');
-  if(f.size>5*1024*1024)return toast('err','Maksimal 5 MB.');
-  fileToAvatar(f,async url=>{
+  if(f.size>10*1024*1024)return toast('err','Maksimal 10 MB.');
+  const b=$('#pfUpload'); busy(b,true,'Mengunggah…');
+  (async()=>{
+    const blob=await avatarToBlob(f);            /* crop bulat → Blob */
+    const url=await cloudinaryUpload(blob,'kapper-admin-'+admin.uid+'.jpg');
     admin.avatar=url; renderAdminIdentity();
-    try{
-      await setDoc(doc(db,'admins',admin.uid),{avatar:url},{merge:true});
-      toast('ok','Foto admin diperbarui.');
-    }catch(err){toast('err',aerr(err))}
-  });
+    await setDoc(doc(db,'admins',admin.uid),{avatar:url},{merge:true});
+    toast('ok','Foto admin diperbarui (Cloudinary).');
+  })().catch(err=>toast('err',err.message||aerr(err)))
+     .finally(()=>busy(b,false));
 });
  $('#pfRemove').onclick=async()=>{
   admin.avatar=''; renderAdminIdentity();
@@ -1161,13 +1195,16 @@ function renderBarcode(){
   const f=e.target.files[0]; e.target.value='';
   if(!f)return;
   if(!f.type.startsWith('image/'))return toast('err','File harus gambar.');
-  if(f.size>5*1024*1024)return toast('err','Maksimal 5 MB.');
-  fileToDataURL(f,560,async url=>{
-    try{
-      await setDoc(doc(db,'config','topup'),{barcode:url,updatedAt:Date.now()},{merge:true});
-      toast('ok','Barcode pengajuan topup diperbarui.'); loadTopup();
-    }catch(err){toast('err',aerr(err))}
-  });
+  if(f.size>10*1024*1024)return toast('err','Maksimal 10 MB.');
+  const b=$('#btnBcUpload'); busy(b,true,'Mengunggah…');
+  (async()=>{
+    const blob=await shrinkToBlob(f,900);        /* kompres → Blob */
+    const url=await cloudinaryUpload(blob,'kapper-barcode-'+Date.now()+'.jpg');
+    await setDoc(doc(db,'config','topup'),{barcode:url,updatedAt:Date.now()},{merge:true});
+    toast('ok','Barcode diunggah ke Cloudinary.');
+    loadTopup();
+  })().catch(err=>toast('err',err.message||aerr(err)))
+     .finally(()=>busy(b,false));
 });
  $('#btnBcDel').onclick=async()=>{
   if(!topupCfg?.barcode)return;
@@ -1235,7 +1272,6 @@ async function loadWithdraw(){
   renderWithdraw();
 }
 function renderWithdraw(){
-  /* Statistik */
   const pend=wdAll.filter(w=>w.status==='pending');
   const appr=wdAll.filter(w=>w.status==='approved');
   const rej=wdAll.filter(w=>w.status==='rejected');
@@ -1247,7 +1283,6 @@ function renderWithdraw(){
     <div class="stat blue"><span>Disetujui</span><b>${idFmt(appr.length)}</b></div>
     <div class="stat"><span>Total dicairkan</span><b>${fmtIDR(totAppr)}</b></div>
     <div class="stat"><span>Ditolak</span><b>${idFmt(rej.length)}</b></div>`;
-  /* Tabel */
   const list=wdFilter==='all'?wdAll:wdAll.filter(w=>w.status===wdFilter);
   const tb=$('#wdRows'), em=$('#wdEmpty');
   if(!list.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="banknote"></i>${wdFilter==='all'?'Belum ada pengajuan penarikan.':'Tidak ada data pada filter ini.'}</div>`;icons();return}
@@ -1301,7 +1336,6 @@ function renderWithdraw(){
     if(reason===null)return;
     const b=no; busy(b,true,'…');
     try{
-      /* Satu batch atomik: tolak + refund saldo + riwayat + notifikasi */
       const batch=writeBatch(db);
       batch.update(doc(db,'payments',w.id),{status:'rejected',rejectedAt:Date.now(),rejectedBy:admin.email,rejectReason:reason||''});
       batch.update(doc(db,'users',w.uid),{saldo:increment(w.total)});
@@ -1394,8 +1428,8 @@ function renderLoyalty(){
 };
 function rewardsClean(){return loyalty.rewards.filter(r=>r.name&&r.cost)}
 
-/* ================= PRODUCT (dengan upload foto) ================= */
-let products=[], prImgData='';
+/* ================= PRODUCT (upload foto → Cloudinary) ================= */
+let products=[], prImgFile=null, prImgUrl='', prLocalUrl='';
 async function loadProducts(){
   try{
     const s=await getDocs(collection(db,'products'));
@@ -1405,9 +1439,10 @@ async function loadProducts(){
 }
 function prPrevRender(){
   const el=$('#prPrev');
-  if(prImgData){el.innerHTML=`<img src="${prImgData}" alt="Preview foto produk">`;el.classList.add('has')}
+  const src=prImgFile?prLocalUrl:prImgUrl;
+  if(src){el.innerHTML=`<img src="${src}" alt="Preview foto produk">`;el.classList.add('has')}
   else{el.innerHTML='<i data-lucide="image"></i>';el.classList.remove('has')}
-  $('#btnPrDelImg').hidden=!prImgData;
+  $('#btnPrDelImg').hidden=!src;
   icons();
 }
 function renderProducts(){
@@ -1428,7 +1463,9 @@ function renderProducts(){
 }
 function resetProdForm(){
   $('#prEditId').value='';$('#prName').value='';$('#prPrice').value='';$('#prDesc').value='';$('#prSeed').value='';
-  prImgData=''; prPrevRender();
+  prImgFile=null; prImgUrl='';
+  if(prLocalUrl){URL.revokeObjectURL(prLocalUrl);prLocalUrl=''}
+  prPrevRender();
   $('#prodFormTitle').textContent='Tambah produk';
   $('#btnProdSubmit').innerHTML='<i data-lucide="plus"></i>Tambah';
   $('#btnProdReset').hidden=true;
@@ -1441,10 +1478,17 @@ function resetProdForm(){
   const f=e.target.files[0]; e.target.value='';
   if(!f)return;
   if(!f.type.startsWith('image/'))return toast('err','File harus gambar.');
-  if(f.size>8*1024*1024)return toast('err','Maksimal 8 MB.');
-  fileToDataURL(f,720,url=>{prImgData=url;prPrevRender();toast('ok','Foto siap — tekan Tambah/Simpan untuk menyimpan.')});
+  if(f.size>10*1024*1024)return toast('err','Maksimal 10 MB.');
+  if(prLocalUrl)URL.revokeObjectURL(prLocalUrl);
+  prImgFile=f; prLocalUrl=URL.createObjectURL(f);
+  prPrevRender();
+  toast('info','Foto siap — akan diunggah ke Cloudinary saat disimpan.');
 });
- $('#btnPrDelImg').onclick=()=>{prImgData='';prPrevRender()};
+ $('#btnPrDelImg').onclick=()=>{
+  prImgFile=null; prImgUrl='';
+  if(prLocalUrl){URL.revokeObjectURL(prLocalUrl);prLocalUrl=''}
+  prPrevRender();
+};
  $('#formProduct').addEventListener('submit',async e=>{
   e.preventDefault();
   let ok=true;
@@ -1453,12 +1497,19 @@ function resetProdForm(){
   if(!nm)ok=showErr('prName','Nama produk wajib diisi.');
   if(!pr)ok=showErr('prPrice','Harga wajib diisi.');
   if(!ok)return;
-  const data={name:nm,price:pr,desc:$('#prDesc').value.trim(),seed:$('#prSeed').value.trim()||('kapper-'+Date.now())};
-  if(prImgData)data.img=prImgData;
-  const id=$('#prEditId').value;
+  const b=$('#btnProdSubmit'); busy(b,true,'Menyimpan…');
   try{
+    /* Upload ke Cloudinary hanya jika ada file baru; jika edit tanpa file, pertahankan/hapus URL lama */
+    let img=prImgUrl;
+    if(prImgFile){
+      busy(b,true,'Mengunggah foto…');
+      img=await cloudinaryUpload(prImgFile,'kapper-product-'+Date.now()+'.jpg');
+    }
+    const data={name:nm,price:pr,desc:$('#prDesc').value.trim(),seed:$('#prSeed').value.trim()||('kapper-'+Date.now())};
+    if(img)data.img=img;
+    const id=$('#prEditId').value;
     if(id){
-      if(!prImgData)data.img='';
+      if(!img)data.img='';   /* foto dihapus saat edit */
       await updateDoc(doc(db,'products',id),data);
       toast('ok','Produk diperbarui.');
     }else{
@@ -1466,7 +1517,8 @@ function resetProdForm(){
       toast('ok','Produk ditambahkan.');
     }
     resetProdForm(); loadProducts();
-  }catch(err){toast('err',aerr(err))}
+  }catch(err){toast('err',err.message||aerr(err))}
+  finally{busy(b,false)}
 });
  $('#prRows').addEventListener('click',async e=>{
   const ed=e.target.closest('[data-edpr]'), dl=e.target.closest('[data-dlpr]');
@@ -1474,7 +1526,9 @@ function resetProdForm(){
     const p=products.find(x=>x.id===ed.dataset.edpr); if(!p)return;
     $('#prEditId').value=p.id; $('#prName').value=p.name||''; $('#prPrice').value=p.price||'';
     $('#prDesc').value=p.desc||''; $('#prSeed').value=p.seed||'';
-    prImgData=p.img||''; prPrevRender();
+    prImgFile=null; prImgUrl=p.img||'';
+    if(prLocalUrl){URL.revokeObjectURL(prLocalUrl);prLocalUrl=''}
+    prPrevRender();
     $('#prodFormTitle').textContent='Edit produk';
     $('#btnProdSubmit').innerHTML='<i data-lucide="check"></i>Simpan';
     $('#btnProdReset').hidden=false; icons();
