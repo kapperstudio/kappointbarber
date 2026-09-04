@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============ SEO META ============ -->
+<title>Kapper Admin — Panel Pengelolaan Barbershop</title>
+<meta name="description" content="Panel admin Kapper: kelola layanan, cabang barbershop, voucher topup, booking member, loyalty, produk, notifikasi broadcast, dan penarikan tunai.">
+<meta name="keywords" content="kapper admin, panel admin barbershop, kelola kappoint, voucher topup, booking barbershop">
+<meta name="author" content="Kapper Indonesia">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0B0C">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+
+<!-- ============ OPEN GRAPH ============ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kapper Admin">
+<meta property="og:title" content="Kapper Admin — Panel Pengelolaan">
+<meta property="og:description" content="Kelola layanan, cabang, voucher, booking, loyalty, produk, dan akun member Kapper.">
+<meta property="og:image" content="ogkapper.jpg">
+<meta property="og:locale" content="id_ID">
+
+<!-- ============ TWITTER CARD ============ -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapper Admin — Panel Pengelolaan">
+<meta name="twitter:description" content="Kelola layanan, cabang, voucher, booking, loyalty, produk, dan akun member Kapper.">
+<meta name="twitter:image" content="ogkapper.jpg">
+
+<!-- ============ FAVICON (SVG instan, dioverride PNG canvas saat load) ============ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23ffffff'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" id="favicon" href="">
+<link rel="apple-touch-icon" id="appleIcon" href="">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#FAFAF7; --white:#fff; --ink:#0B0B0C; --muted:#63625C; --line:#E7E6E0;
+  --blue:#0B2FD1; --blue-dark:#081F8F; --blue-tint:#EDF1FC; --red:#C0392B; --ok:#2FA36B;
+}
+[hidden]{display:none!important}
+body{font-family:'Archivo',sans-serif;background:var(--paper);color:var(--ink);font-size:14.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--blue);color:#fff}
+.mono{font-family:'Spline Sans Mono',monospace}
+.display{font-stretch:118%;font-weight:900;text-transform:uppercase;letter-spacing:-.015em;line-height:1}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:13.5px;transition:.2s;white-space:nowrap}
+.btn svg{width:15px;height:15px}
+.btn-sm{padding:8px 14px;font-size:12.5px}
+.btn-solid{background:var(--ink);color:#fff}
+.btn-solid:hover{background:#2A2A28}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark)}
+.btn-ok{background:var(--ok);color:#fff}
+.btn-ok:hover{background:#268757}
+.btn-line{border:1.5px solid var(--line);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn-danger{border:1.5px solid #F2D7D3;color:var(--red);background:#fff}
+.btn-danger:hover{background:var(--red);border-color:var(--red);color:#fff}
+.btn:disabled{opacity:.55;cursor:default}
+.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.inp{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff;transition:.2s}
+.inp:focus{outline:none;border-color:var(--ink)}
+.inp.invalid{border-color:var(--red);background:#FDF6F5}
+.f-label{display:block;font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.f-err-txt{display:none;color:var(--red);font-size:12px;margin:5px 2px 0}
+.f-err-txt.show{display:block}
+.hint{font-size:12px;color:var(--muted)}
+.pw-wrap{position:relative}
+.pw-wrap .inp{padding-right:46px}
+.pw-eye{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--muted)}
+.pw-eye:hover{color:var(--ink);background:#F1F0EA}
+.pw-eye svg{width:15px;height:15px}
+
+/* ---------- Login ---------- */
+.login-wrap{min-height:100vh;display:grid;place-items:center;background:var(--ink);padding:20px;position:relative;overflow:hidden}
+.login-bg{position:absolute;width:640px;height:640px;border-radius:50%;border:1.5px solid rgba(255,255,255,.07);right:-180px;bottom:-220px}
+.login-bg::after{content:"";position:absolute;inset:60px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.login-card{position:relative;width:min(420px,100%);background:#fff;border-radius:24px;padding:34px}
+.login-logo{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+.login-mark{width:40px;height:40px;border-radius:12px;background:var(--ink);display:grid;place-items:center;color:#fff}
+.login-mark svg{width:19px;height:19px}
+.login-title{font-size:24px;margin-bottom:4px}
+
+/* ---------- Header + nav scroll horizontal ---------- */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;align-items:center;gap:14px;height:64px;padding:0 22px;max-width:1400px;margin:0 auto}
+.brand{display:inline-flex;align-items:center;gap:10px;flex:none}
+.brand .login-mark{width:34px;height:34px;border-radius:10px}
+.side-name{font-weight:900;font-stretch:120%;font-size:16px;letter-spacing:-.01em}
+.side-sub{font-family:'Spline Sans Mono';font-size:8.5px;letter-spacing:.24em;color:var(--muted)}
+.topnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:4px;flex:1;min-width:0;-webkit-mask-image:linear-gradient(90deg,#000 96%,transparent);mask-image:linear-gradient(90deg,#000 96%,transparent)}
+.topnav::-webkit-scrollbar{display:none}
+.nav-item{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px;transition:.18s;white-space:nowrap;flex:none}
+.nav-item svg{width:15px;height:15px}
+.nav-item:hover{color:var(--ink);background:#F1F0EA}
+.nav-item.active{background:var(--blue);color:#fff}
+.topbar-right{display:flex;align-items:center;gap:10px;flex:none;position:relative}
+.cloud-pill{display:inline-flex;align-items:center;gap:6px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.18em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.cloud-pill i{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
+.cloud-pill.off i{background:var(--red)}
+.avatar{border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;overflow:hidden;flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.profile-btn{display:flex;align-items:center;gap:6px;padding:4px 8px 4px 4px;border:1px solid var(--line);border-radius:999px;background:#fff;transition:.18s}
+.profile-btn:hover{border-color:var(--ink)}
+.profile-btn .avatar{width:30px;height:30px;font-size:11px}
+.profile-btn svg{width:14px;height:14px;color:var(--muted)}
+.dropdown{position:absolute;top:calc(100% + 12px);right:0;width:270px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 22px 52px -18px rgba(10,10,10,.3);opacity:0;visibility:hidden;transform:translateY(8px);transition:.22s;z-index:130;overflow:hidden}
+.dropdown.open{opacity:1;visibility:visible;transform:none}
+.dd-head{padding:16px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+.dd-head .avatar{width:44px;height:44px;font-size:15px}
+.dd-name{font-weight:700;font-size:14px;line-height:1.3}
+.dd-mail{font-size:12px;color:var(--muted);word-break:break-all}
+.dd-role{display:inline-block;margin-top:4px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);border:1px solid currentColor;border-radius:999px;padding:2px 9px}
+.dd-item{display:flex;align-items:center;gap:11px;width:100%;padding:12px 16px;font-size:13.5px;font-weight:500;transition:.14s;text-align:left}
+.dd-item:hover{background:#FAFAF7}
+.dd-item svg{width:15px;height:15px;color:var(--muted)}
+.dd-item.danger,.dd-item.danger svg{color:var(--red)}
+
+.main{padding:28px 22px 60px;max-width:1400px;margin:0 auto}
+.page-head{margin-bottom:22px}
+.page-title{font-size:clamp(22px,3vw,32px)}
+.page-sub{color:var(--muted);font-size:13.5px;margin-top:4px}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.grid2{display:grid;grid-template-columns:380px 1fr;gap:18px;align-items:start}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.stat b{display:block;font-family:'Spline Sans Mono';font-size:23px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
+.stat span{font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.stat.blue{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.stat.blue b{color:var(--blue)}
+.stat.warn{border-color:#D9A26B;box-shadow:0 0 0 1px #D9A26B}
+.stat.warn b{color:#B8860B}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+.tbl{width:100%;border-collapse:collapse;min-width:640px}
+.tbl th{font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);background:#FAFAF7;white-space:nowrap}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl .num{font-family:'Spline Sans Mono';font-weight:600;white-space:nowrap}
+.tbl-img{width:46px;height:46px;border-radius:10px;object-fit:cover;background:#F1F0EA;flex:none}
+.tag{display:inline-block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-family:'Spline Sans Mono';border:1px solid;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag.ok{color:var(--ok);border-color:var(--ok)}
+.tag.pend{color:#B8860B;border-color:#D9A26B}
+.tag.used{color:var(--muted);border-color:var(--line)}
+.tag.rej{color:var(--red);border-color:var(--red)}
+.rowact{display:flex;gap:6px;justify-content:flex-end;align-items:center}
+.icbtn{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--line);background:#fff;transition:.15s}
+.icbtn:hover{border-color:var(--ink)}
+.icbtn.del:hover{border-color:var(--red);color:var(--red);background:#FDF6F5}
+.icbtn.ok:hover{border-color:var(--ok);color:var(--ok);background:#F0FAF5}
+.icbtn svg{width:13px;height:13px}
+.empty{border:1.5px dashed var(--line);border-radius:14px;padding:32px 18px;text-align:center;color:var(--muted);font-size:13px;background:#fff}
+.empty svg{width:24px;height:24px;margin:0 auto 8px;opacity:.4}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 7px 5px 12px;border:1.5px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:600;background:#fff}
+.chip button{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.chip button:hover{color:var(--red);background:#FDF6F5}
+.chip button svg{width:11px;height:11px}
+.wdfilters{display:flex;gap:5px;background:#F4F3EE;border-radius:999px;padding:5px;flex-wrap:wrap}
+.wdf{padding:7px 15px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--muted);transition:.18s}
+.wdf.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+.bc-box{border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:16px;padding:16px;text-align:center}
+.bc-box img{max-width:100%;max-height:200px;border-radius:10px;background:#fff;padding:8px;margin:0 auto 10px;display:block}
+
+.pr-prev{border:1.5px dashed var(--line);border-radius:14px;background:#FAFAF7;height:150px;display:grid;place-items:center;overflow:hidden;transition:.2s}
+.pr-prev img{width:100%;height:100%;object-fit:cover}
+.pr-prev svg{width:26px;height:26px;color:var(--muted);opacity:.5}
+.pr-prev.has{border-style:solid;border-color:var(--ink)}
+
+.pf-row{display:flex;gap:16px;align-items:center}
+.pf-ava{width:72px;height:72px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:22px;overflow:hidden;flex:none;cursor:pointer;position:relative}
+.pf-ava img{width:100%;height:100%;object-fit:cover}
+.pf-ava:hover::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.28)}
+.pf-btns{display:flex;gap:8px;flex-wrap:wrap}
+.kv{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+.kv:last-child{border:none}
+.kv span{color:var(--muted)}
+.kv b{font-family:'Spline Sans Mono';font-weight:600;word-break:break-all;text-align:right}
+
+.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;visibility:hidden;opacity:0;transition:.22s}
+.modal::before{content:"";position:absolute;inset:0;background:rgba(12,12,14,.5);backdrop-filter:blur(5px)}
+.modal-panel{position:relative;width:min(440px,100%);background:#fff;border-radius:20px;padding:26px;transform:translateY(12px) scale(.98);transition:.3s cubic-bezier(.22,1,.3,1);max-height:90vh;overflow-y:auto}
+.modal.open{visibility:visible;opacity:1}
+.modal.open .modal-panel{transform:none}
+.modal-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center}
+.modal-x:hover{background:#F1F0EA}
+.modal-x svg{width:14px;height:14px}
+.m-title{font-size:21px;margin-bottom:2px}
+
+.toasts{position:fixed;bottom:20px;right:20px;z-index:300;display:flex;flex-direction:column;gap:9px;max-width:min(360px,calc(100vw - 40px))}
+.toast{display:flex;gap:11px;align-items:flex-start;background:var(--ink);color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 16px 36px -12px rgba(0,0,0,.4);transform:translateX(22px);opacity:0;transition:.35s cubic-bezier(.22,1,.3,1);font-size:13px;line-height:1.5}
+.toast.show{transform:none;opacity:1}
+.toast svg{width:15px;height:15px;flex:none;margin-top:2px}
+.toast.ok svg{color:#7C9BFF}.toast.err svg{color:#FF8A7A}.toast.info svg{color:#D8D7D0}
+
+@media(max-width:860px){
+  .topbar-in{padding:0 14px;gap:10px}
+  .brand .side-sub{display:none}
+  .cloud-pill{display:none}
+  .main{padding:20px 14px 60px}
+  .grid2{grid-template-columns:1fr}
+  .profile-btn .pb-name{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div class="login-wrap" id="viewLogin">
+  <div class="login-bg"></div>
+  <div class="login-card">
+    <div class="login-logo">
+      <div>
+        <div class="side-name">KAPPER <span style="color:var(--blue)">Admin</span></div>
+        <div class="side-sub">PANEL PENGELOLAAN</div>
+      </div>
+    </div>
+    <h1 class="login-title display">Masuk Admin</h1>
+    <p class="hint" style="margin-bottom:6px">Hanya untuk tim Kapper. Belum punya akses? Hubungi superadmin.</p>
+    <form id="formLogin" novalidate>
+      <label class="f-label" for="admEmail">Email admin</label>
+      <input class="inp" type="email" id="admEmail" placeholder="admin@kapper.id" autocomplete="email">
+      <p class="f-err-txt" id="err-admEmail"></p>
+      <label class="f-label" for="admPass">Password</label>
+      <div class="pw-wrap">
+        <input class="inp" type="password" id="admPass" placeholder="password admin" autocomplete="current-password">
+        <button type="button" class="pw-eye" data-eye="admPass"><i data-lucide="eye"></i></button>
+      </div>
+      <p class="f-err-txt" id="err-admPass"></p>
+      <button type="submit" class="btn btn-blue" id="btnLogin" style="width:100%;justify-content:center;margin-top:20px"><i data-lucide="log-in"></i>Masuk ke Panel</button>
+    </form>
+    <p class="hint" style="margin-top:14px;text-align:center">Akun admin pertama otomatis menjadi superadmin.</p>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="viewApp" hidden>
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="brand" href="#" onclick="return false">
+        <span>
+          <span class="side-name">KAPPER</span><br>
+          <span class="side-sub">ADMIN PANEL</span>
+        </span>
+      </a>
+      <nav class="topnav" id="topnav">
+        <button class="nav-item active" data-page="dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</button>
+        <button class="nav-item" data-page="service"><i data-lucide="scissors"></i>Layanan</button>
+        <button class="nav-item" data-page="cabang"><i data-lucide="store"></i>Cabang</button>
+        <button class="nav-item" data-page="topup"><i data-lucide="wallet"></i>Top Up</button>
+        <button class="nav-item" data-page="booking"><i data-lucide="calendar-check"></i>Booking</button>
+        <button class="nav-item" data-page="withdraw"><i data-lucide="banknote"></i>Withdraw</button>
+        <button class="nav-item" data-page="loyalty"><i data-lucide="medal"></i>Loyalty</button>
+        <button class="nav-item" data-page="product"><i data-lucide="package"></i>Product</button>
+        <button class="nav-item" data-page="notif"><i data-lucide="bell"></i>Notifikasi</button>
+        <button class="nav-item" data-page="account"><i data-lucide="users"></i>Account</button>
+      </nav>
+      <div class="topbar-right">
+        <span class="cloud-pill" id="cloudPill"><i></i>FIRESTORE</span>
+        <div style="position:relative">
+          <button class="profile-btn" id="profileBtn">
+            <span class="avatar" id="hdAvatar">A</span>
+            <span class="pb-name" style="font-size:13px;font-weight:600" id="hdName">Admin</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="dropdown" id="profileDrop">
+            <div class="dd-head">
+              <span class="avatar" id="ddAvatar">A</span>
+              <div style="min-width:0">
+                <div class="dd-name" id="ddName">Admin</div>
+                <div class="dd-mail" id="ddEmail">—</div>
+                <span class="dd-role">Superadmin</span>
+              </div>
+            </div>
+            <button class="dd-item" id="ddProfile"><i data-lucide="user"></i>Halaman Profil</button>
+            <button class="dd-item" id="ddPass"><i data-lucide="key-round"></i>Ganti Password</button>
+            <button class="dd-item danger" id="btnLogout"><i data-lucide="log-out"></i>Keluar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ============ DASHBOARD ============ -->
+    <section id="pg-dashboard">
+      <div class="page-head">
+        <h1 class="page-title display">Dashboard</h1>
+        <p class="page-sub">Ringkasan data langsung dari Firestore project kapperstudio-c629c.</p>
+      </div>
+      <div class="stats" id="statBox"></div>
+      <div class="card">
+        <h3 class="display" style="font-size:17px;margin-bottom:14px">Pembayaran terbaru</h3>
+        <div id="dashPayments"></div>
+      </div>
+    </section>
+
+    <!-- ============ LAYANAN ============ -->
+    <section id="pg-service" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Layanan</h1>
+        <p class="page-sub">Ditulis ke koleksi <span class="mono">layanan</span> — langsung muncul di halaman Book & Beranda member.</p>
+      </div>
+      <div class="grid2">
+        <form class="card" id="formService">
+          <h3 class="display" style="font-size:17px">Tambah layanan</h3>
+          <label class="f-label">Nama layanan</label>
+          <input class="inp" id="svName" placeholder="cth. Skin Fade">
+          <p class="f-err-txt" id="err-svName"></p>
+          <label class="f-label">Harga (Rp)</label>
+          <input class="inp mono" id="svPrice" inputmode="numeric" placeholder="85000">
+          <p class="f-err-txt" id="err-svPrice"></p>
+          <label class="f-label">Durasi</label>
+          <input class="inp" id="svDur" placeholder="cth. 60 menit">
+          <label class="f-label">Deskripsi</label>
+          <textarea class="inp" id="svDesc" rows="3" placeholder="Deskripsi layanan…"></textarea>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="plus"></i>Tambah Layanan</button>
+        </form>
+        <div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Layanan</th><th>Harga</th><th>Durasi</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="svRows"></tbody></table></div><div id="svEmpty"></div></div>
+      </div>
+    </section>
+
+    <!-- ============ CABANG ============ -->
+    <section id="pg-cabang" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Cabang</h1>
+        <p class="page-sub">Ditulis ke koleksi <span class="mono">barbershops</span> — field <span class="mono">name</span> + <span class="mono">barbers[]</span>. Tiap cabang punya daftar barber sendiri.</p>
+      </div>
+      <div class="grid2">
+        <form class="card" id="formShop">
+          <h3 class="display" style="font-size:17px">Tambah barbershop</h3>
+          <label class="f-label">Nama barbershop</label>
+          <input class="inp" id="shName" placeholder="cth. Dave Barbershop — Kemang">
+          <p class="f-err-txt" id="err-shName"></p>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="plus"></i>Tambah Cabang</button>
+        </form>
+        <div id="shopList"></div>
+      </div>
+    </section>
+
+    <!-- ============ TOP UP ============ -->
+    <section id="pg-topup" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Top Up</h1>
+        <p class="page-sub">Buat kode voucher, kelola barcode QRIS pengajuan topup, dan pantau transaksi topup member.</p>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
+        <form class="card" id="formVoucher">
+          <h3 class="display" style="font-size:17px">Buat kode voucher</h3>
+          <label class="f-label">Kode (4–16 huruf/angka)</label>
+          <input class="inp mono" id="vcCode" placeholder="cth. KAPPER250" style="text-transform:uppercase">
+          <p class="f-err-txt" id="err-vcCode"></p>
+          <label class="f-label">Nilai saldo (Rp)</label>
+          <input class="inp mono" id="vcValue" inputmode="numeric" placeholder="250000">
+          <p class="f-err-txt" id="err-vcValue"></p>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="ticket"></i>Buat Voucher</button>
+        </form>
+        <div class="card">
+          <h3 class="display" style="font-size:17px">Barcode pengajuan topup</h3>
+          <p class="hint" style="margin-top:4px">Gambar QRIS/barcode ini yang dipakai member saat mengajukan top up. Tersimpan di <span class="mono">config/topup</span>.</p>
+          <div id="bcPreview" style="margin-top:14px"></div>
+          <input type="file" id="bcFile" accept="image/*" hidden>
+          <div style="display:flex;gap:8px;margin-top:14px">
+            <button type="button" class="btn btn-blue" id="btnBcUpload" style="flex:1;justify-content:center"><i data-lucide="upload"></i>Upload Barcode</button>
+            <button type="button" class="btn btn-danger" id="btnBcDel"><i data-lucide="trash-2"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:18px">
+        <h3 class="display" style="font-size:17px;margin-bottom:14px">Daftar voucher</h3>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Kode</th><th>Nilai</th><th>Status</th><th>Dipakai oleh</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="vcRows"></tbody></table></div>
+        <div id="vcEmpty"></div>
+      </div>
+      <div class="card">
+        <h3 class="display" style="font-size:17px;margin-bottom:14px">Transaksi top up terbaru</h3>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Metode</th><th>Nominal</th><th>Kode</th><th>Status</th></tr></thead><tbody id="tpRows"></tbody></table></div>
+        <div id="tpEmpty"></div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING ============ -->
+    <section id="pg-booking" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Booking</h1>
+        <p class="page-sub">Reservasi masuk dari customer — dikumpulkan dari <span class="mono">users/{uid}/bookings</span>.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+          <h3 class="display" style="font-size:17px">Daftar booking</h3>
+          <button class="btn btn-line btn-sm" id="btnReloadBk"><i data-lucide="refresh-cw"></i>Muat ulang</button>
+        </div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Member</th><th>Layanan</th><th>Cabang / Barber</th><th>Jadwal</th><th>Bayar</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="bkRows"></tbody></table></div>
+        <div id="bkEmpty"></div>
+      </div>
+    </section>
+
+    <!-- ============ WITHDRAW ============ -->
+    <section id="pg-withdraw" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Withdraw</h1>
+        <p class="page-sub">Pengajuan tarik tunai member di kasir barbershop. <b>Setujui</b> setelah kasir menyerahkan uang — <b>Tolak</b> untuk mengembalikan saldo otomatis ke member.</p>
+      </div>
+      <div class="stats" id="wdStats"></div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+          <h3 class="display" style="font-size:17px">Daftar penarikan</h3>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <div class="wdfilters" id="wdFilters">
+              <button class="wdf active" data-f="all">Semua</button>
+              <button class="wdf" data-f="pending">Pending</button>
+              <button class="wdf" data-f="approved">Disetujui</button>
+              <button class="wdf" data-f="rejected">Ditolak</button>
+            </div>
+            <button class="btn btn-line btn-sm" id="btnReloadWd"><i data-lucide="refresh-cw"></i>Muat ulang</button>
+          </div>
+        </div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Kode</th><th>Barbershop</th><th>Jumlah</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="wdRows"></tbody></table></div>
+        <div id="wdEmpty"></div>
+      </div>
+    </section>
+
+    <!-- ============ LOYALTY ============ -->
+    <section id="pg-loyalty" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Loyalty</h1>
+        <p class="page-sub">Atur tier kapper-club & katalog penukaran poin — tersimpan di <span class="mono">config/loyalty</span>.</p>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:start">
+        <div class="card">
+          <h3 class="display" style="font-size:17px;margin-bottom:6px">Tier kapper-club</h3>
+          <div id="tierEditor"></div>
+        </div>
+        <div class="card">
+          <h3 class="display" style="font-size:17px;margin-bottom:6px">Hadiah penukaran poin</h3>
+          <div id="rewardEditor"></div>
+          <button type="button" class="btn btn-line btn-sm" id="btnAddReward" style="margin-top:10px"><i data-lucide="plus"></i>Tambah hadiah</button>
+        </div>
+      </div>
+      <button class="btn btn-blue" id="btnSaveLoyalty" style="margin-top:18px"><i data-lucide="save"></i>Simpan Perubahan Loyalty</button>
+    </section>
+
+    <!-- ============ PRODUCT ============ -->
+    <section id="pg-product" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Product</h1>
+        <p class="page-sub">Koleksi <span class="mono">products</span> — foto bisa diupload langsung (tersimpan di dokumen), atau pakai seed gambar sebagai fallback.</p>
+      </div>
+      <div class="grid2">
+        <form class="card" id="formProduct">
+          <h3 class="display" style="font-size:17px" id="prodFormTitle">Tambah produk</h3>
+          <input type="hidden" id="prEditId" value="">
+          <label class="f-label">Foto produk</label>
+          <div class="pr-prev" id="prPrev"><i data-lucide="image"></i></div>
+          <input type="file" id="prFile" accept="image/*" hidden>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button type="button" class="btn btn-line btn-sm" id="btnPrUpload"><i data-lucide="upload"></i>Upload Foto</button>
+            <button type="button" class="btn btn-danger btn-sm" id="btnPrDelImg" hidden><i data-lucide="trash-2"></i>Hapus</button>
+          </div>
+          <label class="f-label">Nama produk</label>
+          <input class="inp" id="prName" placeholder="cth. Matte Clay Pomade">
+          <p class="f-err-txt" id="err-prName"></p>
+          <label class="f-label">Harga (Rp)</label>
+          <input class="inp mono" id="prPrice" inputmode="numeric" placeholder="89000">
+          <p class="f-err-txt" id="err-prPrice"></p>
+          <label class="f-label">Deskripsi</label>
+          <textarea class="inp" id="prDesc" rows="2"></textarea>
+          <label class="f-label">Seed gambar (fallback jika tanpa foto)</label>
+          <input class="inp mono" id="prSeed" placeholder="kapper-pomade">
+          <div style="display:flex;gap:8px;margin-top:18px">
+            <button type="submit" class="btn btn-blue" id="btnProdSubmit" style="flex:1;justify-content:center"><i data-lucide="plus"></i>Tambah</button>
+            <button type="button" class="btn btn-line" id="btnProdReset" hidden>Reset</button>
+          </div>
+        </form>
+        <div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Foto</th><th>Produk</th><th>Harga</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="prRows"></tbody></table></div><div id="prEmpty"></div></div>
+      </div>
+    </section>
+
+    <!-- ============ NOTIFIKASI ============ -->
+    <section id="pg-notif" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Notifikasi</h1>
+        <p class="page-sub">Kirim pengumuman ke <b>semua akun member</b> — masuk ke daftar notifikasi masing-masing (<span class="mono">users/{uid}/notifs</span>).</p>
+      </div>
+      <div class="grid2">
+        <form class="card" id="formNotif">
+          <h3 class="display" style="font-size:17px">Buat pengumuman</h3>
+          <label class="f-label">Ikon (nama lucide)</label>
+          <input class="inp mono" id="ntIcon" value="megaphone" placeholder="megaphone">
+          <label class="f-label">Judul</label>
+          <input class="inp" id="ntTitle" placeholder="cth. Promo akhir pekan!">
+          <p class="f-err-txt" id="err-ntTitle"></p>
+          <label class="f-label">Ringkasan</label>
+          <input class="inp" id="ntBody" placeholder="Satu kalimat ringkas untuk daftar notifikasi.">
+          <label class="f-label">Detail (opsional)</label>
+          <textarea class="inp" id="ntDetail" rows="4" placeholder="Penjelasan lengkap saat notifikasi dibuka…"></textarea>
+          <button type="submit" class="btn btn-blue" id="btnSendNotif" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="send"></i>Kirim ke Semua Akun</button>
+          <p class="hint" style="margin-top:10px">Total akun: <b class="mono" id="ntUserCount">…</b></p>
+        </form>
+        <div class="card">
+          <h3 class="display" style="font-size:17px;margin-bottom:6px">Tips</h3>
+          <p class="hint">Ikon populer: <span class="mono">megaphone · gift · badge-percent · calendar-check · sparkles · coins · wallet · ticket</span>.</p>
+          <p class="hint" style="margin-top:10px">Pengiriman berjalan per-batch (maks 400 dokumen per batch) agar aman dari limit Firestore.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACCOUNT ============ -->
+    <section id="pg-account" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Account</h1>
+        <p class="page-sub">Kelola akun member: tambah akun baru, lihat daftar, hapus, dan kirim reset password.</p>
+      </div>
+      <div class="grid2">
+        <form class="card" id="formAddUser">
+          <h3 class="display" style="font-size:17px">Tambah akun member</h3>
+          <label class="f-label">Nama lengkap</label>
+          <input class="inp" id="auName" placeholder="cth. Rizky Pratama">
+          <p class="f-err-txt" id="err-auName"></p>
+          <label class="f-label">Email</label>
+          <input class="inp" type="email" id="auEmail" placeholder="member@email.com">
+          <p class="f-err-txt" id="err-auEmail"></p>
+          <label class="f-label">Password (min. 6 karakter)</label>
+          <div class="pw-wrap">
+            <input class="inp" type="password" id="auPass" placeholder="password awal">
+            <button type="button" class="pw-eye" data-eye="auPass"><i data-lucide="eye"></i></button>
+          </div>
+          <p class="f-err-txt" id="err-auPass"></p>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="user-plus"></i>Buat Akun</button>
+          <p class="hint" style="margin-top:10px">Dibuat lewat app sekunder — sesi admin kamu tidak terganggu.</p>
+        </form>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+            <h3 class="display" style="font-size:17px">Daftar akun</h3>
+            <button class="btn btn-line btn-sm" id="btnReloadUsers"><i data-lucide="refresh-cw"></i>Muat ulang</button>
+          </div>
+          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Member</th><th>Saldo</th><th>Poin</th><th>Tier</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="acRows"></tbody></table></div>
+          <div id="acEmpty"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROFILE ============ -->
+    <section id="pg-profile" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Profil Admin</h1>
+        <p class="page-sub">Kelola identitas & keamanan akun admin kamu.</p>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:start">
+        <div class="card">
+          <h3 class="display" style="font-size:17px">Identitas</h3>
+          <div class="pf-row" style="margin-top:16px">
+            <div class="pf-ava" id="pfAva" title="Klik untuk ganti foto">A</div>
+            <div>
+              <div class="pf-btns">
+                <button type="button" class="btn btn-line btn-sm" id="pfUpload"><i data-lucide="camera"></i>Ubah Foto</button>
+                <button type="button" class="btn btn-danger btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
+              </div>
+              <p class="hint" style="margin-top:7px">JPG/PNG, otomatis dipotong bulat. Tersimpan di <span class="mono">admins/{uid}</span>.</p>
+              <input type="file" id="pfFile" accept="image/*" hidden>
+            </div>
+          </div>
+          <label class="f-label">Nama admin</label>
+          <input class="inp" id="pfName">
+          <p class="f-err-txt" id="err-pfName"></p>
+          <label class="f-label">Email</label>
+          <input class="inp" id="pfEmail" disabled style="color:var(--muted);background:#F4F3EE">
+          <button class="btn btn-solid" id="pfSave" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="check"></i>Simpan Perubahan</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="card">
+            <h3 class="display" style="font-size:17px">Ganti password</h3>
+            <label class="f-label">Password saat ini</label>
+            <div class="pw-wrap">
+              <input class="inp" type="password" id="spCur" autocomplete="current-password">
+              <button type="button" class="pw-eye" data-eye="spCur"><i data-lucide="eye"></i></button>
+            </div>
+            <p class="f-err-txt" id="err-spCur"></p>
+            <label class="f-label">Password baru (min. 6 karakter)</label>
+            <div class="pw-wrap">
+              <input class="inp" type="password" id="spNew" autocomplete="new-password">
+              <button type="button" class="pw-eye" data-eye="spNew"><i data-lucide="eye"></i></button>
+            </div>
+            <p class="f-err-txt" id="err-spNew"></p>
+            <button class="btn btn-blue" id="spSave" style="width:100%;justify-content:center;margin-top:18px"><i data-lucide="key-round"></i>Simpan Password</button>
+          </div>
+          <div class="card">
+            <h3 class="display" style="font-size:17px;margin-bottom:8px">Info akun</h3>
+            <div class="kv"><span>Peran</span><b>SUPERADMIN</b></div>
+            <div class="kv"><span>UID</span><b id="pfUid">—</b></div>
+            <div class="kv"><span>Login via</span><b>EMAIL / PASSWORD</b></div>
+            <div class="kv"><span>Akun dibuat</span><b id="pfSince">—</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============ MODAL EDIT GENERIK ============ -->
+<div class="modal" id="mEdit">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <h3 class="m-title display" id="edTitle">Edit</h3>
+    <div id="edFields" style="margin-top:8px"></div>
+    <button class="btn btn-blue" id="edSave" style="width:100%;justify-content:center;margin-top:18px"><i data-lucide="check"></i>Simpan</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged,
+  createUserWithEmailAndPassword, sendPasswordResetEmail,
+  updatePassword, updateProfile, EmailAuthProvider, reauthenticateWithCredential
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc,
+  collection, getDocs, query, orderBy, limit, writeBatch,
+  arrayUnion, arrayRemove, addDoc, increment
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDb9KnG1MNGnS62UuZGZ6MIdGcIXmcwoVA",
+  authDomain: "kapperstudio-c629c.firebaseapp.com",
+  projectId: "kapperstudio-c629c",
+  storageBucket: "kapperstudio-c629c.firebasestorage.app",
+  messagingSenderId: "689372483921",
+  appId: "1:689372483921:web:de297c0dd520b8a0f2c370",
+  measurementId: "G-BWBJCSQQEF"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const secApp = initializeApp(firebaseConfig, 'kapper-admin-secondary');
+const secAuth = getAuth(secApp);
+
+/* ================= UTIL ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const idFmt=n=>(n||0).toLocaleString('id-ID');
+const fmtIDR=n=>'Rp'+idFmt(Math.abs(n||0));
+const icons=()=>lucide.createIcons();
+const vEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+const initials=n=>(n||'A').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase()||'A';
+const dtLab=ts=>ts?new Date(ts).toLocaleString('id-ID',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+const AUTH_ERR={
+  'auth/invalid-email':'Format email tidak valid.','auth/missing-password':'Masukkan password.',
+  'auth/weak-password':'Password minimal 6 karakter.','auth/email-already-in-use':'Email sudah terdaftar.',
+  'auth/invalid-credential':'Email atau password salah.','auth/user-not-found':'Akun tidak ditemukan.',
+  'auth/wrong-password':'Password salah.','auth/too-many-requests':'Terlalu banyak percobaan. Coba lagi nanti.',
+  'auth/requires-recent-login':'Sesi terlalu lama — keluar lalu masuk lagi, kemudian ulangi.',
+  'auth/network-request-failed':'Koneksi bermasalah. Cek internet kamu.',
+};
+const aerr=e=>AUTH_ERR[e?.code]||e?.message||'Terjadi kesalahan.';
+
+function toast(type,msg){
+  const ic=type==='ok'?'check':type==='err'?'x':'info';
+  const el=document.createElement('div');
+  el.className='toast '+type;
+  el.innerHTML=`<i data-lucide="${ic}"></i><span>${msg}</span>`;
+  $('#toasts').appendChild(el); icons();
+  requestAnimationFrame(()=>el.classList.add('show'));
+  setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400)},3600);
+}
+function busy(btn,on,txt){
+  if(on){btn.dataset.h=btn.innerHTML;btn.disabled=true;btn.innerHTML=`<span class="spin"></span>${txt||'Memproses…'}`}
+  else{btn.disabled=false;btn.innerHTML=btn.dataset.h||btn.innerHTML;icons()}
+}
+function showErr(id,msg){const e=$('#err-'+id),i=$('#'+id);if(e){e.textContent=msg;e.classList.add('show')}if(i)i.classList.add('invalid');return false}
+function clearErr(id){const e=$('#err-'+id),i=$('#'+id);if(e){e.textContent='';e.classList.remove('show')}if(i)i.classList.remove('invalid')}
+ $$('.pw-eye').forEach(b=>b.addEventListener('click',()=>{
+  const inp=$('#'+b.dataset.eye);
+  const show=inp.type==='password';
+  inp.type=show?'text':'password';
+  b.innerHTML=`<i data-lucide="${show?'eye-off':'eye'}"></i>`;icons();
+}));
+function openModal(id){$('#'+id).classList.add('open')}
+function closeModal(m){m.classList.remove('open')}
+ $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))closeModal(m)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal.open').forEach(closeModal);closeDrops()}});
+
+function fileToDataURL(file,maxW,cb){
+  const img=new Image();
+  img.onload=()=>{
+    const r=Math.min(1,maxW/Math.max(img.width,img.height));
+    const c=document.createElement('canvas');
+    c.width=Math.round(img.width*r); c.height=Math.round(img.height*r);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+    URL.revokeObjectURL(img.src);
+    cb(c.toDataURL('image/jpeg',.82));
+  };
+  img.onerror=()=>toast('err','Gagal membaca gambar.');
+  img.src=URL.createObjectURL(file);
+}
+function fileToAvatar(file,cb){
+  const img=new Image();
+  img.onload=()=>{
+    const s=256,c=document.createElement('canvas');c.width=c.height=s;
+    const x=c.getContext('2d');
+    const r=Math.max(s/img.width,s/img.height),w=img.width*r,h=img.height*r;
+    x.drawImage(img,(s-w)/2,(s-h)/2,w,h);
+    URL.revokeObjectURL(img.src);
+    cb(c.toDataURL('image/jpeg',.82));
+  };
+  img.onerror=()=>toast('err','Gagal membaca gambar.');
+  img.src=URL.createObjectURL(file);
+}
+
+/* ================= FAVICON PNG ================= */
+(function(){
+  try{
+    const s=64,c=document.createElement('canvas');c.width=c.height=s;
+    const x=c.getContext('2d');
+    x.fillStyle='#0B0B0C';x.beginPath();x.roundRect(0,0,s,s,15);x.fill();
+    x.fillStyle='#0B2FD1';x.beginPath();x.arc(s-16,16,8,0,Math.PI*2);x.fill();
+    x.fillStyle='#fff';x.font='900 34px Archivo, Arial';x.textBaseline='middle';
+    x.fillText('K',19,36);
+    const url=c.toDataURL('image/png');
+    $('#favicon').href=url;
+    const ai=$('#appleIcon'); if(ai)ai.href=url;
+  }catch(e){}
+})();
+
+/* ================= ADMIN GATE ================= */
+let admin=null;
+async function checkAdmin(u){
+  const ref=doc(db,'admins',u.uid);
+  const s=await getDoc(ref);
+  if(s.exists())return true;
+  const all=await getDocs(collection(db,'admins'));
+  if(all.empty){
+    await setDoc(ref,{email:u.email,bootstrap:true,createdAt:Date.now()});
+    toast('ok','Akun ini ditetapkan sebagai superadmin (bootstrap).');
+    return true;
+  }
+  return false;
+}
+ $('#formLogin').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const em=$('#admEmail').value.trim(), pw=$('#admPass').value;
+  clearErr('admEmail');clearErr('admPass');
+  if(!em)ok=showErr('admEmail','Email wajib diisi.');
+  else if(!vEmail(em))ok=showErr('admEmail','Format email tidak valid.');
+  if(!pw)ok=showErr('admPass','Password wajib diisi.');
+  else if(pw.length<6)ok=showErr('admPass','Password minimal 6 karakter.');
+  if(!ok)return;
+  const b=$('#btnLogin');busy(b,true,'Memeriksa…');
+  try{
+    const cred=await signInWithEmailAndPassword(auth,em,pw);
+    const okAdm=await checkAdmin(cred.user);
+    if(!okAdm){
+      await signOut(auth);
+      showErr('admPass','Akun ini bukan admin. Minta akses ke superadmin.');
+      toast('err','Akses ditolak — bukan akun admin.');
+    }
+  }catch(err){
+    if(err.code==='auth/invalid-credential'||err.code==='auth/wrong-password')showErr('admPass','Email atau password salah.');
+    toast('err',aerr(err));
+  }finally{busy(b,false)}
+});
+
+/* ================= PROFILE DROPDOWN ================= */
+function closeDrops(){$('#profileDrop').classList.remove('open')}
+ $('#profileBtn').onclick=e=>{e.stopPropagation();const d=$('#profileDrop');const was=d.classList.contains('open');closeDrops();if(!was)d.classList.add('open')};
+document.addEventListener('click',e=>{if(!e.target.closest('#profileBtn')&&!e.target.closest('#profileDrop'))closeDrops()});
+ $('#ddProfile').onclick=()=>{closeDrops();switchPage('profile')};
+ $('#ddPass').onclick=()=>{closeDrops();switchPage('profile');setTimeout(()=>$('#spCur').focus(),350)};
+
+function renderAdminIdentity(){
+  const nm=admin?.name||'Admin', em=admin?.email||'—', av=admin?.avatar||'';
+  $('#hdName').textContent=nm.split(' ')[0];
+  $('#ddName').textContent=nm;
+  $('#ddEmail').textContent=em;
+  ['#hdAvatar','#ddAvatar','#pfAva'].forEach(sel=>{
+    const el=$(sel); if(!el)return;
+    if(av)el.innerHTML=`<img src="${av}" alt="Foto admin">`;
+    else el.textContent=initials(nm);
+  });
+  const rm=$('#pfRemove'); if(rm)rm.hidden=!av;
+}
+
+onAuthStateChanged(auth,async u=>{
+  if(u&&admin?.uid===u.uid)return;
+  if(u){
+    const ok=await checkAdmin(u).catch(()=>false);
+    if(!ok){await signOut(auth);return}
+    let extra={};
+    try{const s=await getDoc(doc(db,'admins',u.uid));if(s.exists())extra=s.data()}catch(e){}
+    admin={uid:u.uid,email:u.email,name:extra.name||u.displayName||'Admin',avatar:extra.avatar||'',createdAt:extra.createdAt||null};
+    renderAdminIdentity();
+    $('#viewLogin').hidden=true; $('#viewApp').hidden=false;
+    switchPage('dashboard');
+    toast('ok',`Selamat datang, ${admin.name.split(' ')[0]}!`);
+  }else{
+    admin=null;
+    $('#viewApp').hidden=true; $('#viewLogin').hidden=false;
+    $('#admPass').value='';
+  }
+});
+ $('#btnLogout').onclick=async()=>{closeDrops();try{await signOut(auth)}catch(e){toast('err',aerr(e))}};
+
+/* ================= NAV ================= */
+let page='dashboard';
+function switchPage(p){
+  page=p;
+  $$('[id^=pg-]').forEach(el=>el.hidden=el.id!=='pg-'+p);
+  $$('.nav-item[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
+  window.scrollTo({top:0});
+  if(p==='profile')loadProfile(); else loadPage(p);
+}
+ $$('.nav-item[data-page]').forEach(b=>b.onclick=()=>switchPage(b.dataset.page));
+function loadPage(p){
+  if(p==='dashboard')loadDashboard();
+  if(p==='service')loadServices();
+  if(p==='cabang')loadShops();
+  if(p==='topup')loadTopup();
+  if(p==='booking')loadBookings();
+  if(p==='withdraw')loadWithdraw();
+  if(p==='loyalty')loadLoyalty();
+  if(p==='product')loadProducts();
+  if(p==='notif')loadNotifMeta();
+  if(p==='account')loadUsers();
+}
+
+/* ================= HALAMAN PROFIL ================= */
+function loadProfile(){
+  if(!admin)return;
+  $('#pfName').value=admin.name||''; $('#pfEmail').value=admin.email||'';
+  $('#pfUid').textContent=admin.uid||'—';
+  $('#pfSince').textContent=admin.createdAt?dtLab(admin.createdAt):'—';
+  clearErr('pfName');clearErr('spCur');clearErr('spNew');
+  $('#spCur').value='';$('#spNew').value='';
+  renderAdminIdentity(); icons();
+}
+ $('#pfUpload').onclick=()=>$('#pfFile').click();
+ $('#pfAva').onclick=()=>$('#pfFile').click();
+ $('#pfFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; e.target.value='';
+  if(!f)return;
+  if(!f.type.startsWith('image/'))return toast('err','File harus gambar.');
+  if(f.size>5*1024*1024)return toast('err','Maksimal 5 MB.');
+  fileToAvatar(f,async url=>{
+    admin.avatar=url; renderAdminIdentity();
+    try{
+      await setDoc(doc(db,'admins',admin.uid),{avatar:url},{merge:true});
+      toast('ok','Foto admin diperbarui.');
+    }catch(err){toast('err',aerr(err))}
+  });
+});
+ $('#pfRemove').onclick=async()=>{
+  admin.avatar=''; renderAdminIdentity();
+  try{await setDoc(doc(db,'admins',admin.uid),{avatar:''},{merge:true});toast('info','Foto admin dihapus.')}
+  catch(err){toast('err',aerr(err))}
+};
+ $('#pfSave').onclick=async()=>{
+  const nm=$('#pfName').value.trim();
+  clearErr('pfName');
+  if(!nm)return showErr('pfName','Nama wajib diisi.');
+  if(nm.length<3)return showErr('pfName','Nama minimal 3 karakter.');
+  const b=$('#pfSave'); busy(b,true,'Menyimpan…');
+  try{
+    admin.name=nm; renderAdminIdentity();
+    await setDoc(doc(db,'admins',admin.uid),{name:nm},{merge:true});
+    if(auth.currentUser)await updateProfile(auth.currentUser,{displayName:nm}).catch(()=>{});
+    toast('ok','Profil admin diperbarui.');
+  }catch(err){toast('err',aerr(err))}
+  finally{busy(b,false)}
+};
+ $('#spSave').onclick=async function(){
+  let ok=true;
+  const cur=$('#spCur').value, nw=$('#spNew').value;
+  ['spCur','spNew'].forEach(clearErr);
+  if(!cur)ok=showErr('spCur','Password saat ini wajib diisi.');
+  if(!nw)ok=showErr('spNew','Password baru wajib diisi.');
+  else if(nw.length<6)ok=showErr('spNew','Minimal 6 karakter.');
+  if(!ok)return;
+  const b=this; busy(b,true,'Menyimpan…');
+  try{
+    const cred=EmailAuthProvider.credential(admin.email,cur);
+    await reauthenticateWithCredential(auth.currentUser,cred);
+    await updatePassword(auth.currentUser,nw);
+    $('#spCur').value='';$('#spNew').value='';
+    toast('ok','Password admin berhasil diganti.');
+  }catch(err){toast('err',aerr(err))}
+  finally{busy(b,false)}
+};
+
+/* ================= DASHBOARD ================= */
+async function loadDashboard(){
+  const box=$('#statBox');
+  box.innerHTML='<div class="stat"><span>Memuat…</span></div>';
+  try{
+    const [us,sv,sh,pr,vc,pay]=await Promise.all([
+      getDocs(collection(db,'users')),
+      getDocs(collection(db,'layanan')),
+      getDocs(collection(db,'barbershops')),
+      getDocs(collection(db,'products')),
+      getDocs(collection(db,'vouchers')),
+      getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(50))),
+    ]);
+    const payments=pay.docs.map(d=>d.data());
+    const omzet=payments.filter(p=>p.status==='paid'&&p.method!=='points'&&p.kind!=='withdraw').reduce((a,p)=>a+(p.total||0),0);
+    const vAktif=[...vc.docs].filter(d=>!d.data().used).length;
+    const wdPend=payments.filter(p=>p.kind==='withdraw'&&p.status==='pending').length;
+    box.innerHTML=`
+      <div class="stat blue"><span>Member</span><b>${idFmt(us.size)}</b></div>
+      <div class="stat"><span>Layanan</span><b>${idFmt(sv.size)}</b></div>
+      <div class="stat"><span>Cabang</span><b>${idFmt(sh.size)}</b></div>
+      <div class="stat"><span>Produk</span><b>${idFmt(pr.size)}</b></div>
+      <div class="stat"><span>Voucher aktif</span><b>${idFmt(vAktif)}</b></div>
+      <div class="stat ${wdPend?'warn':''}"><span>Withdraw pending</span><b>${idFmt(wdPend)}</b></div>
+      <div class="stat"><span>Omzet (50 terakhir)</span><b>${fmtIDR(omzet)}</b></div>`;
+    const rows=payments.slice(0,10).map(p=>`
+      <tr><td>${dtLab(p.createdAt)}</td><td>${p.name||'—'}</td><td>${p.kind||'—'}</td><td>${p.method||'—'}</td><td class="num">${fmtIDR(p.total||0)}</td>
+      <td>${wdTag(p.status)}</td></tr>`).join('');
+    $('#dashPayments').innerHTML=payments.length
+      ?`<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Jenis</th><th>Metode</th><th>Nominal</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`
+      :`<div class="empty"><i data-lucide="receipt"></i>Belum ada pembayaran tercatat.</div>`;
+  }catch(e){ box.innerHTML=''; toast('err','Gagal memuat dashboard: '+aerr(e)); }
+  icons();
+}
+function wdTag(st){
+  if(st==='approved')return'<span class="tag ok">disetujui</span>';
+  if(st==='rejected')return'<span class="tag rej">ditolak</span>';
+  if(st==='pending')return'<span class="tag pend">pending</span>';
+  if(st==='paid')return'<span class="tag ok">terbayar</span>';
+  return`<span class="tag used">${st||'—'}</span>`;
+}
+
+/* ================= LAYANAN ================= */
+let services=[];
+async function loadServices(){
+  try{
+    const s=await getDocs(collection(db,'layanan'));
+    services=s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){toast('err',aerr(e))}
+  renderServices();
+}
+function renderServices(){
+  const tb=$('#svRows'), em=$('#svEmpty');
+  if(!services.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="scissors"></i>Belum ada layanan. Tambahkan lewat form di samping.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=services.map(s=>`
+    <tr><td><b>${s.name}</b><br><span class="hint">${(s.desc||'').slice(0,60)}</span></td>
+    <td class="num">${fmtIDR(s.price)}</td><td>${s.dur||'—'}</td>
+    <td><div class="rowact">
+      <button class="icbtn" data-edsv="${s.id}" title="Edit"><i data-lucide="pencil"></i></button>
+      <button class="icbtn del" data-dlsv="${s.id}" title="Hapus"><i data-lucide="trash-2"></i></button>
+    </div></td></tr>`).join('');
+  icons();
+}
+ $('#formService').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const nm=$('#svName').value.trim(), pr=+($('#svPrice').value.replace(/\D/g,'')||0);
+  clearErr('svName');clearErr('svPrice');
+  if(!nm)ok=showErr('svName','Nama layanan wajib diisi.');
+  if(!pr)ok=showErr('svPrice','Harga wajib diisi.');
+  if(!ok)return;
+  try{
+    await addDoc(collection(db,'layanan'),{name:nm,price:pr,dur:$('#svDur').value.trim(),desc:$('#svDesc').value.trim()});
+    $('#svName').value='';$('#svPrice').value='';$('#svDur').value='';$('#svDesc').value='';
+    toast('ok','Layanan ditambahkan.'); loadServices();
+  }catch(err){toast('err',aerr(err))}
+});
+ $('#svRows').addEventListener('click',async e=>{
+  const ed=e.target.closest('[data-edsv]'), dl=e.target.closest('[data-dlsv]');
+  if(ed){
+    const s=services.find(x=>x.id===ed.dataset.edsv); if(!s)return;
+    openEdit('Edit layanan',[
+      {id:'eName',label:'Nama',val:s.name},
+      {id:'ePrice',label:'Harga (Rp)',val:s.price,num:true},
+      {id:'eDur',label:'Durasi',val:s.dur},
+      {id:'eDesc',label:'Deskripsi',val:s.desc,area:true},
+    ],async v=>{
+      await updateDoc(doc(db,'layanan',s.id),{name:v.eName,price:+(String(v.ePrice).replace(/\D/g,'')||0),dur:v.eDur,desc:v.eDesc});
+      toast('ok','Layanan diperbarui.'); loadServices();
+    });
+  }
+  if(dl){
+    if(!confirm('Hapus layanan ini?'))return;
+    try{await deleteDoc(doc(db,'layanan',dl.dataset.dlsv));toast('ok','Layanan dihapus.');loadServices()}
+    catch(err){toast('err',aerr(err))}
+  }
+});
+
+/* ================= MODAL EDIT GENERIK ================= */
+function openEdit(title,fields,onSave){
+  $('#edTitle').textContent=title;
+  $('#edFields').innerHTML=fields.map(f=>`
+    <label class="f-label">${f.label}</label>
+    ${f.area?`<textarea class="inp" id="${f.id}" rows="3">${f.val??''}</textarea>`
+      :`<input class="inp ${f.num?'mono':''}" id="${f.id}" value="${(f.val??'').toString().replace(/"/g,'&quot;')}">`}`).join('');
+  openModal('mEdit'); icons();
+  $('#edSave').onclick=async()=>{
+    const v={}; fields.forEach(f=>v[f.id]=$('#'+f.id).value.trim());
+    try{ await onSave(v); closeModal($('#mEdit')); }
+    catch(err){toast('err',aerr(err))}
+  };
+}
+
+/* ================= CABANG ================= */
+let shops=[];
+async function loadShops(){
+  try{
+    const s=await getDocs(collection(db,'barbershops'));
+    shops=s.docs.map(d=>({id:d.id,...d.data(),barbers:Array.isArray(d.data().barbers)?d.data().barbers:[]}));
+  }catch(e){toast('err',aerr(e))}
+  renderShops();
+}
+function renderShops(){
+  const el=$('#shopList');
+  if(!shops.length){el.innerHTML=`<div class="empty"><i data-lucide="store"></i>Belum ada barbershop. Tambahkan cabang pertama lewat form di samping.</div>`;icons();return}
+  el.innerHTML=shops.map(s=>`
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">
+        <div>
+          <b style="font-size:16px">${s.name}</b>
+          <p class="hint">${s.barbers.length} barber</p>
+        </div>
+        <div class="rowact">
+          <button class="icbtn" data-edsh="${s.id}" title="Edit nama"><i data-lucide="pencil"></i></button>
+          <button class="icbtn del" data-dlsh="${s.id}" title="Hapus cabang"><i data-lucide="trash-2"></i></button>
+        </div>
+      </div>
+      <label class="f-label">Barber di cabang ini</label>
+      <div class="chips" style="margin-bottom:10px">
+        ${s.barbers.length?s.barbers.map(b=>`<span class="chip">${b}<button data-rmbb="${s.id}|${b}" title="Hapus barber"><i data-lucide="x"></i></button></span>`).join(''):'<span class="hint">Belum ada barber.</span>'}
+      </div>
+      <form data-addbb="${s.id}" style="display:flex;gap:8px">
+        <input class="inp" placeholder="Nama barber baru…" style="flex:1;padding:9px 13px">
+        <button type="submit" class="btn btn-solid btn-sm"><i data-lucide="user-plus"></i>Tambah</button>
+      </form>
+    </div>`).join('');
+  icons();
+}
+ $('#formShop').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const nm=$('#shName').value.trim();
+  clearErr('shName');
+  if(!nm)return showErr('shName','Nama barbershop wajib diisi.');
+  try{
+    await addDoc(collection(db,'barbershops'),{name:nm,barbers:[]});
+    $('#shName').value=''; toast('ok','Cabang ditambahkan.'); loadShops();
+  }catch(err){toast('err',aerr(err))}
+});
+ $('#shopList').addEventListener('click',async e=>{
+  const rm=e.target.closest('[data-rmbb]'), ed=e.target.closest('[data-edsh]'), dl=e.target.closest('[data-dlsh]');
+  if(rm){
+    const [id,name]=rm.dataset.rmbb.split('|');
+    try{await updateDoc(doc(db,'barbershops',id),{barbers:arrayRemove(name)});toast('ok','Barber dihapus.');loadShops()}
+    catch(err){toast('err',aerr(err))}
+  }
+  if(ed){
+    const s=shops.find(x=>x.id===ed.dataset.edsh); if(!s)return;
+    openEdit('Edit cabang',[{id:'eName',label:'Nama barbershop',val:s.name}],async v=>{
+      if(!v.eName)throw new Error('Nama tidak boleh kosong.');
+      await updateDoc(doc(db,'barbershops',s.id),{name:v.eName});
+      toast('ok','Cabang diperbarui.'); loadShops();
+    });
+  }
+  if(dl){
+    if(!confirm('Hapus cabang ini beserta daftar barber-nya?'))return;
+    try{await deleteDoc(doc(db,'barbershops',dl.dataset.dlsh));toast('ok','Cabang dihapus.');loadShops()}
+    catch(err){toast('err',aerr(err))}
+  }
+});
+ $('#shopList').addEventListener('submit',async e=>{
+  const f=e.target.closest('[data-addbb]'); if(!f)return;
+  e.preventDefault();
+  const inp=f.querySelector('input');
+  const nm=inp.value.trim(), id=f.dataset.addbb;
+  if(!nm)return toast('err','Tulis nama barber dulu.');
+  try{await updateDoc(doc(db,'barbershops',id),{barbers:arrayUnion(nm)});toast('ok','Barber ditambahkan.');loadShops()}
+  catch(err){toast('err',aerr(err))}
+});
+
+/* ================= TOP UP ================= */
+let vouchers=[], payments=[], topupCfg=null;
+async function loadTopup(){
+  try{
+    const [v,p,cfg]=await Promise.all([
+      getDocs(collection(db,'vouchers')),
+      getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(100))),
+      getDoc(doc(db,'config','topup')),
+    ]);
+    vouchers=v.docs.map(d=>({id:d.id,...d.data()}));
+    payments=p.docs.map(d=>({id:d.id,...d.data()}));
+    topupCfg=cfg.exists()?cfg.data():null;
+  }catch(e){toast('err',aerr(e))}
+  renderVouchers(); renderTopupTx(); renderBarcode();
+}
+function renderVouchers(){
+  const tb=$('#vcRows'), em=$('#vcEmpty');
+  if(!vouchers.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="ticket"></i>Belum ada voucher. Buat kode pertama.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=vouchers.map(v=>`
+    <tr><td class="mono"><b>${v.id}</b></td><td class="num">${fmtIDR(v.value)}</td>
+    <td><span class="tag ${v.used?'used':'ok'}">${v.used?'terpakai':'aktif'}</span></td>
+    <td class="hint">${v.usedBy||'—'}</td>
+    <td><div class="rowact"><button class="icbtn del" data-dlvc="${v.id}"><i data-lucide="trash-2"></i></button></div></td></tr>`).join('');
+  icons();
+}
+ $('#vcRows').addEventListener('click',async e=>{
+  const b=e.target.closest('[data-dlvc]'); if(!b)return;
+  if(!confirm('Hapus voucher ini?'))return;
+  try{await deleteDoc(doc(db,'vouchers',b.dataset.dlvc));toast('ok','Voucher dihapus.');loadTopup()}
+  catch(err){toast('err',aerr(err))}
+});
+ $('#formVoucher').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const code=$('#vcCode').value.trim().toUpperCase();
+  const val=+($('#vcValue').value.replace(/\D/g,'')||0);
+  clearErr('vcCode');clearErr('vcValue');
+  if(!code)ok=showErr('vcCode','Kode wajib diisi.');
+  else if(!/^[A-Z0-9]{4,16}$/.test(code))ok=showErr('vcCode','4–16 huruf/angka tanpa spasi.');
+  if(!val)ok=showErr('vcValue','Nilai saldo wajib diisi.');
+  if(!ok)return;
+  try{
+    const ex=await getDoc(doc(db,'vouchers',code));
+    if(ex.exists())return showErr('vcCode','Kode sudah dipakai — pilih kode lain.');
+    await setDoc(doc(db,'vouchers',code),{value:val,used:false,usedBy:null,createdAt:Date.now()});
+    $('#vcCode').value='';$('#vcValue').value='';
+    toast('ok',`Voucher ${code} (${fmtIDR(val)}) aktif.`); loadTopup();
+  }catch(err){toast('err',aerr(err))}
+});
+function renderTopupTx(){
+  const tx=payments.filter(p=>p.kind==='topup');
+  const tb=$('#tpRows'), em=$('#tpEmpty');
+  if(!tx.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="wallet"></i>Belum ada transaksi top up.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=tx.map(t=>`
+    <tr><td>${dtLab(t.createdAt)}</td><td>${t.name||'—'}</td><td>${t.method||'—'}</td>
+    <td class="num">${fmtIDR(t.total)}</td><td class="mono">${t.code||'—'}</td>
+    <td>${wdTag(t.status)}</td></tr>`).join('');
+  icons();
+}
+function renderBarcode(){
+  const el=$('#bcPreview');
+  el.innerHTML=topupCfg?.barcode
+    ?`<div class="bc-box"><img src="${topupCfg.barcode}" alt="Barcode topup"><p class="hint">Diperbarui ${dtLab(topupCfg.updatedAt)}</p></div>`
+    :`<div class="empty"><i data-lucide="qr-code"></i>Belum ada barcode. Upload gambar QRIS/barcode.</div>`;
+  icons();
+}
+ $('#btnBcUpload').onclick=()=>$('#bcFile').click();
+ $('#bcFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; e.target.value='';
+  if(!f)return;
+  if(!f.type.startsWith('image/'))return toast('err','File harus gambar.');
+  if(f.size>5*1024*1024)return toast('err','Maksimal 5 MB.');
+  fileToDataURL(f,560,async url=>{
+    try{
+      await setDoc(doc(db,'config','topup'),{barcode:url,updatedAt:Date.now()},{merge:true});
+      toast('ok','Barcode pengajuan topup diperbarui.'); loadTopup();
+    }catch(err){toast('err',aerr(err))}
+  });
+});
+ $('#btnBcDel').onclick=async()=>{
+  if(!topupCfg?.barcode)return;
+  if(!confirm('Hapus barcode?'))return;
+  try{await deleteDoc(doc(db,'config','topup'));topupCfg=null;renderBarcode();toast('ok','Barcode dihapus.')}
+  catch(err){toast('err',aerr(err))}
+};
+
+/* ================= BOOKING ================= */
+let bookingsAll=[];
+ $('#btnReloadBk').onclick=loadBookings;
+async function loadBookings(){
+  const tb=$('#bkRows'), em=$('#bkEmpty');
+  tb.innerHTML=''; em.innerHTML='<div class="empty" style="margin-top:14px">Memuat booking…</div>'; icons();
+  try{
+    const us=await getDocs(collection(db,'users'));
+    const results=[];
+    await Promise.all(us.docs.map(async u=>{
+      try{
+        const bs=await getDocs(collection(db,'users',u.id,'bookings'));
+        bs.forEach(b=>results.push({id:b.id,uid:u.id,uname:u.data().name||u.data().email||u.id,...b.data()}));
+      }catch(e){}
+    }));
+    results.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    bookingsAll=results;
+    if(!results.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="calendar"></i>Belum ada booking dari customer.</div>`;icons();return}
+    em.innerHTML='';
+    tb.innerHTML=results.map(b=>{
+      const d=b.date?new Date(b.date+'T00:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short'}):'—';
+      return`<tr>
+        <td><b>${b.uname}</b></td><td>${b.service||'—'}</td>
+        <td>${b.shop||'—'}<br><span class="hint">Barber ${b.barber||'—'}</span></td>
+        <td class="mono">${d} • ${b.time||'—'}</td>
+        <td><span class="tag ${b.paid?'ok':'pend'}">${b.paid?'terbayar':'di kasir'}</span></td>
+        <td><div class="rowact"><button class="icbtn del" data-dlbk="${b.uid}|${b.id}" title="Hapus"><i data-lucide="trash-2"></i></button></div></td>
+      </tr>`}).join('');
+  }catch(e){em.innerHTML='';toast('err','Gagal memuat booking: '+aerr(e))}
+  icons();
+}
+ $('#bkRows').addEventListener('click',async e=>{
+  const b=e.target.closest('[data-dlbk]'); if(!b)return;
+  const [uid,id]=b.dataset.dlbk.split('|');
+  if(!confirm('Hapus booking ini?'))return;
+  try{await deleteDoc(doc(db,'users',uid,'bookings',id));toast('ok','Booking dihapus.');loadBookings()}
+  catch(err){toast('err',aerr(err))}
+});
+
+/* ================= WITHDRAW (approve / tolak + refund) ================= */
+let wdAll=[], wdFilter='all';
+ $('#btnReloadWd').onclick=loadWithdraw;
+ $('#wdFilters').addEventListener('click',e=>{
+  const b=e.target.closest('.wdf'); if(!b)return;
+  wdFilter=b.dataset.f;
+  $$('#wdFilters .wdf').forEach(x=>x.classList.toggle('active',x===b));
+  renderWithdraw();
+});
+async function loadWithdraw(){
+  const tb=$('#wdRows'), em=$('#wdEmpty');
+  tb.innerHTML=''; em.innerHTML='<div class="empty" style="margin-top:14px">Memuat pengajuan…</div>'; icons();
+  try{
+    const s=await getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(200)));
+    payments=s.docs.map(d=>({id:d.id,...d.data()}));
+    wdAll=payments.filter(p=>p.kind==='withdraw');
+  }catch(e){toast('err','Gagal memuat withdraw: '+aerr(e));wdAll=[]}
+  renderWithdraw();
+}
+function renderWithdraw(){
+  /* Statistik */
+  const pend=wdAll.filter(w=>w.status==='pending');
+  const appr=wdAll.filter(w=>w.status==='approved');
+  const rej=wdAll.filter(w=>w.status==='rejected');
+  const totPend=pend.reduce((a,w)=>a+(w.total||0),0);
+  const totAppr=appr.reduce((a,w)=>a+(w.total||0),0);
+  $('#wdStats').innerHTML=`
+    <div class="stat ${pend.length?'warn':''}"><span>Pending</span><b>${idFmt(pend.length)}</b></div>
+    <div class="stat"><span>Total pending</span><b>${fmtIDR(totPend)}</b></div>
+    <div class="stat blue"><span>Disetujui</span><b>${idFmt(appr.length)}</b></div>
+    <div class="stat"><span>Total dicairkan</span><b>${fmtIDR(totAppr)}</b></div>
+    <div class="stat"><span>Ditolak</span><b>${idFmt(rej.length)}</b></div>`;
+  /* Tabel */
+  const list=wdFilter==='all'?wdAll:wdAll.filter(w=>w.status===wdFilter);
+  const tb=$('#wdRows'), em=$('#wdEmpty');
+  if(!list.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="banknote"></i>${wdFilter==='all'?'Belum ada pengajuan penarikan.':'Tidak ada data pada filter ini.'}</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=list.map(w=>{
+    const isPend=w.status==='pending';
+    return`<tr>
+      <td>${dtLab(w.createdAt)}</td>
+      <td><b>${w.name||'—'}</b></td>
+      <td class="mono">${w.code||'—'}</td>
+      <td>${w.shop||'—'}</td>
+      <td class="num">${fmtIDR(w.total)}</td>
+      <td>${wdTag(w.status)}${w.rejectReason?`<br><span class="hint">${w.rejectReason}</span>`:''}</td>
+      <td><div class="rowact">
+        ${isPend?`
+          <button class="icbtn ok" data-wdok="${w.id}" title="Setujui — kasir sudah menyerahkan uang"><i data-lucide="check"></i></button>
+          <button class="icbtn del" data-wdno="${w.id}" title="Tolak — saldo dikembalikan"><i data-lucide="x"></i></button>`
+        :`<span class="hint">selesai</span>`}
+      </div></td>
+    </tr>`}).join('');
+  icons();
+}
+ $('#wdRows').addEventListener('click',async e=>{
+  const ok=e.target.closest('[data-wdok]'), no=e.target.closest('[data-wdno]');
+  const rec=id=>wdAll.find(w=>w.id===id);
+  if(ok){
+    const w=rec(ok.dataset.wdok); if(!w)return;
+    if(!confirm(`Setujui penarikan ${fmtIDR(w.total)} oleh ${w.name}?\nKode: ${w.code}\nPastikan kasir sudah menyerahkan uang tunai.`))return;
+    const b=ok; busy(b,true,'…');
+    try{
+      const batch=writeBatch(db);
+      batch.update(doc(db,'payments',w.id),{status:'approved',approvedAt:Date.now(),approvedBy:admin.email});
+      if(w.uid){
+        batch.set(doc(collection(db,'users',w.uid,'notifs')),{
+          icon:'banknote',title:'Penarikan disetujui',
+          body:`Kode ${w.code} • ${fmtIDR(w.total)} telah dicairkan di ${w.shop||'barbershop'}.`,
+          detail:`Penarikan sebesar ${fmtIDR(w.total)} dengan kode ${w.code} telah disetujui dan dicairkan di kasir ${w.shop||'barbershop partner'}. Terima kasih telah menggunakan dompet Kappoint.`,
+          read:false,ts:Date.now()
+        });
+      }
+      await batch.commit();
+      toast('ok','Penarikan disetujui.');
+      loadWithdraw();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+  }
+  if(no){
+    const w=rec(no.dataset.wdno); if(!w)return;
+    if(!w.uid)return toast('err','Data penarikan tidak memiliki uid member — tidak bisa refund otomatis.');
+    const reason=prompt(`Tolak penarikan ${fmtIDR(w.total)} oleh ${w.name}?\nKode: ${w.code}\n\nAlasan penolakan (opsional, dikirim ke member):`) ;
+    if(reason===null)return;
+    const b=no; busy(b,true,'…');
+    try{
+      /* Satu batch atomik: tolak + refund saldo + riwayat + notifikasi */
+      const batch=writeBatch(db);
+      batch.update(doc(db,'payments',w.id),{status:'rejected',rejectedAt:Date.now(),rejectedBy:admin.email,rejectReason:reason||''});
+      batch.update(doc(db,'users',w.uid),{saldo:increment(w.total)});
+      batch.set(doc(collection(db,'users',w.uid,'txns')),{
+        dir:'in',title:'Refund penarikan',
+        sub:`Penarikan ditolak • ${w.code||'—'}`,
+        amt:w.total,ts:Date.now()
+      });
+      batch.set(doc(collection(db,'users',w.uid,'notifs')),{
+        icon:'undo-2',title:'Penarikan ditolak — saldo dikembalikan',
+        body:`${fmtIDR(w.total)} dikembalikan ke saldo Kappointmu.${reason?` Alasan: ${reason}`:''}`,
+        detail:`Pengajuan penarikan ${fmtIDR(w.total)} dengan kode ${w.code||'—'} di ${w.shop||'barbershop'} ditolak admin.${reason?` Alasan: ${reason}.`:''} Nominal tersebut sudah dikembalikan penuh ke saldo Kappoint dan tercatat di riwayat transaksi.`,
+        read:false,ts:Date.now()
+      });
+      await batch.commit();
+      toast('ok',`Ditolak — ${fmtIDR(w.total)} dikembalikan ke saldo ${w.name||'member'}.`);
+      loadWithdraw();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+  }
+});
+
+/* ================= LOYALTY ================= */
+const DEF_TIERS=[
+  {key:'bronze',name:'Bronze',req:'0 poin',pts:0,perks:['Cashback 1% setiap transaksi','Booking standar','Riwayat transaksi penuh']},
+  {key:'gold',name:'Gold',req:'1.000 poin',pts:1000,perks:['Cashback 2,5%','Prioritas slot booking','Gratis minuman tiap kunjungan','Voucher ulang tahun']},
+  {key:'platinum',name:'Platinum',req:'5.000 poin',pts:5000,perks:['Cashback 4%','1x haircut gratis / bulan','Guest pass untuk teman','Layanan dukungan khusus']},
+  {key:'black',name:'Black',req:'20.000 poin • undangan',pts:20000,dark:true,perks:['Semua benefit Platinum','Barber pribadi on-call','Akses event tertutup','Limit tarik tunai 2x lipat']},
+];
+const DEF_REWARDS=[
+  {name:'Gratis minuman di barbershop partner',cost:250},
+  {name:'Beard trim gratis',cost:900},
+  {name:'Potongan 25% untuk haircut',cost:1200},
+  {name:'Haircut gratis penuh',cost:2800},
+];
+let loyalty={tiers:DEF_TIERS,rewards:DEF_REWARDS};
+async function loadLoyalty(){
+  try{
+    const s=await getDoc(doc(db,'config','loyalty'));
+    if(s.exists())loyalty={tiers:s.data().tiers||DEF_TIERS,rewards:s.data().rewards||DEF_REWARDS};
+  }catch(e){toast('err',aerr(e))}
+  renderLoyalty();
+}
+function renderLoyalty(){
+  $('#tierEditor').innerHTML=loyalty.tiers.map((t,i)=>`
+    <div style="border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:10px">
+      <b>${t.name}</b> <span class="hint mono">${t.key}</span>
+      <label class="f-label">Syarat (teks)</label>
+      <input class="inp" data-t="${i}" data-f="req" value="${(t.req||'').replace(/"/g,'&quot;')}">
+      <label class="f-label">Minimal poin</label>
+      <input class="inp mono" data-t="${i}" data-f="pts" value="${t.pts||0}" inputmode="numeric">
+      <label class="f-label">Benefit (satu per baris)</label>
+      <textarea class="inp" rows="3" data-t="${i}" data-f="perks">${(t.perks||[]).join('\n')}</textarea>
+    </div>`).join('');
+  $('#rewardEditor').innerHTML=loyalty.rewards.map((r,i)=>`
+    <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+      <input class="inp" data-r="${i}" data-f="name" value="${(r.name||'').replace(/"/g,'&quot;')}" placeholder="Nama hadiah">
+      <input class="inp mono" style="width:110px" data-r="${i}" data-f="cost" value="${r.cost||0}" inputmode="numeric" placeholder="Poin">
+      <button type="button" class="icbtn del" data-rmrew="${i}"><i data-lucide="trash-2"></i></button>
+    </div>`).join('')||'<p class="hint">Belum ada hadiah.</p>';
+  icons();
+}
+ $('#tierEditor').addEventListener('input',e=>{
+  const t=e.target.dataset;
+  if(t.f===undefined)return;
+  const i=+t.t;
+  if(t.f==='pts')loyalty.tiers[i].pts=+(e.target.value.replace(/\D/g,'')||0);
+  else if(t.f==='perks')loyalty.tiers[i].perks=e.target.value.split('\n').map(x=>x.trim()).filter(Boolean);
+  else loyalty.tiers[i][t.f]=e.target.value;
+});
+ $('#rewardEditor').addEventListener('input',e=>{
+  const t=e.target.dataset;
+  if(t.f===undefined)return;
+  const i=+t.r;
+  if(t.f==='cost')loyalty.rewards[i].cost=+(e.target.value.replace(/\D/g,'')||0);
+  else loyalty.rewards[i][t.f]=e.target.value;
+});
+ $('#rewardEditor').addEventListener('click',e=>{
+  const b=e.target.closest('[data-rmrew]'); if(!b)return;
+  loyalty.rewards.splice(+b.dataset.rmrew,1); renderLoyalty();
+});
+ $('#btnAddReward').onclick=()=>{loyalty.rewards.push({name:'',cost:0});renderLoyalty()};
+ $('#btnSaveLoyalty').onclick=async function(){
+  const b=this; busy(b,true,'Menyimpan…');
+  try{
+    await setDoc(doc(db,'config','loyalty'),{tiers:loyalty.tiers,rewards:rewardsClean(),updatedAt:Date.now()});
+    toast('ok','Data loyalty tersimpan.');
+  }catch(err){toast('err',aerr(err))}
+  finally{busy(b,false)}
+};
+function rewardsClean(){return loyalty.rewards.filter(r=>r.name&&r.cost)}
+
+/* ================= PRODUCT (dengan upload foto) ================= */
+let products=[], prImgData='';
+async function loadProducts(){
+  try{
+    const s=await getDocs(collection(db,'products'));
+    products=s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){toast('err',aerr(e))}
+  renderProducts();
+}
+function prPrevRender(){
+  const el=$('#prPrev');
+  if(prImgData){el.innerHTML=`<img src="${prImgData}" alt="Preview foto produk">`;el.classList.add('has')}
+  else{el.innerHTML='<i data-lucide="image"></i>';el.classList.remove('has')}
+  $('#btnPrDelImg').hidden=!prImgData;
+  icons();
+}
+function renderProducts(){
+  const tb=$('#prRows'), em=$('#prEmpty');
+  if(!products.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="package"></i>Belum ada produk. Tambahkan lewat form di samping.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=products.map(p=>`
+    <tr>
+      <td><img class="tbl-img" src="${p.img||`https://picsum.photos/seed/${p.seed||'kapper'}/120/120.jpg`}" alt="${p.name}"></td>
+      <td><b>${p.name}</b><br><span class="hint">${(p.desc||'').slice(0,60)}</span></td>
+      <td class="num">${fmtIDR(p.price)}</td>
+      <td><div class="rowact">
+        <button class="icbtn" data-edpr="${p.id}"><i data-lucide="pencil"></i></button>
+        <button class="icbtn del" data-dlpr="${p.id}"><i data-lucide="trash-2"></i></button>
+      </div></td>
+    </tr>`).join('');
+  icons();
+}
+function resetProdForm(){
+  $('#prEditId').value='';$('#prName').value='';$('#prPrice').value='';$('#prDesc').value='';$('#prSeed').value='';
+  prImgData=''; prPrevRender();
+  $('#prodFormTitle').textContent='Tambah produk';
+  $('#btnProdSubmit').innerHTML='<i data-lucide="plus"></i>Tambah';
+  $('#btnProdReset').hidden=true;
+  ['prName','prPrice'].forEach(clearErr); icons();
+}
+ $('#btnProdReset').onclick=resetProdForm;
+ $('#btnPrUpload').onclick=()=>$('#prFile').click();
+ $('#prPrev').onclick=()=>$('#prFile').click();
+ $('#prFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; e.target.value='';
+  if(!f)return;
+  if(!f.type.startsWith('image/'))return toast('err','File harus gambar.');
+  if(f.size>8*1024*1024)return toast('err','Maksimal 8 MB.');
+  fileToDataURL(f,720,url=>{prImgData=url;prPrevRender();toast('ok','Foto siap — tekan Tambah/Simpan untuk menyimpan.')});
+});
+ $('#btnPrDelImg').onclick=()=>{prImgData='';prPrevRender()};
+ $('#formProduct').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const nm=$('#prName').value.trim(), pr=+($('#prPrice').value.replace(/\D/g,'')||0);
+  clearErr('prName');clearErr('prPrice');
+  if(!nm)ok=showErr('prName','Nama produk wajib diisi.');
+  if(!pr)ok=showErr('prPrice','Harga wajib diisi.');
+  if(!ok)return;
+  const data={name:nm,price:pr,desc:$('#prDesc').value.trim(),seed:$('#prSeed').value.trim()||('kapper-'+Date.now())};
+  if(prImgData)data.img=prImgData;
+  const id=$('#prEditId').value;
+  try{
+    if(id){
+      if(!prImgData)data.img='';
+      await updateDoc(doc(db,'products',id),data);
+      toast('ok','Produk diperbarui.');
+    }else{
+      await addDoc(collection(db,'products'),data);
+      toast('ok','Produk ditambahkan.');
+    }
+    resetProdForm(); loadProducts();
+  }catch(err){toast('err',aerr(err))}
+});
+ $('#prRows').addEventListener('click',async e=>{
+  const ed=e.target.closest('[data-edpr]'), dl=e.target.closest('[data-dlpr]');
+  if(ed){
+    const p=products.find(x=>x.id===ed.dataset.edpr); if(!p)return;
+    $('#prEditId').value=p.id; $('#prName').value=p.name||''; $('#prPrice').value=p.price||'';
+    $('#prDesc').value=p.desc||''; $('#prSeed').value=p.seed||'';
+    prImgData=p.img||''; prPrevRender();
+    $('#prodFormTitle').textContent='Edit produk';
+    $('#btnProdSubmit').innerHTML='<i data-lucide="check"></i>Simpan';
+    $('#btnProdReset').hidden=false; icons();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  if(dl){
+    if(!confirm('Hapus produk ini?'))return;
+    try{await deleteDoc(doc(db,'products',dl.dataset.dlpr));toast('ok','Produk dihapus.');loadProducts()}
+    catch(err){toast('err',aerr(err))}
+  }
+});
+
+/* ================= NOTIFIKASI BROADCAST ================= */
+async function loadNotifMeta(){
+  try{
+    const us=await getDocs(collection(db,'users'));
+    $('#ntUserCount').textContent=idFmt(us.size);
+  }catch(e){$('#ntUserCount').textContent='?'}
+}
+ $('#formNotif').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const title=$('#ntTitle').value.trim();
+  clearErr('ntTitle');
+  if(!title)ok=showErr('ntTitle','Judul wajib diisi.');
+  if(!ok)return;
+  const payload={
+    icon:$('#ntIcon').value.trim()||'megaphone',
+    title,
+    body:$('#ntBody').value.trim()||title,
+    detail:$('#ntDetail').value.trim(),
+    read:false, ts:Date.now(),
+  };
+  const b=$('#btnSendNotif'); busy(b,true,'Mengirim…');
+  try{
+    const us=await getDocs(collection(db,'users'));
+    const ids=us.docs.map(d=>d.id);
+    let sent=0;
+    for(let i=0;i<ids.length;i+=400){
+      const batch=writeBatch(db);
+      ids.slice(i,i+400).forEach(uid=>{
+        batch.set(doc(collection(db,'users',uid,'notifs')),{...payload});
+      });
+      await batch.commit();
+      sent+=Math.min(400,ids.length-i);
+    }
+    toast('ok',`Pengumuman terkirim ke ${sent} akun.`);
+    $('#ntTitle').value='';$('#ntBody').value='';$('#ntDetail').value='';
+  }catch(err){toast('err',aerr(err))}
+  finally{busy(b,false)}
+});
+
+/* ================= ACCOUNT ================= */
+let usersAll=[];
+ $('#btnReloadUsers').onclick=loadUsers;
+async function loadUsers(){
+  try{
+    const s=await getDocs(collection(db,'users'));
+    usersAll=s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){toast('err',aerr(e))}
+  renderUsers();
+}
+function renderUsers(){
+  const tb=$('#acRows'), em=$('#acEmpty');
+  if(!usersAll.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="users"></i>Belum ada akun member.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=usersAll.map(u=>`
+    <tr><td><b>${u.name||'—'}</b><br><span class="hint">${u.email||''}</span></td>
+    <td class="num">${fmtIDR(u.saldo)}</td><td class="num">${idFmt(u.points)}</td>
+    <td><span class="tag ok">${(u.tier||'bronze').toUpperCase()}</span></td>
+    <td><div class="rowact">
+      <button class="icbtn" data-rspw="${u.id}" title="Kirim email reset password"><i data-lucide="key-round"></i></button>
+      <button class="icbtn del" data-dlus="${u.id}" title="Hapus akun"><i data-lucide="trash-2"></i></button>
+    </div></td></tr>`).join('');
+  icons();
+}
+ $('#formAddUser').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const nm=$('#auName').value.trim(), em=$('#auEmail').value.trim(), pw=$('#auPass').value;
+  ['auName','auEmail','auPass'].forEach(clearErr);
+  if(!nm)ok=showErr('auName','Nama wajib diisi.');
+  if(!em)ok=showErr('auEmail','Email wajib diisi.');
+  else if(!vEmail(em))ok=showErr('auEmail','Format email tidak valid.');
+  if(!pw)ok=showErr('auPass','Password wajib diisi.');
+  else if(pw.length<6)ok=showErr('auPass','Minimal 6 karakter.');
+  if(!ok)return;
+  const b=$('#formAddUser [type=submit]');
+  busy(b,true,'Membuat akun…');
+  try{
+    const cred=await createUserWithEmailAndPassword(secAuth,em,pw);
+    const uid=cred.user.uid;
+    await signOut(secAuth);
+    await setDoc(doc(db,'users',uid),{
+      name:nm,email:em,avatar:'',saldo:0,points:0,tier:'bronze',
+      usedVouchers:[],cardNo:genCardNo(uid),createdAt:Date.now()
+    });
+    $('#auName').value='';$('#auEmail').value='';$('#auPass').value='';
+    toast('ok',`Akun ${nm} berhasil dibuat.`); loadUsers();
+  }catch(err){toast('err',aerr(err))}
+  finally{busy(b,false)}
+});
+function genCardNo(seedStr){
+  let seed=2166136261>>>0;
+  for(let i=0;i<seedStr.length;i++){seed^=seedStr.charCodeAt(i);seed=Math.imul(seed,16777619)>>>0}
+  let out='';
+  for(let i=0;i<12;i++){seed^=seed<<13;seed>>>=0;seed^=seed>>>17;seed^=seed<<5;seed>>>=0;out+=seed%10}
+  return '5312 8801 '+out.slice(0,4)+' '+out.slice(4);
+}
+ $('#acRows').addEventListener('click',async e=>{
+  const rs=e.target.closest('[data-rspw]'), dl=e.target.closest('[data-dlus]');
+  const u=usersAll.find(x=>x.id===(rs?.dataset.rspw||dl?.dataset.dlus));
+  if(rs){
+    if(!u?.email)return toast('err','Akun tidak punya email.');
+    if(!confirm(`Kirim email reset password ke ${u.email}?`))return;
+    try{await sendPasswordResetEmail(auth,u.email);toast('ok','Email reset terkirim ke '+u.email)}
+    catch(err){toast('err',aerr(err))}
+  }
+  if(dl){
+    if(!u)return;
+    if(!confirm(`Hapus akun ${u.name||u.email} beserta seluruh data (transaksi, booking, notifikasi)?\n\nCatatan: record Auth perlu dihapus manual di Firebase Console jika ingin menghapus login-nya.`))return;
+    try{
+      for(const col of ['txns','bookings','notifs']){
+        const s=await getDocs(collection(db,'users',u.id,col));
+        for(let i=0;i<s.docs.length;i+=400){
+          const batch=writeBatch(db);
+          s.docs.slice(i,i+400).forEach(d=>batch.delete(d.ref));
+          await batch.commit();
+        }
+      }
+      await deleteDoc(doc(db,'users',u.id));
+      toast('ok','Akun & datanya dihapus.'); loadUsers();
+    }catch(err){toast('err',aerr(err))}
+  }
+});
+
+/* ================= INIT ================= */
+icons();
+</script>
+</body>
+</html>

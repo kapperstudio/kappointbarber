@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============ SEO META ============ -->
+<title>Kapper — Booking Barbershop, Dompet Kappoint & Loyalitas</title>
+<meta name="description" content="Kapper: booking barbershop tanpa antrian, dompet digital Kappoint, top up via voucher & QRIS, point loyalty kapper-club Bronze sampai Black. Bayar dengan Kappoint, QRIS, atau di kasir.">
+<meta name="keywords" content="kapper, barbershop, booking barbershop, kappoint, haircut, cukur, rambut, barber, loyalty, qris, dompet digital">
+<meta name="author" content="Kapper Indonesia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B2FD1">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://kapperstudio-c629c.web.app/">
+
+<!-- ============ OPEN GRAPH ============ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kapper">
+<meta property="og:title" content="Kapper — Cukur Tanpa Antrian">
+<meta property="og:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi. Top up via voucher atau QRIS, kumpulkan poin, naik tier kapper-club.">
+<meta property="og:image" content="opengraph.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="id_ID">
+
+<!-- ============ TWITTER CARD ============ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kapper — Cukur Tanpa Antrian">
+<meta name="twitter:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
+<meta name="twitter:image" content="opengraph.png">
+
+<!-- ============ MOBILE WEB APP ============ -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kapper">
+
+<!-- ============ FAVICON ============ -->
+<link rel="icon" type="image/png" id="favicon" href="">
+<link rel="apple-touch-icon" id="appleIcon" href="">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#FAFAF7; --white:#fff; --ink:#0B0B0C; --muted:#63625C; --line:#E7E6E0;
+  --blue:#0B2FD1; --blue-dark:#081F8F; --blue-tint:#EDF1FC; --red:#C0392B; --ok:#2FA36B;
+  --r-lg:22px;
+}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',sans-serif;background:var(--paper);color:var(--ink);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--blue);color:#fff}
+.mono{font-family:'Spline Sans Mono',monospace}
+.display{font-stretch:118%;font-weight:900;text-transform:uppercase;letter-spacing:-.015em;line-height:1}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:14.5px;letter-spacing:.01em;transition:.22s;white-space:nowrap}
+.btn svg{width:17px;height:17px}
+.btn-sm{padding:10px 19px;font-size:13.5px}
+.btn-solid{background:var(--ink);color:#fff}
+.btn-solid:hover{background:#2A2A28;transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.btn-ghost{border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-ghost-inv{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn-ghost-inv:hover{background:#fff;color:var(--ink)}
+.btn-line{border:1.5px solid var(--line);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default;transform:none}
+.spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ---------- Validasi inline ---------- */
+.inp.invalid{border-color:var(--red);background:#FDF6F5}
+.f-err-txt{display:none;color:var(--red);font-size:12.5px;margin:6px 2px 0;line-height:1.45}
+.f-err-txt.show{display:block}
+.pw-wrap{position:relative}
+.pw-wrap .inp{padding-right:48px}
+.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:.15s}
+.pw-eye:hover{color:var(--ink);background:#F1F0EA}
+.pw-eye svg{width:16px;height:16px}
+.strength{display:flex;align-items:center;gap:9px;margin-top:9px}
+.strength i{height:5px;flex:1;background:#F1F0EA;border-radius:99px;position:relative;overflow:hidden}
+.strength i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:var(--sc,var(--ok));transition:.3s}
+.strength span{font-size:11px;font-family:'Spline Sans Mono';color:var(--muted);min-width:44px;text-align:right}
+
+/* ---------- Empty state ---------- */
+.fempty{border:1.5px dashed var(--line);border-radius:16px;padding:22px 18px;text-align:center;color:var(--muted);font-size:13px;background:#fff;line-height:1.7}
+.fempty b{color:var(--ink)}
+.fempty .fld{font-family:'Spline Sans Mono';font-size:11px;background:#F4F3EE;border-radius:8px;padding:2px 9px;display:inline-block;margin:3px 2px 0;color:var(--ink)}
+.fempty svg{width:22px;height:22px;margin:0 auto 6px;opacity:.4}
+
+/* ---------- Panel kode penarikan ---------- */
+.wd-ok{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:4px 0 16px}
+.wd-ok-ic{width:52px;height:52px;border-radius:50%;background:var(--blue-tint);color:var(--blue);display:grid;place-items:center}
+.wd-ok-ic svg{width:24px;height:24px}
+.wd-ok b{font-size:16px}
+.wd-ok p{font-size:13.5px;color:var(--muted);max-width:38ch;margin:0}
+.wd-code{margin-top:6px;border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:16px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wd-code .wp-label{display:block;margin-bottom:2px}
+.wd-code b{font-family:'Spline Sans Mono';letter-spacing:.2em;font-size:21px;color:var(--blue-dark)}
+
+.topbar{border-bottom:1px solid var(--line);position:relative;z-index:50}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--ink);display:grid;place-items:center;color:#fff;flex:none}
+.brand-mark svg{width:17px;height:17px}
+.brand-name{font-weight:900;font-stretch:120%;letter-spacing:-.01em;font-size:19px}
+.topbar-actions{display:flex;align-items:center;gap:10px}
+.topbar-note{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:10px}
+
+.fnav{position:fixed;top:14px;left:50%;transform:translate(-50%,-160%);width:min(1080px,calc(100% - 28px));z-index:100;transition:transform .5s cubic-bezier(.22,1,.3,1)}
+.fnav.show{transform:translate(-50%,0)}
+.fnav-in{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 10px 8px 18px;box-shadow:0 18px 44px -18px rgba(10,10,10,.28)}
+.fnav-brand .brand-name{font-size:16px}
+.fnav-menu{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 auto;padding:2px}
+.fnav-menu::-webkit-scrollbar{display:none}
+.fnav-link{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;color:var(--muted);white-space:nowrap;transition:.2s}
+.fnav-link:hover{color:var(--ink);background:#F1F0EA}
+.fnav-link.active{background:var(--ink);color:#fff}
+.fnav-right{display:flex;align-items:center;gap:8px;position:relative}
+.cloud-pill{display:inline-flex;align-items:center;gap:6px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.18em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.cloud-pill i{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
+.cloud-pill.off i{background:var(--red)}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;position:relative;transition:.2s}
+.icon-btn:hover{border-color:var(--ink)}
+.icon-btn svg{width:17px;height:17px}
+.badge{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--blue);color:#fff;font-family:'Spline Sans Mono';font-size:10px;font-weight:600;display:grid;place-items:center}
+.dropdown{position:absolute;top:calc(100% + 12px);right:0;width:330px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px -20px rgba(10,10,10,.3);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;z-index:120;overflow:hidden}
+.dropdown.open{opacity:1;visibility:visible;transform:none}
+.dd-head{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line)}
+.dd-head b{font-size:14px}
+.link-btn{font-size:12px;font-weight:600;color:var(--blue)}
+.link-btn:hover{text-decoration:underline}
+.dd-list{max-height:330px;overflow-y:auto}
+.notif-item{display:flex;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:.15s;background:#fff}
+.notif-item:last-child{border-bottom:none}
+.notif-item:hover{background:#FAFAF7}
+.notif-item.unread{background:var(--blue-tint)}
+.n-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:7px;flex:none;opacity:0}
+.unread .n-dot{opacity:1}
+.n-title{font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:7px}
+.n-title svg{width:14px;height:14px;color:var(--blue)}
+.n-body{font-size:12.5px;color:var(--muted);margin:2px 0}
+.n-time{font-size:10.5px;color:var(--muted);font-family:'Spline Sans Mono';letter-spacing:.06em}
+.n-more{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--blue);font-weight:600;margin-top:2px}
+.n-more svg{width:12px;height:12px}
+.notif-empty{padding:34px 18px;text-align:center;color:var(--muted);font-size:13.5px}
+.notif-empty svg{width:26px;height:26px;margin:0 auto 8px;opacity:.4}
+.dropdown.profile{width:272px}
+.pd-head{padding:18px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+.pd-head .avatar{width:44px;height:44px;font-size:15px}
+.pd-name{font-weight:700;font-size:14.5px}
+.pd-mail{font-size:12.5px;color:var(--muted)}
+.pd-tier{display:inline-block;margin-top:4px;font-size:10px;font-family:'Spline Sans Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border:1px solid currentColor;border-radius:999px;padding:2px 9px}
+.pd-item{display:flex;align-items:center;gap:11px;width:100%;padding:12px 18px;font-size:13.5px;font-weight:500;transition:.15s;text-align:left}
+.pd-item:hover{background:#FAFAF7}
+.pd-item svg{width:16px;height:16px;color:var(--muted)}
+.pd-item.danger,.pd-item.danger svg{color:var(--red)}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px;flex:none;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+.ticker{position:fixed;top:82px;left:50%;transform:translate(-50%,-240%);width:min(780px,calc(100% - 28px));z-index:98;display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 9px 8px 15px;box-shadow:0 14px 34px -16px rgba(0,0,0,.45);transition:transform .55s cubic-bezier(.22,1,.3,1);cursor:pointer}
+.ticker:hover{background:#161618}
+.ticker.show{transform:translate(-50%,0)}
+.tk-live{display:flex;align-items:center;gap:8px;font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.22em;font-weight:600;flex:none}
+.tk-dot{width:7px;height:7px;border-radius:50%;background:#7C9BFF;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,155,255,.55)}50%{box-shadow:0 0 0 6px rgba(124,155,255,0)}}
+.tk-view{flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.tk-track{display:flex;width:max-content;animation:mq 28s linear infinite}
+.ticker:hover .tk-track{animation-play-state:paused}
+.tk-group{display:flex;align-items:center;gap:36px;padding-right:36px;white-space:nowrap;font-family:'Spline Sans Mono';font-size:11.5px;letter-spacing:.05em}
+.tk-item{display:inline-flex;align-items:center;gap:9px;color:#C9C8C1}
+.tk-item .tk-txt{color:#C9C8C1}
+.tk-item.mine .tk-txt{color:#fff;font-weight:600}
+.tk-sep{width:5px;height:5px;border-radius:50%;background:#4A4A45;flex:none}
+.tk-new{background:var(--blue);color:#fff;font-size:8.5px;letter-spacing:.16em;padding:2px 8px;border-radius:999px;font-weight:600;flex:none}
+
+.hero{padding:76px 24px 96px;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:start}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--blue)}
+.hero h1{font-size:clamp(46px,6.4vw,86px)}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-about{margin:26px 0 34px;max-width:54ch;color:#3E3D38;font-size:16.5px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stat{margin-top:52px;padding-top:30px;border-top:1px solid var(--line);display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.stat-num{font-family:'Spline Sans Mono';font-weight:600;font-size:clamp(38px,4.6vw,58px);letter-spacing:-.03em;line-height:1}
+.stat-label{font-size:13px;color:var(--muted);padding-bottom:5px;max-width:230px;line-height:1.45}
+.g-tiers{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.g-tier{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border:1px solid var(--line);border-radius:999px;color:var(--muted);transition:.35s}
+.g-tier.on{border-color:var(--ink);color:var(--ink);background:#fff;font-weight:600}
+.g-cap{margin-top:13px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+.card-scene{perspective:1400px}
+.kcard{position:relative;aspect-ratio:1.62;border-radius:24px;padding:25px 27px;color:#fff;background:var(--cbg,#2B1A0D);transition:background .5s ease,transform .35s ease-out;transform-style:preserve-3d;box-shadow:0 34px 70px -26px rgba(8,8,12,.45);overflow:hidden}
+.tier-bronze{--cacc:#D9A26B;--cbg:#2B1A0D}
+.tier-gold{--cacc:#E5C36A;--cbg:#221A06}
+.tier-platinum{--cacc:#C9D2DC;--cbg:#171C22}
+.tier-black{--cacc:#5F86FF;--cbg:#07070A}
+.kcard-lines{position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 1px,transparent 1px 9px);pointer-events:none}
+.kcard-ring{position:absolute;width:300px;height:300px;border-radius:50%;border:1.5px solid var(--cacc);opacity:.26;right:-90px;bottom:-120px;transition:border-color .5s}
+.kcard-ring::after{content:"";position:absolute;inset:26px;border-radius:50%;border:1px solid var(--cacc);opacity:.6}
+.kcard-sheen{position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,78%) var(--my,18%),rgba(255,255,255,.13),transparent 60%);pointer-events:none}
+.kcard-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.kc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.kc-brand{font-weight:900;font-stretch:122%;font-size:21px;letter-spacing:.01em}
+.kc-brand sup{font-size:9px;font-weight:600}
+.kc-sub{display:block;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;opacity:.65;margin-top:5px;font-weight:500}
+.kc-club{text-align:right;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
+.kc-tier{display:inline-block;margin-top:7px;font-size:10.5px;font-weight:600;letter-spacing:.2em;color:var(--cacc);border:1px solid var(--cacc);border-radius:999px;padding:4px 13px;transition:.4s}
+.kc-mid{display:flex;justify-content:space-between;align-items:center}
+.kc-chip{color:var(--cacc);transition:color .5s}
+.kc-ctl{opacity:.85}
+.kc-numwrap{display:flex;align-items:center;gap:10px}
+.kc-num{font-size:clamp(15px,1.8vw,19px);letter-spacing:.13em;font-weight:500}
+.kc-eye{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.28);transition:.2s;flex:none}
+.kc-eye:hover{color:#fff;background:rgba(255,255,255,.12)}
+.kc-eye svg{width:13px;height:13px}
+.kc-bot{display:flex;justify-content:space-between;align-items:flex-end}
+.kc-label{display:block;font-family:'Spline Sans Mono';font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.55;margin-bottom:4px}
+.kc-holder{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.kc-points{font-size:15px;font-weight:600;color:var(--cacc);transition:color .5s}
+
+.wallet-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:start}
+.wallet-panel{margin-top:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
+.wp-label{font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.wp-saldo{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.wp-saldo-num{font-family:'Spline Sans Mono';font-size:clamp(27px,3vw,35px);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-top:4px}
+.wp-points{text-align:right}
+.wp-points b{display:block;font-family:'Spline Sans Mono';font-size:21px;font-weight:600;color:var(--blue);margin-top:4px}
+.tier-chips{display:flex;gap:6px;margin:18px 0;padding:5px;background:#F4F3EE;border-radius:999px}
+.tier-chip{flex:1;padding:9px 4px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:.2s;font-family:'Spline Sans Mono'}
+.tier-chip:hover{color:var(--ink)}
+.tier-chip.active{background:var(--ink);color:#fff}
+.wallet-actions{display:flex;gap:9px;flex-wrap:wrap}
+.wallet-actions .btn{flex:1;justify-content:center;min-width:150px;padding:12px 16px}
+.zero-hint{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:13px 15px;background:var(--blue-tint);border-radius:14px;font-size:12.5px;color:var(--blue-dark)}
+.zero-hint svg{width:15px;height:15px;flex:none;margin-top:2px}
+.zero-hint button{color:var(--blue);font-weight:700;border-bottom:1px solid currentColor}
+
+.marquee{border-block:1px solid var(--line);padding:15px 0;overflow:hidden;background:#fff}
+.mq-track{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq-group{display:flex;align-items:center;gap:44px;padding-right:44px;font-family:'Spline Sans Mono';font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.mq-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section.block{padding:80px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.sec-label{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:14px}
+.sec-title{font-size:clamp(30px,4vw,46px)}
+.sec-note{max-width:40ch;color:var(--muted);font-size:14.5px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+.about-row{display:grid;grid-template-columns:90px 1fr 1.3fr;gap:28px;padding:34px 0;border-top:1px solid var(--line);align-items:baseline}
+.about-row:last-of-type{border-bottom:1px solid var(--line)}
+.about-num{font-family:'Spline Sans Mono';color:var(--muted);font-size:13px}
+.about-title{font-size:clamp(22px,2.6vw,30px);transition:color .25s}
+.about-row:hover .about-title{color:var(--blue)}
+.about-text{color:var(--muted);font-size:15px}
+
+.cat-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.cat-item{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:14px;width:100%;padding:17px 4px;border-top:1px solid var(--line);text-align:left;transition:.2s}
+.cat-list{border-bottom:1px solid var(--line)}
+.cat-idx{font-family:'Spline Sans Mono';font-size:12px;color:var(--muted)}
+.cat-name{font-weight:700;font-size:16.5px;transition:.2s}
+.cat-price{font-family:'Spline Sans Mono';font-size:13px;color:var(--muted)}
+.cat-item:hover .cat-name{transform:translateX(6px)}
+.cat-item.active .cat-name,.cat-item.active .cat-idx{color:var(--blue)}
+.cat-detail{position:sticky;top:110px}
+.cd-kicker{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
+.cd-name{font-size:clamp(34px,4vw,52px);margin-bottom:18px}
+.cd-desc{color:var(--muted);max-width:46ch;margin-bottom:26px}
+.cd-meta{display:flex;gap:38px;padding:18px 0;border-block:1px solid var(--line);margin-bottom:26px}
+.cd-meta label{display:block;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.cd-meta b{font-family:'Spline Sans Mono';font-size:16.5px;font-weight:600}
+
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.22s;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(10,10,10,.22)}
+.pcard-img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:saturate(.85) contrast(1.02)}
+.pcard-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;flex:1}
+.pcard-name{font-weight:700;font-size:15.5px}
+.pcard-desc{font-size:13px;color:var(--muted);flex:1}
+.pcard-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.pcard-price{font-family:'Spline Sans Mono';font-weight:600;font-size:14.5px}
+.addbtn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;transition:.18s}
+.addbtn:hover{background:var(--ink);color:#fff}
+.addbtn svg{width:16px;height:16px}
+.stepper{display:flex;align-items:center;gap:2px;background:var(--ink);border-radius:999px;padding:3px;color:#fff}
+.stepper button{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:.15s}
+.stepper button:hover{background:rgba(255,255,255,.2)}
+.stepper button svg{width:13px;height:13px}
+.stepper b{font-family:'Spline Sans Mono';font-size:13px;min-width:24px;text-align:center}
+
+.cartbar{position:fixed;bottom:20px;left:50%;transform:translate(-50%,calc(100% + 40px));z-index:95;display:flex;align-items:center;gap:16px;background:var(--ink);color:#fff;border-radius:999px;padding:9px 9px 9px 14px;box-shadow:0 22px 50px -16px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.22,1,.3,1);max-width:calc(100vw - 28px)}
+.cartbar.show{transform:translate(-50%,0)}
+.cb-clear{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#A7A69F;transition:.15s;flex:none}
+.cb-clear:hover{color:#fff;background:rgba(255,255,255,.12)}
+.cb-clear svg{width:15px;height:15px}
+.cb-info{display:flex;align-items:baseline;gap:9px;white-space:nowrap}
+.cb-info b{font-size:14.5px}
+.cb-info .sep{color:#5A5A55}
+.cb-total{font-family:'Spline Sans Mono';font-weight:600;font-size:15px}
+
+.hist-filters{display:flex;gap:5px;background:#F4F3EE;border-radius:999px;padding:5px}
+.hf{padding:8px 17px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:.2s}
+.hf.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.listbox{border-top:1px solid var(--line)}
+.tx-item{display:grid;grid-template-columns:46px 1fr auto;gap:16px;align-items:center;padding:16px 8px;border-bottom:1px solid var(--line)}
+.tx-item.fresh{animation:flash 1.4s ease}
+@keyframes flash{0%{background:var(--blue-tint)}100%{background:transparent}}
+.tx-ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
+.tx-ic.in{background:var(--blue-tint);color:var(--blue)}
+.tx-ic.out{background:#F1F0EA;color:var(--ink)}
+.tx-ic svg{width:18px;height:18px}
+.tx-title{font-weight:600;font-size:14.5px}
+.tx-sub{font-size:12.5px;color:var(--muted)}
+.tx-amt{font-family:'Spline Sans Mono';font-weight:600;font-size:15px}
+.tx-amt.in{color:var(--blue)}
+.hist-more{margin-top:22px;text-align:center}
+.hist-empty{border:1.5px dashed var(--line);border-radius:18px;padding:44px 20px;text-align:center;color:var(--muted);font-size:13.5px;background:#fff}
+.hist-empty svg{width:26px;height:26px;margin:0 auto 10px;opacity:.4}
+
+.book-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px}
+.f-label{display:block;font-family:'Spline Sans Mono';font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px}
+.f-label:first-child{margin-top:0}
+.inp{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff;transition:.2s;appearance:none}
+.inp:focus{outline:none;border-color:var(--ink)}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;transition:.18s;background:#fff}
+.chip:hover{border-color:var(--ink)}
+.chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.slot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{padding:10px 4px;border:1.5px solid var(--line);border-radius:10px;font-family:'Spline Sans Mono';font-size:12.5px;background:#fff;transition:.18s}
+.slot:hover{border-color:var(--ink)}
+.slot.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.f-err{color:var(--red);font-size:13px;margin-top:14px;display:none}
+.f-err.show{display:block}
+.book-note{display:flex;gap:10px;align-items:flex-start;margin-top:18px;padding:14px 16px;background:var(--blue-tint);border-radius:14px;font-size:13px;color:var(--blue-dark)}
+.book-note svg{width:16px;height:16px;flex:none;margin-top:2px}
+.full{width:100%;justify-content:center;margin-top:20px}
+.bk-item{border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px;display:flex;justify-content:space-between;gap:14px;align-items:center;background:#fff}
+.bk-title{font-weight:700;font-size:15px}
+.bk-meta{font-size:12.5px;color:var(--muted);font-family:'Spline Sans Mono';margin-top:4px}
+.bk-status{display:inline-block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border:1px solid;border-radius:999px;padding:2px 9px;margin-left:8px}
+.bk-status.pend{color:var(--muted);border-color:var(--muted)}
+.bk-cancel{font-size:12.5px;font-weight:600;color:var(--muted);border-bottom:1px solid currentColor;flex:none}
+.bk-cancel:hover{color:var(--red)}
+.bk-empty{border:1.5px dashed var(--line);border-radius:16px;padding:38px 20px;text-align:center;color:var(--muted);font-size:13.5px}
+.bk-empty svg{width:26px;height:26px;margin:0 auto 10px;opacity:.4}
+.aside-title{font-size:22px;margin-bottom:20px}
+
+.mem-row{display:grid;grid-template-columns:220px 1fr auto;gap:32px;align-items:center;padding:34px 30px;border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:14px;background:#fff;transition:.2s}
+.mem-row:hover{border-color:var(--ink)}
+.mem-row.current{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.mem-row.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.mem-row.dark:hover{border-color:#3A3A38}
+.mem-name{font-size:clamp(28px,3.4vw,42px)}
+.mem-req{font-family:'Spline Sans Mono';font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.mem-perks{font-size:14.5px;color:var(--muted);max-width:56ch}
+.mem-perks i{font-style:normal;color:var(--blue);margin:0 9px;font-weight:700}
+.mem-row.dark .mem-perks,.mem-row.dark .mem-req{color:#A7A69F}
+.mem-row.dark .mem-perks i{color:#8FA8FF}
+.mem-badge{font-family:'Spline Sans Mono';font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue);border-radius:999px;padding:7px 15px;white-space:nowrap}
+.mem-row.dark .mem-badge{color:#8FA8FF;border-color:#8FA8FF}
+.mem-muted{font-family:'Spline Sans Mono';font-size:12px;color:var(--muted)}
+
+footer{background:var(--ink);color:#fff;margin-top:40px}
+.ft-cta{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:72px 0 56px;border-bottom:1px solid rgba(255,255,255,.14);flex-wrap:wrap}
+.ft-cta h2{font-size:clamp(30px,4.4vw,56px);max-width:16ch}
+.ft-cta em{font-style:normal;color:#8FA8FF}
+.ft-actions{display:flex;gap:12px;flex-wrap:wrap}
+.ft-mid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding:56px 0}
+.ft-logo{font-size:44px}
+.ft-logo sup{font-size:14px}
+.ft-desc{color:#A7A69F;font-size:14px;max-width:30ch;margin-top:16px}
+.ft-col b{display:block;font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B8A83;margin-bottom:16px;font-weight:500}
+.ft-col a,.ft-col span.fl{display:block;color:#DDDCD6;text-decoration:none;font-size:14px;padding:5px 0;transition:.15s}
+.ft-col a:hover{color:#fff;padding-left:5px}
+.ft-bot{display:flex;justify-content:space-between;gap:16px;padding:22px 0 30px;border-top:1px solid rgba(255,255,255,.14);color:#8B8A83;font-size:12.5px;flex-wrap:wrap;font-family:'Spline Sans Mono'}
+
+.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;visibility:hidden;opacity:0;transition:.25s}
+.modal::before{content:"";position:absolute;inset:0;background:rgba(12,12,14,.5);backdrop-filter:blur(6px)}
+.modal-panel{position:relative;width:min(470px,100%);background:#fff;border-radius:24px;padding:30px;transform:translateY(16px) scale(.98);transition:.35s cubic-bezier(.22,1,.3,1);max-height:90vh;overflow-y:auto}
+.modal.open{visibility:visible;opacity:1}
+.modal.open .modal-panel{transform:none}
+.modal-x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;transition:.2s;z-index:2}
+.modal-x:hover{background:#F1F0EA}
+.modal-x svg{width:16px;height:16px}
+.m-title{font-size:27px;margin:6px 0}
+.m-sub{color:var(--muted);font-size:14px}
+.amt-wrap{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;transition:.2s;margin-top:4px}
+.amt-wrap:focus-within{border-color:var(--ink)}
+.amt-wrap span{font-family:'Spline Sans Mono';color:var(--muted)}
+.amt-wrap input{border:none;outline:none;padding:14px 10px;font-family:'Spline Sans Mono';font-size:17px;font-weight:600;width:100%;background:none}
+.amt-wrap.invalid{border-color:var(--red)}
+.nominal-chip{flex:1;min-width:70px;padding:14px 8px;border:1.5px solid var(--line);border-radius:14px;font-family:'Spline Sans Mono';font-weight:600;font-size:13.5px;text-align:center;transition:.18s;background:#fff}
+.nominal-chip:hover{border-color:var(--ink)}
+.nominal-chip.active{border-color:var(--blue);color:var(--blue);background:var(--blue-tint)}
+.auth-tabs{display:flex;background:#F4F3EE;border-radius:999px;padding:5px;margin:20px 0 22px}
+.auth-tab{flex:1;padding:10px;border-radius:999px;font-weight:600;font-size:14px;color:var(--muted);transition:.2s}
+.auth-tab.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.points-hero{display:flex;justify-content:space-between;align-items:flex-end;margin:18px 0 8px}
+.points-big{font-family:'Spline Sans Mono';font-size:44px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.progress{height:7px;background:#F1F0EA;border-radius:999px;overflow:hidden;margin:14px 0 8px}
+.progress i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .6s}
+.reward{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.reward:last-child{border:none;padding-bottom:2px}
+.reward b{font-size:14.5px;display:block}
+.cost{font-family:'Spline Sans Mono';font-size:12px;color:var(--muted)}
+.rw-btn{padding:9px 17px;border-radius:999px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;transition:.2s;flex:none}
+.rw-btn:hover:not(:disabled){background:var(--blue)}
+.rw-btn:disabled{background:#E4E3DD;color:#9C9B94;cursor:not-allowed}
+.info-body{color:#3E3D38;font-size:14.5px;margin-top:14px}
+.info-body p{margin-bottom:12px}
+
+.pf-row{display:flex;gap:16px;align-items:center;margin-bottom:4px}
+.pf-ava{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:20px;overflow:hidden;flex:none;cursor:pointer;position:relative}
+.pf-ava img{width:100%;height:100%;object-fit:cover}
+.pf-btns{display:flex;gap:8px;flex-wrap:wrap}
+.pf-hint{font-size:12px;color:var(--muted);margin-top:7px}
+
+.nd-hero{display:flex;gap:14px;align-items:center;padding:16px 0 4px}
+.nd-icon{width:46px;height:46px;border-radius:14px;background:var(--blue-tint);color:var(--blue);display:grid;place-items:center;flex:none}
+.nd-icon svg{width:20px;height:20px}
+.nd-time{font-family:'Spline Sans Mono';font-size:11px;color:var(--muted);letter-spacing:.08em}
+.nd-body{color:#3E3D38;font-size:14.5px;margin-top:10px}
+.nd-code{margin-top:14px;border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
+.nd-code svg{width:16px;height:16px;color:var(--blue)}
+.nd-code b{font-family:'Spline Sans Mono';letter-spacing:.14em;font-size:15px;color:var(--blue-dark)}
+
+.pay-items{margin:20px 0 4px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pay-item{display:flex;justify-content:space-between;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);font-size:13.5px;background:#fff}
+.pay-item:last-child{border-bottom:none}
+.pay-item .q{color:var(--muted);font-family:'Spline Sans Mono';font-size:12px}
+.pay-item .v{font-family:'Spline Sans Mono';font-weight:600;white-space:nowrap}
+.pay-item.total{background:var(--blue-tint);color:var(--blue-dark);font-weight:700}
+.pm-list{display:grid;gap:9px}
+.pm-card{display:flex;align-items:center;gap:13px;padding:13px 15px;border:1.5px solid var(--line);border-radius:14px;background:#fff;cursor:pointer;transition:.18s;text-align:left;width:100%}
+.pm-card:hover{border-color:var(--ink)}
+.pm-card.active{border-color:var(--blue);background:var(--blue-tint);box-shadow:0 0 0 1px var(--blue)}
+.pm-card.off{opacity:.55}
+.pm-card.off:hover{border-color:var(--line)}
+.pm-ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;background:#F4F3EE;color:var(--ink);transition:.18s}
+.pm-card.active .pm-ic{background:var(--blue);color:#fff}
+.pm-ic svg{width:18px;height:18px}
+.pm-name{display:block;font-weight:700;font-size:14px}
+.pm-sub{display:block;font-size:12px;color:var(--muted)}
+.pm-radio{margin-left:auto;width:19px;height:19px;border:2px solid var(--line);border-radius:50%;flex:none;transition:.15s;position:relative}
+.pm-card.active .pm-radio{border-color:var(--blue)}
+.pm-card.active .pm-radio::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--blue)}
+.qris-panel{margin-top:16px;border:1.5px dashed var(--blue);border-radius:16px;padding:18px;text-align:center;background:var(--blue-tint);animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}}
+.qris-svg{width:176px;height:176px;background:#fff;border-radius:14px;padding:11px;margin:0 auto 12px;box-shadow:0 12px 28px -14px rgba(11,47,209,.3)}
+.qris-svg svg{width:100%;height:100%;display:block}
+.qris-meta{display:flex;justify-content:center;align-items:center;gap:16px;font-size:12px;flex-wrap:wrap}
+.qris-code{font-family:'Spline Sans Mono';letter-spacing:.08em;color:var(--muted)}
+.qris-count{font-family:'Spline Sans Mono';color:var(--blue-dark);font-weight:600}
+.qris-note{font-size:12px;color:var(--muted);margin-top:8px}
+.earn-note{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:12px;font-size:12px;color:var(--blue);font-family:'Spline Sans Mono'}
+.earn-note svg{width:14px;height:14px}
+.v-in{display:flex;gap:8px}
+.v-in .inp{text-transform:uppercase;font-family:'Spline Sans Mono';letter-spacing:.08em}
+
+.toasts{position:fixed;bottom:22px;right:22px;z-index:300;display:flex;flex-direction:column;gap:10px;max-width:min(370px,calc(100vw - 40px))}
+.toast{display:flex;gap:12px;align-items:flex-start;background:var(--ink);color:#fff;padding:14px 18px;border-radius:14px;box-shadow:0 18px 40px -14px rgba(0,0,0,.4);transform:translateX(24px);opacity:0;transition:.4s cubic-bezier(.22,1,.3,1);font-size:13.5px;line-height:1.5}
+.toast.show{transform:none;opacity:1}
+.toast svg{width:17px;height:17px;flex:none;margin-top:2px}
+.toast.ok svg{color:#7C9BFF}
+.toast.err svg{color:#FF8A7A}
+.toast.info svg{color:#D8D7D0}
+
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;gap:48px;padding-top:56px}
+  .cat-grid{grid-template-columns:1fr;gap:36px}
+  .cat-detail{position:static}
+  .book-grid{grid-template-columns:1fr;gap:40px}
+  .wallet-grid{grid-template-columns:1fr;gap:36px}
+  .mem-row{grid-template-columns:1fr;gap:16px;align-items:start;padding:28px 24px}
+  .ft-mid{grid-template-columns:1fr 1fr}
+  .topbar-note{display:none}
+  .cloud-pill{display:none}
+}
+@media(max-width:760px){.prod-grid{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .about-row{grid-template-columns:1fr;gap:8px;padding:26px 0}
+  .slot-grid{grid-template-columns:repeat(3,1fr)}
+  .wallet-actions .btn{min-width:100%}
+  .tier-chips{flex-wrap:wrap;border-radius:22px}
+  .tier-chip{flex:1 1 42%}
+  .fnav-brand .brand-name{display:none}
+  .hero{padding-left:20px;padding-right:20px}
+  .wd-code{flex-direction:column;align-items:stretch;text-align:center}
+}
+@media(max-width:600px){
+  .cartbar{left:14px;right:14px;transform:translateY(calc(100% + 46px));padding:8px 8px 8px 14px;gap:12px}
+  .cartbar.show{transform:translateY(0)}
+  .cb-info .sep{display:none}
+  .cartbar .btn{padding:11px 18px}
+  .tk-live span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= GUEST VIEW ==================== -->
+<div id="viewGuest">
+  <header class="topbar">
+    <div class="container topbar-in">
+      <a class="brand" href="#" onclick="return false">
+        <span class="brand-name">KAPPER</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="topbar-note mono">Barbershop partner kamu, dalam genggaman</span>
+        <button class="btn btn-ghost btn-sm" data-auth="login">Masuk</button>
+        <button class="btn btn-solid btn-sm" data-auth="signup">Daftar</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Booking &middot; Dompet &middot; Loyalitas</span>
+      <h1 class="display">Cukur tanpa <em>antrian.</em></h1>
+      <p class="hero-about">Kapper menggabungkan booking barbershop, dompet digital, dan loyalitas dalam satu aplikasi — tersinkron real-time lewat Firebase. Pesan kursimu, bayar dengan Kappoint, QRIS, atau di kasir.</p>
+      <div class="hero-cta">
+        <button class="btn btn-solid" data-auth="signup">Daftar Gratis <i data-lucide="arrow-right"></i></button>
+        <button class="btn btn-ghost" id="btnHeroAbout">Tentang Kapper</button>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num" id="userCount">0</div>
+        <div class="stat-label">pengguna terdaftar di <b>1.240+</b> barbershop partner di 14 kota.</div>
+      </div>
+    </div>
+    <div class="hero-wallet">
+      <div class="card-scene" id="gScene">
+        <div class="kcard tier-gold" id="gcard">
+          <div class="kcard-lines"></div><div class="kcard-ring"></div><div class="kcard-sheen"></div>
+          <div class="kcard-in">
+            <div class="kc-top">
+              <div class="kc-brand">KAPPER<sup>®</sup><span class="kc-sub">Card Kappoint</span></div>
+              <div class="kc-club"><span>kapper-club</span><br><b class="kc-tier" id="gcTier">Gold</b></div>
+            </div>
+            <div class="kc-mid">
+              <svg class="kc-chip" width="42" height="31" viewBox="0 0 42 31"><rect x="1.5" y="1.5" width="39" height="28" rx="6" fill="currentColor"/><path d="M1.5 11h12M1.5 20h12M28.5 11h12M28.5 20h12M13.5 1.5v28M28.5 1.5v28" stroke="rgba(0,0,0,.38)" stroke-width="1.4" fill="none"/><rect x="13.5" y="11" width="15" height="9" fill="none" stroke="rgba(0,0,0,.38)" stroke-width="1.4"/></svg>
+              <svg class="kc-ctl" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"><path d="M6 9a9 9 0 0 1 0 6"/><path d="M10.5 6.5a13 13 0 0 1 0 11"/><path d="M15 4a17.5 17.5 0 0 1 0 16"/></svg>
+            </div>
+            <div class="kc-num mono">5312<i style="font-style:normal;opacity:.5;padding:0 3px">&bull;</i>8801<i style="font-style:normal;opacity:.5;padding:0 3px">&bull;</i>&bull;&bull;&bull;&bull;<i style="font-style:normal;opacity:.5;padding:0 3px">&bull;</i>4821</div>
+            <div class="kc-bot">
+              <div><span class="kc-label">Card holder</span><span class="kc-holder">Nama Kamu</span></div>
+              <div style="text-align:right"><span class="kc-label">Kappoint</span><span class="kc-points mono">0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="g-tiers" id="gTiers">
+        <span class="g-tier" data-gt="bronze">Bronze</span>
+        <span class="g-tier on" data-gt="gold">Gold</span>
+        <span class="g-tier" data-gt="platinum">Platinum</span>
+        <span class="g-tier" data-gt="black">Black</span>
+      </div>
+      <p class="g-cap mono" id="gCap">kapper-club gold — cashback 2,5% &amp; slot prioritas</p>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mq-track" id="mqTrack"></div></div>
+
+  <section class="block" id="tentang">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div><span class="sec-label">Tentang Kapper</span><h2 class="sec-title display">Satu aplikasi,<br>tiga ritual.</h2></div>
+        <p class="sec-note">Kapper lahir dari kebiasaan sederhana: rambut butuh jadwal, bukan antrean. Kami membangun infrastruktur di baliknya.</p>
+      </div>
+      <div class="about-row reveal"><span class="about-num">/ 01</span><h3 class="about-title display">Booking presisi</h3><p class="about-text">Pilih barbershop, barber, dan jam yang pas. Kursimu dikunci — tanpa telepon menunggu, tanpa menunggu bangku.</p></div>
+      <div class="about-row reveal"><span class="about-num">/ 02</span><h3 class="about-title display">Dompet Kappoint</h3><p class="about-text">Top up lewat kode voucher atau QRIS. Butuh uang tunai? Tarik langsung di kasir barbershop partner dengan kode sekali pakai.</p></div>
+      <div class="about-row reveal"><span class="about-num">/ 03</span><h3 class="about-title display">Loyalitas yang nyata</h3><p class="about-text">Setiap transaksi menanam Kappoint. Tukar jadi layanan gratis, atau biarkan tumbuh menaikkan tier kamu — dari Bronze sampai Black.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= APP VIEW (MEMBER) =============== -->
+<div id="viewApp" hidden>
+  <nav class="fnav" id="fnav">
+    <div class="fnav-in">
+      <a class="brand fnav-brand" href="#" onclick="return false">
+        <span class="brand-name">KAPPER</span>
+      </a>
+      <div class="fnav-menu">
+        <button class="fnav-link active" data-tab="home">Beranda</button>
+        <button class="fnav-link" data-tab="book">Book</button>
+        <button class="fnav-link" data-tab="product">Product</button>
+        <button class="fnav-link" data-tab="membership">Membership</button>
+      </div>
+      <div class="fnav-right">
+        <span class="cloud-pill" id="cloudPill" title="Status koneksi Firebase"><i></i>Kapperbase</span>
+        <button class="icon-btn" id="btnBell" title="Notifikasi">
+          <i data-lucide="bell"></i><span class="badge" id="bellBadge" style="display:none">0</span>
+        </button>
+        <div id="profileWrap" style="position:relative">
+          <button class="icon-btn" id="profileBtn" title="Profil">
+            <span class="avatar" id="pdAvatar" style="width:26px;height:26px;font-size:10px">K</span>
+            <i data-lucide="chevron-down" style="width:14px;height:14px"></i>
+          </button>
+          <div class="dropdown profile" id="profileDrop">
+            <div class="pd-head">
+              <span class="avatar" id="pdAvatarBig">K</span>
+              <div>
+                <div class="pd-name" id="pdName">Kapperclub</div>
+                <div class="pd-mail" id="pdEmail">—</div>
+                <span class="pd-tier" id="pdTier">kapper-club bronze</span>
+              </div>
+            </div>
+            <button class="pd-item" id="pdProfile"><i data-lucide="user"></i>Profil Saya</button>
+            <button class="pd-item" id="pdPoints"><i data-lucide="medal"></i>Kartu &amp; Poin</button>
+            <button class="pd-item danger" id="pdLogout"><i data-lucide="log-out"></i>Keluar</button>
+          </div>
+        </div>
+        <div class="dropdown" id="notifDrop">
+          <div class="dd-head"><b>Notifikasi</b><button class="link-btn" id="btnReadAll">Tandai dibaca</button></div>
+          <div class="dd-list" id="notifList"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="ticker" id="tickerBar" title="Klik untuk buka Book">
+    <span class="tk-live"><span class="tk-dot"></span><span>LIVE</span></span>
+    <div class="tk-view"><div class="tk-track" id="tkTrack"></div></div>
+  </div>
+
+  <main style="padding-top:150px">
+    <div id="tabHome">
+      <section style="padding-top:8px">
+        <div class="container">
+          <div class="sec-head" style="align-items:flex-start">
+            <div>
+              <span class="sec-label" id="greetTier">kapper-club bronze</span>
+              <h2 class="sec-title display">Halo, <span id="greetName">Member</span>.</h2>
+            </div>
+            <p class="sec-note">Data kamu tersinkron real-time lewat Kapperbase.</p>
+          </div>
+          <div class="wallet-grid">
+            <div class="card-scene" id="cardScene">
+              <div class="kcard tier-bronze" id="kcard">
+                <div class="kcard-lines"></div><div class="kcard-ring"></div><div class="kcard-sheen"></div>
+                <div class="kcard-in">
+                  <div class="kc-top">
+                    <div class="kc-brand">KAPPER<sup>®</sup><span class="kc-sub">Card Kappoint</span></div>
+                    <div class="kc-club"><span>kapper-club</span><br><b class="kc-tier" id="kcTier">Bronze</b></div>
+                  </div>
+                  <div class="kc-mid">
+                    <svg class="kc-chip" width="42" height="31" viewBox="0 0 42 31"><rect x="1.5" y="1.5" width="39" height="28" rx="6" fill="currentColor"/><path d="M1.5 11h12M1.5 20h12M28.5 11h12M28.5 20h12M13.5 1.5v28M28.5 1.5v28" stroke="rgba(0,0,0,.38)" stroke-width="1.4" fill="none"/><rect x="13.5" y="11" width="15" height="9" fill="none" stroke="rgba(0,0,0,.38)" stroke-width="1.4"/></svg>
+                    <svg class="kc-ctl" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"><path d="M6 9a9 9 0 0 1 0 6"/><path d="M10.5 6.5a13 13 0 0 1 0 11"/><path d="M15 4a17.5 17.5 0 0 1 0 16"/></svg>
+                  </div>
+                  <div class="kc-numwrap">
+                    <div class="kc-num mono" id="kcNum">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
+                    <button type="button" class="kc-eye" id="kcEyeBtn" title="Tampilkan / sembunyikan nomor kartu"><i data-lucide="eye"></i></button>
+                  </div>
+                  <div class="kc-bot">
+                    <div><span class="kc-label">Card holder</span><span class="kc-holder" id="kcHolder">Kapperclub</span></div>
+                    <div style="text-align:right"><span class="kc-label">Kappoint</span><span class="kc-points mono" id="kcPoints">0</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wallet-panel">
+              <div class="wp-saldo">
+                <div>
+                  <span class="wp-label">Card Kappoint &mdash; Total Saldo</span>
+                  <div class="wp-saldo-num" id="saldoVal">Rp0</div>
+                </div>
+                <div class="wp-points">
+                  <span class="wp-label">Kappoint</span>
+                  <b id="pointsVal">0</b>
+                </div>
+              </div>
+              <div class="tier-chips" id="tierChips">
+                <button class="tier-chip active" data-tier="bronze">Bronze</button>
+                <button class="tier-chip" data-tier="gold">Gold</button>
+                <button class="tier-chip" data-tier="platinum">Platinum</button>
+                <button class="tier-chip" data-tier="black">Black</button>
+              </div>
+              <div class="wallet-actions">
+                <button class="btn btn-blue" id="actTopup"><i data-lucide="plus"></i>Top Up</button>
+                <button class="btn btn-ghost" id="actWithdraw"><i data-lucide="arrow-down-to-line"></i>Tarik di Barbershop</button>
+                <button class="btn btn-line" id="actPoints"><i data-lucide="medal"></i>Point Loyalty</button>
+              </div>
+              <div class="zero-hint" id="zeroHint">
+                <i data-lucide="sparkles"></i>
+                <span>Saldo kamu masih Rp0. <button id="hintTopup">Top up pertama</button> — pakai kode voucher atau QRIS.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="container">
+          <div class="sec-head reveal">
+            <div><span class="sec-label">Layanan</span><h2 class="sec-title display">Kategori cukur</h2></div>
+            <p class="sec-note">Katalog Pricelist <span class="mono">layanan</span> di Kapperbase.</p>
+          </div>
+          <div class="cat-grid">
+            <div class="cat-list reveal" id="catList"></div>
+            <div class="cat-detail reveal" id="catDetail"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" style="padding-top:10px">
+        <div class="container">
+          <div class="sec-head reveal">
+            <div><span class="sec-label">Aktivitas</span><h2 class="sec-title display">History transaksi terakhir</h2></div>
+            <div class="hist-filters" id="histFilters">
+              <button class="hf active" data-f="all">Semua</button>
+              <button class="hf" data-f="in">Masuk</button>
+              <button class="hf" data-f="out">Keluar</button>
+            </div>
+          </div>
+          <div class="listbox reveal" id="histList"></div>
+          <div class="hist-more" id="histMoreWrap" hidden>
+            <button class="btn btn-ghost btn-sm" id="histToggle">Tampilkan semua</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="tabBook" hidden>
+      <section class="block" style="padding-top:14px">
+        <div class="container">
+          <div class="sec-head reveal">
+            <div><span class="sec-label">Reservasi</span><h2 class="sec-title display">Book kursimu</h2></div>
+            <p class="sec-note">Tiap barbershop punya daftar barber sendiri — pilih barbershop dulu, barber mengikuti.</p>
+          </div>
+          <div class="book-grid">
+            <form class="panel reveal" id="bookForm" novalidate>
+              <label class="f-label" for="selService">Layanan</label>
+              <select class="inp" id="selService"></select>
+              <label class="f-label">Barbershop</label>
+              <div class="chip-row" id="shopChips"></div>
+              <label class="f-label">Barber <span style="text-transform:none;letter-spacing:0" id="barberShopHint"></span></label>
+              <div class="chip-row" id="barberChips"></div>
+              <label class="f-label" for="inpDate">Tanggal</label>
+              <input class="inp" type="date" id="inpDate">
+              <label class="f-label">Jam</label>
+              <div class="slot-grid" id="slotGrid"></div>
+              <p class="f-err" id="bookErr"></p>
+              <button type="submit" class="btn btn-blue full" style="margin-top:24px"><i data-lucide="calendar-check"></i>Lanjut ke Pembayaran</button>
+              <div class="book-note"><i data-lucide="info"></i><span>Reschedule gratis hingga 3 jam sebelum jadwal. Pembayaran bisa Kappoint, QRIS, atau di kasir.</span></div>
+            </form>
+            <aside class="reveal">
+              <h3 class="aside-title display">Booking mendatang</h3>
+              <div id="bookingList"></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="tabProduct" hidden>
+      <section class="block" style="padding-top:14px">
+        <div class="container">
+          <div class="sec-head reveal">
+            <div><span class="sec-label">Kapper Store</span><h2 class="sec-title display">Product</h2></div>
+            <p class="sec-note">Katalog dari koleksi <span class="mono">products</span>. Checkout dengan Kappoint, QRIS, atau bayar di tempat.</p>
+          </div>
+          <div class="prod-grid reveal" id="prodGrid"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="tabMembership" hidden>
+      <section class="block" style="padding-top:14px">
+        <div class="container">
+          <div class="sec-head reveal">
+            <div><span class="sec-label">kapper-club</span><h2 class="sec-title display">Membership</h2></div>
+            <p class="sec-note">Empat tier, satu prinsip: makin sering rapi, makin banyak keuntungan. Naik tier dengan Kappoint.</p>
+          </div>
+          <div id="memberList" class="reveal"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="cartbar" id="cartBar">
+    <button class="cb-clear" id="cbClear" title="Kosongkan keranjang"><i data-lucide="trash-2"></i></button>
+    <div class="cb-info">
+      <b id="cbCount">0 produk</b><span class="sep">&bull;</span><span class="cb-total" id="cbTotal">Rp0</span>
+    </div>
+    <button class="btn btn-blue" id="btnCheckout"><i data-lucide="shopping-bag"></i>Checkout</button>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="ft-cta">
+      <h2 class="display">Siap pangkas tanpa <em>antrean?</em></h2>
+      <div class="ft-actions" id="ftCtaGuest">
+        <button class="btn btn-blue" data-auth="signup">Daftar Gratis</button>
+        <button class="btn btn-ghost-inv" data-auth="login">Masuk</button>
+      </div>
+      <div class="ft-actions" id="ftCtaApp" hidden>
+        <button class="btn btn-blue" data-tab="book">Book Sekarang</button>
+        <button class="btn btn-ghost-inv" id="ftTopup">Top Up Saldo</button>
+      </div>
+    </div>
+    <div class="ft-mid">
+      <div>
+        <div class="ft-logo display">KAPPER<sup>®</sup></div>
+        <p class="ft-desc">Booking barbershop, dompet Kappoint, dan loyalitas — satu aplikasi untuk ritual rambutmu.</p>
+      </div>
+      <div class="ft-col">
+        <b>Jelajah</b>
+        <a href="#" data-tab="home">Beranda</a>
+        <a href="#" data-tab="book">Book</a>
+        <a href="#" data-tab="product">Product</a>
+        <a href="#" data-tab="membership">Membership</a>
+        <a href="#" id="ftAbout">Tentang Kapper</a>
+      </div>
+      <div class="ft-col">
+        <b>Perusahaan</b>
+        <a href="#" data-info="about">Tentang Kami</a>
+        <a href="#" data-info="contact">Kontak</a>
+        <a href="#" data-info="terms">Syarat &amp; Ketentuan</a>
+        <a href="#" data-info="privacy">Privasi</a>
+      </div>
+      <div class="ft-col">
+        <b>Kontak</b>
+        <a href="mailto:hello@kapper.id">kapperstudio1@gmail.com </a>
+        <a href="tel:+622150997700">+62 21 5099 7700</a>
+        <span class="fl">Senin–Minggu, 09.00–21.00 WIB</span>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; <span id="year"></span> Kapper Indonesia.</span>
+      <span>Powered by BARBERMAN.ID &amp; Unspoken</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MODALS ============ -->
+<div class="modal" id="mAuth">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Selamat datang</span>
+    <h3 class="m-title display">Masuk ke Kapper</h3>
+    <p class="m-sub" id="authSub">Akun baru bisa dapet voucher 20rb gratis pertama.</p>
+    <div class="auth-tabs" id="authTabs">
+      <button class="auth-tab active" data-auth-tab="login">Masuk</button>
+      <button class="auth-tab" data-auth-tab="signup">Daftar</button>
+    </div>
+    <form id="formLogin" novalidate>
+      <label class="f-label" for="loginEmail">Email</label>
+      <input class="inp" type="email" id="loginEmail" placeholder="kamu@email.com" autocomplete="email">
+      <p class="f-err-txt" id="err-loginEmail"></p>
+      <label class="f-label" for="loginPass">Password</label>
+      <div class="pw-wrap">
+        <input class="inp" type="password" id="loginPass" placeholder="minimal 6 karakter" autocomplete="current-password">
+        <button type="button" class="pw-eye" data-eye="loginPass" title="Tampilkan password"><i data-lucide="eye"></i></button>
+      </div>
+      <p class="f-err-txt" id="err-loginPass"></p>
+      <button type="submit" class="btn btn-solid full" id="btnDoLogin">Masuk</button>
+      <div style="text-align:right;margin-top:10px"><button type="button" class="link-btn" id="btnForgot">Lupa password?</button></div>
+    </form>
+    <form id="formSignup" hidden novalidate>
+      <label class="f-label" for="regName">Nama lengkap</label>
+      <input class="inp" type="text" id="regName" placeholder="cth. Rizky Pratama" autocomplete="name">
+      <p class="f-err-txt" id="err-regName"></p>
+      <label class="f-label" for="regEmail">Email</label>
+      <input class="inp" type="email" id="regEmail" placeholder="kamu@email.com" autocomplete="email">
+      <p class="f-err-txt" id="err-regEmail"></p>
+      <label class="f-label" for="regPass">Password</label>
+      <div class="pw-wrap">
+        <input class="inp" type="password" id="regPass" placeholder="minimal 6 karakter" autocomplete="new-password">
+        <button type="button" class="pw-eye" data-eye="regPass" title="Tampilkan password"><i data-lucide="eye"></i></button>
+      </div>
+      <div class="strength" id="pwStrength" hidden><i></i><span></span></div>
+      <p class="f-err-txt" id="err-regPass"></p>
+      <label class="f-label" for="regPass2">Ulangi password</label>
+      <div class="pw-wrap">
+        <input class="inp" type="password" id="regPass2" placeholder="ulangi password" autocomplete="new-password">
+        <button type="button" class="pw-eye" data-eye="regPass2" title="Tampilkan password"><i data-lucide="eye"></i></button>
+      </div>
+      <p class="f-err-txt" id="err-regPass2"></p>
+      <button type="submit" class="btn btn-blue full" id="btnDoSignup">Buat Akun Gratis</button>
+    </form>
+    <p class="m-sub" style="margin-top:16px;text-align:center;font-size:12.5px">Dengan lanjut, kamu setuju pada Syarat &amp; Privasi Kapper.</p>
+  </div>
+</div>
+
+<div class="modal" id="mTopup">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Top Up</span>
+    <h3 class="m-title display">Isi Saldo Kappoint</h3>
+    <p class="m-sub">Setiap Rp10.000 top up = 1 Kappoint.</p>
+    <label class="f-label">Pilih nominal</label>
+    <div class="chip-row" id="topupChips">
+      <button type="button" class="nominal-chip" data-v="50000">50rb</button>
+      <button type="button" class="nominal-chip active" data-v="100000">100rb</button>
+      <button type="button" class="nominal-chip" data-v="250000">250rb</button>
+      <button type="button" class="nominal-chip" data-v="500000">500rb</button>
+    </div>
+    <label class="f-label">Atau tulis sendiri</label>
+    <div class="amt-wrap" id="topupWrap"><span>Rp</span><input id="topupAmt" inputmode="numeric" placeholder="100.000"></div>
+    <p class="f-err-txt" id="err-topupAmt"></p>
+    <label class="f-label">Metode top up</label>
+    <div class="pm-list" id="topMethod">
+      <button type="button" class="pm-card active" data-tm="voucher">
+        <span class="pm-ic"><i data-lucide="ticket"></i></span>
+        <span><span class="pm-name">Kode Voucher</span><span class="pm-sub">Voucher global dari koleksi vouchers</span></span>
+        <span class="pm-radio"></span>
+      </button>
+      <button type="button" class="pm-card" data-tm="qris">
+        <span class="pm-ic"><i data-lucide="qr-code"></i></span>
+        <span><span class="pm-name">QRIS</span><span class="pm-sub">Kode pembayaran tersimpan di payments</span></span>
+        <span class="pm-radio"></span>
+      </button>
+    </div>
+    <div id="tvPanel">
+      <label class="f-label" for="voucherCode">Kode voucher</label>
+      <div class="v-in">
+        <input class="inp" id="voucherCode" placeholder="cth. KAPPER100" maxlength="16">
+        <button type="button" class="btn btn-solid" id="voucherApply" style="padding:12px 22px">Pakai</button>
+      </div>
+      <p class="f-err-txt" id="err-voucherCode"></p>
+      <p class="qris-note">Kode contoh: <b>KAPPER0</b> &middot; <b>KAPPER10</b> &middot; <b>KAPPER20</b> &middot; <b>KAPPER50</b> kappoint.</p>
+    </div>
+    <div id="tqPanel" hidden>
+      <div class="qris-panel">
+        <div class="qris-svg" id="tqBox"></div>
+        <div class="qris-meta"><span class="qris-code" id="tqCode">—</span><span class="qris-count" id="tqCount"></span></div>
+        <p class="qris-note" id="tqNote">Scan dengan aplikasi e-wallet atau m-banking, lalu tekan konfirmasi.</p>
+      </div>
+      <button type="button" class="btn btn-blue full" id="tqGo"><i data-lucide="check"></i>Saya Sudah Bayar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mNotif">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Detail Notifikasi</span>
+    <div class="nd-hero">
+      <span class="nd-icon" id="ndIcon"><i data-lucide="bell"></i></span>
+      <div><h3 class="m-title" id="ndTitle" style="font-size:20px;margin:0">—</h3><span class="nd-time" id="ndTime"></span></div>
+    </div>
+    <p class="nd-body" id="ndBody"></p>
+    <div class="nd-code" id="ndCodeBox" hidden title="Klik untuk menyalin kode">
+      <div><span class="wp-label" id="ndCodeLbl">Kode</span><br><b id="ndCode">—</b></div><i data-lucide="copy"></i>
+    </div>
+    <button class="btn btn-blue full" id="ndAction" hidden></button>
+  </div>
+</div>
+
+<div class="modal" id="mPay">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Pembayaran</span>
+    <h3 class="m-title display" id="payTitle">Checkout</h3>
+    <p class="m-sub" id="paySub">—</p>
+    <div class="pay-items" id="payItems"></div>
+    <label class="f-label">Metode pembayaran</label>
+    <div class="pm-list" id="pmList">
+      <button type="button" class="pm-card" data-pm="kappoint">
+        <span class="pm-ic"><i data-lucide="wallet"></i></span>
+        <span><span class="pm-name">Kappoint</span><span class="pm-sub" id="pmKapBal">Saldo Rp0</span></span>
+        <span class="pm-radio"></span>
+      </button>
+      <button type="button" class="pm-card" data-pm="qris">
+        <span class="pm-ic"><i data-lucide="qr-code"></i></span>
+        <span><span class="pm-name">QRIS</span><span class="pm-sub">Scan dengan e-wallet / m-banking</span></span>
+        <span class="pm-radio"></span>
+      </button>
+      <button type="button" class="pm-card" data-pm="tempat">
+        <span class="pm-ic"><i data-lucide="store"></i></span>
+        <span><span class="pm-name">Bayar di Tempat</span><span class="pm-sub">Tunai / tap di kasir barbershop</span></span>
+        <span class="pm-radio"></span>
+      </button>
+    </div>
+    <div class="qris-panel" id="qrisPanel" hidden>
+      <div class="qris-svg" id="qrBox"></div>
+      <div class="qris-meta"><span class="qris-code" id="qrCode"></span><span class="qris-count" id="qrCount"></span></div>
+      <p class="qris-note" id="qrisStatus">Scan kode di atas, lalu tekan konfirmasi setelah pembayaran.</p>
+    </div>
+    <div id="payAction"></div>
+  </div>
+</div>
+
+<div class="modal" id="mWithdraw">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Tarik Tunai</span>
+    <h3 class="m-title display" id="wdTitle">Tarik di Barbershop</h3>
+
+    <!-- Form penarikan -->
+    <div id="wdForm">
+      <p class="m-sub">Tentukan jumlah, kode penarikan akan dibuat — tunjukkan kodenya ke kasir untuk menerima uang tunai.</p>
+      <label class="f-label">Pilih barbershop</label>
+      <div class="chip-row" id="wdShops"></div>
+      <label class="f-label">Jumlah penarikan</label>
+      <div class="amt-wrap" id="wdWrap"><span>Rp</span><input id="wdAmt" inputmode="numeric" placeholder="100.000"></div>
+      <p class="f-err-txt" id="err-wdAmt"></p>
+      <p class="wp-label" style="margin-top:12px">Saldo tersedia: <b id="wdBalance" style="color:var(--ink)">Rp0</b></p>
+      <button type="button" class="btn btn-blue full" id="wdGo"><i data-lucide="arrow-down-to-line"></i>Buat Kode Penarikan</button>
+    </div>
+
+    <!-- Hasil: kode untuk kasir -->
+    <div id="wdResult" hidden>
+      <div class="wd-ok">
+        <span class="wd-ok-ic"><i data-lucide="check"></i></span>
+        <b>Kode penarikan siap!</b>
+        <p>Kirim / tunjukkan kode di bawah ke kasir <b id="wdrShop">—</b> untuk mencairkan <b id="wdrAmt">—</b> secara tunai.</p>
+      </div>
+      <div class="wd-code">
+        <div style="text-align:left">
+          <span class="wp-label">Kode penarikan &mdash; berlaku hari ini</span>
+          <b id="wdrCode">—</b>
+        </div>
+        <button type="button" class="btn btn-line btn-sm" id="wdrCopy"><i data-lucide="copy"></i>Salin</button>
+      </div>
+      <p class="qris-note">Kode sekali pakai. Kasir memverifikasi kode lewat panel Kapper sebelum menyerahkan uang. Saldo sudah dipotong sekarang.</p>
+      <div style="display:flex;gap:9px;margin-top:16px">
+        <button type="button" class="btn btn-blue" id="wdrDetail" style="flex:1;justify-content:center"><i data-lucide="bell"></i>Lihat Notifikasi</button>
+        <button type="button" class="btn btn-solid" id="wdrDone" style="flex:1;justify-content:center">Selesai</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mPoints">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Point Loyalty</span>
+    <h3 class="m-title display">Kappoint kamu</h3>
+    <div class="points-hero">
+      <div><div class="points-big" id="ptsBig">0</div><span class="wp-label">kappoint tersedia</span></div>
+      <div style="text-align:right"><b class="mono" id="ptsTier" style="font-size:18px;color:var(--blue)">BRONZE</b></div>
+    </div>
+    <div class="progress"><i id="ptsBar" style="width:0%"></i></div>
+    <p class="wp-label" id="ptsNextTxt" style="letter-spacing:.08em;text-transform:none;font-size:12px"></p>
+    <label class="f-label">Tukar dengan</label>
+    <div id="rewardList"></div>
+  </div>
+</div>
+
+<div class="modal" id="mProfile">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Profil</span>
+    <h3 class="m-title display">Profil saya</h3>
+    <div class="pf-row" style="margin-top:14px">
+      <div class="pf-ava" id="profAva" title="Klik untuk ganti foto">K</div>
+      <div>
+        <div class="pf-btns">
+          <button type="button" class="btn btn-line btn-sm" id="pfUpload"><i data-lucide="camera"></i>Ubah Foto</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
+        </div>
+        <p class="pf-hint">Upload dari perangkat — tersimpan di dokumen users/{uid}.</p>
+        <input type="file" id="profFile" accept="image/*" hidden>
+      </div>
+    </div>
+    <label class="f-label" for="profName">Nama lengkap</label>
+    <input class="inp" type="text" id="profName">
+    <p class="f-err-txt" id="err-profName"></p>
+    <label class="f-label">Email</label>
+    <input class="inp" type="email" id="profEmail" disabled style="color:var(--muted);background:#F4F3EE">
+    <label class="f-label">Nomor kartu</label>
+    <div class="v-in">
+      <input class="inp mono" id="profCardNo" disabled style="letter-spacing:.1em">
+      <button type="button" class="btn btn-line" id="profCardEye" title="Tampilkan / sembunyikan"><i data-lucide="eye"></i></button>
+      <button type="button" class="btn btn-line" id="profCardCopy" title="Salin nomor kartu"><i data-lucide="copy"></i></button>
+    </div>
+    <div style="display:flex;gap:26px;padding:18px 0;border-block:1px solid var(--line);margin:22px 0">
+      <div><span class="wp-label">Kappoint</span><br><b class="mono" id="profPts" style="font-size:17px">0</b></div>
+      <div><span class="wp-label">Tier</span><br><b class="mono" id="profTier" style="font-size:17px;text-transform:uppercase">Bronze</b></div>
+      <div><span class="wp-label">Member sejak</span><br><b class="mono" style="font-size:17px" id="profSince">2024</b></div>
+    </div>
+    <button class="btn btn-solid full" id="profSave" style="margin-top:0"><i data-lucide="check"></i>Simpan Perubahan</button>
+  </div>
+</div>
+
+<div class="modal" id="mInfo">
+  <div class="modal-panel">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Kapper</span>
+    <h3 class="m-title display" id="infoTitle">—</h3>
+    <div class="info-body" id="infoBody"></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script type="module">
+/* ================= FIREBASE ================= */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
+  onAuthStateChanged, updateProfile, sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, doc, getDoc, setDoc, updateDoc, addDoc, deleteDoc, onSnapshot,
+  collection, query, orderBy, limit, getDocs, writeBatch, increment, runTransaction
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDb9KnG1MNGnS62UuZGZ6MIdGcIXmcwoVA",
+  authDomain: "kapperstudio-c629c.firebaseapp.com",
+  projectId: "kapperstudio-c629c",
+  storageBucket: "kapperstudio-c629c.firebasestorage.app",
+  messagingSenderId: "689372483921",
+  appId: "1:689372483921:web:de297c0dd520b8a0f2c370",
+  measurementId: "G-BWBJCSQQEF"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* ================= UTIL ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const idFmt=n=>n.toLocaleString('id-ID');
+const fmtIDR=n=>'Rp'+idFmt(Math.abs(n));
+const icons=()=>lucide.createIcons();
+const initials=n=>(n||'K').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase()||'K';
+const code=()=>'KP-'+Array.from({length:5},()=>'ABCDEFGHJKMNPQRSTUVWXYZ23456789'[Math.floor(Math.random()*31)]).join('');
+const shortShop=s=>s.split(' — ')[0];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const vEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+const MAX_TOPUP=5000000, MAX_WD=20000000;
+
+/* Fungsi salin universal (clipboard + fallback) */
+async function copyText(txt,label='Teks'){
+  if(!txt)return;
+  try{
+    if(navigator.clipboard&&window.isSecureContext){
+      await navigator.clipboard.writeText(txt);
+      toast('ok',label+' disalin: '+txt);
+      return;
+    }
+  }catch(e){}
+  try{
+    const ta=document.createElement('textarea');
+    ta.value=txt; ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); ta.remove();
+    toast('ok',label+' disalin: '+txt);
+  }catch(e){ toast('err','Gagal menyalin — salin manual ya.'); }
+}
+
+/* ================= STATE ================= */
+const state={loggedIn:false,uid:null,name:'',email:'',avatar:'',cardNo:'',balance:0,points:0,tier:'bronze',usedVouchers:[]};
+const TIERS=[{key:'bronze',label:'Bronze'},{key:'gold',label:'Gold'},{key:'platinum',label:'Platinum'},{key:'black',label:'Black'}];
+const tierIdx=k=>TIERS.findIndex(t=>t.key===k);
+const tierLabel=k=>TIERS[tierIdx(k)].label;
+
+/* ================= KATALOG: 100% DARI FIRESTORE =================
+   layanan      → { name, price, dur, desc }
+   barbershops  → { name, barbers: ["..",".."] }   (barber tiap shop beda)
+   barbers      → { shop: "<nama barbershop>", name }  (opsional, digabung)
+   products     → { name, desc, price, seed }        */
+let txns=[], notifs=[], bookings=[];
+let CATS=[], SHOPS=[], BARBERS_BY_SHOP={}, PRODUCTS=[];
+const SLOTS=['10:00','10:30','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
+const MEMBERSHIP=[
+  {key:'bronze',name:'Bronze',req:'0 poin',pts:0,perks:['Cashback 1% setiap transaksi','Booking standar','Riwayat transaksi penuh']},
+  {key:'gold',name:'Gold',req:'1.000 poin',pts:1000,perks:['Cashback 2,5%','Prioritas slot booking','Gratis minuman tiap kunjungan','Voucher ulang tahun']},
+  {key:'platinum',name:'Platinum',req:'5.000 poin',pts:5000,perks:['Cashback 4%','1x haircut gratis / bulan','Guest pass untuk teman','Layanan dukungan khusus']},
+  {key:'black',name:'Black',req:'20.000 poin • undangan',pts:20000,dark:true,perks:['Semua benefit Platinum','Barber pribadi on-call','Akses event tertutup','Limit tarik tunai 2x lipat']},
+];
+const REWARDS=[
+  {name:'Gratis minuman di barbershop partner',cost:250},
+  {name:'Beard trim gratis',cost:900},
+  {name:'Potongan 25% untuk haircut',cost:1200},
+  {name:'Haircut gratis penuh',cost:2800},
+];
+const PT=[{min:0,label:'Bronze'},{min:1000,label:'Gold'},{min:5000,label:'Platinum'},{min:20000,label:'Black'}];
+const G_CAP={bronze:'kapper-club bronze — mulai dari nol, cashback 1%',gold:'kapper-club gold — cashback 2,5% & slot prioritas',platinum:'kapper-club platinum — haircut gratis tiap bulan',black:'kapper-club black — undangan saja'};
+const PM_LABEL={kappoint:'Kappoint',qris:'QRIS',tempat:'bayar di tempat'};
+const SEED_VOUCHERS={KAPPER50:50000,KAPPER100:100000,KAPPER200:200000,KAPPER500:500000};
+const FALLBACK_FEED=['Slot pagi mulai ramai — book kursimu sekarang','Cashback mingguan aktif untuk semua tier','+100 Kappoint dari pembayaran QRIS pertama','Member baru bergabung tiap menit — jangan kalah'];
+const AUTH_ERR={
+  'auth/invalid-email':'Format email tidak valid.','auth/missing-password':'Masukkan password.',
+  'auth/weak-password':'Password terlalu lemah — minimal 6 karakter.','auth/email-already-in-use':'Email sudah terdaftar — coba masuk.',
+  'auth/invalid-credential':'Email atau password salah.','auth/user-not-found':'Akun tidak ditemukan.',
+  'auth/wrong-password':'Password salah.','auth/too-many-requests':'Terlalu banyak percobaan. Coba lagi nanti.',
+  'auth/operation-not-allowed':'Email/Password belum diaktifkan di Firebase Console → Authentication → Sign-in method.',
+  'auth/network-request-failed':'Koneksi bermasalah. Cek internet kamu.',
+};
+const aerr=e=>AUTH_ERR[e?.code]||e?.message||'Terjadi kesalahan.';
+
+let cloudOK=true, cloudWarned=false;
+function cloudFail(e){
+  if(!cloudWarned){cloudWarned=true;cloudOK=false;setCloudPill();toast('err','Firestore tidak dapat diakses — cek rules/internet. ('+(e?.code||'')+')');}
+  console.warn('[cloud]',e);
+}
+function setCloudPill(){
+  const p=$('#cloudPill');
+  p.classList.toggle('off',!cloudOK);
+  p.innerHTML=cloudOK?'<i></i>FIRESTORE':'<i></i>OFFLINE';
+}
+const U=()=>doc(db,'users',state.uid);
+const UCOL=c=>collection(db,'users',state.uid,c);
+
+const barbersOf=name=>BARBERS_BY_SHOP[name]||[];
+
+/* ================= FAVICON ================= */
+function makeFavicon(){
+  try{
+    const s=64,c=document.createElement('canvas');c.width=c.height=s;
+    const x=c.getContext('2d');
+    const r=15;
+    x.fillStyle='#0B0B0C';
+    x.beginPath();
+    x.moveTo(r,0);x.arcTo(s,0,s,s,r);x.arcTo(s,s,0,s,r);x.arcTo(0,s,0,0,r);x.arcTo(0,0,s,0,r);
+    x.closePath();x.fill();
+    x.fillStyle='#0B2FD1';
+    x.beginPath();x.arc(s-16,16,8,0,Math.PI*2);x.fill();
+    x.fillStyle='#FFFFFF';
+    x.font='900 34px Archivo, Arial, sans-serif';
+    x.textBaseline='middle';x.textAlign='left';
+    x.fillText('K',19,36);
+    const url=c.toDataURL('image/png');
+    const f=$('#favicon'), a=$('#appleIcon');
+    if(f)f.href=url; if(a)a.href=url;
+  }catch(e){console.warn('favicon',e)}
+}
+
+/* ================= VALIDASI INLINE ================= */
+function showErr(id,msg){
+  const e=$('#err-'+id), i=$('#'+id);
+  if(e){e.textContent=msg;e.classList.add('show')}
+  if(i)i.classList.add('invalid');
+  if(i&&i.parentElement&&i.parentElement.classList.contains('amt-wrap'))i.parentElement.classList.add('invalid');
+  return false;
+}
+function clearErr(id){
+  const e=$('#err-'+id), i=$('#'+id);
+  if(e){e.textContent='';e.classList.remove('show')}
+  if(i)i.classList.remove('invalid');
+  if(i&&i.parentElement&&i.parentElement.classList.contains('amt-wrap'))i.parentElement.classList.remove('invalid');
+  return true;
+}
+['loginEmail','loginPass','regName','regEmail','regPass','regPass2','topupAmt','wdAmt','voucherCode','profName']
+  .forEach(id=>{const i=$('#'+id);if(i)i.addEventListener('input',()=>clearErr(id))});
+ $$('.pw-eye').forEach(b=>b.addEventListener('click',()=>{
+  const inp=$('#'+b.dataset.eye);
+  const show=inp.type==='password';
+  inp.type=show?'text':'password';
+  b.innerHTML=`<i data-lucide="${show?'eye-off':'eye'}"></i>`;
+  b.title=show?'Sembunyikan password':'Tampilkan password';
+  icons(); inp.focus();
+}));
+ $('#regPass').addEventListener('input',function(){
+  const v=this.value, box=$('#pwStrength');
+  if(!v){box.hidden=true;return}
+  box.hidden=false;
+  let s=0;
+  if(v.length>=6)s++; if(v.length>=10)s++;
+  if(/[a-z]/.test(v)&&/[A-Z]/.test(v))s++;
+  if(/\d/.test(v))s++; if(/[^A-Za-z0-9]/.test(v))s++;
+  const lvl=s<=1?['20%','Lemah','var(--red)']:s<=3?['60%','Sedang','#D9A26B']:['100%','Kuat','var(--ok)'];
+  const bar=box.querySelector('i');
+  bar.style.setProperty('--w',lvl[0]); bar.style.setProperty('--sc',lvl[2]);
+  box.querySelector('span').textContent=lvl[1];
+});
+
+/* ================= TOAST / MODAL ================= */
+function toast(type,msg){
+  const ic=type==='ok'?'check':type==='err'?'x':'info';
+  const el=document.createElement('div');
+  el.className='toast '+type;
+  el.innerHTML=`<i data-lucide="${ic}"></i><span>${msg}</span>`;
+  $('#toasts').appendChild(el); icons();
+  requestAnimationFrame(()=>el.classList.add('show'));
+  setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400)},3400);
+}
+function openModal(id){$('#'+id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(m){m.classList.remove('open');document.body.style.overflow='';if(m.id==='mPay')stopQris();if(m.id==='mTopup')stopTQ()}
+ $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))closeModal(m)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal.open').forEach(closeModal);closeDrops()}});
+function busy(btn,on,txt){
+  if(on){btn.dataset.h=btn.innerHTML;btn.disabled=true;btn.innerHTML=`<span class="spin"></span>${txt}`}
+  else{btn.disabled=false;btn.innerHTML=btn.dataset.h||btn.innerHTML;icons()}
+}
+
+/* ================= ANIMASI ANGKA ================= */
+function animateNum(el,from,to,fmt){
+  const t0=performance.now(),D=750;
+  (function f(t){const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);
+    el.textContent=fmt(Math.round(from+(to-from)*e));
+    if(p<1)requestAnimationFrame(f)})(t0);
+}
+function setBalance(delta){
+  const from=state.balance; state.balance+=delta;
+  animateNum($('#saldoVal'),from,state.balance,v=>'Rp'+idFmt(v));
+  $('#wdBalance').textContent='Rp'+idFmt(state.balance);
+  $('#zeroHint').style.display=state.balance>0?'none':'flex';
+  if(state.uid&&cloudOK)updateDoc(U(),{saldo:increment(delta)}).catch(cloudFail);
+}
+function setPoints(to){
+  const delta=to-state.points; if(delta===0&&to!==0)return;
+  const from=state.points; state.points=to;
+  ['#pointsVal','#kcPoints','#ptsBig'].forEach(s=>animateNum($(s),from,to,v=>idFmt(v)));
+  updatePtsMeta(); renderRewards();
+  if(state.uid&&delta!==0&&cloudOK)updateDoc(U(),{points:increment(delta)}).catch(cloudFail);
+}
+function addPoints(n){if(n>0)setPoints(state.points+n)}
+
+/* ================= NOMOR KARTU ================= */
+function genCardNo(seedStr){
+  let seed=2166136261>>>0;
+  for(let i=0;i<seedStr.length;i++){seed^=seedStr.charCodeAt(i);seed=Math.imul(seed,16777619)>>>0}
+  let out='';
+  for(let i=0;i<12;i++){seed^=seed<<13;seed>>>=0;seed^=seed>>>17;seed^=seed<<5;seed>>>=0;out+=seed%10}
+  return '5312 8801 '+out.slice(0,4)+' '+out.slice(4);
+}
+let cardHidden=localStorage.getItem('kapper_card_hidden')==='1';
+function renderCardNum(){
+  const full=state.cardNo||'5312 8801 •••• ••••';
+  const shown=cardHidden?'•••• •••• •••• ••••':full;
+  const kn=$('#kcNum'); if(kn)kn.textContent=shown;
+  const ke=$('#kcEyeBtn');
+  if(ke){ke.innerHTML=`<i data-lucide="${cardHidden?'eye':'eye-off'}"></i>`;ke.title=cardHidden?'Tampilkan nomor kartu':'Sembunyikan nomor kartu'}
+  const pv=$('#profCardNo'); if(pv)pv.value=shown;
+  const pe=$('#profCardEye');
+  if(pe)pe.innerHTML=`<i data-lucide="${cardHidden?'eye':'eye-off'}"></i>`;
+  icons();
+}
+function toggleCard(){cardHidden=!cardHidden;localStorage.setItem('kapper_card_hidden',cardHidden?'1':'0');renderCardNum()}
+ $('#kcEyeBtn').addEventListener('click',toggleCard);
+ $('#profCardEye').addEventListener('click',toggleCard);
+ $('#profCardCopy').addEventListener('click',()=>copyText(state.cardNo,'Nomor kartu'));
+
+/* ================= AVATAR ================= */
+function setAvatarImgs(){
+  ['#pdAvatar','#pdAvatarBig','#profAva'].forEach(sel=>{
+    const el=$(sel); if(!el)return;
+    if(state.avatar)el.innerHTML=`<img src="${state.avatar}" alt="Foto profil">`;
+    else el.textContent=initials(state.name||'Kapper');
+  });
+  const rm=$('#pfRemove'); if(rm)rm.hidden=!state.avatar;
+}
+function fileToAvatar(file,cb){
+  const img=new Image();
+  img.onload=()=>{
+    const s=256,c=document.createElement('canvas');c.width=c.height=s;
+    const x=c.getContext('2d');
+    const r=Math.max(s/img.width,s/img.height),w=img.width*r,h=img.height*r;
+    x.drawImage(img,(s-w)/2,(s-h)/2,w,h);
+    URL.revokeObjectURL(img.src);
+    cb(c.toDataURL('image/jpeg',.82));
+  };
+  img.onerror=()=>toast('err','Gagal membaca gambar.');
+  img.src=URL.createObjectURL(file);
+}
+ $('#pfUpload').onclick=()=>$('#profFile').click();
+ $('#profAva').onclick=()=>$('#profFile').click();
+ $('#profFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; e.target.value='';
+  if(!f)return;
+  if(!f.type.startsWith('image/'))return toast('err','File harus berupa gambar.');
+  if(f.size>5*1024*1024)return toast('err','Ukuran gambar maksimal 5 MB.');
+  fileToAvatar(f,url=>{
+    state.avatar=url; setAvatarImgs();
+    if(state.uid&&cloudOK)updateDoc(U(),{avatar:url}).then(()=>toast('ok','Foto profil diperbarui & tersimpan di Firestore.')).catch(e=>{cloudFail(e);toast('ok','Foto profil diperbarui.')});
+    else toast('ok','Foto profil diperbarui.');
+  });
+});
+ $('#pfRemove').onclick=()=>{
+  state.avatar=''; setAvatarImgs();
+  if(state.uid&&cloudOK)updateDoc(U(),{avatar:''}).catch(()=>{});
+  toast('info','Foto profil dihapus.');
+};
+
+/* ================= UI SYNC ================= */
+function syncTierUI(){
+  $('#kcard').className='kcard tier-'+state.tier;
+  $('#kcTier').textContent=tierLabel(state.tier);
+  $$('#tierChips .tier-chip').forEach(c=>c.classList.toggle('active',c.dataset.tier===state.tier));
+  $('#pdTier').textContent='kapper-club '+state.tier;
+  $('#greetTier').textContent='kapper-club '+state.tier;
+}
+function syncAuthUI(){
+  $('#greetName').textContent=(state.name||'Member').split(' ')[0];
+  $('#kcHolder').textContent=state.name||'Kapper Member';
+  $('#pdName').textContent=state.name||'Member Kapper';
+  $('#pdEmail').textContent=state.email||'—';
+  setAvatarImgs();
+  syncTierUI();
+  renderCardNum();
+}
+function hydrateUI(){
+  $('#saldoVal').textContent='Rp'+idFmt(state.balance);
+  $('#wdBalance').textContent='Rp'+idFmt(state.balance);
+  $('#pointsVal').textContent=idFmt(state.points);
+  $('#kcPoints').textContent=idFmt(state.points);
+  $('#ptsBig').textContent=idFmt(state.points);
+  $('#zeroHint').style.display=state.balance>0?'none':'flex';
+  syncAuthUI();
+  renderHistory(); renderBookings(); renderNotifs();
+  renderRewards(); updatePtsMeta(); renderMembership();
+  buildCatalogUI(); icons();
+}
+
+/* ================= AUTH ================= */
+function openAuth(t){setAuthTab(t);openModal('mAuth')}
+function setAuthTab(t){
+  $$('#authTabs .auth-tab').forEach(b=>b.classList.toggle('active',b.dataset.authTab===t));
+  $('#formLogin').hidden=t!=='login'; $('#formSignup').hidden=t!=='signup';
+  $('#authSub').textContent=t==='signup'
+    ?'Isi data di bawah — setelah akun dibuat, kamu akan diminta masuk.'
+    :'Autentikasi email via Firebase. Akun baru mulai dengan saldo Rp0.';
+}
+ $('#authTabs').addEventListener('click',e=>{const b=e.target.closest('.auth-tab');if(b)setAuthTab(b.dataset.authTab)});
+function validateLogin(){
+  let ok=true;
+  const em=$('#loginEmail').value.trim(), pw=$('#loginPass').value;
+  clearErr('loginEmail'); clearErr('loginPass');
+  if(!em)ok=showErr('loginEmail','Email wajib diisi.');
+  else if(!vEmail(em))ok=showErr('loginEmail','Format email tidak valid — cth. nama@email.com');
+  if(!pw)ok=showErr('loginPass','Password wajib diisi.');
+  else if(pw.length<6)ok=showErr('loginPass','Password minimal 6 karakter.');
+  return ok;
+}
+ $('#formLogin').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!validateLogin())return;
+  const em=$('#loginEmail').value.trim(), pw=$('#loginPass').value;
+  const b=$('#btnDoLogin'); busy(b,true,'Memeriksa…');
+  try{ await signInWithEmailAndPassword(auth,em,pw); }
+  catch(err){
+    if(err.code==='auth/invalid-credential'||err.code==='auth/wrong-password'||err.code==='auth/user-not-found')
+      showErr('loginPass','Email atau password salah.');
+    else if(err.code==='auth/invalid-email')showErr('loginEmail','Format email tidak valid.');
+    toast('err',aerr(err));
+  }
+  finally{ busy(b,false); }
+});
+ $('#btnForgot').onclick=async()=>{
+  const em=$('#loginEmail').value.trim();
+  if(!vEmail(em))return showErr('loginEmail','Isi email yang valid dulu, lalu klik lupa password.');
+  try{ await sendPasswordResetEmail(auth,em); toast('ok','Email reset password terkirim ke '+em); }
+  catch(err){ toast('err',aerr(err)); }
+};
+function validateSignup(){
+  let ok=true;
+  const nm=$('#regName').value.trim(), em=$('#regEmail').value.trim(), pw=$('#regPass').value, pw2=$('#regPass2').value;
+  ['regName','regEmail','regPass','regPass2'].forEach(clearErr);
+  if(!nm)ok=showErr('regName','Nama lengkap wajib diisi.');
+  else if(nm.length<3)ok=showErr('regName','Nama minimal 3 karakter.');
+  else if(/^\d+$/.test(nm))ok=showErr('regName','Nama tidak boleh hanya angka.');
+  if(!em)ok=showErr('regEmail','Email wajib diisi.');
+  else if(!vEmail(em))ok=showErr('regEmail','Format email tidak valid — cth. nama@email.com');
+  if(!pw)ok=showErr('regPass','Password wajib diisi.');
+  else if(pw.length<6)ok=showErr('regPass','Password minimal 6 karakter.');
+  if(!pw2)ok=showErr('regPass2','Ulangi password kamu.');
+  else if(pw2!==pw)ok=showErr('regPass2','Password tidak sama dengan di atas.');
+  return ok;
+}
+/* Daftar → akun dibuat → TIDAK auto-login → diarahkan ke tab Masuk */
+let signupBusy=false;
+ $('#formSignup').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!validateSignup())return;
+  const nm=$('#regName').value.trim(), em=$('#regEmail').value.trim(), pw=$('#regPass').value;
+  const b=$('#btnDoSignup'); busy(b,true,'Membuat akun…');
+  try{
+    signupBusy=true;
+    const cred=await createUserWithEmailAndPassword(auth,em,pw);
+    await updateProfile(cred.user,{displayName:nm});
+    await ensureUserDoc(cred.user,nm);
+    await signOut(auth);           /* keluar otomatis: paksa lewat halaman login */
+    signupBusy=false;
+    ['regName','regEmail','regPass','regPass2'].forEach(id=>{$('#'+id).value=''});
+    $('#pwStrength').hidden=true;
+    setAuthTab('login');
+    $('#loginEmail').value=em; $('#loginPass').value=''; $('#loginPass').focus();
+    toast('ok','Akun berhasil dibuat! Silakan masuk dengan email & password kamu.');
+  }catch(err){
+    signupBusy=false;
+    if(err.code==='auth/email-already-in-use')showErr('regEmail','Email sudah terdaftar — coba masuk.');
+    else if(err.code==='auth/weak-password')showErr('regPass','Password terlalu lemah — minimal 6 karakter.');
+    toast('err',aerr(err));
+  }
+  finally{ busy(b,false); }
+});
+ $('#pdLogout').onclick=async()=>{ try{await signOut(auth)}catch(e){toast('err',aerr(e))} };
+
+/* ================= AUTH STATE ================= */
+let unsubs=[];
+async function ensureUserDoc(user,nm){
+  const name=nm||user.displayName||user.email.split('@')[0].replace(/^./,c=>c.toUpperCase());
+  await setDoc(doc(db,'users',user.uid),{
+    name, email:user.email, avatar:'', saldo:0, points:0, tier:'bronze',
+    usedVouchers:[], cardNo:genCardNo(user.uid), createdAt:Date.now()
+  },{merge:false});
+}
+async function loadColl(name,field='ts'){
+  try{
+    const s=await getDocs(query(UCOL(name),orderBy(field,'desc'),limit(60)));
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){cloudFail(e);return[]}
+}
+async function hydrateUser(user){
+  state.uid=user.uid; state.loggedIn=true; state.email=user.email||'';
+  try{
+    let s=await getDoc(doc(db,'users',user.uid));
+    if(!s.exists())await ensureUserDoc(user);
+    s=await getDoc(doc(db,'users',user.uid));
+    const d=s.data();
+    Object.assign(state,{
+      name:d.name||user.displayName||'Member', avatar:d.avatar||'',
+      balance:d.saldo||0, points:d.points||0, tier:d.tier||'bronze',
+      usedVouchers:d.usedVouchers||[], cardNo:d.cardNo||genCardNo(user.uid)
+    });
+    if(!d.cardNo&&cloudOK)updateDoc(U(),{cardNo:state.cardNo}).catch(()=>{});
+  }catch(e){ cloudFail(e); state.name=user.displayName||user.email.split('@')[0]; }
+  txns=await loadColl('txns');
+  bookings=await loadColl('bookings','createdAt');
+  notifs=await loadColl('notifs');
+  unsubs.push(onSnapshot(doc(db,'users',user.uid),s=>{
+    if(!s.exists())return; const d=s.data();
+    if(state.balance!==(d.saldo||0)){state.balance=d.saldo||0;$('#saldoVal').textContent='Rp'+idFmt(state.balance);$('#wdBalance').textContent='Rp'+idFmt(state.balance);$('#zeroHint').style.display=state.balance>0?'none':'flex';}
+    if(state.points!==(d.points||0)){state.points=d.points||0;$('#pointsVal').textContent=idFmt(state.points);$('#kcPoints').textContent=idFmt(state.points);$('#ptsBig').textContent=idFmt(state.points);updatePtsMeta();renderRewards();}
+    if(state.tier!==d.tier){state.tier=d.tier||'bronze';syncTierUI();renderMembership();}
+    if(state.name!==d.name){state.name=d.name||'';syncAuthUI();}
+    if(state.avatar!==(d.avatar||'')){state.avatar=d.avatar||'';setAvatarImgs();}
+    state.usedVouchers=d.usedVouchers||[];
+  },e=>cloudFail(e)));
+  const fq=query(collection(db,'feed'),orderBy('createdAt','desc'),limit(12));
+  unsubs.push(onSnapshot(fq,s=>{
+    s.docChanges().forEach(ch=>{
+      if(ch.type!=='added')return;
+      const d=ch.doc.data();
+      if(d.uid!==state.uid&&!tickerItems.some(t=>t.text===d.text))
+        localTicker({text:d.text,mine:false});
+    });
+  },()=>{}));
+  hydrateUI();
+}
+function guestReset(){
+  unsubs.forEach(f=>{try{f()}catch(e){}}); unsubs=[];
+  Object.assign(state,{loggedIn:false,uid:null,name:'',email:'',avatar:'',cardNo:'',balance:0,points:0,tier:'bronze',usedVouchers:[]});
+  txns=[]; notifs=[]; bookings=[]; cart.clear();
+  $('#viewApp').hidden=true; $('#viewGuest').hidden=false;
+  $('#ftCtaGuest').hidden=false; $('#ftCtaApp').hidden=true;
+  closeDrops(); switchTab('home'); renderCartBar(); updateChrome(); resetTicker();
+  window.scrollTo({top:0});
+}
+onAuthStateChanged(auth,async u=>{
+  if(signupBusy)return;      /* jangan reaksi saat proses daftar → signOut */
+  if(u){
+    closeModal($('#mAuth')); /* popup login hilang begitu berhasil masuk */
+    if(state.uid===u.uid)return;
+    await hydrateUser(u);
+    enterApp();
+    pushTicker(`${state.name.split(' ')[0]} masuk ke Kapper Club`,true);
+    toast('ok',`Selamat datang, ${state.name.split(' ')[0]}!`);
+  }else if(state.uid){ guestReset(); toast('info','Kamu sudah keluar.'); }
+});
+function enterApp(){
+  $('#viewGuest').hidden=true; $('#viewApp').hidden=false;
+  $('#ftCtaGuest').hidden=true; $('#ftCtaApp').hidden=false;
+  updateChrome(); window.scrollTo({top:0});
+}
+
+/* ================= PROFIL ================= */
+ $('#pdProfile').onclick=()=>{
+  closeDrops();
+  $('#profName').value=state.name; $('#profEmail').value=state.email||'belum diisi';
+  $('#profPts').textContent=idFmt(state.points); $('#profTier').textContent=tierLabel(state.tier);
+  $('#profSince').textContent=new Date().getFullYear();
+  clearErr('profName'); setAvatarImgs(); renderCardNum();
+  openModal('mProfile');
+};
+ $('#profSave').onclick=()=>{
+  const nm=$('#profName').value.trim();
+  clearErr('profName');
+  if(!nm)return showErr('profName','Nama wajib diisi.');
+  if(nm.length<3)return showErr('profName','Nama minimal 3 karakter.');
+  state.name=nm; syncAuthUI();
+  if(state.uid&&cloudOK){
+    updateDoc(U(),{name:nm}).catch(e=>cloudFail(e));
+    if(auth.currentUser)updateProfile(auth.currentUser,{displayName:nm}).catch(()=>{});
+  }
+  closeModal($('#mProfile')); toast('ok','Profil diperbarui.');
+};
+ $('#pdPoints').onclick=()=>{closeDrops();openModal('mPoints')};
+
+/* ================= KARTU ================= */
+function attachTilt(scene,card){
+  scene.addEventListener('pointermove',e=>{
+    const r=card.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`rotateX(${(-py*10).toFixed(2)}deg) rotateY(${(px*13).toFixed(2)}deg)`;
+    card.style.setProperty('--mx',((px+.5)*100)+'%');
+    card.style.setProperty('--my',((py+.5)*100)+'%');
+  });
+  scene.addEventListener('pointerleave',()=>card.style.transform='');
+}
+attachTilt($('#cardScene'),$('#kcard'));
+attachTilt($('#gScene'),$('#gcard'));
+ $('#tierChips').addEventListener('click',async e=>{
+  const b=e.target.closest('.tier-chip'); if(!b)return;
+  state.tier=b.dataset.tier; syncTierUI(); renderMembership();
+  if(state.uid&&cloudOK)updateDoc(U(),{tier:state.tier}).catch(cloudFail);
+});
+
+/* ================= GUEST: KARTU AUTO-CYCLE ================= */
+const gTiers=['bronze','gold','platinum','black']; let gi=1;
+function applyGuestTier(){
+  const k=gTiers[gi];
+  $('#gcard').className='kcard tier-'+k;
+  $('#gcTier').textContent=tierLabel(k);
+  $('#gCap').textContent=G_CAP[k];
+  $$('#gTiers .g-tier').forEach(t=>t.classList.toggle('on',t.dataset.gt===k));
+}
+setInterval(()=>{ if($('#viewGuest').hidden)return; gi=(gi+1)%gTiers.length; applyGuestTier(); },2600);
+
+/* ================= TICKER ================= */
+let tickerItems=[], freshTimer=null;
+function seedTicker(){
+  tickerItems=[
+    {text:'Slot booking pagi mulai dibuka di barbershop partner',mine:false},
+    {text:'Cashback mingguan aktif untuk semua tier kapper-club',mine:false},
+    {text:'Top up QRIS pertama dapat +100 Kappoint',mine:false},
+    {text:'Haircut gratis berhasil ditukar seorang member',mine:false},
+    {text:'Barber baru bergabung — cek koleksi barbers',mine:false},
+  ];
+}
+function renderTicker(){
+  const item=t=>`<span class="tk-item ${t.mine?'mine':''}"><span class="tk-txt">${t.text}</span>${t.fresh?'<span class="tk-new">BARU</span>':'<span class="tk-sep"></span>'}</span>`;
+  const g=tickerItems.map(item).join('');
+  $('#tkTrack').innerHTML=`<div class="tk-group">${g}</div><div class="tk-group" aria-hidden="true">${g}</div>`;
+}
+function localTicker(item){
+  tickerItems.unshift({...item,fresh:!!item.mine});
+  tickerItems=tickerItems.slice(0,8);
+  renderTicker();
+  clearTimeout(freshTimer);
+  freshTimer=setTimeout(()=>{tickerItems.forEach(t=>t.fresh=false);renderTicker()},20000);
+}
+function pushTicker(text,mine){
+  localTicker({text,mine:!!mine});
+  if(mine&&state.uid&&cloudOK)addDoc(collection(db,'feed'),{text,uid:state.uid,name:state.name,createdAt:Date.now()}).catch(()=>{});
+}
+function resetTicker(){clearTimeout(freshTimer);seedTicker();renderTicker()}
+function simEntry(){
+  if(!CATS.length||!SHOPS.length)return pick(FALLBACK_FEED);
+  const first=pick(['Arif','Bima','Candra','Deni','Eka','Fajar','Galih','Hana','Iqbal','Joko']);
+  const c=pick(CATS), s=pick(SHOPS), k=Math.random();
+  const bb=barbersOf(s.name);
+  if(k<.45)return`${first} book ${c.name} di ${shortShop(s.name)} • ${pick(SLOTS)}`;
+  if(k<.65)return`${bb.length?pick(bb):'Kapster'} selesai ${c.name} di ${shortShop(s.name)}`;
+  if(k<.85)return`Cashback ${fmtIDR(pick([1250,2125,3400,5100]))} masuk untuk member ${pick(['Gold','Platinum'])}`;
+  return`+${pick([80,120,240,320])} Kappoint dari transaksi di ${shortShop(s.name)}`;
+}
+setInterval(()=>{ if(state.loggedIn)localTicker({text:simEntry(),mine:false}); },12000);
+ $('#tickerBar').onclick=()=>switchTab('book');
+
+/* ================= RIWAYAT ================= */
+function whenLabel(ts){
+  const sod=x=>{const d=new Date(x);d.setHours(0,0,0,0);return d.getTime()};
+  const diff=(sod(Date.now())-sod(ts))/864e5;
+  if(diff===0)return'Hari ini'; if(diff===1)return'Kemarin';
+  return new Date(ts).toLocaleDateString('id-ID',{day:'numeric',month:'short'});
+}
+function addTxn(dir,title,sub,amt){
+  const t={id:'local'+Date.now()+Math.random(),dir,title,sub,amt,ts:Date.now(),fresh:true};
+  txns.unshift(t); renderHistory();
+  if(state.uid&&cloudOK)addDoc(UCOL('txns'),{dir,title,sub,amt,ts:t.ts}).then(r=>t.id=r.id).catch(cloudFail);
+}
+let histFilter='all', histAll=false;
+function renderHistory(){
+  const f=txns.filter(t=>histFilter==='all'||t.dir===histFilter);
+  const shown=histAll?f:f.slice(0,6);
+  if(!f.length){
+    $('#histList').innerHTML=`<div class="hist-empty"><i data-lucide="receipt-text"></i>Belum ada transaksi.<br>Semua aktivitas masuk &amp; keluar akan tercatat di Firestore.</div>`;
+    $('#histMoreWrap').hidden=true; icons(); return;
+  }
+  $('#histList').innerHTML=shown.map(t=>`
+    <div class="tx-item ${t.fresh?'fresh':''}">
+      <span class="tx-ic ${t.dir}"><i data-lucide="${t.dir==='in'?'arrow-down-left':'arrow-up-right'}"></i></span>
+      <div><div class="tx-title">${t.title}</div><div class="tx-sub">${t.sub} &bull; ${whenLabel(t.ts)}</div></div>
+      <span class="tx-amt ${t.dir}">${t.dir==='in'?'+':'&minus;'}${fmtIDR(t.amt)}</span>
+    </div>`).join('');
+  txns.forEach(t=>t.fresh=false);
+  $('#histMoreWrap').hidden=f.length<=6;
+  $('#histToggle').textContent=histAll?'Tampilkan lebih sedikit':`Tampilkan semua (${f.length-6} lagi)`;
+  icons();
+}
+ $('#histFilters').addEventListener('click',e=>{
+  const b=e.target.closest('.hf'); if(!b)return;
+  histFilter=b.dataset.f; histAll=false;
+  $$('#histFilters .hf').forEach(x=>x.classList.toggle('active',x===b));
+  renderHistory();
+});
+ $('#histToggle').onclick=()=>{histAll=!histAll;renderHistory()};
+
+/* ================= NOTIFIKASI ================= */
+function addNotif(icon,title,body,extra={}){
+  const n={id:'local'+Date.now()+Math.random(),icon,title,body,time:'Baru saja',read:false,ts:Date.now(),...extra};
+  notifs.unshift(n); renderNotifs();
+  if(state.uid&&cloudOK)addDoc(UCOL('notifs'),{icon,title,body,...extra,read:false,ts:n.ts}).then(r=>n.id=r.id).catch(cloudFail);
+}
+function renderNotifs(){
+  const unread=notifs.filter(n=>!n.read).length;
+  const bb=$('#bellBadge');
+  bb.textContent=unread; bb.style.display=unread?'grid':'none';
+  $('#notifList').innerHTML=notifs.length?notifs.map((n,i)=>`
+    <div class="notif-item ${n.read?'':'unread'}" data-i="${i}">
+      <span class="n-dot"></span>
+      <div><div class="n-title"><i data-lucide="${n.icon}"></i>${n.title}</div>
+      <div class="n-body">${n.body}</div>
+      ${n.detail?`<span class="n-more">Lihat detail <i data-lucide="chevron-right"></i></span>`:''}
+      <div class="n-time">${n.time}</div></div>
+    </div>`).join(''):`<div class="notif-empty"><i data-lucide="bell-off"></i>Tidak ada notifikasi.</div>`;
+  icons();
+}
+function openNotifDetail(i){
+  const n=notifs[i]; if(!n)return;
+  if(!n.read){
+    n.read=true; renderNotifs();
+    if(n.id&&!n.id.startsWith('local')&&cloudOK)updateDoc(doc(db,'users',state.uid,'notifs',n.id),{read:true}).catch(cloudFail);
+  }
+  $('#ndIcon').innerHTML=`<i data-lucide="${n.icon||'bell'}"></i>`;
+  $('#ndTitle').textContent=n.title;
+  $('#ndTime').textContent=n.time;
+  $('#ndBody').textContent=n.detail||n.body;
+  const cb=$('#ndCodeBox');
+  if(n.code){cb.hidden=false;$('#ndCode').textContent=n.code;$('#ndCodeLbl').textContent=n.codeLabel||'Kode'}
+  else cb.hidden=true;
+  const act=$('#ndAction');
+  if(n.action){act.hidden=false;act.textContent=n.action.label;act.dataset.type=n.action.type}
+  else act.hidden=true;
+  openModal('mNotif'); icons();
+}
+ $('#notifList').addEventListener('click',e=>{
+  const it=e.target.closest('.notif-item'); if(!it)return;
+  openNotifDetail(+it.dataset.i);
+});
+ $('#btnReadAll').onclick=()=>{
+  notifs.forEach(n=>n.read=true); renderNotifs();
+  if(cloudOK&&state.uid){
+    const b=writeBatch(db);
+    notifs.forEach(n=>{if(!n.id.startsWith('local'))b.update(doc(db,'users',state.uid,'notifs',n.id),{read:true})});
+    b.commit().catch(cloudFail);
+  }
+};
+ $('#ndCodeBox').addEventListener('click',()=>copyText($('#ndCode').textContent,'Kode'));
+ $('#ndAction').onclick=function(){
+  const t=this.dataset.type;
+  closeModal($('#mNotif'));
+  if(t==='topup')openTopup();
+  else if(t==='book')switchTab('book');
+  else if(t==='product')switchTab('product');
+};
+
+/* ================= DROPDOWN ================= */
+function closeDrops(){$('#notifDrop').classList.remove('open');$('#profileDrop').classList.remove('open')}
+ $('#btnBell').onclick=e=>{e.stopPropagation();const d=$('#notifDrop');const was=d.classList.contains('open');closeDrops();if(!was)d.classList.add('open')};
+ $('#profileBtn').onclick=e=>{e.stopPropagation();const d=$('#profileDrop');const was=d.classList.contains('open');closeDrops();if(!was)d.classList.add('open')};
+document.addEventListener('click',e=>{if(!e.target.closest('#notifDrop')&&!e.target.closest('#profileBtn'))closeDrops()});
+
+/* ================= NAV ================= */
+let currentTab='home';
+function switchTab(t){
+  currentTab=t;
+  ['home','book','product','membership'].forEach(k=>{$('#tab'+k[0].toUpperCase()+k.slice(1)).hidden=k!==t});
+  $$('.fnav-link').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));
+  window.scrollTo({top:0,behavior:'smooth'});
+  renderCartBar();
+}
+function updateChrome(){
+  $('#fnav').classList.toggle('show',state.loggedIn);
+  $('#tickerBar').classList.toggle('show',state.loggedIn);
+}
+window.addEventListener('scroll',()=>{if(state.loggedIn)updateChrome()},{passive:true});
+document.addEventListener('click',e=>{
+  const tb=e.target.closest('[data-tab]');
+  if(tb){
+    e.preventDefault();
+    if(!state.loggedIn){openAuth('signup');toast('info','Daftar dulu untuk akses penuh Kapper.');return}
+    switchTab(tb.dataset.tab); return;
+  }
+  const au=e.target.closest('[data-auth]');
+  if(au){openAuth(au.dataset.auth);return}
+  if(e.target.closest('#ftTopup')){openTopup();return}
+  if(e.target.closest('#hintTopup')){openTopup();return}
+  const inf=e.target.closest('[data-info]');
+  if(inf){
+    e.preventDefault();
+    const d=INFO[inf.dataset.info];
+    $('#infoTitle').textContent=d.t; $('#infoBody').innerHTML=d.b; openModal('mInfo');
+  }
+});
+ $('#btnHeroAbout').onclick=()=>$('#tentang').scrollIntoView({behavior:'smooth'});
+ $('#ftAbout').onclick=e=>{
+  e.preventDefault();
+  if(!state.loggedIn){$('#tentang').scrollIntoView({behavior:'smooth'});return}
+  const d=INFO.about; $('#infoTitle').textContent=d.t; $('#infoBody').innerHTML=d.b; openModal('mInfo');
+};
+
+/* ================= LOAD KATALOG DARI FIRESTORE ================= */
+async function loadCatalog(){
+  try{
+    const pull=async col=>{
+      const s=await getDocs(collection(db,col));
+      return s.docs.map(d=>({id:d.id,...d.data()}));
+    };
+    const [L,B,BR,P]=await Promise.all([pull('layanan'),pull('barbershops'),pull('barbers'),pull('products')]);
+    CATS=L;
+    /* barbershops: { name, barbers:[...] } — barber tiap shop beda */
+    SHOPS=B.filter(x=>x.name).map(x=>({name:x.name,barbers:Array.isArray(x.barbers)?x.barbers.map(String):[]}));
+    /* fallback/gabung: koleksi barbers { shop, name } */
+    BARBERS_BY_SHOP={};
+    SHOPS.forEach(s=>BARBERS_BY_SHOP[s.name]=[...s.barbers]);
+    BR.forEach(x=>{
+      if(x.shop&&x.name){
+        const k=String(x.shop).trim();
+        if(!SHOPS.some(s=>s.name===k))SHOPS.push({name:k,barbers:[]});
+        BARBERS_BY_SHOP[k]=BARBERS_BY_SHOP[k]||[];
+        if(!BARBERS_BY_SHOP[k].includes(x.name))BARBERS_BY_SHOP[k].push(x.name);
+      }
+    });
+    PRODUCTS=P;
+  }catch(e){ cloudFail(e); }
+  buildCatalogUI();
+}
+async function ensureVouchers(){
+  try{
+    const m=await getDoc(doc(db,'catalog','vouchers_seeded'));
+    if(!m.exists()){
+      const b=writeBatch(db);
+      Object.entries(SEED_VOUCHERS).forEach(([k,v])=>b.set(doc(db,'vouchers',k),{value:v,used:false,usedBy:null}));
+      b.set(doc(db,'catalog','vouchers_seeded'),{at:Date.now()});
+      await b.commit();
+    }
+  }catch(e){cloudFail(e)}
+}
+function renderBarberChips(){
+  const list=barbersOf(bookState.shop);
+  $('#barberShopHint').textContent=bookState.shop?`— di ${shortShop(bookState.shop)}`:'';
+  $('#barberChips').innerHTML=list.length
+    ?list.map((b,i)=>`<button type="button" class="chip ${i===0?'active':''}" data-val="${b}">${b}</button>`).join('')
+    :`<div class="fempty" style="flex:1"><i data-lucide="user"></i>${bookState.shop?'Barbershop ini belum punya barber.':'Pilih barbershop dulu — barber mengikuti barbershop.'}<br><span class="fld">barbershops.barbers[]</span><span class="fld">barbers{shop,name}</span></div>`;
+  bookState.barber=list[0]||'';
+}
+function buildCatalogUI(){
+  const sel=$('#selService');
+  sel.innerHTML=CATS.length
+    ?CATS.map(c=>`<option value="${c.name}">${c.name}</option>`).join('')
+    :`<option value="">— Belum ada layanan di Firestore —</option>`;
+  $('#shopChips').innerHTML=SHOPS.length
+    ?SHOPS.map((s,i)=>`<button type="button" class="chip ${i===0?'active':''}" data-val="${s.name}">${s.name}</button>`).join('')
+    :`<div class="fempty" style="flex:1"><i data-lucide="store"></i>Koleksi <b class="mono">barbershops</b> masih kosong.<br><span class="fld">name</span><span class="fld">barbers[]</span></div>`;
+  bookState.shop=SHOPS[0]?.name||'';
+  renderBarberChips();
+  $('#wdShops').innerHTML=SHOPS.length
+    ?SHOPS.map((s,i)=>`<button type="button" class="chip ${i===0?'active':''}" data-val="${s.name}">${s.name}</button>`).join('')
+    :`<div class="fempty" style="flex:1"><i data-lucide="store"></i>Tidak ada barbershop — penarikan memakai nama default.</div>`;
+  wdShop=SHOPS[0]?.name||'Barbershop Partner';
+  renderProducts(); renderCatList(); renderCatDetail(); icons();
+}
+
+/* ================= TOP UP ================= */
+let topMethod='voucher', tqLeft=0, tqInt=null;
+function stopTQ(){clearInterval(tqInt);tqInt=null}
+function topAmount(){return +($('#topupAmt').value.replace(/\D/g,'')||0)}
+function openTopup(){selectTopMethod('voucher');clearErr('topupAmt');clearErr('voucherCode');openModal('mTopup')}
+function selectTopMethod(m){
+  topMethod=m;
+  $$('#topMethod .pm-card').forEach(c=>c.classList.toggle('active',c.dataset.tm===m));
+  $('#tvPanel').hidden=m!=='voucher';
+  $('#tqPanel').hidden=m!=='qris';
+  if(m==='qris')refreshTQ();
+}
+function refreshTQ(){
+  stopTQ(); clearErr('topupAmt');
+  const v=topAmount(), go=$('#tqGo');
+  if(v<10000){
+    $('#tqBox').innerHTML='<div style="padding:44px 8px;color:var(--muted);font-size:13px">Pilih nominal minimal Rp10.000 untuk membuat kode QRIS.</div>';
+    $('#tqCode').textContent='—'; $('#tqCount').textContent='';
+    $('#tqNote').textContent='Nominal belum memenuhi minimum.'; go.disabled=true; return;
+  }
+  if(v>MAX_TOPUP){
+    showErr('topupAmt',`Maksimal top up ${fmtIDR(MAX_TOPUP)}.`);
+    $('#tqBox').innerHTML='<div style="padding:44px 8px;color:var(--muted);font-size:13px">Nominal melebihi batas.</div>';
+    $('#tqCount').textContent=''; go.disabled=true; return;
+  }
+  const c=code();
+  $('#tqBox').innerHTML=qrSVG(`KAPPER|TOPUP|${c}|${v}`);
+  $('#tqCode').textContent=c;
+  $('#tqNote').textContent='Scan dengan aplikasi e-wallet atau m-banking, lalu tekan konfirmasi.';
+  tqLeft=300; updTQ(); go.disabled=false;
+  tqInt=setInterval(()=>{
+    tqLeft--; updTQ();
+    if(tqLeft<=0){stopTQ();go.disabled=true;$('#tqNote').textContent='Kode kedaluwarsa — ubah nominal untuk membuat kode baru.'}
+  },1000);
+}
+function updTQ(){
+  const m=String(Math.floor(tqLeft/60)).padStart(2,'0'), s=String(tqLeft%60).padStart(2,'0');
+  $('#tqCount').textContent=`Berlaku ${m}:${s}`;
+}
+function fmtInput(el){el.addEventListener('input',()=>{const v=el.value.replace(/\D/g,'').slice(0,9);el.value=v?idFmt(+v):''})}
+fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
+ $('#topupChips').addEventListener('click',e=>{
+  const b=e.target.closest('.nominal-chip'); if(!b)return;
+  $$('#topupChips .nominal-chip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); $('#topupAmt').value=idFmt(+b.dataset.v);
+  clearErr('topupAmt');
+  if(topMethod==='qris')refreshTQ();
+});
+ $('#topupAmt').addEventListener('input',()=>{
+  $$('#topupChips .nominal-chip').forEach(x=>x.classList.remove('active'));
+  if(topMethod==='qris')refreshTQ();
+});
+ $('#topMethod').addEventListener('click',e=>{const c=e.target.closest('.pm-card');if(c)selectTopMethod(c.dataset.tm)});
+ $('#voucherCode').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#voucherApply').click()}});
+ $('#voucherApply').onclick=async function(){
+  clearErr('voucherCode'); clearErr('topupAmt');
+  const raw=$('#voucherCode').value.trim().toUpperCase();
+  if(!raw)return showErr('voucherCode','Masukkan kode voucher dulu.');
+  if(!/^[A-Z0-9]{4,16}$/.test(raw))return showErr('voucherCode','Format kode tidak valid — 4–16 huruf/angka tanpa spasi.');
+  const b=this; busy(b,true,'Cek…');
+  let value=null, err=null;
+  if(cloudOK&&state.uid){
+    try{
+      await runTransaction(db,async t=>{
+        const s=await t.get(doc(db,'vouchers',raw));
+        if(!s.exists())throw new Error('Kode voucher tidak dikenali. Cek lagi ya.');
+        const d=s.data();
+        if(d.used)throw new Error('Kode ini sudah pernah dipakai.');
+        t.update(doc(db,'vouchers',raw),{used:true,usedBy:state.uid,usedAt:Date.now()});
+        value=d.value;
+      });
+    }catch(e){err=e.message||'Voucher gagal dipakai.'}
+  }else{
+    value=SEED_VOUCHERS[raw]||null;
+    err=!value?'Kode voucher tidak dikenali. Cek lagi ya.':state.usedVouchers.includes(raw)?'Kode ini sudah pernah kamu pakai.':null;
+    if(!err)state.usedVouchers.push(raw);
+  }
+  busy(b,false);
+  if(err)return showErr('voucherCode',err);
+  $('#voucherCode').value=''; closeModal($('#mTopup'));
+  if(cloudOK&&state.uid)updateDoc(U(),{usedVouchers:[...state.usedVouchers,raw]}).catch(()=>{});
+  setBalance(value); addPoints(Math.floor(value/10000));
+  addTxn('in','Top Up Kappoint','Voucher '+raw,value);
+  addNotif('wallet','Top up berhasil — Voucher',`${fmtIDR(value)} masuk ke saldo Kappointmu.`,{
+    detail:`Voucher ${raw} bernilai ${fmtIDR(value)} berhasil ditukar menjadi saldo. Bonus ${Math.floor(value/10000)} Kappoint juga masuk. Saldo baru: ${fmtIDR(state.balance)}.`,
+    code:raw,codeLabel:'Kode voucher'});
+  addDoc(collection(db,'payments'),{kind:'topup',method:'voucher',total:value,code:raw,status:'paid',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+  pushTicker(`Top up ${fmtIDR(value)} via voucher ${raw} berhasil`,true);
+  toast('ok',`Voucher ${raw} berhasil — ${fmtIDR(value)} masuk ke saldo!`);
+};
+ $('#tqGo').onclick=function(){
+  clearErr('topupAmt');
+  const v=topAmount();
+  if(v<10000)return showErr('topupAmt','Minimal top up Rp10.000.');
+  if(v>MAX_TOPUP)return showErr('topupAmt',`Maksimal top up ${fmtIDR(MAX_TOPUP)}.`);
+  if(tqLeft<=0)return toast('err','Kode QRIS kedaluwarsa — ubah nominal untuk membuat kode baru.');
+  const c=$('#tqCode').textContent;
+  const b=this; busy(b,true,'Verifikasi…');
+  setTimeout(()=>{
+    busy(b,false); closeModal($('#mTopup'));
+    setBalance(v); addPoints(Math.floor(v/10000));
+    addTxn('in','Top Up Kappoint','QRIS • '+c,v);
+    addNotif('wallet','Top up berhasil — QRIS',`${fmtIDR(v)} masuk ke saldo Kappointmu.`,{
+      detail:`Pembayaran QRIS sebesar ${fmtIDR(v)} terkonfirmasi. Saldo baru: ${fmtIDR(state.balance)}. Bonus ${Math.floor(v/10000)} Kappoint telah masuk.`,
+      code:c,codeLabel:'Kode transaksi'});
+    addDoc(collection(db,'payments'),{kind:'topup',method:'qris',total:v,code:c,status:'paid',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+    pushTicker(`Top up ${fmtIDR(v)} via QRIS berhasil`,true);
+    toast('ok',`Top up ${fmtIDR(v)} berhasil! Saldo kamu nambah.`);
+  },1100);
+};
+ $('#actTopup').onclick=openTopup;
+
+/* ================= TARIK TUNAI (kode → kasir) ================= */
+let wdShop='Barbershop Partner';
+ $('#wdShops').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+  $$('#wdShops .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');wdShop=b.dataset.val});
+ $('#actWithdraw').onclick=()=>{
+  if(state.balance<20000)return toast('err','Saldo kamu belum cukup untuk penarikan (min. Rp20.000). Top up dulu ya.');
+  clearErr('wdAmt');
+  $('#wdBalance').textContent='Rp'+idFmt(state.balance);
+  $('#wdForm').hidden=false; $('#wdResult').hidden=true;
+  $('#wdAmt').value='';
+  openModal('mWithdraw');
+};
+ $('#wdGo').onclick=()=>{
+  clearErr('wdAmt');
+  const v=+($('#wdAmt').value.replace(/\D/g,'')||0);
+  if(!v)return showErr('wdAmt','Masukkan jumlah yang akan ditarik.');
+  if(v<20000)return showErr('wdAmt','Minimal penarikan Rp20.000.');
+  if(v>MAX_WD)return showErr('wdAmt',`Maksimal penarikan ${fmtIDR(MAX_WD)}.`);
+  if(v>state.balance)return showErr('wdAmt','Saldo kamu tidak cukup untuk penarikan ini.');
+  const c=code();
+  setBalance(-v);
+  addTxn('out',`Tarik tunai — ${shortShop(wdShop)}`,'Penarikan di barbershop • '+c,v);
+  addNotif('banknote','Kode penarikan aktif',`${c} • ${fmtIDR(v)} di ${wdShop}.`,{
+    detail:`Penarikan sebesar ${fmtIDR(v)} menunggu pencairan di kasir ${wdShop}. Kirim atau tunjukkan kode di bawah ke kasir — kode sekali pakai dan berlaku hari ini. Saldo tersisa: ${fmtIDR(state.balance)}.`,
+    code:c,codeLabel:'Kode penarikan'});
+  addDoc(collection(db,'payments'),{kind:'withdraw',method:'cash',total:v,code:c,status:'pending',shop:wdShop,uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+  pushTicker(`Tarik tunai ${fmtIDR(v)} di ${shortShop(wdShop)} • kode ${c}`,true);
+  /* Tampilkan hasil: kode besar + tombol salin */
+  $('#wdrShop').textContent=wdShop;
+  $('#wdrAmt').textContent=fmtIDR(v);
+  $('#wdrCode').textContent=c;
+  $('#wdForm').hidden=true; $('#wdResult').hidden=false;
+  $('#wdAmt').value='';
+  icons();
+};
+ $('#wdrCopy').onclick=()=>copyText($('#wdrCode').textContent,'Kode penarikan');
+ $('#wdrDetail').onclick=()=>{
+  const i=notifs.findIndex(n=>n.code===($('#wdrCode').textContent||'')&&n.icon==='banknote');
+  closeModal($('#mWithdraw'));
+  if(i>=0)openNotifDetail(i);
+  else toast('info','Notifikasi penarikan ada di ikon lonceng.');
+};
+ $('#wdrDone').onclick=()=>{
+  closeModal($('#mWithdraw'));
+  $('#wdForm').hidden=false; $('#wdResult').hidden=true;
+};
+
+/* ================= POINT LOYALTY ================= */
+function updatePtsMeta(){
+  let idx=0; PT.forEach((p,i)=>{if(state.points>=p.min)idx=i});
+  const cur=PT[idx], next=PT[idx+1];
+  $('#ptsTier').textContent=cur.label.toUpperCase();
+  if(next){
+    const pct=Math.min(100,Math.round((state.points-cur.min)/(next.min-cur.min)*100));
+    $('#ptsBar').style.width=pct+'%';
+    $('#ptsNextTxt').textContent=`${idFmt(next.min-state.points)} Kappoint lagi menuju tier ${next.label}.`;
+  }else{
+    $('#ptsBar').style.width='100%';
+    $('#ptsNextTxt').textContent='Kamu ada di tier tertinggi — kapper-club Black.';
+  }
+}
+function renderRewards(){
+  $('#rewardList').innerHTML=REWARDS.map((r,i)=>`
+    <div class="reward">
+      <div><b>${r.name}</b><span class="cost">${idFmt(r.cost)} Kappoint</span></div>
+      <button class="rw-btn" data-i="${i}" ${state.points<r.cost?'disabled':''}>Tukar</button>
+    </div>`).join('');
+}
+ $('#rewardList').addEventListener('click',e=>{
+  const b=e.target.closest('.rw-btn'); if(!b||b.disabled)return;
+  const r=REWARDS[+b.dataset.i], c=code();
+  setPoints(state.points-r.cost);
+  addNotif('ticket','Voucher aktif',`${r.name} — kode ${c}.`,{
+    detail:`Penukaran ${idFmt(r.cost)} Kappoint berhasil. ${r.name} dapat dipakai di semua barbershop partner dengan menunjukkan kode di bawah. Berlaku 30 hari. Sisa poin: ${idFmt(state.points)}.`,
+    code:c,codeLabel:'Kode voucher'});
+  addDoc(collection(db,'payments'),{kind:'reward',method:'points',total:r.cost,code:c,status:'paid',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+  pushTicker(`Voucher ditukar: ${r.name} • kode ${c}`,true);
+  toast('ok',`Berhasil ditukar! Voucher: ${c}`);
+});
+ $('#actPoints').onclick=()=>openModal('mPoints');
+
+/* ================= KATEGORI ================= */
+let catActive=0;
+function renderCatList(){
+  const el=$('#catList');
+  if(!CATS.length){
+    el.innerHTML=`<div class="fempty"><i data-lucide="scissors"></i>Koleksi <b class="mono">layanan</b> masih kosong.<br>Tambahkan dokumen di Firestore dengan field:<br><span class="fld">name</span><span class="fld">price</span><span class="fld">dur</span><span class="fld">desc</span></div>`;
+    return;
+  }
+  if(catActive>=CATS.length)catActive=0;
+  el.innerHTML=CATS.map((c,i)=>`
+    <button type="button" class="cat-item ${i===catActive?'active':''}" data-i="${i}">
+      <span class="cat-idx">${String(i+1).padStart(2,'0')}</span>
+      <span class="cat-name">${c.name}</span>
+      <span class="cat-price">${fmtIDR(c.price)}</span>
+    </button>`).join('');
+}
+function renderCatDetail(){
+  const el=$('#catDetail');
+  if(!CATS.length){
+    el.innerHTML=`<div class="fempty"><i data-lucide="layout-list"></i>Detail layanan muncul di sini<br>setelah koleksi <b class="mono">layanan</b> terisi.</div>`;
+    icons(); return;
+  }
+  const c=CATS[catActive];
+  el.innerHTML=`
+    <div class="cd-kicker">Services / ${String(catActive+1).padStart(2,'0')}</div>
+    <h3 class="cd-name display">${c.name}</h3>
+    <p class="cd-desc">${c.desc||''}</p>
+    <div class="cd-meta">
+      <div><label>Durasi</label><b>${c.dur||'—'}</b></div>
+      <div><label>Harga</label><b>${fmtIDR(c.price||0)}</b></div>
+      <div><label>Termasuk</label><b style="font-family:'Archivo';font-weight:700">Cuci + styling</b></div>
+    </div>
+    <button class="btn btn-solid" id="cdBook">Book layanan ini <i data-lucide="arrow-right"></i></button>`;
+  icons();
+  $('#cdBook').onclick=()=>{
+    $('#selService').value=c.name; switchTab('book');
+    toast('info',`${c.name} siap di-book — lengkapi jadwalnya.`);
+  };
+}
+ $('#catList').addEventListener('click',e=>{
+  const b=e.target.closest('.cat-item'); if(!b)return;
+  catActive=+b.dataset.i; renderCatList(); renderCatDetail();
+});
+
+/* ================= PRODUCT + KERANJANG ================= */
+const cart=new Map();
+const cartCount=()=>{let n=0;cart.forEach(q=>n+=q);return n};
+const cartTotal=()=>{let t=0;cart.forEach((q,id)=>t+=(PRODUCTS[id]?.price||0)*q);return t};
+function ctrlHTML(i){
+  const q=cart.get(i)||0;
+  if(!q)return`<button type="button" class="addbtn" data-add="${i}" title="Tambah ke keranjang"><i data-lucide="plus"></i></button>`;
+  return`<div class="stepper"><button type="button" data-dec="${i}"><i data-lucide="minus"></i></button><b>${q}</b><button type="button" data-inc="${i}"><i data-lucide="plus"></i></button></div>`;
+}
+function renderProducts(){
+  const el=$('#prodGrid');
+  if(!PRODUCTS.length){
+    el.innerHTML=`<div class="fempty" style="grid-column:1/-1"><i data-lucide="package"></i>Koleksi <b class="mono">products</b> masih kosong.<br>Tambahkan dokumen di Firestore dengan field:<br><span class="fld">name</span><span class="fld">desc</span><span class="fld">price</span><span class="fld">seed</span></div>`;
+    icons(); return;
+  }
+  el.innerHTML=PRODUCTS.map((p,i)=>`
+    <article class="pcard">
+      <img class="pcard-img" src="https://picsum.photos/seed/${p.seed||'kapper'}/640/360.jpg" alt="${p.name}">
+      <div class="pcard-body">
+        <div class="pcard-name">${p.name}</div>
+        <div class="pcard-desc">${p.desc||''}</div>
+        <div class="pcard-foot">
+          <span class="pcard-price">${fmtIDR(p.price||0)}</span>
+          <span id="pcCtrl${i}">${ctrlHTML(i)}</span>
+        </div>
+      </div>
+    </article>`).join('');
+  icons();
+}
+function updateCtrl(i){const el=$('#pcCtrl'+i);if(el){el.innerHTML=ctrlHTML(i);icons()}}
+function setQty(i,d){
+  const q=(cart.get(i)||0)+d;
+  if(q<=0)cart.delete(i); else if(q<=9)cart.set(i,q);
+  updateCtrl(i); renderCartBar();
+}
+function clearCart(silent){
+  cart.clear(); renderProducts(); renderCartBar();
+  if(!silent)toast('info','Keranjang dikosongkan.');
+}
+function renderCartBar(){
+  const bar=$('#cartBar'), n=cartCount();
+  const show=state.loggedIn&&currentTab==='product'&&n>0;
+  bar.classList.toggle('show',show);
+  if(n>0){ $('#cbCount').textContent=n+' produk'; $('#cbTotal').textContent=fmtIDR(cartTotal()); }
+}
+ $('#prodGrid').addEventListener('click',e=>{
+  const add=e.target.closest('[data-add]'), inc=e.target.closest('[data-inc]'), dec=e.target.closest('[data-dec]');
+  if(add)setQty(+add.dataset.add,1);
+  else if(inc)setQty(+inc.dataset.inc,1);
+  else if(dec)setQty(+dec.dataset.dec,-1);
+});
+ $('#cbClear').onclick=()=>clearCart();
+ $('#btnCheckout').onclick=()=>{
+  if(!cart.size)return toast('err','Keranjang masih kosong — tambahkan produk dulu.');
+  const items=[...cart.entries()].map(([id,q])=>({name:PRODUCTS[id].name,qty:q,price:PRODUCTS[id].price||0}));
+  const total=cartTotal(), n=cartCount();
+  openPay({
+    type:'product', title:'Checkout Kapper Store', sub:'Ambil pesanan di barbershop partner terdekat',
+    items, total,
+    txTitle:`Kapper Store — ${n} produk`, txSub:'Pembelian produk',
+    onPaid:(m,paid)=>{
+      addNotif('shopping-bag',paid?'Pembayaran berhasil':'Pesanan diterima',
+        paid?`${n} produk terbayar via ${PM_LABEL[m]}.`:'Pesanan dibuat — bayar di kasir saat pengambilan.',{
+        detail:paid
+          ?`Checkout ${n} produk senilai ${fmtIDR(total)} berhasil dibayar via ${PM_LABEL[m]}. Pesanan siap diambil di kasir barbershop partner — tunjukkan riwayat transaksi ini.`
+          :`Pesanan ${n} produk senilai ${fmtIDR(total)} tersimpan. Selesaikan pembayaran tunai di kasir saat pengambilan.`,
+        action:{label:'Lihat Product',type:'product'}});
+      pushTicker(paid?`Checkout ${n} produk • ${fmtIDR(total)} via ${PM_LABEL[m]}`:`Pesanan ${n} produk dibuat — bayar di kasir`,true);
+    },
+    successMsg:`Checkout berhasil — ${fmtIDR(total)} terbayar.`,
+    pendingMsg:'Pesanan dibuat. Tunjukkan pesanan di kasir untuk membayar.',
+  });
+};
+
+/* ================= BOOK ================= */
+const bookState={shop:'',barber:'',time:null};
+ $('#slotGrid').innerHTML=SLOTS.map(s=>`<button type="button" class="slot" data-val="${s}">${s}</button>`).join('');
+ $('#shopChips').addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b)return;
+  $$('#shopChips .chip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  bookState.shop=b.dataset.val;
+  renderBarberChips(); icons();   /* barber berganti sesuai barbershop */
+});
+ $('#barberChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+  $$('#barberChips .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');bookState.barber=b.dataset.val});
+ $('#slotGrid').addEventListener('click',e=>{const b=e.target.closest('.slot');if(!b)return;
+  $$('#slotGrid .slot').forEach(x=>x.classList.remove('active'));b.classList.add('active');bookState.time=b.dataset.val});
+const todayISO=new Date().toISOString().slice(0,10);
+ $('#inpDate').min=todayISO; $('#inpDate').value=todayISO;
+
+function renderBookings(){
+  const act=bookings.filter(b=>b.status!=='cancelled');
+  $('#bookingList').innerHTML=act.length?act.map(b=>{
+    const d=new Date(b.date+'T00:00:00');
+    const st=b.paid?'<span class="bk-status">Terjadwal</span>':'<span class="bk-status pend">Bayar di kasir</span>';
+    return`<div class="bk-item">
+      <div><div class="bk-title">${b.service}${st}</div>
+      <div class="bk-meta">${b.shop} &bull; Barber ${b.barber}</div>
+      <div class="bk-meta">${d.toLocaleDateString('id-ID',{weekday:'short',day:'numeric',month:'short'})} &bull; ${b.time}</div></div>
+      <button type="button" class="bk-cancel" data-id="${b.id}">Batalkan</button>
+    </div>`}).join(''):
+    `<div class="bk-empty"><i data-lucide="calendar"></i>Belum ada booking. Kursimu masih kosong — isi form di samping.</div>`;
+  icons();
+}
+ $('#bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const err=$('#bookErr');
+  const showBookErr=m=>{err.textContent=m;err.classList.add('show');toast('err','Booking belum lengkap.');return false};
+  err.classList.remove('show');
+  if(!CATS.length)return showBookErr('Belum ada layanan — admin belum mengisi koleksi layanan di Firestore.');
+  if(!SHOPS.length)return showBookErr('Belum ada barbershop — admin belum mengisi koleksi barbershops di Firestore.');
+  const service=$('#selService').value, date=$('#inpDate').value, time=bookState.time;
+  if(!service)return showBookErr('Pilih layanan dulu.');
+  if(!bookState.shop)return showBookErr('Pilih barbershop dulu.');
+  if(!bookState.barber)return showBookErr('Barbershop ini belum punya barber — pilih barbershop lain atau tambahkan barber di Firestore.');
+  if(!date)return showBookErr('Pilih tanggal booking.');
+  if(date<todayISO)return showBookErr('Tanggal tidak boleh di masa lalu.');
+  if(!time)return showBookErr('Pilih jam booking.');
+  const cat=CATS.find(c=>c.name===service);
+  if(!cat)return showBookErr('Layanan tidak dikenali — muat ulang halaman.');
+  const dLab=new Date(date+'T00:00:00').toLocaleDateString('id-ID',{weekday:'short',day:'numeric',month:'short'});
+  const bk={service,shop:bookState.shop,barber:bookState.barber,date,time,paid:false,status:'active',id:'pending'};
+  openPay({
+    type:'booking', title:'Konfirmasi Booking', sub:`${bookState.shop} • Barber ${bookState.barber}`,
+    items:[{name:`${service} — ${dLab}, ${time}`,qty:1,price:cat.price||0}],
+    total:cat.price||0,
+    txTitle:`Booking ${service}`, txSub:bookState.shop,
+    onPaid:async(m,paid)=>{
+      bk.paid=paid;
+      try{
+        if(state.uid&&cloudOK){
+          const r=await addDoc(UCOL('bookings'),{service:bk.service,shop:bk.shop,barber:bk.barber,date:bk.date,time:bk.time,paid,status:'active',createdAt:Date.now()});
+          bk.id=r.id;
+        }else bk.id='local'+Date.now();
+      }catch(e){cloudFail(e);bk.id='local'+Date.now()}
+      bookings.unshift(bk); renderBookings();
+      addNotif('calendar-check',paid?'Booking terkonfirmasi':'Booking menunggu pembayaran',
+        `${service} di ${bookState.shop} — ${time}.`,{
+        detail:`${service} bersama ${bookState.barber} di ${bookState.shop}, ${dLab} pukul ${time}. ${paid?`Pembayaran ${fmtIDR(cat.price||0)} via ${PM_LABEL[m]}. Kursimu sudah dikunci.`:'Pembayaran tunai '+fmtIDR(cat.price||0)+' dilakukan di kasir sebelum jadwal.'}`,
+        action:{label:'Buka Book',type:'book'}});
+      addDoc(collection(db,'payments'),{kind:'booking',method:m,total:cat.price||0,code:'',status:paid?'paid':'pending',service,shop:bookState.shop,uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+      pushTicker(paid
+        ?`Booking dikonfirmasi — ${service} di ${shortShop(bookState.shop)} • ${dLab} ${time} • via ${PM_LABEL[m]}`
+        :`Booking dibuat (bayar di kasir) — ${service} • ${dLab} ${time}`,true);
+      bookState.time=null; $$('#slotGrid .slot').forEach(x=>x.classList.remove('active'));
+    },
+    successMsg:`Booking ${service} dikonfirmasi — ${dLab}, ${time}. Sampai jumpa!`,
+    pendingMsg:`Booking dicatat. Bayar di kasir ${shortShop(bookState.shop)} sebelum jadwal ya.`,
+  });
+});
+ $('#bookingList').addEventListener('click',async e=>{
+  const b=e.target.closest('.bk-cancel'); if(!b)return;
+  const id=b.dataset.id;
+  const removed=bookings.find(x=>x.id===id);
+  bookings=bookings.filter(x=>x.id!==id); renderBookings();
+  if(id&&!id.startsWith('local')&&cloudOK)deleteDoc(doc(db,'users',state.uid,'bookings',id)).catch(cloudFail);
+  if(removed){pushTicker(`Booking dibatalkan — ${removed.service} di ${shortShop(removed.shop)}`,true);
+  toast('info',`Booking ${removed.service} dibatalkan. Reschedule kapan aja.`)}
+});
+
+/* ================= MEMBERSHIP ================= */
+function renderMembership(){
+  const cur=tierIdx(state.tier);
+  $('#memberList').innerHTML=MEMBERSHIP.map(m=>{
+    const isCur=m.key===state.tier, canUp=tierIdx(m.key)>cur;
+    let act;
+    if(isCur)act=`<span class="mem-badge">Tier kamu</span>`;
+    else if(m.key==='black')act=`<button type="button" class="btn btn-ghost-inv" data-invite="1">Minta Undangan</button>`;
+    else if(canUp)act=`<button type="button" class="btn btn-blue" data-up="${m.key}">Upgrade</button>`;
+    else act=`<span class="mem-muted">Terbuka di ${m.req}</span>`;
+    return`<div class="mem-row ${m.dark?'dark':''} ${isCur?'current':''}">
+      <h3 class="mem-name display">${m.name}</h3>
+      <div><div class="mem-req">${m.req}</div>
+      <p class="mem-perks">${m.perks.join('<i>&bull;</i>')}</p></div>
+      <div>${act}</div>
+    </div>`}).join('');
+  icons();
+}
+ $('#memberList').addEventListener('click',e=>{
+  const up=e.target.closest('[data-up]'), inv=e.target.closest('[data-invite]');
+  if(up){
+    const m=MEMBERSHIP.find(x=>x.key===up.dataset.up);
+    if(state.points>=m.pts){
+      state.tier=m.key; syncTierUI(); renderMembership();
+      if(cloudOK&&state.uid)updateDoc(U(),{tier:m.key}).catch(cloudFail);
+      addNotif('medal','Tier naik — '+m.name+'!',`Kamu resmi kapper-club ${m.name}.`,{
+        detail:`Selamat! Dengan ${idFmt(state.points)} Kappoint, kamu resmi naik ke kapper-club ${m.name}. Benefit baru sudah aktif: ${m.perks.join(', ')}.`});
+      pushTicker(`${state.name} resmi naik ke kapper-club ${m.name}`,true);
+      toast('ok',`Selamat! Kamu resmi naik ke kapper-club ${m.name}.`);
+    }
+    else toast('info',`Kumpulkan ${idFmt(m.pts-state.points)} Kappoint lagi untuk ${m.name}.`);
+  }
+  if(inv)toast('info','Permintaan undangan Black terkirim. Tim kami akan mereview akunmu.');
+});
+
+/* ================= QR PSEUDO-GENERATOR ================= */
+function qrSVG(text){
+  const N=25;
+  let seed=2166136261>>>0;
+  for(let i=0;i<text.length;i++){seed^=text.charCodeAt(i);seed=Math.imul(seed,16777619)>>>0}
+  const rnd=()=>{seed^=seed<<13;seed>>>=0;seed^=seed>>>17;seed^=seed<<5;seed>>>=0;return seed/4294967296};
+  const fd=(r,c)=>r===0||r===6||c===0||c===6||(r>=2&&r<=4&&c>=2&&c<=4);
+  let d='';
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    let dark;
+    if(r<7&&c<7)dark=fd(r,c);
+    else if(r<7&&c>=N-7)dark=fd(r,c-(N-7));
+    else if(r>=N-7&&c<7)dark=fd(r-(N-7),c);
+    else if(r===6||c===6)dark=((r+c)%2)===0;
+    else dark=rnd()>0.52;
+    if(dark)d+=`M${c} ${r}h1v1h-1z`;
+  }
+  return`<svg viewBox="0 0 ${N} ${N}" shape-rendering="crispEdges"><rect width="${N}" height="${N}" fill="#fff"/><path d="${d}" fill="#0B0B0C"/></svg>`;
+}
+
+/* ================= MESIN PEMBAYARAN ================= */
+let payCtx=null, payMethod='kappoint', qrisLeft=0, qrisInt=null;
+function stopQris(){clearInterval(qrisInt);qrisInt=null}
+function startQris(){
+  stopQris(); qrisLeft=300; updQ();
+  qrisInt=setInterval(()=>{
+    qrisLeft--; updQ();
+    if(qrisLeft<=0){
+      stopQris();
+      $('#qrisStatus').textContent='Kode kedaluwarsa — pilih metode lain atau buka ulang.';
+      const g=$('#payGo'); if(g)g.disabled=true;
+    }
+  },1000);
+}
+function updQ(){
+  const m=String(Math.floor(qrisLeft/60)).padStart(2,'0'), s=String(qrisLeft%60).padStart(2,'0');
+  $('#qrCount').textContent=`Berlaku ${m}:${s}`;
+}
+function openPay(ctx){
+  payCtx=ctx; payMethod='kappoint';
+  $('#payTitle').textContent=ctx.title;
+  $('#paySub').textContent=ctx.sub||'';
+  const rows=ctx.items.map(it=>`
+    <div class="pay-item"><span>${it.name}${it.qty>1?` <span class="q">×${it.qty}</span>`:''}</span><span class="v">${fmtIDR(it.price*it.qty)}</span></div>`).join('');
+  $('#payItems').innerHTML=rows+`<div class="pay-item total"><span>Total bayar</span><span class="v">${fmtIDR(ctx.total)}</span></div>`;
+  $('#pmKapBal').textContent='Saldo '+fmtIDR(state.balance);
+  const kap=$('#pmList [data-pm="kappoint"]');
+  const kurang=state.balance<ctx.total;
+  kap.classList.toggle('off',kurang);
+  selectMethod(kurang?'qris':'kappoint');
+  openModal('mPay');
+}
+function selectMethod(m){
+  payMethod=m;
+  $$('#pmList .pm-card').forEach(c=>c.classList.toggle('active',c.dataset.pm===m));
+  const qp=$('#qrisPanel');
+  if(m==='qris'){
+    const c=code();
+    $('#qrBox').innerHTML=qrSVG(`KAPPER|QRIS|${c}|${payCtx.total}`);
+    $('#qrCode').textContent=c;
+    $('#qrisStatus').textContent='Scan kode di atas, lalu tekan konfirmasi setelah pembayaran.';
+    qp.hidden=false; startQris();
+  }else{qp.hidden=true;stopQris()}
+  renderPayAction();
+}
+function renderPayAction(){
+  const a=$('#payAction'), t=payCtx.total;
+  if(payMethod==='kappoint'){
+    a.innerHTML=`<button type="button" class="btn btn-blue full" id="payGo"><i data-lucide="wallet"></i>Bayar ${fmtIDR(t)} dengan Kappoint</button>
+      <p class="earn-note"><i data-lucide="coins"></i>+${Math.max(1,Math.floor(t/10000))} Kappoint dari transaksi ini</p>`;
+  }else if(payMethod==='qris'){
+    a.innerHTML=`<button type="button" class="btn btn-blue full" id="payGo"><i data-lucide="check"></i>Saya Sudah Bayar</button>
+      <p class="earn-note"><i data-lucide="coins"></i>+${Math.max(1,Math.floor(t/10000))} Kappoint dari transaksi ini</p>`;
+  }else{
+    a.innerHTML=`<button type="button" class="btn btn-ghost full" id="payGo"><i data-lucide="store"></i>Konfirmasi — Bayar di Tempat</button>`;
+  }
+  icons();
+  $('#payGo').onclick=confirmPay;
+}
+ $('#pmList').addEventListener('click',e=>{
+  const c=e.target.closest('.pm-card'); if(!c)return;
+  if(c.classList.contains('off'))return toast('err','Saldo Kappoint belum cukup — top up dulu atau pilih metode lain.');
+  selectMethod(c.dataset.pm);
+});
+function confirmPay(){
+  const btn=$('#payGo'); if(!btn||btn.disabled)return;
+  const ctx=payCtx, earn=Math.max(1,Math.floor(ctx.total/10000));
+  const settle=(paid,method)=>{
+    ctx.onPaid&&ctx.onPaid(method,paid);
+    if(ctx.type==='product')clearCart(true);
+    closeModal($('#mPay'));
+    toast(paid?'ok':'info',paid?ctx.successMsg:ctx.pendingMsg);
+  };
+  if(payMethod==='kappoint'){
+    if(state.balance<ctx.total)return toast('err','Saldo Kappoint kurang.');
+    btn.disabled=true; btn.textContent='Memproses…';
+    setTimeout(()=>{
+      setBalance(-ctx.total); addPoints(earn);
+      addTxn('out',ctx.txTitle,ctx.txSub||'Pembayaran Kappoint',ctx.total);
+      settle(true,'kappoint');
+    },800);
+  }else if(payMethod==='qris'){
+    if(qrisLeft<=0)return toast('err','Kode QRIS sudah kedaluwarsa.');
+    btn.disabled=true; btn.textContent='Memverifikasi pembayaran…';
+    const c=$('#qrCode').textContent;
+    setTimeout(()=>{
+      addPoints(earn);
+      addTxn('out',ctx.txTitle,ctx.txSub||'Pembayaran QRIS',ctx.total);
+      addDoc(collection(db,'payments'),{kind:ctx.type,method:'qris',total:ctx.total,code:c,status:'paid',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+      settle(true,'qris');
+    },1100);
+  }else{
+    addDoc(collection(db,'payments'),{kind:ctx.type,method:'tempat',total:ctx.total,code:'',status:'pending',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+    settle(false,'tempat');
+  }
+}
+
+/* ================= COUNTER & REVEAL ================= */
+const userIO=new IntersectionObserver(es=>es.forEach(x=>{
+  if(x.isIntersecting){animateNum($('#userCount'),0,2483912,v=>idFmt(v));userIO.unobserve(x.target)}
+}),{threshold:.4});
+userIO.observe($('#userCount'));
+const revIO=new IntersectionObserver(es=>es.forEach(x=>{
+  if(x.isIntersecting){x.target.classList.add('in');revIO.unobserve(x.target)}
+}),{threshold:.1});
+ $$('.reveal').forEach(el=>revIO.observe(el));
+
+/* ================= MARQUEE ================= */
+(function(){
+  const items=['Kapper Club','Bronze','Gold','Platinum','Black','Booking tanpa antre','Kappoint','QRISReady','Voucher Top Up'];
+  const group=items.map(t=>`<span>${t}</span><span class="mq-dot"></span>`).join('');
+  $('#mqTrack').innerHTML=`<div class="mq-group">${group}</div><div class="mq-group" aria-hidden="true">${group}</div>`;
+})();
+
+/* ================= INFO ================= */
+const INFO={
+  about:{t:'Tentang Kami',b:`<p>Kapper adalah platform booking barbershop dengan dompet digital Kappoint dan program loyalitas kapper-club. Sejak 2021, kami menghubungkan 1.240+ barbershop dengan 2,4 juta pengguna di 14 kota Indonesia.</p><p>Misi kami sederhana: ritual rambut yang rapi seharusnya semudah membuka aplikasi.</p>`},
+  contact:{t:'Kontak',b:`<p><b>Email</b> — hello@kapper.id</p><p><b>Telepon</b> — +62 21 5099 7700</p><p><b>Kantor</b> — Jl. Senopati No. 88, Jakarta Selatan, 12190</p><p>Jam operasional: Senin–Minggu, 09.00–21.00 WIB.</p>`},
+  terms:{t:'Syarat & Ketentuan',b:`<p>Dengan menggunakan Kapper, kamu setuju untuk menggunakan aplikasi sebagaimana mestinya: satu akun per orang, saldo Kappoint bukan alat pembayaran umum, dan penarikan tunai hanya berlaku di barbershop partner dengan kode sekali pakai yang ditunjukkan ke kasir.</p><p>Booking yang dibatalkan kurang dari 3 jam sebelum jadwal dapat dikenakan biaya sesuai kebijakan barbershop.</p>`},
+  privacy:{t:'Privasi',b:`<p>Kami hanya mengumpulkan data yang dibutuhkan untuk menjalankan layanan: identitas akun, riwayat transaksi, dan preferensi booking. Data tersimpan aman di Firebase dan tidak pernah dijual ke pihak ketiga.</p><p>Kamu bisa meminta ekspor atau penghapusan akun kapan saja lewat hello@kapper.id.</p>`},
+};
+
+/* ================= INIT ================= */
+ $('#year').textContent=new Date().getFullYear();
+makeFavicon();
+applyGuestTier(); resetTicker(); setCloudPill();
+buildCatalogUI();
+renderHistory(); renderNotifs(); renderBookings(); renderRewards(); updatePtsMeta();
+renderMembership(); renderCartBar(); icons();
+loadCatalog();
+ensureVouchers();
+</script>
+</body>
+</html>
