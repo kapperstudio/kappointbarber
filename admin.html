@@ -177,6 +177,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .pr-prev img{width:100%;height:100%;object-fit:cover}
 .pr-prev svg{width:26px;height:26px;color:var(--muted);opacity:.5}
 .pr-prev.has{border-style:solid;border-color:var(--ink)}
+.pr-req{display:inline-flex;align-items:center;gap:5px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-top:8px}
+.pr-req svg{width:12px;height:12px}
 
 .pf-row{display:flex;gap:16px;align-items:center}
 .pf-ava{width:72px;height:72px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:22px;overflow:hidden;flex:none;cursor:pointer;position:relative}
@@ -221,7 +223,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   <div class="login-bg"></div>
   <div class="login-card">
     <div class="login-logo">
-      <span class="login-mark"><i data-lucide="scissors"></i></span>
       <div>
         <div class="side-name">KAPPER <span style="color:var(--blue)">Admin</span></div>
         <div class="side-sub">PANEL PENGELOLAAN</div>
@@ -250,7 +251,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   <header class="topbar">
     <div class="topbar-in">
       <a class="brand" href="#" onclick="return false">
-        <span class="login-mark"><i data-lucide="scissors"></i></span>
         <span>
           <span class="side-name">KAPPER</span><br>
           <span class="side-sub">ADMIN PANEL</span>
@@ -269,7 +269,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         <button class="nav-item" data-page="account"><i data-lucide="users"></i>Account</button>
       </nav>
       <div class="topbar-right">
-        <span class="cloud-pill" id="cloudPill"><i></i>FIRESTORE</span>
+        <span class="cloud-pill" id="cloudPill"><i></i>Kapperbase</span>
         <div style="position:relative">
           <button class="profile-btn" id="profileBtn">
             <span class="avatar" id="hdAvatar">A</span>
@@ -299,7 +299,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-dashboard">
       <div class="page-head">
         <h1 class="page-title display">Dashboard</h1>
-        <p class="page-sub">Ringkasan data langsung dari Firestore project kapperstudio-c629c.</p>
+        <p class="page-sub">Ringkasan data langsung dari Kapperbase.</p>
       </div>
       <div class="stats" id="statBox"></div>
       <div class="card">
@@ -395,7 +395,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-booking" hidden>
       <div class="page-head">
         <h1 class="page-title display">Booking</h1>
-        <p class="page-sub">Reservasi masuk dari customer — dikumpulkan dari <span class="mono">users/{uid}/bookings</span>.</p>
+        <p class="page-sub">Reservasi masuk dari customer — dikumpulkan dari <span class="mono">users/bookings</span>.</p>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
@@ -452,11 +452,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       <button class="btn btn-blue" id="btnSaveLoyalty" style="margin-top:18px"><i data-lucide="save"></i>Simpan Perubahan Loyalty</button>
     </section>
 
-    <!-- ============ PRODUCT ============ -->
+    <!-- ============ PRODUCT (foto Cloudinary — wajib, tanpa seed) ============ -->
     <section id="pg-product" hidden>
       <div class="page-head">
         <h1 class="page-title display">Product</h1>
-        <p class="page-sub">Foto diunggah ke <b>Cloudinary</b> (cloud <span class="mono">o9nnrrra</span> · preset <span class="mono">kapper.studio</span>) — yang tersimpan di Firestore hanya link CDN-nya.</p>
+        <p class="page-sub">Foto <b>wajib</b> diunggah ke <b>Kapperbase</b> (cloud <span class="mono">o9nnrrra</span> · preset <span class="mono">kapper.studio</span>) — yang tersimpan di Kapperbasehanya link CDN-nya.</p>
       </div>
       <div class="grid2">
         <form class="card" id="formProduct">
@@ -464,6 +464,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
           <input type="hidden" id="prEditId" value="">
           <label class="f-label">Foto produk</label>
           <div class="pr-prev" id="prPrev" title="Klik untuk pilih foto"><i data-lucide="image"></i></div>
+          <span class="pr-req"><i data-lucide="alert-circle"></i>Foto wajib — dari Kapperbase</span>
           <input type="file" id="prFile" accept="image/*" hidden>
           <div style="display:flex;gap:8px;margin-top:10px">
             <button type="button" class="btn btn-line btn-sm" id="btnPrUpload"><i data-lucide="upload"></i>Upload Foto</button>
@@ -477,8 +478,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
           <p class="f-err-txt" id="err-prPrice"></p>
           <label class="f-label">Deskripsi</label>
           <textarea class="inp" id="prDesc" rows="2"></textarea>
-          <label class="f-label">Seed gambar (fallback jika tanpa foto)</label>
-          <input class="inp mono" id="prSeed" placeholder="kapper-pomade">
           <div style="display:flex;gap:8px;margin-top:18px">
             <button type="submit" class="btn btn-blue" id="btnProdSubmit" style="flex:1;justify-content:center"><i data-lucide="plus"></i>Tambah</button>
             <button type="button" class="btn btn-line" id="btnProdReset" hidden>Reset</button>
@@ -492,7 +491,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-notif" hidden>
       <div class="page-head">
         <h1 class="page-title display">Notifikasi</h1>
-        <p class="page-sub">Kirim pengumuman ke <b>semua akun member</b> — masuk ke daftar notifikasi masing-masing (<span class="mono">users/{uid}/notifs</span>).</p>
+        <p class="page-sub">Kirim pengumuman ke <b>semua akun member</b> — masuk ke daftar notifikasi masing-masing (<span class="mono">users/notifs</span>).</p>
       </div>
       <div class="grid2">
         <form class="card" id="formNotif">
@@ -512,7 +511,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         <div class="card">
           <h3 class="display" style="font-size:17px;margin-bottom:6px">Tips</h3>
           <p class="hint">Ikon populer: <span class="mono">megaphone · gift · badge-percent · calendar-check · sparkles · coins · wallet · ticket</span>.</p>
-          <p class="hint" style="margin-top:10px">Pengiriman berjalan per-batch (maks 400 dokumen per batch) agar aman dari limit Firestore.</p>
+          <p class="hint" style="margin-top:10px">Pengiriman berjalan per-batch (maks 400 dokumen per batch) agar aman dari limit Kapperbase.</p>
         </div>
       </div>
     </section>
@@ -568,7 +567,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
                 <button type="button" class="btn btn-line btn-sm" id="pfUpload"><i data-lucide="camera"></i>Ubah Foto</button>
                 <button type="button" class="btn btn-danger btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
               </div>
-              <p class="hint" style="margin-top:7px">JPG/PNG — di-crop bulat, diunggah ke Cloudinary, link disimpan di <span class="mono">admins/{uid}</span>.</p>
+              <p class="hint" style="margin-top:7px">JPG/PNG — di-crop bulat, diunggah ke Kapperbase, link disimpan di <span class="mono">admins</span>.</p>
               <input type="file" id="pfFile" accept="image/*" hidden>
             </div>
           </div>
@@ -601,7 +600,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
             <div class="kv"><span>Peran</span><b>SUPERADMIN</b></div>
             <div class="kv"><span>UID</span><b id="pfUid">—</b></div>
             <div class="kv"><span>Login via</span><b>EMAIL / PASSWORD</b></div>
-            <div class="kv"><span>Penyimpanan foto</span><b>CLOUDINARY</b></div>
+            <div class="kv"><span>Penyimpanan foto</span><b>Kapperbase</b></div>
             <div class="kv"><span>Akun dibuat</span><b id="pfSince">—</b></div>
           </div>
         </div>
@@ -685,7 +684,6 @@ function loadImg(file) {
 function canvasBlob(c) {
   return new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('Gagal memproses gambar.')), 'image/jpeg', .85));
 }
-/* Kompres sisi lebar tertentu → Blob (dipakai barcode) */
 async function shrinkToBlob(file, maxW) {
   const img = await loadImg(file);
   const r = Math.min(1, maxW / Math.max(img.width, img.height));
@@ -695,7 +693,6 @@ async function shrinkToBlob(file, maxW) {
   URL.revokeObjectURL(img.src);
   return canvasBlob(c);
 }
-/* Crop bulat → Blob (dipakai avatar admin) */
 async function avatarToBlob(file) {
   const img = await loadImg(file);
   const s = 512, c = document.createElement('canvas'); c.width = c.height = s;
@@ -886,7 +883,7 @@ function loadProfile(){
   if(f.size>10*1024*1024)return toast('err','Maksimal 10 MB.');
   const b=$('#pfUpload'); busy(b,true,'Mengunggah…');
   (async()=>{
-    const blob=await avatarToBlob(f);            /* crop bulat → Blob */
+    const blob=await avatarToBlob(f);
     const url=await cloudinaryUpload(blob,'kapper-admin-'+admin.uid+'.jpg');
     admin.avatar=url; renderAdminIdentity();
     await setDoc(doc(db,'admins',admin.uid),{avatar:url},{merge:true});
@@ -1198,7 +1195,7 @@ function renderBarcode(){
   if(f.size>10*1024*1024)return toast('err','Maksimal 10 MB.');
   const b=$('#btnBcUpload'); busy(b,true,'Mengunggah…');
   (async()=>{
-    const blob=await shrinkToBlob(f,900);        /* kompres → Blob */
+    const blob=await shrinkToBlob(f,900);
     const url=await cloudinaryUpload(blob,'kapper-barcode-'+Date.now()+'.jpg');
     await setDoc(doc(db,'config','topup'),{barcode:url,updatedAt:Date.now()},{merge:true});
     toast('ok','Barcode diunggah ke Cloudinary.');
@@ -1428,7 +1425,7 @@ function renderLoyalty(){
 };
 function rewardsClean(){return loyalty.rewards.filter(r=>r.name&&r.cost)}
 
-/* ================= PRODUCT (upload foto → Cloudinary) ================= */
+/* ================= PRODUCT (foto Cloudinary — wajib, tanpa seed) ================= */
 let products=[], prImgFile=null, prImgUrl='', prLocalUrl='';
 async function loadProducts(){
   try{
@@ -1451,7 +1448,9 @@ function renderProducts(){
   em.innerHTML='';
   tb.innerHTML=products.map(p=>`
     <tr>
-      <td><img class="tbl-img" src="${p.img||`https://picsum.photos/seed/${p.seed||'kapper'}/120/120.jpg`}" alt="${p.name}"></td>
+      <td>${p.img
+        ?`<img class="tbl-img" src="${p.img}" alt="${p.name}">`
+        :`<div class="tbl-img" style="display:grid;place-items:center;color:var(--muted)"><i data-lucide="image-off"></i></div>`}</td>
       <td><b>${p.name}</b><br><span class="hint">${(p.desc||'').slice(0,60)}</span></td>
       <td class="num">${fmtIDR(p.price)}</td>
       <td><div class="rowact">
@@ -1462,7 +1461,7 @@ function renderProducts(){
   icons();
 }
 function resetProdForm(){
-  $('#prEditId').value='';$('#prName').value='';$('#prPrice').value='';$('#prDesc').value='';$('#prSeed').value='';
+  $('#prEditId').value='';$('#prName').value='';$('#prPrice').value='';$('#prDesc').value='';
   prImgFile=null; prImgUrl='';
   if(prLocalUrl){URL.revokeObjectURL(prLocalUrl);prLocalUrl=''}
   prPrevRender();
@@ -1499,17 +1498,21 @@ function resetProdForm(){
   if(!ok)return;
   const b=$('#btnProdSubmit'); busy(b,true,'Menyimpan…');
   try{
-    /* Upload ke Cloudinary hanya jika ada file baru; jika edit tanpa file, pertahankan/hapus URL lama */
     let img=prImgUrl;
     if(prImgFile){
       busy(b,true,'Mengunggah foto…');
       img=await cloudinaryUpload(prImgFile,'kapper-product-'+Date.now()+'.jpg');
     }
-    const data={name:nm,price:pr,desc:$('#prDesc').value.trim(),seed:$('#prSeed').value.trim()||('kapper-'+Date.now())};
-    if(img)data.img=img;
+    /* Foto wajib — tanpa fallback seed */
+    if(!img){
+      busy(b,false);
+      toast('err','Foto produk wajib diupload — tidak ada fallback lagi.');
+      $('#prPrev').scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    const data={name:nm,price:pr,desc:$('#prDesc').value.trim(),img};
     const id=$('#prEditId').value;
     if(id){
-      if(!img)data.img='';   /* foto dihapus saat edit */
       await updateDoc(doc(db,'products',id),data);
       toast('ok','Produk diperbarui.');
     }else{
@@ -1525,7 +1528,7 @@ function resetProdForm(){
   if(ed){
     const p=products.find(x=>x.id===ed.dataset.edpr); if(!p)return;
     $('#prEditId').value=p.id; $('#prName').value=p.name||''; $('#prPrice').value=p.price||'';
-    $('#prDesc').value=p.desc||''; $('#prSeed').value=p.seed||'';
+    $('#prDesc').value=p.desc||'';
     prImgFile=null; prImgUrl=p.img||'';
     if(prLocalUrl){URL.revokeObjectURL(prLocalUrl);prLocalUrl=''}
     prPrevRender();
