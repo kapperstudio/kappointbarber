@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#0B2FD1">
 <meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
-<link rel="canonical" href="https://kapperstudio-c629c.web.app/">
+<link rel="canonical" href="https://kappointbarbershop.vercel.app /">
 
 <!-- ============ OPEN GRAPH ============ -->
 <meta property="og:type" content="website">
@@ -37,6 +37,7 @@
 <meta name="apple-mobile-web-app-title" content="Kapper">
 
 <!-- ============ FAVICON ============ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23ffffff'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="icon" type="image/png" id="favicon" href="">
 <link rel="apple-touch-icon" id="appleIcon" href="">
 
@@ -78,7 +79,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;flex:none}
 @keyframes sp{to{transform:rotate(360deg)}}
 
-/* ---------- Validasi inline ---------- */
 .inp.invalid{border-color:var(--red);background:#FDF6F5}
 .f-err-txt{display:none;color:var(--red);font-size:12.5px;margin:6px 2px 0;line-height:1.45}
 .f-err-txt.show{display:block}
@@ -92,13 +92,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .strength i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:var(--sc,var(--ok));transition:.3s}
 .strength span{font-size:11px;font-family:'Spline Sans Mono';color:var(--muted);min-width:44px;text-align:right}
 
-/* ---------- Empty state ---------- */
 .fempty{border:1.5px dashed var(--line);border-radius:16px;padding:22px 18px;text-align:center;color:var(--muted);font-size:13px;background:#fff;line-height:1.7}
 .fempty b{color:var(--ink)}
 .fempty .fld{font-family:'Spline Sans Mono';font-size:11px;background:#F4F3EE;border-radius:8px;padding:2px 9px;display:inline-block;margin:3px 2px 0;color:var(--ink)}
 .fempty svg{width:22px;height:22px;margin:0 auto 6px;opacity:.4}
 
-/* ---------- Panel kode penarikan ---------- */
 .wd-ok{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:4px 0 16px}
 .wd-ok-ic{width:52px;height:52px;border-radius:50%;background:var(--blue-tint);color:var(--blue);display:grid;place-items:center}
 .wd-ok-ic svg{width:24px;height:24px}
@@ -238,8 +236,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .wp-points b{display:block;font-family:'Spline Sans Mono';font-size:21px;font-weight:600;color:var(--blue);margin-top:4px}
 .tier-chips{display:flex;gap:6px;margin:18px 0;padding:5px;background:#F4F3EE;border-radius:999px}
 .tier-chip{flex:1;padding:9px 4px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:.2s;font-family:'Spline Sans Mono'}
-.tier-chip:hover{color:var(--ink)}
+.tier-chip:hover{color:var(--ink);background:rgba(11,47,209,.06)}
 .tier-chip.active{background:var(--ink);color:#fff}
+.tier-chip.active:hover{background:var(--ink);color:#fff}
 .wallet-actions{display:flex;gap:9px;flex-wrap:wrap}
 .wallet-actions .btn{flex:1;justify-content:center;min-width:150px;padding:12px 16px}
 .zero-hint{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:13px 15px;background:var(--blue-tint);border-radius:14px;font-size:12.5px;color:var(--blue-dark)}
@@ -286,7 +285,7 @@ section.block{padding:80px 0}
 .prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .pcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.22s;display:flex;flex-direction:column}
 .pcard:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(10,10,10,.22)}
-.pcard-img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:saturate(.85) contrast(1.02)}
+.pcard-img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .pcard-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;flex:1}
 .pcard-name{font-weight:700;font-size:15.5px}
 .pcard-desc{font-size:13px;color:var(--muted);flex:1}
@@ -532,7 +531,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <div class="hero-copy">
       <span class="eyebrow">Booking &middot; Dompet &middot; Loyalitas</span>
       <h1 class="display">Cukur tanpa <em>antrian.</em></h1>
-      <p class="hero-about">Kapper menggabungkan booking barbershop, dompet digital, dan loyalitas dalam satu aplikasi — tersinkron real-time lewat Firebase. Pesan kursimu, bayar dengan Kappoint, QRIS, atau di kasir.</p>
+      <p class="hero-about">Kapper menggabungkan booking barbershop, dompet digital, dan loyalitas dalam satu aplikasi. Pesan kursimu, bayar dengan Kappoint, QRIS, atau di kasir.</p>
       <div class="hero-cta">
         <button class="btn btn-solid" data-auth="signup">Daftar Gratis <i data-lucide="arrow-right"></i></button>
         <button class="btn btn-ghost" id="btnHeroAbout">Tentang Kapper</button>
@@ -615,7 +614,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
             <div class="pd-head">
               <span class="avatar" id="pdAvatarBig">K</span>
               <div>
-                <div class="pd-name" id="pdName">Kapperclub</div>
+                <div class="pd-name" id="pdName">Member Kapper</div>
                 <div class="pd-mail" id="pdEmail">—</div>
                 <span class="pd-tier" id="pdTier">kapper-club bronze</span>
               </div>
@@ -667,7 +666,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
                     <button type="button" class="kc-eye" id="kcEyeBtn" title="Tampilkan / sembunyikan nomor kartu"><i data-lucide="eye"></i></button>
                   </div>
                   <div class="kc-bot">
-                    <div><span class="kc-label">Card holder</span><span class="kc-holder" id="kcHolder">Kapperclub</span></div>
+                    <div><span class="kc-label">Card holder</span><span class="kc-holder" id="kcHolder">Kapper Member</span></div>
                     <div style="text-align:right"><span class="kc-label">Kappoint</span><span class="kc-points mono" id="kcPoints">0</span></div>
                   </div>
                 </div>
@@ -690,6 +689,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
                 <button class="tier-chip" data-tier="platinum">Platinum</button>
                 <button class="tier-chip" data-tier="black">Black</button>
               </div>
+              <p class="hint" style="font-size:11.5px;color:var(--muted);margin:-8px 0 12px">Tier mengikuti membership — klik tier lain untuk syarat upgrade.</p>
               <div class="wallet-actions">
                 <button class="btn btn-blue" id="actTopup"><i data-lucide="plus"></i>Top Up</button>
                 <button class="btn btn-ghost" id="actWithdraw"><i data-lucide="arrow-down-to-line"></i>Tarik di Barbershop</button>
@@ -708,7 +708,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">Layanan</span><h2 class="sec-title display">Kategori cukur</h2></div>
-            <p class="sec-note">Katalog Pricelist <span class="mono">layanan</span> di Kapperbase.</p>
+            <p class="sec-note">Katalog dimuat dari koleksi <span class="mono">layanan</span> di Kapperbase.</p>
           </div>
           <div class="cat-grid">
             <div class="cat-list reveal" id="catList"></div>
@@ -772,7 +772,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">Kapper Store</span><h2 class="sec-title display">Product</h2></div>
-            <p class="sec-note">Katalog dari koleksi <span class="mono">products</span>. Checkout dengan Kappoint, QRIS, atau bayar di tempat.</p>
+            <p class="sec-note">Foto produk Kappro.</p>
           </div>
           <div class="prod-grid reveal" id="prodGrid"></div>
         </div>
@@ -837,14 +837,14 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       </div>
       <div class="ft-col">
         <b>Kontak</b>
-        <a href="mailto:hello@kapper.id">kapperstudio1@gmail.com </a>
+        <a href="mailto:hello@kapper.id">kapperstudio1@gmail.com</a>
         <a href="tel:+622150997700">+62 21 5099 7700</a>
         <span class="fl">Senin–Minggu, 09.00–21.00 WIB</span>
       </div>
     </div>
     <div class="ft-bot">
       <span>&copy; <span id="year"></span> Kapper Indonesia.</span>
-      <span>Powered by BARBERMAN.ID &amp; Unspoken</span>
+      <span>Powered by BARBERMAN.ID &amp; UNSPOKEN</span>
     </div>
   </div>
 </footer>
@@ -855,7 +855,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Selamat datang</span>
     <h3 class="m-title display">Masuk ke Kapper</h3>
-    <p class="m-sub" id="authSub">Akun baru bisa dapet voucher 20rb gratis pertama.</p>
+    <p class="m-sub" id="authSub">Akun baru banyak bonus.</p>
     <div class="auth-tabs" id="authTabs">
       <button class="auth-tab active" data-auth-tab="login">Masuk</button>
       <button class="auth-tab" data-auth-tab="signup">Daftar</button>
@@ -899,32 +899,35 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
   </div>
 </div>
 
+<!-- Top up: voucher (nilai dari kode) / QRIS (per nominal) -->
 <div class="modal" id="mTopup">
   <div class="modal-panel">
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Top Up</span>
     <h3 class="m-title display">Isi Saldo Kappoint</h3>
-    <p class="m-sub">Setiap Rp10.000 top up = 1 Kappoint.</p>
-    <label class="f-label">Pilih nominal</label>
-    <div class="chip-row" id="topupChips">
-      <button type="button" class="nominal-chip" data-v="50000">50rb</button>
-      <button type="button" class="nominal-chip active" data-v="100000">100rb</button>
-      <button type="button" class="nominal-chip" data-v="250000">250rb</button>
-      <button type="button" class="nominal-chip" data-v="500000">500rb</button>
+    <p class="m-sub">Voucher: nilai saldo mengikuti kode. QRIS: setiap Rp10.000 = 1 Kappoint.</p>
+    <div id="topAmtPanel" hidden>
+      <label class="f-label">Pilih nominal (QRIS)</label>
+      <div class="chip-row" id="topupChips">
+        <button type="button" class="nominal-chip" data-v="50000">50rb</button>
+        <button type="button" class="nominal-chip active" data-v="100000">100rb</button>
+        <button type="button" class="nominal-chip" data-v="250000">250rb</button>
+        <button type="button" class="nominal-chip" data-v="500000">500rb</button>
+      </div>
+      <label class="f-label">Atau tulis sendiri</label>
+      <div class="amt-wrap" id="topupWrap"><span>Rp</span><input id="topupAmt" inputmode="numeric" placeholder="100.000"></div>
+      <p class="f-err-txt" id="err-topupAmt"></p>
     </div>
-    <label class="f-label">Atau tulis sendiri</label>
-    <div class="amt-wrap" id="topupWrap"><span>Rp</span><input id="topupAmt" inputmode="numeric" placeholder="100.000"></div>
-    <p class="f-err-txt" id="err-topupAmt"></p>
     <label class="f-label">Metode top up</label>
     <div class="pm-list" id="topMethod">
       <button type="button" class="pm-card active" data-tm="voucher">
         <span class="pm-ic"><i data-lucide="ticket"></i></span>
-        <span><span class="pm-name">Kode Voucher</span><span class="pm-sub">Voucher global dari koleksi vouchers</span></span>
+        <span><span class="pm-name">Kode Voucher</span><span class="pm-sub">Nilai saldo dari kode voucher admin</span></span>
         <span class="pm-radio"></span>
       </button>
       <button type="button" class="pm-card" data-tm="qris">
         <span class="pm-ic"><i data-lucide="qr-code"></i></span>
-        <span><span class="pm-name">QRIS</span><span class="pm-sub">Kode pembayaran tersimpan di payments</span></span>
+        <span><span class="pm-name">QRIS</span><span class="pm-sub">Pilih nominal, lalu scan barcode</span></span>
         <span class="pm-radio"></span>
       </button>
     </div>
@@ -935,7 +938,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <button type="button" class="btn btn-solid" id="voucherApply" style="padding:12px 22px">Pakai</button>
       </div>
       <p class="f-err-txt" id="err-voucherCode"></p>
-      <p class="qris-note">Kode contoh: <b>KAPPER0</b> &middot; <b>KAPPER10</b> &middot; <b>KAPPER20</b> &middot; <b>KAPPER50</b> kappoint.</p>
+      <p class="qris-note">Masukkan kode voucher dari admin Kapper — nilai saldo otomatis mengikuti kode, sekali pakai.</p>
     </div>
     <div id="tqPanel" hidden>
       <div class="qris-panel">
@@ -1003,8 +1006,6 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Tarik Tunai</span>
     <h3 class="m-title display" id="wdTitle">Tarik di Barbershop</h3>
-
-    <!-- Form penarikan -->
     <div id="wdForm">
       <p class="m-sub">Tentukan jumlah, kode penarikan akan dibuat — tunjukkan kodenya ke kasir untuk menerima uang tunai.</p>
       <label class="f-label">Pilih barbershop</label>
@@ -1015,8 +1016,6 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       <p class="wp-label" style="margin-top:12px">Saldo tersedia: <b id="wdBalance" style="color:var(--ink)">Rp0</b></p>
       <button type="button" class="btn btn-blue full" id="wdGo"><i data-lucide="arrow-down-to-line"></i>Buat Kode Penarikan</button>
     </div>
-
-    <!-- Hasil: kode untuk kasir -->
     <div id="wdResult" hidden>
       <div class="wd-ok">
         <span class="wd-ok-ic"><i data-lucide="check"></i></span>
@@ -1139,7 +1138,6 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const vEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 const MAX_TOPUP=5000000, MAX_WD=20000000;
 
-/* Fungsi salin universal (clipboard + fallback) */
 async function copyText(txt,label='Teks'){
   if(!txt)return;
   try{
@@ -1166,9 +1164,9 @@ const tierLabel=k=>TIERS[tierIdx(k)].label;
 
 /* ================= KATALOG: 100% DARI FIRESTORE =================
    layanan      → { name, price, dur, desc }
-   barbershops  → { name, barbers: ["..",".."] }   (barber tiap shop beda)
-   barbers      → { shop: "<nama barbershop>", name }  (opsional, digabung)
-   products     → { name, desc, price, seed }        */
+   barbershops  → { name, barbers:["..",".."] }
+   barbers      → { shop, name } (opsional, digabung)
+   products     → { name, desc, price, img }  (img = URL Cloudinary dari admin) */
 let txns=[], notifs=[], bookings=[];
 let CATS=[], SHOPS=[], BARBERS_BY_SHOP={}, PRODUCTS=[];
 const SLOTS=['10:00','10:30','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
@@ -1211,7 +1209,6 @@ function setCloudPill(){
 }
 const U=()=>doc(db,'users',state.uid);
 const UCOL=c=>collection(db,'users',state.uid,c);
-
 const barbersOf=name=>BARBERS_BY_SHOP[name]||[];
 
 /* ================= FAVICON ================= */
@@ -1373,7 +1370,7 @@ function fileToAvatar(file,cb){
   if(f.size>5*1024*1024)return toast('err','Ukuran gambar maksimal 5 MB.');
   fileToAvatar(f,url=>{
     state.avatar=url; setAvatarImgs();
-    if(state.uid&&cloudOK)updateDoc(U(),{avatar:url}).then(()=>toast('ok','Foto profil diperbarui & tersimpan di Firestore.')).catch(e=>{cloudFail(e);toast('ok','Foto profil diperbarui.')});
+    if(state.uid&&cloudOK)updateDoc(U(),{avatar:url}).then(()=>toast('ok','Foto profil diperbarui.')).catch(e=>{cloudFail(e);toast('ok','Foto profil diperbarui.')});
     else toast('ok','Foto profil diperbarui.');
   });
 });
@@ -1468,7 +1465,6 @@ function validateSignup(){
   else if(pw2!==pw)ok=showErr('regPass2','Password tidak sama dengan di atas.');
   return ok;
 }
-/* Daftar → akun dibuat → TIDAK auto-login → diarahkan ke tab Masuk */
 let signupBusy=false;
  $('#formSignup').addEventListener('submit',async e=>{
   e.preventDefault();
@@ -1480,7 +1476,7 @@ let signupBusy=false;
     const cred=await createUserWithEmailAndPassword(auth,em,pw);
     await updateProfile(cred.user,{displayName:nm});
     await ensureUserDoc(cred.user,nm);
-    await signOut(auth);           /* keluar otomatis: paksa lewat halaman login */
+    await signOut(auth);
     signupBusy=false;
     ['regName','regEmail','regPass','regPass2'].forEach(id=>{$('#'+id).value=''});
     $('#pwStrength').hidden=true;
@@ -1559,9 +1555,9 @@ function guestReset(){
   window.scrollTo({top:0});
 }
 onAuthStateChanged(auth,async u=>{
-  if(signupBusy)return;      /* jangan reaksi saat proses daftar → signOut */
+  if(signupBusy)return;
   if(u){
-    closeModal($('#mAuth')); /* popup login hilang begitu berhasil masuk */
+    closeModal($('#mAuth'));   /* popup login hilang begitu berhasil masuk */
     if(state.uid===u.uid)return;
     await hydrateUser(u);
     enterApp();
@@ -1611,10 +1607,32 @@ function attachTilt(scene,card){
 }
 attachTilt($('#cardScene'),$('#kcard'));
 attachTilt($('#gScene'),$('#gcard'));
+
+/* ---- Tier chips: sesuai membership, tidak bisa dipindah sembarangan ---- */
  $('#tierChips').addEventListener('click',async e=>{
   const b=e.target.closest('.tier-chip'); if(!b)return;
-  state.tier=b.dataset.tier; syncTierUI(); renderMembership();
-  if(state.uid&&cloudOK)updateDoc(U(),{tier:state.tier}).catch(cloudFail);
+  const key=b.dataset.tier;
+  if(key===state.tier){
+    toast('info','Itu tier kamu saat ini — kapper-club '+tierLabel(key)+'.');
+    return;
+  }
+  const d=tierIdx(key)-tierIdx(state.tier);
+  if(d<0){
+    toast('info',`Tier kamu (${tierLabel(state.tier)}) sudah lebih tinggi dari ${tierLabel(key)}.`);
+    return;
+  }
+  const m=MEMBERSHIP.find(x=>x.key===key);
+  if(state.points>=m.pts){
+    state.tier=key; syncTierUI(); renderMembership();
+    if(cloudOK&&state.uid)updateDoc(U(),{tier:key}).catch(cloudFail);
+    addNotif('medal','Tier naik — '+m.name+'!',`Kamu resmi kapper-club ${m.name}.`,{
+      detail:`Selamat! Dengan ${idFmt(state.points)} Kappoint, kamu resmi naik ke kapper-club ${m.name}. Benefit baru sudah aktif: ${m.perks.join(', ')}.`});
+    pushTicker(`${state.name} resmi naik ke kapper-club ${m.name}`,true);
+    toast('ok',`Selamat! Kamu resmi naik ke kapper-club ${m.name}.`);
+  }else{
+    toast('info',`Butuh ${idFmt(m.pts-state.points)} Kappoint lagi untuk ${m.name} — yuk upgrade!`);
+    switchTab('membership');
+  }
 });
 
 /* ================= GUEST: KARTU AUTO-CYCLE ================= */
@@ -1821,9 +1839,7 @@ async function loadCatalog(){
     };
     const [L,B,BR,P]=await Promise.all([pull('layanan'),pull('barbershops'),pull('barbers'),pull('products')]);
     CATS=L;
-    /* barbershops: { name, barbers:[...] } — barber tiap shop beda */
     SHOPS=B.filter(x=>x.name).map(x=>({name:x.name,barbers:Array.isArray(x.barbers)?x.barbers.map(String):[]}));
-    /* fallback/gabung: koleksi barbers { shop, name } */
     BARBERS_BY_SHOP={};
     SHOPS.forEach(s=>BARBERS_BY_SHOP[s.name]=[...s.barbers]);
     BR.forEach(x=>{
@@ -1874,16 +1890,17 @@ function buildCatalogUI(){
   renderProducts(); renderCatList(); renderCatDetail(); icons();
 }
 
-/* ================= TOP UP ================= */
+/* ================= TOP UP: voucher (nilai dari kode) / QRIS ================= */
 let topMethod='voucher', tqLeft=0, tqInt=null;
 function stopTQ(){clearInterval(tqInt);tqInt=null}
 function topAmount(){return +($('#topupAmt').value.replace(/\D/g,'')||0)}
-function openTopup(){selectTopMethod('voucher');clearErr('topupAmt');clearErr('voucherCode');openModal('mTopup')}
+function openTopup(){selectTopMethod('voucher');openModal('mTopup')}
 function selectTopMethod(m){
   topMethod=m;
   $$('#topMethod .pm-card').forEach(c=>c.classList.toggle('active',c.dataset.tm===m));
   $('#tvPanel').hidden=m!=='voucher';
   $('#tqPanel').hidden=m!=='qris';
+  $('#topAmtPanel').hidden=m!=='qris';   /* voucher: tanpa nominal — nilai dari kode */
   if(m==='qris')refreshTQ();
 }
 function refreshTQ(){
@@ -1920,16 +1937,16 @@ fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
   $$('#topupChips .nominal-chip').forEach(x=>x.classList.remove('active'));
   b.classList.add('active'); $('#topupAmt').value=idFmt(+b.dataset.v);
   clearErr('topupAmt');
-  if(topMethod==='qris')refreshTQ();
+  refreshTQ();
 });
  $('#topupAmt').addEventListener('input',()=>{
   $$('#topupChips .nominal-chip').forEach(x=>x.classList.remove('active'));
-  if(topMethod==='qris')refreshTQ();
+  refreshTQ();
 });
  $('#topMethod').addEventListener('click',e=>{const c=e.target.closest('.pm-card');if(c)selectTopMethod(c.dataset.tm)});
  $('#voucherCode').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#voucherApply').click()}});
  $('#voucherApply').onclick=async function(){
-  clearErr('voucherCode'); clearErr('topupAmt');
+  clearErr('voucherCode');
   const raw=$('#voucherCode').value.trim().toUpperCase();
   if(!raw)return showErr('voucherCode','Masukkan kode voucher dulu.');
   if(!/^[A-Z0-9]{4,16}$/.test(raw))return showErr('voucherCode','Format kode tidak valid — 4–16 huruf/angka tanpa spasi.');
@@ -1986,7 +2003,7 @@ fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
 };
  $('#actTopup').onclick=openTopup;
 
-/* ================= TARIK TUNAI (kode → kasir) ================= */
+/* ================= TARIK TUNAI ================= */
 let wdShop='Barbershop Partner';
  $('#wdShops').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
   $$('#wdShops .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');wdShop=b.dataset.val});
@@ -2013,7 +2030,6 @@ let wdShop='Barbershop Partner';
     code:c,codeLabel:'Kode penarikan'});
   addDoc(collection(db,'payments'),{kind:'withdraw',method:'cash',total:v,code:c,status:'pending',shop:wdShop,uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
   pushTicker(`Tarik tunai ${fmtIDR(v)} di ${shortShop(wdShop)} • kode ${c}`,true);
-  /* Tampilkan hasil: kode besar + tombol salin */
   $('#wdrShop').textContent=wdShop;
   $('#wdrAmt').textContent=fmtIDR(v);
   $('#wdrCode').textContent=c;
@@ -2111,7 +2127,7 @@ function renderCatDetail(){
   catActive=+b.dataset.i; renderCatList(); renderCatDetail();
 });
 
-/* ================= PRODUCT + KERANJANG ================= */
+/* ================= PRODUCT (foto dari Firestore / Cloudinary) ================= */
 const cart=new Map();
 const cartCount=()=>{let n=0;cart.forEach(q=>n+=q);return n};
 const cartTotal=()=>{let t=0;cart.forEach((q,id)=>t+=(PRODUCTS[id]?.price||0)*q);return t};
@@ -2123,12 +2139,14 @@ function ctrlHTML(i){
 function renderProducts(){
   const el=$('#prodGrid');
   if(!PRODUCTS.length){
-    el.innerHTML=`<div class="fempty" style="grid-column:1/-1"><i data-lucide="package"></i>Koleksi <b class="mono">products</b> masih kosong.<br>Tambahkan dokumen di Firestore dengan field:<br><span class="fld">name</span><span class="fld">desc</span><span class="fld">price</span><span class="fld">seed</span></div>`;
+    el.innerHTML=`<div class="fempty" style="grid-column:1/-1"><i data-lucide="package"></i>Koleksi <b class="mono">products</b> masih kosong.<br>Tambahkan produk dari admin panel.</div>`;
     icons(); return;
   }
   el.innerHTML=PRODUCTS.map((p,i)=>`
     <article class="pcard">
-      <img class="pcard-img" src="https://picsum.photos/seed/${p.seed||'kapper'}/640/360.jpg" alt="${p.name}">
+      ${p.img
+        ?`<img class="pcard-img" src="${p.img}" alt="${p.name}" loading="lazy">`
+        :`<div class="pcard-img" style="display:grid;place-items:center;background:#F1F0EA;color:var(--muted)"><i data-lucide="image-off"></i></div>`}
       <div class="pcard-body">
         <div class="pcard-name">${p.name}</div>
         <div class="pcard-desc">${p.desc||''}</div>
@@ -2193,7 +2211,7 @@ const bookState={shop:'',barber:'',time:null};
   $$('#shopChips .chip').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
   bookState.shop=b.dataset.val;
-  renderBarberChips(); icons();   /* barber berganti sesuai barbershop */
+  renderBarberChips(); icons();
 });
  $('#barberChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
   $$('#barberChips .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');bookState.barber=b.dataset.val});
@@ -2226,7 +2244,7 @@ function renderBookings(){
   const service=$('#selService').value, date=$('#inpDate').value, time=bookState.time;
   if(!service)return showBookErr('Pilih layanan dulu.');
   if(!bookState.shop)return showBookErr('Pilih barbershop dulu.');
-  if(!bookState.barber)return showBookErr('Barbershop ini belum punya barber — pilih barbershop lain atau tambahkan barber di Firestore.');
+  if(!bookState.barber)return showBookErr('Barbershop ini belum punya barber — pilih barbershop lain atau tambahkan barber di admin panel.');
   if(!date)return showBookErr('Pilih tanggal booking.');
   if(date<todayISO)return showBookErr('Tanggal tidak boleh di masa lalu.');
   if(!time)return showBookErr('Pilih jam booking.');
@@ -2290,18 +2308,19 @@ function renderMembership(){
     </div>`}).join('');
   icons();
 }
+function doUpgrade(m){
+  state.tier=m.key; syncTierUI(); renderMembership();
+  if(cloudOK&&state.uid)updateDoc(U(),{tier:m.key}).catch(cloudFail);
+  addNotif('medal','Tier naik — '+m.name+'!',`Kamu resmi kapper-club ${m.name}.`,{
+    detail:`Selamat! Dengan ${idFmt(state.points)} Kappoint, kamu resmi naik ke kapper-club ${m.name}. Benefit baru sudah aktif: ${m.perks.join(', ')}.`});
+  pushTicker(`${state.name} resmi naik ke kapper-club ${m.name}`,true);
+  toast('ok',`Selamat! Kamu resmi naik ke kapper-club ${m.name}.`);
+}
  $('#memberList').addEventListener('click',e=>{
   const up=e.target.closest('[data-up]'), inv=e.target.closest('[data-invite]');
   if(up){
     const m=MEMBERSHIP.find(x=>x.key===up.dataset.up);
-    if(state.points>=m.pts){
-      state.tier=m.key; syncTierUI(); renderMembership();
-      if(cloudOK&&state.uid)updateDoc(U(),{tier:m.key}).catch(cloudFail);
-      addNotif('medal','Tier naik — '+m.name+'!',`Kamu resmi kapper-club ${m.name}.`,{
-        detail:`Selamat! Dengan ${idFmt(state.points)} Kappoint, kamu resmi naik ke kapper-club ${m.name}. Benefit baru sudah aktif: ${m.perks.join(', ')}.`});
-      pushTicker(`${state.name} resmi naik ke kapper-club ${m.name}`,true);
-      toast('ok',`Selamat! Kamu resmi naik ke kapper-club ${m.name}.`);
-    }
+    if(state.points>=m.pts)doUpgrade(m);
     else toast('info',`Kumpulkan ${idFmt(m.pts-state.points)} Kappoint lagi untuk ${m.name}.`);
   }
   if(inv)toast('info','Permintaan undangan Black terkirim. Tim kami akan mereview akunmu.');
