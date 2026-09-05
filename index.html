@@ -13,9 +13,8 @@
 <meta name="theme-color" content="#0B2FD1">
 <meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
-<link rel="canonical" href="https://kappointbarbershop.vercel.app /">
+<link rel="canonical" href="https://kappointbarbershop.vercel.app/">
 
-<!-- ============ OPEN GRAPH ============ -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kapper">
 <meta property="og:title" content="Kapper — Cukur Tanpa Antrian">
@@ -25,18 +24,15 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="id_ID">
 
-<!-- ============ TWITTER CARD ============ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kapper — Cukur Tanpa Antrian">
 <meta name="twitter:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
 <meta name="twitter:image" content="opengraph.png">
 
-<!-- ============ MOBILE WEB APP ============ -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Kapper">
 
-<!-- ============ FAVICON ============ -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23ffffff'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="icon" type="image/png" id="favicon" href="">
 <link rel="apple-touch-icon" id="appleIcon" href="">
@@ -278,7 +274,7 @@ section.block{padding:80px 0}
 .cd-kicker{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
 .cd-name{font-size:clamp(34px,4vw,52px);margin-bottom:18px}
 .cd-desc{color:var(--muted);max-width:46ch;margin-bottom:26px}
-.cd-meta{display:flex;gap:38px;padding:18px 0;border-block:1px solid var(--line);margin-bottom:26px}
+.cd-meta{display:flex;gap:38px;padding:18px 0;border-block:1px solid var(--line);margin-bottom:26px;flex-wrap:wrap}
 .cd-meta label{display:block;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
 .cd-meta b{font-family:'Spline Sans Mono';font-size:16.5px;font-weight:600}
 
@@ -581,7 +577,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <p class="sec-note">Kapper lahir dari kebiasaan sederhana: rambut butuh jadwal, bukan antrean. Kami membangun infrastruktur di baliknya.</p>
       </div>
       <div class="about-row reveal"><span class="about-num">/ 01</span><h3 class="about-title display">Booking presisi</h3><p class="about-text">Pilih barbershop, barber, dan jam yang pas. Kursimu dikunci — tanpa telepon menunggu, tanpa menunggu bangku.</p></div>
-      <div class="about-row reveal"><span class="about-num">/ 02</span><h3 class="about-title display">Dompet Kappoint</h3><p class="about-text">Top up lewat kode voucher atau QRIS. Butuh uang tunai? Tarik langsung di kasir barbershop partner dengan kode sekali pakai.</p></div>
+      <div class="about-row reveal"><span class="about-num">/ 02</span><h3 class="about-title display">Dompet Kappoint</h3><p class="about-text">Top up lewat kode voucher atau ajukan QRIS — saldo masuk setelah admin memverifikasi. Butuh tunai? Tarik di kasir dengan kode sekali pakai.</p></div>
       <div class="about-row reveal"><span class="about-num">/ 03</span><h3 class="about-title display">Loyalitas yang nyata</h3><p class="about-text">Setiap transaksi menanam Kappoint. Tukar jadi layanan gratis, atau biarkan tumbuh menaikkan tier kamu — dari Bronze sampai Black.</p></div>
     </div>
   </section>
@@ -646,7 +642,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
               <span class="sec-label" id="greetTier">kapper-club bronze</span>
               <h2 class="sec-title display">Halo, <span id="greetName">Member</span>.</h2>
             </div>
-            <p class="sec-note">Data kamu tersinkron real-time lewat Kapperbase.</p>
+            <p class="sec-note">Data kamu tersimpan.</p>
           </div>
           <div class="wallet-grid">
             <div class="card-scene" id="cardScene">
@@ -697,7 +693,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
               </div>
               <div class="zero-hint" id="zeroHint">
                 <i data-lucide="sparkles"></i>
-                <span>Saldo kamu masih Rp0. <button id="hintTopup">Top up pertama</button> — pakai kode voucher atau QRIS.</span>
+                <span>Saldo kamu masih Rp0. <button id="hintTopup">Top up pertama</button> — pakai kode voucher atau ajukan QRIS.</span>
               </div>
             </div>
           </div>
@@ -708,8 +704,9 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">Layanan</span><h2 class="sec-title display">Kategori cukur</h2></div>
-            <p class="sec-note">Katalog dimuat dari koleksi <span class="mono">layanan</span> di Kapperbase.</p>
+            <p class="sec-note">Tiap cabang punya layanan &amp; harganya sendiri — pilih cabang di bawah.</p>
           </div>
+          <div class="chip-row" id="homeShopChips" style="margin-bottom:26px"></div>
           <div class="cat-grid">
             <div class="cat-list reveal" id="catList"></div>
             <div class="cat-detail reveal" id="catDetail"></div>
@@ -740,16 +737,16 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">Reservasi</span><h2 class="sec-title display">Book kursimu</h2></div>
-            <p class="sec-note">Tiap barbershop punya daftar barber sendiri — pilih barbershop dulu, barber mengikuti.</p>
+            <p class="sec-note">Pilih barbershop — barber &amp; layanan (dengan harga cabang) mengikuti.</p>
           </div>
           <div class="book-grid">
             <form class="panel reveal" id="bookForm" novalidate>
-              <label class="f-label" for="selService">Layanan</label>
-              <select class="inp" id="selService"></select>
               <label class="f-label">Barbershop</label>
               <div class="chip-row" id="shopChips"></div>
               <label class="f-label">Barber <span style="text-transform:none;letter-spacing:0" id="barberShopHint"></span></label>
               <div class="chip-row" id="barberChips"></div>
+              <label class="f-label" for="selService">Layanan cabang ini</label>
+              <select class="inp" id="selService"></select>
               <label class="f-label" for="inpDate">Tanggal</label>
               <input class="inp" type="date" id="inpDate">
               <label class="f-label">Jam</label>
@@ -772,7 +769,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">Kapper Store</span><h2 class="sec-title display">Product</h2></div>
-            <p class="sec-note">Foto produk Kappro.</p>
+            <p class="sec-note">Foto produk dimuat dari Kapperbase.</p>
           </div>
           <div class="prod-grid reveal" id="prodGrid"></div>
         </div>
@@ -844,7 +841,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     </div>
     <div class="ft-bot">
       <span>&copy; <span id="year"></span> Kapper Indonesia.</span>
-      <span>Powered by BARBERMAN.ID &amp; UNSPOKEN</span>
+      <span>Powered by BARBERMAN.ID &amp; Unspoken</span>
     </div>
   </div>
 </footer>
@@ -855,7 +852,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Selamat datang</span>
     <h3 class="m-title display">Masuk ke Kapper</h3>
-    <p class="m-sub" id="authSub">Akun baru banyak bonus.</p>
+    <p class="m-sub" id="authSub">Akun baru mulai dengan hal baru.</p>
     <div class="auth-tabs" id="authTabs">
       <button class="auth-tab active" data-auth-tab="login">Masuk</button>
       <button class="auth-tab" data-auth-tab="signup">Daftar</button>
@@ -899,13 +896,13 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
   </div>
 </div>
 
-<!-- Top up: voucher (nilai dari kode) / QRIS (per nominal) -->
+<!-- Top up: voucher (nilai dari Firestore) / QRIS (pengajuan pending) -->
 <div class="modal" id="mTopup">
   <div class="modal-panel">
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Top Up</span>
     <h3 class="m-title display">Isi Saldo Kappoint</h3>
-    <p class="m-sub">Voucher: nilai saldo mengikuti kode. QRIS: setiap Rp10.000 = 1 Kappoint.</p>
+    <p class="m-sub">Voucher: nilai saldo mengikuti kode dari admin. QRIS: pengajuan diverifikasi admin lalu saldo masuk otomatis.</p>
     <div id="topAmtPanel" hidden>
       <label class="f-label">Pilih nominal (QRIS)</label>
       <div class="chip-row" id="topupChips">
@@ -922,31 +919,31 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <div class="pm-list" id="topMethod">
       <button type="button" class="pm-card active" data-tm="voucher">
         <span class="pm-ic"><i data-lucide="ticket"></i></span>
-        <span><span class="pm-name">Kode Voucher</span><span class="pm-sub">Nilai saldo dari kode voucher admin</span></span>
+        <span><span class="pm-name">Kode Voucher</span><span class="pm-sub">Nilai saldo dari kode voucher admin — masuk instan</span></span>
         <span class="pm-radio"></span>
       </button>
       <button type="button" class="pm-card" data-tm="qris">
         <span class="pm-ic"><i data-lucide="qr-code"></i></span>
-        <span><span class="pm-name">QRIS</span><span class="pm-sub">Pilih nominal, lalu scan barcode</span></span>
+        <span><span class="pm-name">QRIS</span><span class="pm-sub">Pilih nominal, scan, lalu kirim pengajuan</span></span>
         <span class="pm-radio"></span>
       </button>
     </div>
     <div id="tvPanel">
       <label class="f-label" for="voucherCode">Kode voucher</label>
       <div class="v-in">
-        <input class="inp" id="voucherCode" placeholder="cth. KAPPER100" maxlength="16">
+        <input class="inp" id="voucherCode" placeholder="cth. KAP-A1B2C3" maxlength="16">
         <button type="button" class="btn btn-solid" id="voucherApply" style="padding:12px 22px">Pakai</button>
       </div>
       <p class="f-err-txt" id="err-voucherCode"></p>
-      <p class="qris-note">Masukkan kode voucher dari admin Kapper — nilai saldo otomatis mengikuti kode, sekali pakai.</p>
+      <p class="qris-note">Kode voucher dibuat admin Kapper, nilai saldo mengikuti kode, dan hanya bisa dipakai <b>1x</b>.</p>
     </div>
     <div id="tqPanel" hidden>
       <div class="qris-panel">
         <div class="qris-svg" id="tqBox"></div>
         <div class="qris-meta"><span class="qris-code" id="tqCode">—</span><span class="qris-count" id="tqCount"></span></div>
-        <p class="qris-note" id="tqNote">Scan dengan aplikasi e-wallet atau m-banking, lalu tekan konfirmasi.</p>
+        <p class="qris-note" id="tqNote">Scan barcode di atas, selesaikan pembayaran, lalu kirim pengajuan untuk diverifikasi admin.</p>
       </div>
-      <button type="button" class="btn btn-blue full" id="tqGo"><i data-lucide="check"></i>Saya Sudah Bayar</button>
+      <button type="button" class="btn btn-blue full" id="tqGo"><i data-lucide="send"></i>Saya Sudah Bayar — Kirim Pengajuan</button>
     </div>
   </div>
 </div>
@@ -1066,7 +1063,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
           <button type="button" class="btn btn-line btn-sm" id="pfUpload"><i data-lucide="camera"></i>Ubah Foto</button>
           <button type="button" class="btn btn-ghost btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
         </div>
-        <p class="pf-hint">Upload dari perangkat — tersimpan di dokumen users/{uid}.</p>
+        <p class="pf-hint">Upload dari perangkat — tersimpan di dokumen.</p>
         <input type="file" id="profFile" accept="image/*" hidden>
       </div>
     </div>
@@ -1162,13 +1159,12 @@ const TIERS=[{key:'bronze',label:'Bronze'},{key:'gold',label:'Gold'},{key:'plati
 const tierIdx=k=>TIERS.findIndex(t=>t.key===k);
 const tierLabel=k=>TIERS[tierIdx(k)].label;
 
-/* ================= KATALOG: 100% DARI FIRESTORE =================
-   layanan      → { name, price, dur, desc }
-   barbershops  → { name, barbers:["..",".."] }
-   barbers      → { shop, name } (opsional, digabung)
-   products     → { name, desc, price, img }  (img = URL Cloudinary dari admin) */
+/* ================= KATALOG: 100% FIRESTORE =================
+   barbershops → { name, barbers:[], services:[{name,price,dur,desc}] }
+   barbers     → { shop, name } (opsional, digabung)
+   products    → { name, desc, price, img }                      */
 let txns=[], notifs=[], bookings=[];
-let CATS=[], SHOPS=[], BARBERS_BY_SHOP={}, PRODUCTS=[];
+let SHOPS=[], BARBERS_BY_SHOP={}, PRODUCTS=[];
 const SLOTS=['10:00','10:30','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
 const MEMBERSHIP=[
   {key:'bronze',name:'Bronze',req:'0 poin',pts:0,perks:['Cashback 1% setiap transaksi','Booking standar','Riwayat transaksi penuh']},
@@ -1185,7 +1181,6 @@ const REWARDS=[
 const PT=[{min:0,label:'Bronze'},{min:1000,label:'Gold'},{min:5000,label:'Platinum'},{min:20000,label:'Black'}];
 const G_CAP={bronze:'kapper-club bronze — mulai dari nol, cashback 1%',gold:'kapper-club gold — cashback 2,5% & slot prioritas',platinum:'kapper-club platinum — haircut gratis tiap bulan',black:'kapper-club black — undangan saja'};
 const PM_LABEL={kappoint:'Kappoint',qris:'QRIS',tempat:'bayar di tempat'};
-const SEED_VOUCHERS={KAPPER50:50000,KAPPER100:100000,KAPPER200:200000,KAPPER500:500000};
 const FALLBACK_FEED=['Slot pagi mulai ramai — book kursimu sekarang','Cashback mingguan aktif untuk semua tier','+100 Kappoint dari pembayaran QRIS pertama','Member baru bergabung tiap menit — jangan kalah'];
 const AUTH_ERR={
   'auth/invalid-email':'Format email tidak valid.','auth/missing-password':'Masukkan password.',
@@ -1210,6 +1205,7 @@ function setCloudPill(){
 const U=()=>doc(db,'users',state.uid);
 const UCOL=c=>collection(db,'users',state.uid,c);
 const barbersOf=name=>BARBERS_BY_SHOP[name]||[];
+const servicesOf=shop=>(SHOPS.find(s=>s.name===shop)?.services)||[];
 
 /* ================= FAVICON ================= */
 function makeFavicon(){
@@ -1298,6 +1294,7 @@ function animateNum(el,from,to,fmt){
     el.textContent=fmt(Math.round(from+(to-from)*e));
     if(p<1)requestAnimationFrame(f)})(t0);
 }
+/* Saldo: update lokal (animasi) + increment Firestore — tersinkron via snapshot */
 function setBalance(delta){
   const from=state.balance; state.balance+=delta;
   animateNum($('#saldoVal'),from,state.balance,v=>'Rp'+idFmt(v));
@@ -1493,7 +1490,7 @@ let signupBusy=false;
 });
  $('#pdLogout').onclick=async()=>{ try{await signOut(auth)}catch(e){toast('err',aerr(e))} };
 
-/* ================= AUTH STATE ================= */
+/* ================= AUTH STATE + REALTIME SNAPSHOTS ================= */
 let unsubs=[];
 async function ensureUserDoc(user,nm){
   const name=nm||user.displayName||user.email.split('@')[0].replace(/^./,c=>c.toUpperCase());
@@ -1501,12 +1498,6 @@ async function ensureUserDoc(user,nm){
     name, email:user.email, avatar:'', saldo:0, points:0, tier:'bronze',
     usedVouchers:[], cardNo:genCardNo(user.uid), createdAt:Date.now()
   },{merge:false});
-}
-async function loadColl(name,field='ts'){
-  try{
-    const s=await getDocs(query(UCOL(name),orderBy(field,'desc'),limit(60)));
-    return s.docs.map(d=>({id:d.id,...d.data()}));
-  }catch(e){cloudFail(e);return[]}
 }
 async function hydrateUser(user){
   state.uid=user.uid; state.loggedIn=true; state.email=user.email||'';
@@ -1522,18 +1513,43 @@ async function hydrateUser(user){
     });
     if(!d.cardNo&&cloudOK)updateDoc(U(),{cardNo:state.cardNo}).catch(()=>{});
   }catch(e){ cloudFail(e); state.name=user.displayName||user.email.split('@')[0]; }
-  txns=await loadColl('txns');
-  bookings=await loadColl('bookings','createdAt');
-  notifs=await loadColl('notifs');
+  /* --- Live snapshot: saldo, poin, tier, nama, avatar --- */
   unsubs.push(onSnapshot(doc(db,'users',user.uid),s=>{
     if(!s.exists())return; const d=s.data();
-    if(state.balance!==(d.saldo||0)){state.balance=d.saldo||0;$('#saldoVal').textContent='Rp'+idFmt(state.balance);$('#wdBalance').textContent='Rp'+idFmt(state.balance);$('#zeroHint').style.display=state.balance>0?'none':'flex';}
-    if(state.points!==(d.points||0)){state.points=d.points||0;$('#pointsVal').textContent=idFmt(state.points);$('#kcPoints').textContent=idFmt(state.points);$('#ptsBig').textContent=idFmt(state.points);updatePtsMeta();renderRewards();}
+    if(state.balance!==(d.saldo||0)){
+      state.balance=d.saldo||0;
+      $('#saldoVal').textContent='Rp'+idFmt(state.balance);
+      $('#wdBalance').textContent='Rp'+idFmt(state.balance);
+      $('#zeroHint').style.display=state.balance>0?'none':'flex';
+    }
+    if(state.points!==(d.points||0)){
+      state.points=d.points||0;
+      $('#pointsVal').textContent=idFmt(state.points);
+      $('#kcPoints').textContent=idFmt(state.points);
+      $('#ptsBig').textContent=idFmt(state.points);
+      updatePtsMeta(); renderRewards();
+    }
     if(state.tier!==d.tier){state.tier=d.tier||'bronze';syncTierUI();renderMembership();}
     if(state.name!==d.name){state.name=d.name||'';syncAuthUI();}
     if(state.avatar!==(d.avatar||'')){state.avatar=d.avatar||'';setAvatarImgs();}
     state.usedVouchers=d.usedVouchers||[];
   },e=>cloudFail(e)));
+  /* --- Live snapshot: riwayat transaksi --- */
+  unsubs.push(onSnapshot(query(UCOL('txns'),orderBy('ts','desc'),limit(60)),s=>{
+    txns=s.docs.map(d=>({id:d.id,...d.data()}));
+    renderHistory();
+  },e=>{}));
+  /* --- Live snapshot: booking --- */
+  unsubs.push(onSnapshot(query(UCOL('bookings'),orderBy('createdAt','desc'),limit(60)),s=>{
+    bookings=s.docs.map(d=>({id:d.id,...d.data()}));
+    renderBookings();
+  },e=>{}));
+  /* --- Live snapshot: notifikasi (topup disetujui dll. muncul instan) --- */
+  unsubs.push(onSnapshot(query(UCOL('notifs'),orderBy('ts','desc'),limit(40)),s=>{
+    notifs=s.docs.map(d=>({id:d.id,...d.data()}));
+    renderNotifs();
+  },e=>{}));
+  /* --- Feed global untuk ticker --- */
   const fq=query(collection(db,'feed'),orderBy('createdAt','desc'),limit(12));
   unsubs.push(onSnapshot(fq,s=>{
     s.docChanges().forEach(ch=>{
@@ -1557,7 +1573,7 @@ function guestReset(){
 onAuthStateChanged(auth,async u=>{
   if(signupBusy)return;
   if(u){
-    closeModal($('#mAuth'));   /* popup login hilang begitu berhasil masuk */
+    closeModal($('#mAuth'));
     if(state.uid===u.uid)return;
     await hydrateUser(u);
     enterApp();
@@ -1608,19 +1624,13 @@ function attachTilt(scene,card){
 attachTilt($('#cardScene'),$('#kcard'));
 attachTilt($('#gScene'),$('#gcard'));
 
-/* ---- Tier chips: sesuai membership, tidak bisa dipindah sembarangan ---- */
+/* ---- Tier chips: sesuai membership ---- */
  $('#tierChips').addEventListener('click',async e=>{
   const b=e.target.closest('.tier-chip'); if(!b)return;
   const key=b.dataset.tier;
-  if(key===state.tier){
-    toast('info','Itu tier kamu saat ini — kapper-club '+tierLabel(key)+'.');
-    return;
-  }
+  if(key===state.tier){toast('info','Itu tier kamu saat ini — kapper-club '+tierLabel(key)+'.');return}
   const d=tierIdx(key)-tierIdx(state.tier);
-  if(d<0){
-    toast('info',`Tier kamu (${tierLabel(state.tier)}) sudah lebih tinggi dari ${tierLabel(key)}.`);
-    return;
-  }
+  if(d<0){toast('info',`Tier kamu (${tierLabel(state.tier)}) sudah lebih tinggi dari ${tierLabel(key)}.`);return}
   const m=MEMBERSHIP.find(x=>x.key===key);
   if(state.points>=m.pts){
     state.tier=key; syncTierUI(); renderMembership();
@@ -1652,9 +1662,9 @@ function seedTicker(){
   tickerItems=[
     {text:'Slot booking pagi mulai dibuka di barbershop partner',mine:false},
     {text:'Cashback mingguan aktif untuk semua tier kapper-club',mine:false},
-    {text:'Top up QRIS pertama dapat +100 Kappoint',mine:false},
+    {text:'Top up QRIS diverifikasi admin — saldo masuk otomatis',mine:false},
     {text:'Haircut gratis berhasil ditukar seorang member',mine:false},
-    {text:'Barber baru bergabung — cek koleksi barbers',mine:false},
+    {text:'Barber baru bergabung — cek cabang favoritmu',mine:false},
   ];
 }
 function renderTicker(){
@@ -1675,19 +1685,19 @@ function pushTicker(text,mine){
 }
 function resetTicker(){clearTimeout(freshTimer);seedTicker();renderTicker()}
 function simEntry(){
-  if(!CATS.length||!SHOPS.length)return pick(FALLBACK_FEED);
-  const first=pick(['Arif','Bima','Candra','Deni','Eka','Fajar','Galih','Hana','Iqbal','Joko']);
-  const c=pick(CATS), s=pick(SHOPS), k=Math.random();
+  if(!SHOPS.length)return pick(FALLBACK_FEED);
+  const s=pick(SHOPS), sv=s.services||[], k=Math.random();
   const bb=barbersOf(s.name);
-  if(k<.45)return`${first} book ${c.name} di ${shortShop(s.name)} • ${pick(SLOTS)}`;
-  if(k<.65)return`${bb.length?pick(bb):'Kapster'} selesai ${c.name} di ${shortShop(s.name)}`;
+  const first=pick(['Arif','Bima','Candra','Deni','Eka','Fajar','Galih','Hana','Iqbal','Joko']);
+  if(sv.length&&k<.45)return`${first} book ${pick(sv).name} di ${shortShop(s.name)} • ${pick(SLOTS)}`;
+  if(k<.65)return`${bb.length?pick(bb):'Kapster'} selesai ${sv.length?pick(sv).name:'potongan'} di ${shortShop(s.name)}`;
   if(k<.85)return`Cashback ${fmtIDR(pick([1250,2125,3400,5100]))} masuk untuk member ${pick(['Gold','Platinum'])}`;
   return`+${pick([80,120,240,320])} Kappoint dari transaksi di ${shortShop(s.name)}`;
 }
 setInterval(()=>{ if(state.loggedIn)localTicker({text:simEntry(),mine:false}); },12000);
  $('#tickerBar').onclick=()=>switchTab('book');
 
-/* ================= RIWAYAT ================= */
+/* ================= RIWAYAT (Firestore, live) ================= */
 function whenLabel(ts){
   const sod=x=>{const d=new Date(x);d.setHours(0,0,0,0);return d.getTime()};
   const diff=(sod(Date.now())-sod(ts))/864e5;
@@ -1695,9 +1705,12 @@ function whenLabel(ts){
   return new Date(ts).toLocaleDateString('id-ID',{day:'numeric',month:'short'});
 }
 function addTxn(dir,title,sub,amt){
-  const t={id:'local'+Date.now()+Math.random(),dir,title,sub,amt,ts:Date.now(),fresh:true};
-  txns.unshift(t); renderHistory();
-  if(state.uid&&cloudOK)addDoc(UCOL('txns'),{dir,title,sub,amt,ts:t.ts}).then(r=>t.id=r.id).catch(cloudFail);
+  if(state.uid&&cloudOK){
+    addDoc(UCOL('txns'),{dir,title,sub,amt,ts:Date.now()}).catch(cloudFail);
+  }else{
+    txns.unshift({id:'local'+Date.now(),dir,title,sub,amt,ts:Date.now(),fresh:true});
+    renderHistory();
+  }
 }
 let histFilter='all', histAll=false;
 function renderHistory(){
@@ -1726,11 +1739,14 @@ function renderHistory(){
 });
  $('#histToggle').onclick=()=>{histAll=!histAll;renderHistory()};
 
-/* ================= NOTIFIKASI ================= */
+/* ================= NOTIFIKASI (Firestore, live) ================= */
 function addNotif(icon,title,body,extra={}){
-  const n={id:'local'+Date.now()+Math.random(),icon,title,body,time:'Baru saja',read:false,ts:Date.now(),...extra};
-  notifs.unshift(n); renderNotifs();
-  if(state.uid&&cloudOK)addDoc(UCOL('notifs'),{icon,title,body,...extra,read:false,ts:n.ts}).then(r=>n.id=r.id).catch(cloudFail);
+  if(state.uid&&cloudOK){
+    addDoc(UCOL('notifs'),{icon,title,body,...extra,read:false,ts:Date.now()}).catch(cloudFail);
+  }else{
+    notifs.unshift({id:'local'+Date.now(),icon,title,body,time:'Baru saja',read:false,ts:Date.now(),...extra});
+    renderNotifs();
+  }
 }
 function renderNotifs(){
   const unread=notifs.filter(n=>!n.read).length;
@@ -1742,7 +1758,7 @@ function renderNotifs(){
       <div><div class="n-title"><i data-lucide="${n.icon}"></i>${n.title}</div>
       <div class="n-body">${n.body}</div>
       ${n.detail?`<span class="n-more">Lihat detail <i data-lucide="chevron-right"></i></span>`:''}
-      <div class="n-time">${n.time}</div></div>
+      <div class="n-time">${n.time||whenLabel(n.ts)}</div></div>
     </div>`).join(''):`<div class="notif-empty"><i data-lucide="bell-off"></i>Tidak ada notifikasi.</div>`;
   icons();
 }
@@ -1750,11 +1766,11 @@ function openNotifDetail(i){
   const n=notifs[i]; if(!n)return;
   if(!n.read){
     n.read=true; renderNotifs();
-    if(n.id&&!n.id.startsWith('local')&&cloudOK)updateDoc(doc(db,'users',state.uid,'notifs',n.id),{read:true}).catch(cloudFail);
+    if(n.id&&cloudOK)updateDoc(doc(db,'users',state.uid,'notifs',n.id),{read:true}).catch(cloudFail);
   }
   $('#ndIcon').innerHTML=`<i data-lucide="${n.icon||'bell'}"></i>`;
   $('#ndTitle').textContent=n.title;
-  $('#ndTime').textContent=n.time;
+  $('#ndTime').textContent=n.time||whenLabel(n.ts);
   $('#ndBody').textContent=n.detail||n.body;
   const cb=$('#ndCodeBox');
   if(n.code){cb.hidden=false;$('#ndCode').textContent=n.code;$('#ndCodeLbl').textContent=n.codeLabel||'Kode'}
@@ -1772,8 +1788,11 @@ function openNotifDetail(i){
   notifs.forEach(n=>n.read=true); renderNotifs();
   if(cloudOK&&state.uid){
     const b=writeBatch(db);
-    notifs.forEach(n=>{if(!n.id.startsWith('local'))b.update(doc(db,'users',state.uid,'notifs',n.id),{read:true})});
-    b.commit().catch(cloudFail);
+    notifs.forEach(n=>{if(!n.read===false)b.update});
+    /* tandai semua yang belum terbaca */
+    const b2=writeBatch(db);
+    notifs.forEach(n=>{if(!n.read)b2.update(doc(db,'users',state.uid,'notifs',n.id),{read:true})});
+    b2.commit().catch(cloudFail);
   }
 };
  $('#ndCodeBox').addEventListener('click',()=>copyText($('#ndCode').textContent,'Kode'));
@@ -1837,15 +1856,18 @@ async function loadCatalog(){
       const s=await getDocs(collection(db,col));
       return s.docs.map(d=>({id:d.id,...d.data()}));
     };
-    const [L,B,BR,P]=await Promise.all([pull('layanan'),pull('barbershops'),pull('barbers'),pull('products')]);
-    CATS=L;
-    SHOPS=B.filter(x=>x.name).map(x=>({name:x.name,barbers:Array.isArray(x.barbers)?x.barbers.map(String):[]}));
+    const [B,BR,P]=await Promise.all([pull('barbershops'),pull('barbers'),pull('products')]);
+    SHOPS=B.filter(x=>x.name).map(x=>({
+      name:x.name,
+      barbers:Array.isArray(x.barbers)?x.barbers.map(String):[],
+      services:Array.isArray(x.services)?x.services:[]
+    }));
     BARBERS_BY_SHOP={};
     SHOPS.forEach(s=>BARBERS_BY_SHOP[s.name]=[...s.barbers]);
     BR.forEach(x=>{
       if(x.shop&&x.name){
         const k=String(x.shop).trim();
-        if(!SHOPS.some(s=>s.name===k))SHOPS.push({name:k,barbers:[]});
+        if(!SHOPS.some(s=>s.name===k))SHOPS.push({name:k,barbers:[],services:[]});
         BARBERS_BY_SHOP[k]=BARBERS_BY_SHOP[k]||[];
         if(!BARBERS_BY_SHOP[k].includes(x.name))BARBERS_BY_SHOP[k].push(x.name);
       }
@@ -1854,16 +1876,21 @@ async function loadCatalog(){
   }catch(e){ cloudFail(e); }
   buildCatalogUI();
 }
-async function ensureVouchers(){
-  try{
-    const m=await getDoc(doc(db,'catalog','vouchers_seeded'));
-    if(!m.exists()){
-      const b=writeBatch(db);
-      Object.entries(SEED_VOUCHERS).forEach(([k,v])=>b.set(doc(db,'vouchers',k),{value:v,used:false,usedBy:null}));
-      b.set(doc(db,'catalog','vouchers_seeded'),{at:Date.now()});
-      await b.commit();
-    }
-  }catch(e){cloudFail(e)}
+let homeShop='';
+function renderHomeShopChips(){
+  const el=$('#homeShopChips');
+  if(!SHOPS.length){
+    el.innerHTML=`<div class="fempty" style="flex:1"><i data-lucide="store"></i>Koleksi <b class="mono">barbershops</b> masih kosong.<br><span class="fld">name</span><span class="fld">barbers[]</span><span class="fld">services[]</span></div>`;
+    icons(); return;
+  }
+  el.innerHTML=SHOPS.map(s=>`<button type="button" class="chip ${s.name===homeShop?'active':''}" data-home="${s.name}">${s.name}</button>`).join('');
+  icons();
+}
+function renderServiceSelect(){
+  const list=servicesOf(bookState.shop);
+  $('#selService').innerHTML=list.length
+    ?list.map(c=>`<option value="${c.name}">${c.name} — ${fmtIDR(c.price)}</option>`).join('')
+    :`<option value="">— Cabang ini belum punya layanan —</option>`;
 }
 function renderBarberChips(){
   const list=barbersOf(bookState.shop);
@@ -1874,15 +1901,14 @@ function renderBarberChips(){
   bookState.barber=list[0]||'';
 }
 function buildCatalogUI(){
-  const sel=$('#selService');
-  sel.innerHTML=CATS.length
-    ?CATS.map(c=>`<option value="${c.name}">${c.name}</option>`).join('')
-    :`<option value="">— Belum ada layanan di Firestore —</option>`;
+  homeShop=SHOPS[0]?.name||'';
+  renderHomeShopChips();
   $('#shopChips').innerHTML=SHOPS.length
     ?SHOPS.map((s,i)=>`<button type="button" class="chip ${i===0?'active':''}" data-val="${s.name}">${s.name}</button>`).join('')
-    :`<div class="fempty" style="flex:1"><i data-lucide="store"></i>Koleksi <b class="mono">barbershops</b> masih kosong.<br><span class="fld">name</span><span class="fld">barbers[]</span></div>`;
+    :`<div class="fempty" style="flex:1"><i data-lucide="store"></i>Koleksi <b class="mono">barbershops</b> masih kosong.<br><span class="fld">name</span><span class="fld">barbers[]</span><span class="fld">services[]</span></div>`;
   bookState.shop=SHOPS[0]?.name||'';
   renderBarberChips();
+  renderServiceSelect();
   $('#wdShops').innerHTML=SHOPS.length
     ?SHOPS.map((s,i)=>`<button type="button" class="chip ${i===0?'active':''}" data-val="${s.name}">${s.name}</button>`).join('')
     :`<div class="fempty" style="flex:1"><i data-lucide="store"></i>Tidak ada barbershop — penarikan memakai nama default.</div>`;
@@ -1890,7 +1916,9 @@ function buildCatalogUI(){
   renderProducts(); renderCatList(); renderCatDetail(); icons();
 }
 
-/* ================= TOP UP: voucher (nilai dari kode) / QRIS ================= */
+/* ================= TOP UP: FIRESTORE =================
+   Voucher → runTransaction(vouchers/{kode}) → saldo via increment
+   QRIS    → payments (pending) → admin approve → saldo masuk otomatis (snapshot) */
 let topMethod='voucher', tqLeft=0, tqInt=null;
 function stopTQ(){clearInterval(tqInt);tqInt=null}
 function topAmount(){return +($('#topupAmt').value.replace(/\D/g,'')||0)}
@@ -1900,7 +1928,7 @@ function selectTopMethod(m){
   $$('#topMethod .pm-card').forEach(c=>c.classList.toggle('active',c.dataset.tm===m));
   $('#tvPanel').hidden=m!=='voucher';
   $('#tqPanel').hidden=m!=='qris';
-  $('#topAmtPanel').hidden=m!=='qris';   /* voucher: tanpa nominal — nilai dari kode */
+  $('#topAmtPanel').hidden=m!=='qris';
   if(m==='qris')refreshTQ();
 }
 function refreshTQ(){
@@ -1919,7 +1947,7 @@ function refreshTQ(){
   const c=code();
   $('#tqBox').innerHTML=qrSVG(`KAPPER|TOPUP|${c}|${v}`);
   $('#tqCode').textContent=c;
-  $('#tqNote').textContent='Scan dengan aplikasi e-wallet atau m-banking, lalu tekan konfirmasi.';
+  $('#tqNote').textContent='Scan barcode di atas, selesaikan pembayaran, lalu kirim pengajuan untuk diverifikasi admin.';
   tqLeft=300; updTQ(); go.disabled=false;
   tqInt=setInterval(()=>{
     tqLeft--; updTQ();
@@ -1945,65 +1973,65 @@ fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
 });
  $('#topMethod').addEventListener('click',e=>{const c=e.target.closest('.pm-card');if(c)selectTopMethod(c.dataset.tm)});
  $('#voucherCode').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#voucherApply').click()}});
+/* --- Voucher: transaksi atomik di Firestore --- */
  $('#voucherApply').onclick=async function(){
   clearErr('voucherCode');
+  if(!state.uid||!cloudOK)return toast('err','Koneksi Firestore bermasalah — coba lagi nanti.');
   const raw=$('#voucherCode').value.trim().toUpperCase();
   if(!raw)return showErr('voucherCode','Masukkan kode voucher dulu.');
-  if(!/^[A-Z0-9]{4,16}$/.test(raw))return showErr('voucherCode','Format kode tidak valid — 4–16 huruf/angka tanpa spasi.');
+  if(!/^[A-Z0-9-]{4,16}$/.test(raw))return showErr('voucherCode','Format kode tidak valid — 4–16 huruf/angka tanpa spasi.');
   const b=this; busy(b,true,'Cek…');
   let value=null, err=null;
-  if(cloudOK&&state.uid){
-    try{
-      await runTransaction(db,async t=>{
-        const s=await t.get(doc(db,'vouchers',raw));
-        if(!s.exists())throw new Error('Kode voucher tidak dikenali. Cek lagi ya.');
-        const d=s.data();
-        if(d.used)throw new Error('Kode ini sudah pernah dipakai.');
-        t.update(doc(db,'vouchers',raw),{used:true,usedBy:state.uid,usedAt:Date.now()});
-        value=d.value;
-      });
-    }catch(e){err=e.message||'Voucher gagal dipakai.'}
-  }else{
-    value=SEED_VOUCHERS[raw]||null;
-    err=!value?'Kode voucher tidak dikenali. Cek lagi ya.':state.usedVouchers.includes(raw)?'Kode ini sudah pernah kamu pakai.':null;
-    if(!err)state.usedVouchers.push(raw);
-  }
+  try{
+    await runTransaction(db,async t=>{
+      const s=await t.get(doc(db,'vouchers',raw));
+      if(!s.exists())throw new Error('Kode voucher tidak dikenali. Cek lagi ya.');
+      const d=s.data();
+      if(d.used)throw new Error('Kode ini sudah pernah dipakai (voucher hanya 1x pakai).');
+      t.update(doc(db,'vouchers',raw),{used:true,usedBy:state.uid,usedAt:Date.now()});
+      value=d.value;
+    });
+  }catch(e){err=e.message||'Voucher gagal dipakai.'}
   busy(b,false);
   if(err)return showErr('voucherCode',err);
   $('#voucherCode').value=''; closeModal($('#mTopup'));
-  if(cloudOK&&state.uid)updateDoc(U(),{usedVouchers:[...state.usedVouchers,raw]}).catch(()=>{});
-  setBalance(value); addPoints(Math.floor(value/10000));
+  const earn=Math.max(1,Math.floor(value/10000));
+  setBalance(value); addPoints(earn);
   addTxn('in','Top Up Kappoint','Voucher '+raw,value);
   addNotif('wallet','Top up berhasil — Voucher',`${fmtIDR(value)} masuk ke saldo Kappointmu.`,{
-    detail:`Voucher ${raw} bernilai ${fmtIDR(value)} berhasil ditukar menjadi saldo. Bonus ${Math.floor(value/10000)} Kappoint juga masuk. Saldo baru: ${fmtIDR(state.balance)}.`,
+    detail:`Voucher ${raw} bernilai ${fmtIDR(value)} berhasil ditukar menjadi saldo. Bonus ${earn} Kappoint juga masuk. Saldo baru: ${fmtIDR(state.balance)}.`,
     code:raw,codeLabel:'Kode voucher'});
-  addDoc(collection(db,'payments'),{kind:'topup',method:'voucher',total:value,code:raw,status:'paid',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
+  addDoc(collection(db,'payments'),{kind:'topup',method:'voucher',total:value,code:raw,status:'paid',uid:state.uid,name:state.name,createdAt:Date.now()}).catch(()=>{});
   pushTicker(`Top up ${fmtIDR(value)} via voucher ${raw} berhasil`,true);
   toast('ok',`Voucher ${raw} berhasil — ${fmtIDR(value)} masuk ke saldo!`);
 };
- $('#tqGo').onclick=function(){
+/* --- QRIS: kirim pengajuan pending ke Firestore, saldo masuk saat admin approve --- */
+ $('#tqGo').onclick=async function(){
   clearErr('topupAmt');
   const v=topAmount();
   if(v<10000)return showErr('topupAmt','Minimal top up Rp10.000.');
   if(v>MAX_TOPUP)return showErr('topupAmt',`Maksimal top up ${fmtIDR(MAX_TOPUP)}.`);
   if(tqLeft<=0)return toast('err','Kode QRIS kedaluwarsa — ubah nominal untuk membuat kode baru.');
+  if(!state.uid||!cloudOK)return toast('err','Koneksi Firestore bermasalah — coba lagi nanti.');
   const c=$('#tqCode').textContent;
-  const b=this; busy(b,true,'Verifikasi…');
-  setTimeout(()=>{
-    busy(b,false); closeModal($('#mTopup'));
-    setBalance(v); addPoints(Math.floor(v/10000));
-    addTxn('in','Top Up Kappoint','QRIS • '+c,v);
-    addNotif('wallet','Top up berhasil — QRIS',`${fmtIDR(v)} masuk ke saldo Kappointmu.`,{
-      detail:`Pembayaran QRIS sebesar ${fmtIDR(v)} terkonfirmasi. Saldo baru: ${fmtIDR(state.balance)}. Bonus ${Math.floor(v/10000)} Kappoint telah masuk.`,
+  const b=this; busy(b,true,'Mengirim pengajuan…');
+  try{
+    await addDoc(collection(db,'payments'),{
+      kind:'topup',method:'qris',total:v,code:c,status:'pending',
+      uid:state.uid,name:state.name,createdAt:Date.now()
+    });
+    closeModal($('#mTopup'));
+    addNotif('clock','Pengajuan top up terkirim',`QRIS ${fmtIDR(v)} menunggu verifikasi admin.`,{
+      detail:`Pengajuan top up sebesar ${fmtIDR(v)} dengan kode pembayaran ${c} telah dikirim. Saldo akan masuk otomatis setelah admin memverifikasi pembayaran QRIS-mu. Tidak ada saldo yang terpotong saat pengajuan.`,
       code:c,codeLabel:'Kode transaksi'});
-    addDoc(collection(db,'payments'),{kind:'topup',method:'qris',total:v,code:c,status:'paid',uid:state.uid||'',name:state.name,createdAt:Date.now()}).catch(()=>{});
-    pushTicker(`Top up ${fmtIDR(v)} via QRIS berhasil`,true);
-    toast('ok',`Top up ${fmtIDR(v)} berhasil! Saldo kamu nambah.`);
-  },1100);
+    pushTicker(`Pengajuan top up QRIS ${fmtIDR(v)} menunggu verifikasi`,true);
+    toast('info','Pengajuan terkirim — saldo masuk setelah admin menyetujui.');
+  }catch(e){toast('err',aerr(e))}
+  finally{busy(b,false)}
 };
  $('#actTopup').onclick=openTopup;
 
-/* ================= TARIK TUNAI ================= */
+/* ================= TARIK TUNAI (pending → admin verifikasi) ================= */
 let wdShop='Barbershop Partner';
  $('#wdShops').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
   $$('#wdShops .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');wdShop=b.dataset.val});
@@ -2083,16 +2111,26 @@ function renderRewards(){
 });
  $('#actPoints').onclick=()=>openModal('mPoints');
 
-/* ================= KATEGORI ================= */
+/* ================= KATEGORI (layanan per cabang) ================= */
 let catActive=0;
+ $('#homeShopChips').addEventListener('click',e=>{
+  const b=e.target.closest('[data-home]'); if(!b)return;
+  homeShop=b.dataset.home; catActive=0;
+  renderHomeShopChips(); renderCatList(); renderCatDetail();
+});
 function renderCatList(){
   const el=$('#catList');
-  if(!CATS.length){
-    el.innerHTML=`<div class="fempty"><i data-lucide="scissors"></i>Koleksi <b class="mono">layanan</b> masih kosong.<br>Tambahkan dokumen di Firestore dengan field:<br><span class="fld">name</span><span class="fld">price</span><span class="fld">dur</span><span class="fld">desc</span></div>`;
+  const list=servicesOf(homeShop);
+  if(!SHOPS.length){
+    el.innerHTML=`<div class="fempty"><i data-lucide="scissors"></i>Belum ada cabang.<br>Tambahkan cabang & layanannya dari admin panel.</div>`;
     return;
   }
-  if(catActive>=CATS.length)catActive=0;
-  el.innerHTML=CATS.map((c,i)=>`
+  if(!list.length){
+    el.innerHTML=`<div class="fempty"><i data-lucide="scissors"></i>Cabang <b>${homeShop}</b> belum punya layanan.<br>Tambahkan di admin → Cabang → field <span class="fld">services[]</span> dengan <span class="fld">name</span><span class="fld">price</span><span class="fld">dur</span><span class="fld">desc</span></div>`;
+    return;
+  }
+  if(catActive>=list.length)catActive=0;
+  el.innerHTML=list.map((c,i)=>`
     <button type="button" class="cat-item ${i===catActive?'active':''}" data-i="${i}">
       <span class="cat-idx">${String(i+1).padStart(2,'0')}</span>
       <span class="cat-name">${c.name}</span>
@@ -2101,25 +2139,31 @@ function renderCatList(){
 }
 function renderCatDetail(){
   const el=$('#catDetail');
-  if(!CATS.length){
-    el.innerHTML=`<div class="fempty"><i data-lucide="layout-list"></i>Detail layanan muncul di sini<br>setelah koleksi <b class="mono">layanan</b> terisi.</div>`;
+  const list=servicesOf(homeShop);
+  if(!SHOPS.length||!list.length){
+    el.innerHTML=`<div class="fempty"><i data-lucide="layout-list"></i>Detail layanan cabang muncul di sini<br>setelah admin mengisi layanan cabang.</div>`;
     icons(); return;
   }
-  const c=CATS[catActive];
+  const c=list[catActive];
   el.innerHTML=`
-    <div class="cd-kicker">Services / ${String(catActive+1).padStart(2,'0')}</div>
+    <div class="cd-kicker">${shortShop(homeShop)} / ${String(catActive+1).padStart(2,'0')}</div>
     <h3 class="cd-name display">${c.name}</h3>
     <p class="cd-desc">${c.desc||''}</p>
     <div class="cd-meta">
       <div><label>Durasi</label><b>${c.dur||'—'}</b></div>
-      <div><label>Harga</label><b>${fmtIDR(c.price||0)}</b></div>
+      <div><label>Harga di cabang ini</label><b>${fmtIDR(c.price||0)}</b></div>
       <div><label>Termasuk</label><b style="font-family:'Archivo';font-weight:700">Cuci + styling</b></div>
     </div>
-    <button class="btn btn-solid" id="cdBook">Book layanan ini <i data-lucide="arrow-right"></i></button>`;
+    <button class="btn btn-solid" id="cdBook">Book di cabang ini <i data-lucide="arrow-right"></i></button>`;
   icons();
   $('#cdBook').onclick=()=>{
-    $('#selService').value=c.name; switchTab('book');
-    toast('info',`${c.name} siap di-book — lengkapi jadwalnya.`);
+    bookState.shop=homeShop;
+    $$('#shopChips .chip').forEach(x=>x.classList.toggle('active',x.dataset.val===homeShop));
+    renderBarberChips(); renderServiceSelect();
+    const c=servicesOf(homeShop)[catActive];
+    if(c)$('#selService').value=c.name;
+    switchTab('book');
+    toast('info',`${c?.name||'Layanan'} di ${shortShop(homeShop)} siap di-book — lengkapi jadwalnya.`);
   };
 }
  $('#catList').addEventListener('click',e=>{
@@ -2203,15 +2247,22 @@ function renderCartBar(){
   });
 };
 
-/* ================= BOOK ================= */
+/* ================= BOOK (harga layanan cabang terpilih) ================= */
 const bookState={shop:'',barber:'',time:null};
  $('#slotGrid').innerHTML=SLOTS.map(s=>`<button type="button" class="slot" data-val="${s}">${s}</button>`).join('');
+ $('#homeShopChips').addEventListener('click',e=>{
+  const b=e.target.closest('[data-home]'); if(!b)return;
+  homeShop=b.dataset.home; catActive=0;
+  renderHomeShopChips(); renderCatList(); renderCatDetail();
+});
  $('#shopChips').addEventListener('click',e=>{
   const b=e.target.closest('.chip'); if(!b)return;
   $$('#shopChips .chip').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
   bookState.shop=b.dataset.val;
-  renderBarberChips(); icons();
+  renderBarberChips();
+  renderServiceSelect();
+  icons();
 });
  $('#barberChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
   $$('#barberChips .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');bookState.barber=b.dataset.val});
@@ -2239,17 +2290,15 @@ function renderBookings(){
   const err=$('#bookErr');
   const showBookErr=m=>{err.textContent=m;err.classList.add('show');toast('err','Booking belum lengkap.');return false};
   err.classList.remove('show');
-  if(!CATS.length)return showBookErr('Belum ada layanan — admin belum mengisi koleksi layanan di Firestore.');
   if(!SHOPS.length)return showBookErr('Belum ada barbershop — admin belum mengisi koleksi barbershops di Firestore.');
   const service=$('#selService').value, date=$('#inpDate').value, time=bookState.time;
-  if(!service)return showBookErr('Pilih layanan dulu.');
   if(!bookState.shop)return showBookErr('Pilih barbershop dulu.');
   if(!bookState.barber)return showBookErr('Barbershop ini belum punya barber — pilih barbershop lain atau tambahkan barber di admin panel.');
+  const cat=servicesOf(bookState.shop).find(c=>c.name===service);
+  if(!cat)return showBookErr('Pilih layanan cabang ini — cabang mungkin belum punya layanan.');
   if(!date)return showBookErr('Pilih tanggal booking.');
   if(date<todayISO)return showBookErr('Tanggal tidak boleh di masa lalu.');
   if(!time)return showBookErr('Pilih jam booking.');
-  const cat=CATS.find(c=>c.name===service);
-  if(!cat)return showBookErr('Layanan tidak dikenali — muat ulang halaman.');
   const dLab=new Date(date+'T00:00:00').toLocaleDateString('id-ID',{weekday:'short',day:'numeric',month:'short'});
   const bk={service,shop:bookState.shop,barber:bookState.barber,date,time,paid:false,status:'active',id:'pending'};
   openPay({
@@ -2285,7 +2334,7 @@ function renderBookings(){
   const id=b.dataset.id;
   const removed=bookings.find(x=>x.id===id);
   bookings=bookings.filter(x=>x.id!==id); renderBookings();
-  if(id&&!id.startsWith('local')&&cloudOK)deleteDoc(doc(db,'users',state.uid,'bookings',id)).catch(cloudFail);
+  if(id&&cloudOK)deleteDoc(doc(db,'users',state.uid,'bookings',id)).catch(cloudFail);
   if(removed){pushTicker(`Booking dibatalkan — ${removed.service} di ${shortShop(removed.shop)}`,true);
   toast('info',`Booking ${removed.service} dibatalkan. Reschedule kapan aja.`)}
 });
@@ -2463,7 +2512,7 @@ const revIO=new IntersectionObserver(es=>es.forEach(x=>{
 /* ================= INFO ================= */
 const INFO={
   about:{t:'Tentang Kami',b:`<p>Kapper adalah platform booking barbershop dengan dompet digital Kappoint dan program loyalitas kapper-club. Sejak 2021, kami menghubungkan 1.240+ barbershop dengan 2,4 juta pengguna di 14 kota Indonesia.</p><p>Misi kami sederhana: ritual rambut yang rapi seharusnya semudah membuka aplikasi.</p>`},
-  contact:{t:'Kontak',b:`<p><b>Email</b> — hello@kapper.id</p><p><b>Telepon</b> — +62 21 5099 7700</p><p><b>Kantor</b> — Jl. Senopati No. 88, Jakarta Selatan, 12190</p><p>Jam operasional: Senin–Minggu, 09.00–21.00 WIB.</p>`},
+  contact:{t:'Kontak',b:`<p><b>Email</b> — kapperstudio1@gmail.com</p><p><b>Telepon</b> — +62 21 5099 7700</p><p><b>Kantor</b> — Depok, Cimanggis Super indo</p><p>Jam operasional: Senin–Minggu, 09.00–21.00 WIB.</p>`},
   terms:{t:'Syarat & Ketentuan',b:`<p>Dengan menggunakan Kapper, kamu setuju untuk menggunakan aplikasi sebagaimana mestinya: satu akun per orang, saldo Kappoint bukan alat pembayaran umum, dan penarikan tunai hanya berlaku di barbershop partner dengan kode sekali pakai yang ditunjukkan ke kasir.</p><p>Booking yang dibatalkan kurang dari 3 jam sebelum jadwal dapat dikenakan biaya sesuai kebijakan barbershop.</p>`},
   privacy:{t:'Privasi',b:`<p>Kami hanya mengumpulkan data yang dibutuhkan untuk menjalankan layanan: identitas akun, riwayat transaksi, dan preferensi booking. Data tersimpan aman di Firebase dan tidak pernah dijual ke pihak ketiga.</p><p>Kamu bisa meminta ekspor atau penghapusan akun kapan saja lewat hello@kapper.id.</p>`},
 };
@@ -2476,7 +2525,6 @@ buildCatalogUI();
 renderHistory(); renderNotifs(); renderBookings(); renderRewards(); updatePtsMeta();
 renderMembership(); renderCartBar(); icons();
 loadCatalog();
-ensureVouchers();
 </script>
 </body>
 </html>
