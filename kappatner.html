@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kappatner — Portal Partner Barbershop</title>
+<meta name="description" content="Portal partner Kapper: terima booking, verifikasi top up & penarikan tunai member di kasir barbershop.">
+<meta name="keywords" content="kappatner, kapper partner, portal barbershop, kappoint kasir">
+<meta name="author" content="Kapper Studio">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0B0C">
+<meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" id="favicon" href="">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#FAFAF7; --ink:#0B0B0C; --muted:#63625C; --line:#E7E6E0;
+  --blue:#0B2FD1; --blue-dark:#081F8F; --blue-tint:#EDF1FC; --red:#C0392B; --ok:#2FA36B;
+}
+[hidden]{display:none!important}
+body{font-family:'Archivo',sans-serif;background:var(--paper);color:var(--ink);font-size:14.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--blue);color:#fff}
+.mono{font-family:'Spline Sans Mono',monospace}
+.display{font-stretch:118%;font-weight:900;text-transform:uppercase;letter-spacing:-.015em;line-height:1}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:13.5px;transition:.2s;white-space:nowrap}
+.btn svg{width:15px;height:15px}
+.btn-sm{padding:8px 14px;font-size:12.5px}
+.btn-solid{background:var(--ink);color:#fff}
+.btn-solid:hover{background:#2A2A28}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark)}
+.btn-ok{background:var(--ok);color:#fff}
+.btn-ok:hover{background:#268757}
+.btn-line{border:1.5px solid var(--line);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn-danger{border:1.5px solid #F2D7D3;color:var(--red);background:#fff}
+.btn-danger:hover{background:var(--red);border-color:var(--red);color:#fff}
+.btn:disabled{opacity:.55;cursor:default}
+.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.inp{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff;transition:.2s}
+.inp:focus{outline:none;border-color:var(--ink)}
+.inp.invalid{border-color:var(--red);background:#FDF6F5}
+.f-label{display:block;font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.f-err-txt{display:none;color:var(--red);font-size:12px;margin:5px 2px 0}
+.f-err-txt.show{display:block}
+.hint{font-size:12px;color:var(--muted)}
+.pw-wrap{position:relative}
+.pw-wrap .inp{padding-right:46px}
+.pw-eye{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--muted)}
+.pw-eye:hover{color:var(--ink);background:#F1F0EA}
+.pw-eye svg{width:15px;height:15px}
+
+.login-wrap{min-height:100vh;display:grid;place-items:center;background:var(--ink);padding:20px;position:relative;overflow:hidden}
+.login-bg{position:absolute;width:640px;height:640px;border-radius:50%;border:1.5px solid rgba(255,255,255,.07);right:-180px;bottom:-220px}
+.login-bg::after{content:"";position:absolute;inset:60px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.login-card{position:relative;width:min(420px,100%);background:#fff;border-radius:24px;padding:34px}
+.login-logo{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+.login-mark{width:40px;height:40px;border-radius:12px;background:var(--ink);display:grid;place-items:center;color:#fff}
+.login-mark svg{width:19px;height:19px}
+.login-title{font-size:24px;margin-bottom:4px}
+
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;align-items:center;gap:14px;height:64px;padding:0 22px;max-width:1300px;margin:0 auto}
+.brand{display:inline-flex;align-items:center;gap:10px;flex:none}
+.brand .login-mark{width:34px;height:34px;border-radius:10px}
+.side-name{font-weight:900;font-stretch:120%;font-size:16px;letter-spacing:-.01em}
+.side-sub{font-family:'Spline Sans Mono';font-size:8.5px;letter-spacing:.24em;color:var(--muted)}
+.topnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:4px;flex:1;min-width:0;-webkit-mask-image:linear-gradient(90deg,#000 96%,transparent);mask-image:linear-gradient(90deg,#000 96%,transparent)}
+.topnav::-webkit-scrollbar{display:none}
+.nav-item{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px;transition:.18s;white-space:nowrap;flex:none}
+.nav-item svg{width:15px;height:15px}
+.nav-item:hover{color:var(--ink);background:#F1F0EA}
+.nav-item.active{background:var(--blue);color:#fff}
+.topbar-right{display:flex;align-items:center;gap:10px;flex:none;position:relative}
+.shop-pill{display:inline-flex;align-items:center;gap:6px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.14em;color:var(--blue);border:1px solid rgba(11,47,209,.35);border-radius:999px;padding:5px 11px;white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+.avatar{border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;overflow:hidden;flex:none}
+.profile-btn{display:flex;align-items:center;gap:6px;padding:4px 8px 4px 4px;border:1px solid var(--line);border-radius:999px;background:#fff;transition:.18s}
+.profile-btn:hover{border-color:var(--ink)}
+.profile-btn .avatar{width:30px;height:30px;font-size:11px}
+.profile-btn svg{width:14px;height:14px;color:var(--muted)}
+.dropdown{position:absolute;top:calc(100% + 12px);right:0;width:270px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 22px 52px -18px rgba(10,10,10,.3);opacity:0;visibility:hidden;transform:translateY(8px);transition:.22s;z-index:130;overflow:hidden}
+.dropdown.open{opacity:1;visibility:visible;transform:none}
+.dd-head{padding:16px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+.dd-head .avatar{width:44px;height:44px;font-size:15px}
+.dd-name{font-weight:700;font-size:14px;line-height:1.3}
+.dd-mail{font-size:12px;color:var(--muted);word-break:break-all}
+.dd-role{display:inline-block;margin-top:4px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);border:1px solid currentColor;border-radius:999px;padding:2px 9px}
+.dd-item{display:flex;align-items:center;gap:11px;width:100%;padding:12px 16px;font-size:13.5px;font-weight:500;transition:.14s;text-align:left}
+.dd-item:hover{background:#FAFAF7}
+.dd-item svg{width:15px;height:15px;color:var(--muted)}
+.dd-item.danger,.dd-item.danger svg{color:var(--red)}
+
+.main{padding:28px 22px 60px;max-width:1300px;margin:0 auto}
+.page-head{margin-bottom:22px}
+.page-title{font-size:clamp(22px,3vw,32px)}
+.page-sub{color:var(--muted);font-size:13.5px;margin-top:4px}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.stat b{display:block;font-family:'Spline Sans Mono';font-size:23px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
+.stat span{font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.stat.blue{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.stat.blue b{color:var(--blue)}
+.stat.warn{border-color:#D9A26B;box-shadow:0 0 0 1px #D9A26B}
+.stat.warn b{color:#B8860B}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+.tbl{width:100%;border-collapse:collapse;min-width:640px}
+.tbl th{font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);background:#FAFAF7;white-space:nowrap}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl .num{font-family:'Spline Sans Mono';font-weight:600;white-space:nowrap}
+.tag{display:inline-block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-family:'Spline Sans Mono';border:1px solid;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag.ok{color:var(--ok);border-color:var(--ok)}
+.tag.pend{color:#B8860B;border-color:#D9A26B}
+.tag.used{color:var(--muted);border-color:var(--line)}
+.tag.rej{color:var(--red);border-color:var(--red)}
+.rowact{display:flex;gap:6px;justify-content:flex-end;align-items:center}
+.icbtn{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--line);background:#fff;transition:.15s}
+.icbtn:hover{border-color:var(--ink)}
+.icbtn.del:hover{border-color:var(--red);color:var(--red);background:#FDF6F5}
+.icbtn.ok:hover{border-color:var(--ok);color:var(--ok);background:#F0FAF5}
+.icbtn svg{width:13px;height:13px}
+.empty{border:1.5px dashed var(--line);border-radius:14px;padding:32px 18px;text-align:center;color:var(--muted);font-size:13px;background:#fff}
+.empty svg{width:24px;height:24px;margin:0 auto 8px;opacity:.4}
+.wdfilters{display:flex;gap:5px;background:#F4F3EE;border-radius:999px;padding:5px;flex-wrap:wrap}
+.wdf{padding:7px 15px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--muted);transition:.18s}
+.wdf.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.wd-code{border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:14px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wd-code b{font-family:'Spline Sans Mono';letter-spacing:.16em;font-size:17px;color:var(--blue-dark)}
+
+.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;visibility:hidden;opacity:0;transition:.22s}
+.modal::before{content:"";position:absolute;inset:0;background:rgba(12,12,14,.5);backdrop-filter:blur(5px)}
+.modal-panel{position:relative;width:min(440px,100%);background:#fff;border-radius:20px;padding:26px;transform:translateY(12px) scale(.98);transition:.3s cubic-bezier(.22,1,.3,1);max-height:90vh;overflow-y:auto}
+.modal.open{visibility:visible;opacity:1}
+.modal.open .modal-panel{transform:none}
+.modal-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center}
+.modal-x:hover{background:#F1F0EA}
+.modal-x svg{width:14px;height:14px}
+.m-title{font-size:21px;margin-bottom:2px}
+
+.toasts{position:fixed;bottom:20px;right:20px;z-index:300;display:flex;flex-direction:column;gap:9px;max-width:min(360px,calc(100vw - 40px))}
+.toast{display:flex;gap:11px;align-items:flex-start;background:var(--ink);color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 16px 36px -12px rgba(0,0,0,.4);transform:translateX(22px);opacity:0;transition:.35s cubic-bezier(.22,1,.3,1);font-size:13px;line-height:1.5}
+.toast.show{transform:none;opacity:1}
+.toast svg{width:15px;height:15px;flex:none;margin-top:2px}
+.toast.ok svg{color:#7C9BFF}.toast.err svg{color:#FF8A7A}.toast.info svg{color:#D8D7D0}
+
+@media(max-width:860px){
+  .topbar-in{padding:0 14px;gap:10px}
+  .main{padding:20px 14px 60px}
+  .shop-pill{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div class="login-wrap" id="viewLogin">
+  <div class="login-bg"></div>
+  <div class="login-card">
+    <div class="login-logo">
+        <div class="side-name">KAPPATNER</div>
+        <div class="side-sub">PORTAL PARTNER</div>
+      </div>
+    </div>
+    <h1 class="login-title display">Masuk Partner</h1>
+    <p class="hint" style="margin-bottom:6px">Khusus akun partner barbershop Kapper. Akun dibuat oleh admin via panel Account.</p>
+    <form id="formLogin" novalidate>
+      <label class="f-label">Email partner</label>
+      <input class="inp" type="email" id="ptEmail" placeholder="partner@barbershop.id" autocomplete="email">
+      <p class="f-err-txt" id="err-ptEmail"></p>
+      <label class="f-label">Password</label>
+      <div class="pw-wrap">
+        <input class="inp" type="password" id="ptPass" placeholder="password" autocomplete="current-password">
+        <button type="button" class="pw-eye" data-eye="ptPass"><i data-lucide="eye"></i></button>
+      </div>
+      <p class="f-err-txt" id="err-ptPass"></p>
+      <button type="submit" class="btn btn-blue" id="btnLogin" style="width:100%;justify-content:center;margin-top:20px"><i data-lucide="log-in"></i>Masuk ke Portal</button>
+    </form>
+    <p class="hint" style="margin-top:14px;text-align:center">Belum punya akses? Hubungi admin Kapper Studio.</p>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="viewApp" hidden>
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="brand" href="#" onclick="return false">
+        <span>
+          <span class="side-name">KAPPATNER</span><br>
+          <span class="side-sub">PORTAL PARTNER</span>
+        </span>
+      </a>
+      <nav class="topnav">
+        <button class="nav-item active" data-page="dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</button>
+        <button class="nav-item" data-page="book"><i data-lucide="calendar-check"></i>Book</button>
+        <button class="nav-item" data-page="topup"><i data-lucide="wallet"></i>Top Up</button>
+        <button class="nav-item" data-page="withdraw"><i data-lucide="banknote"></i>Withdraw</button>
+      </nav>
+      <div class="topbar-right">
+        <span class="shop-pill" id="shopPill"><i data-lucide="store" style="width:11px;height:11px"></i><span id="shopPillTxt">—</span></span>
+        <div style="position:relative">
+          <button class="profile-btn" id="profileBtn">
+            <span class="avatar" id="hdAvatar">P</span>
+            <span class="pb-name" style="font-size:13px;font-weight:600" id="hdName">Partner</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="dropdown" id="profileDrop">
+            <div class="dd-head">
+              <span class="avatar" id="ddAvatar">P</span>
+              <div style="min-width:0">
+                <div class="dd-name" id="ddName">Partner</div>
+                <div class="dd-mail" id="ddEmail">—</div>
+                <span class="dd-role" id="ddRole">Partner Admin</span>
+              </div>
+            </div>
+            <button class="dd-item danger" id="btnLogout"><i data-lucide="log-out"></i>Keluar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ============ DASHBOARD ============ -->
+    <section id="pg-dashboard">
+      <div class="page-head">
+        <h1 class="page-title display">Dashboard</h1>
+        <p class="page-sub" id="dashSub">Memuat data cabang…</p>
+      </div>
+      <div class="stats" id="statBox"></div>
+      <div class="card" style="margin-bottom:18px">
+        <h3 class="display" style="font-size:17px;margin-bottom:14px">Booking terbaru di cabangmu</h3>
+        <div id="dashBookings"></div>
+      </div>
+      <div class="card">
+        <h3 class="display" style="font-size:17px;margin-bottom:14px">Transaksi terbaru</h3>
+        <div id="dashPayments"></div>
+      </div>
+    </section>
+
+    <!-- ============ BOOK ============ -->
+    <section id="pg-book" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Book</h1>
+        <p class="page-sub">Reservasi customer untuk cabang <b id="bookShopName">—</b>. Tandai selesai setelah layanan diberikan, atau hapus jika salah pesan.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+          <h3 class="display" style="font-size:17px">Daftar booking</h3>
+          <button class="btn btn-line btn-sm" id="btnReloadBk"><i data-lucide="refresh-cw"></i>Muat ulang</button>
+        </div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Member</th><th>Layanan</th><th>Barber</th><th>Jadwal</th><th>Bayar</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="bkRows"></tbody></table></div>
+        <div id="bkEmpty"></div>
+      </div>
+    </section>
+
+    <!-- ============ TOP UP ============ -->
+    <section id="pg-topup" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Top Up</h1>
+        <p class="page-sub">Verifikasi pembayaran QRIS member di kasir, dan generate voucher top up untuk dijual di kasirmu — kode sekali pakai.</p>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
+        <form class="card" id="formVoucher">
+          <h3 class="display" style="font-size:17px">Generate kode voucher</h3>
+          <label class="f-label">Nilai saldo (Rp)</label>
+          <input class="inp mono" id="vcValue" inputmode="numeric" placeholder="250000">
+          <p class="f-err-txt" id="err-vcValue"></p>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="wand-2"></i>Generate Kode Voucher</button>
+          <p class="hint" style="margin-top:10px">Terima uang tunai dari member, generate kode, serahkan ke member — kode hanya bisa dipakai <b>1x</b>.</p>
+          <div id="vcResult" hidden style="margin-top:14px"></div>
+        </form>
+        <div class="card">
+          <h3 class="display" style="font-size:17px;margin-bottom:4px">Verifikasi top up QRIS</h3>
+          <p class="hint" style="margin-bottom:14px">Member menunjukkan bukti pembayaran. <b>Setujui</b> jika uang sudah masuk — saldo &amp; poin langsung ditambahkan. <b>Tolak</b> jika tidak valid.</p>
+          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Nominal</th><th>Kode</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="tpRows"></tbody></table></div>
+          <div id="tpEmpty"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="display" style="font-size:17px;margin-bottom:14px">Daftar voucher (1x pakai)</h3>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Kode</th><th>Nilai</th><th>Status</th><th>Dipakai oleh</th></tr></thead><tbody id="vcRows"></tbody></table></div>
+        <div id="vcEmpty"></div>
+      </div>
+    </section>
+
+    <!-- ============ WITHDRAW ============ -->
+    <section id="pg-withdraw" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Withdraw</h1>
+        <p class="page-sub">Cairkan penarikan tunai member di kasir. <b>Setujui</b> setelah uang diserahkan — <b>Tolak</b> untuk mengembalikan saldo otomatis ke member. Barcode kasir yang belum dipakai bisa dibatalkan.</p>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
+        <form class="card" id="formWdBc">
+          <h3 class="display" style="font-size:17px">Penarikan Cash — Barcode</h3>
+          <p class="hint" style="margin-top:4px">Siapkan uang tunai, buat barcode sesuai jumlah, lalu minta member scan dari aplikasi. Saldo member otomatis berkurang — sekali pakai.</p>
+          <label class="f-label">Jumlah penarikan (Rp)</label>
+          <input class="inp mono" id="wbcAmt" inputmode="numeric" placeholder="100000">
+          <p class="f-err-txt" id="err-wbcAmt"></p>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="qr-code"></i>Generate Barcode</button>
+        </form>
+        <div class="card">
+          <h3 class="display" style="font-size:17px">Barcode aktif</h3>
+          <div id="wbcResult" style="margin-top:14px">
+            <div class="empty"><i data-lucide="qr-code"></i>Belum ada barcode. Buat lewat form di samping.</div>
+          </div>
+          <p class="hint" style="margin-top:12px">Status &amp; pemakaiannya terpantau di daftar di bawah.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+          <h3 class="display" style="font-size:17px">Daftar penarikan</h3>
+          <button class="btn btn-line btn-sm" id="btnReloadWd"><i data-lucide="refresh-cw"></i>Muat ulang</button>
+        </div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Kode</th><th>Tipe</th><th>Jumlah</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="wdRows"></tbody></table></div>
+        <div id="wdEmpty"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc,
+  collection, getDocs, query, orderBy, limit, writeBatch, increment
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDb9KnG1MNGnS62UuZGZ6MIdGcIXmcwoVA",
+  authDomain: "kapperstudio-c629c.firebaseapp.com",
+  projectId: "kapperstudio-c629c",
+  storageBucket: "kapperstudio-c629c.firebasestorage.app",
+  messagingSenderId: "689372483921",
+  appId: "1:689372483921:web:de297c0dd520b8a0f2c370",
+  measurementId: "G-BWBJCSQQEF"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* ================= UTIL ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const idFmt=n=>(n||0).toLocaleString('id-ID');
+const fmtIDR=n=>'Rp'+idFmt(Math.abs(n||0));
+const icons=()=>lucide.createIcons();
+const vEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+const initials=n=>(n||'P').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase()||'P';
+const dtLab=ts=>ts?new Date(ts).toLocaleString('id-ID',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+const shortShop=s=>(s||'').split(' — ')[0];
+const AUTH_ERR={
+  'auth/invalid-email':'Format email tidak valid.','auth/missing-password':'Masukkan password.',
+  'auth/invalid-credential':'Email atau password salah.','auth/user-not-found':'Akun tidak ditemukan.',
+  'auth/wrong-password':'Password salah.','auth/too-many-requests':'Terlalu banyak percobaan. Coba lagi nanti.',
+  'auth/network-request-failed':'Koneksi bermasalah. Cek internet kamu.',
+};
+const aerr=e=>AUTH_ERR[e?.code]||e?.message||'Terjadi kesalahan.';
+
+function toast(type,msg){
+  const ic=type==='ok'?'check':type==='err'?'x':'info';
+  const el=document.createElement('div');
+  el.className='toast '+type;
+  el.innerHTML=`<i data-lucide="${ic}"></i><span>${msg}</span>`;
+  $('#toasts').appendChild(el); icons();
+  requestAnimationFrame(()=>el.classList.add('show'));
+  setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400)},3600);
+}
+function busy(btn,on,txt){
+  if(on){btn.dataset.h=btn.innerHTML;btn.disabled=true;btn.innerHTML=`<span class="spin"></span>${txt||'Memproses…'}`}
+  else{btn.disabled=false;btn.innerHTML=btn.dataset.h||btn.innerHTML;icons()}
+}
+function showErr(id,msg){const e=$('#err-'+id),i=$('#'+id);if(e){e.textContent=msg;e.classList.add('show')}if(i)i.classList.add('invalid');return false}
+function clearErr(id){const e=$('#err-'+id),i=$('#'+id);if(e){e.textContent='';e.classList.remove('show')}if(i)i.classList.remove('invalid')}
+ $$('.pw-eye').forEach(b=>b.addEventListener('click',()=>{
+  const inp=$('#'+b.dataset.eye);
+  const show=inp.type==='password';
+  inp.type=show?'text':'password';
+  b.innerHTML=`<i data-lucide="${show?'eye-off':'eye'}"></i>`;icons();
+}));
+function openModal(id){$('#'+id).classList.add('open')}
+function closeModal(m){m.classList.remove('open')}
+ $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))closeModal(m)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal.open').forEach(closeModal);closeDrops()}});
+
+/* Favicon */
+(function(){
+  try{
+    const s=64,c=document.createElement('canvas');c.width=c.height=s;
+    const x=c.getContext('2d');
+    x.fillStyle='#0B0B0C';x.beginPath();x.roundRect(0,0,s,s,15);x.fill();
+    x.fillStyle='#0B2FD1';x.beginPath();x.arc(s-16,16,8,0,Math.PI*2);x.fill();
+    x.fillStyle='#fff';x.font='900 34px Archivo, Arial';x.textBaseline='middle';
+    x.fillText('K',19,36);
+    $('#favicon').href=c.toDataURL('image/png');
+  }catch(e){}
+})();
+
+/* ================= GATE PARTNER ================= */
+let partner=null;
+async function checkPartner(u){
+  const s=await getDoc(doc(db,'admins',u.uid));
+  if(!s.exists())return false;      /* bukan admin/partner */
+  return s.data();                   /* {role, shop, name, ...} */
+}
+ $('#formLogin').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let ok=true;
+  const em=$('#ptEmail').value.trim(), pw=$('#ptPass').value;
+  clearErr('ptEmail');clearErr('ptPass');
+  if(!em)ok=showErr('ptEmail','Email wajib diisi.');
+  else if(!vEmail(em))ok=showErr('ptEmail','Format email tidak valid.');
+  if(!pw)ok=showErr('ptPass','Password wajib diisi.');
+  if(!ok)return;
+  const b=$('#btnLogin');busy(b,true,'Memeriksa…');
+  try{
+    const cred=await signInWithEmailAndPassword(auth,em,pw);
+    const p=await checkPartner(cred.user);
+    if(!p){
+      await signOut(auth);
+      showErr('ptPass','Akun ini bukan partner. Hubungi admin Kapper.');
+      toast('err','Akses ditolak.');
+    }
+  }catch(err){
+    if(err.code==='auth/invalid-credential'||err.code==='auth/wrong-password')showErr('ptPass','Email atau password salah.');
+    toast('err',aerr(err));
+  }finally{busy(b,false)}
+});
+
+/* ================= PROFILE DROPDOWN ================= */
+function closeDrops(){$('#profileDrop').classList.remove('open')}
+ $('#profileBtn').onclick=e=>{e.stopPropagation();const d=$('#profileDrop');const was=d.classList.contains('open');closeDrops();if(!was)d.classList.add('open')};
+document.addEventListener('click',e=>{if(!e.target.closest('#profileBtn')&&!e.target.closest('#profileDrop'))closeDrops()});
+ $('#btnLogout').onclick=async()=>{closeDrops();try{await signOut(auth)}catch(e){toast('err',aerr(e))}};
+
+function renderIdentity(){
+  const nm=partner?.name||'Partner', em=partner?.email||'—';
+  $('#hdName').textContent=nm.split(' ')[0];
+  $('#ddName').textContent=nm;
+  $('#ddEmail').textContent=em;
+  $('#ddRole').textContent='Partner · '+(partner?.shop||'—');
+  $('#shopPillTxt').textContent=partner?.shop||'—';
+  ['#hdAvatar','#ddAvatar'].forEach(sel=>{
+    const el=$(sel); if(el)el.textContent=initials(nm);
+  });
+}
+
+onAuthStateChanged(auth,async u=>{
+  if(u&&partner?.uid===u.uid)return;
+  if(u){
+    const p=await checkPartner(u).catch(()=>false);
+    if(!p||typeof p!=='object'){
+      await signOut(auth);
+      if(p===false){$('#err-ptPass').textContent='Akun ini bukan partner.';}
+      return;
+    }
+    partner={uid:u.uid,email:u.email,name:p.name||u.displayName||'Partner',shop:p.shop||'',role:p.role||'partner'};
+    renderIdentity();
+    $('#viewLogin').hidden=true; $('#viewApp').hidden=false;
+    switchPage('dashboard');
+    toast('ok',`Selamat datang, ${partner.name.split(' ')[0]} — ${partner.shop}`);
+  }else{
+    partner=null;
+    $('#viewApp').hidden=true; $('#viewLogin').hidden=false;
+    $('#ptPass').value='';
+  }
+});
+
+/* ================= NAV ================= */
+let page='dashboard';
+function switchPage(p){
+  page=p;
+  $$('[id^=pg-]').forEach(el=>el.hidden=el.id!=='pg-'+p);
+  $$('.nav-item[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
+  window.scrollTo({top:0});
+  if(p==='dashboard')loadDashboard();
+  if(p==='book')loadBookings();
+  if(p==='topup')loadTopup();
+  if(p==='withdraw')loadWithdraw();
+}
+ $$('.nav-item[data-page]').forEach(b=>b.onclick=()=>switchPage(b.dataset.page));
+
+function wdTag(st){
+  if(st==='approved')return'<span class="tag ok">disetujui</span>';
+  if(st==='rejected')return'<span class="tag rej">ditolak</span>';
+  if(st==='pending')return'<span class="tag pend">pending</span>';
+  if(st==='paid')return'<span class="tag ok">terbayar</span>';
+  return`<span class="tag used">${st||'—'}</span>`;
+}
+
+/* ================= DASHBOARD ================= */
+async function loadDashboard(){
+  if(!partner)return;
+  $('#dashSub').textContent=`Ringkasan cabang ${partner.shop}.`;
+  const box=$('#statBox');
+  box.innerHTML='<div class="stat"><span>Memuat…</span></div>';
+  try{
+    /* bookings milik cabang ini */
+    const us=await getDocs(collection(db,'users'));
+    const bkAll=[];
+    await Promise.all(us.docs.map(async u=>{
+      try{
+        const bs=await getDocs(collection(db,'users',u.id,'bookings'));
+        bs.forEach(x=>{const d=x.data();if(d.shop===partner.shop)bkAll.push({id:x.id,uid:u.id,uname:u.data().name||u.data().email||u.id,...d})});
+      }catch(e){}
+    }));
+    bkAll.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    const active=bkAll.filter(b=>b.status==='active');
+    const done=bkAll.filter(b=>b.status==='done');
+    /* payments */
+    const pay=await getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(120)));
+    const payments=pay.docs.map(d=>({id:d.id,...d.data()}));
+    const tpPend=payments.filter(p=>p.kind==='topup'&&p.status==='pending').length;
+    const wdPend=payments.filter(p=>p.kind==='withdraw'&&p.status==='pending').length;
+    const shopPaid=payments.filter(p=>p.kind==='booking'&&p.shop===partner.shop&&p.status==='paid');
+    const omzet=shopPaid.reduce((a,p)=>a+(p.total||0),0);
+    const sTot=await getDoc(doc(db,'stats','traffic'));
+    const visits=sTot.exists()?(sTot.data().total||0):0;
+    box.innerHTML=`
+      <div class="stat blue"><span>Booking aktif</span><b>${idFmt(active.length)}</b></div>
+      <div class="stat"><span>Selesai</span><b>${idFmt(done.length)}</b></div>
+      <div class="stat"><span>Omzet booking</span><b>${fmtIDR(omzet)}</b></div>
+      <div class="stat ${tpPend?'warn':''}"><span>Top up pending</span><b>${idFmt(tpPend)}</b></div>
+      <div class="stat ${wdPend?'warn':''}"><span>Withdraw pending</span><b>${idFmt(wdPend)}</b></div>
+      <div class="stat"><span>Kunjungan website</span><b>${idFmt(visits)}</b></div>`;
+    /* booking terbaru */
+    const rows=bkAll.slice(0,8).map(b=>{
+      const d=b.date?new Date(b.date+'T00:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short'}):'—';
+      return`<tr><td><b>${b.uname}</b></td><td>${b.service||'—'}</td><td>${b.barber||'—'}</td>
+      <td class="mono">${d} • ${b.time||'—'}</td>
+      <td><span class="tag ${b.paid?'ok':'pend'}">${b.paid?'terbayar':'di kasir'}</span></td></tr>`}).join('');
+    $('#dashBookings').innerHTML=bkAll.length
+      ?`<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Member</th><th>Layanan</th><th>Barber</th><th>Jadwal</th><th>Bayar</th></tr></thead><tbody>${rows}</tbody></table></div>`
+      :`<div class="empty"><i data-lucide="calendar"></i>Belum ada booking untuk cabang ini.</div>`;
+    const pays=payments.slice(0,8).map(p=>`
+      <tr><td>${dtLab(p.createdAt)}</td><td>${p.name||'—'}</td><td>${p.kind||'—'}</td><td>${p.method||'—'}</td><td class="num">${fmtIDR(p.total||0)}</td>
+      <td>${wdTag(p.status)}</td></tr>`).join('');
+    $('#dashPayments').innerHTML=payments.length
+      ?`<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Jenis</th><th>Metode</th><th>Nominal</th><th>Status</th></tr></thead><tbody>${pays}</tbody></table></div>`
+      :`<div class="empty"><i data-lucide="receipt"></i>Belum ada transaksi.</div>`;
+  }catch(e){box.innerHTML='';toast('err','Gagal memuat dashboard: '+aerr(e))}
+  icons();
+}
+
+/* ================= BOOK ================= */
+let bkAll=[];
+ $('#btnReloadBk').onclick=loadBookings;
+async function loadBookings(){
+  if(!partner)return;
+  $('#bookShopName').textContent=partner.shop;
+  const tb=$('#bkRows'), em=$('#bkEmpty');
+  tb.innerHTML=''; em.innerHTML='<div class="empty" style="margin-top:14px">Memuat booking…</div>'; icons();
+  try{
+    const us=await getDocs(collection(db,'users'));
+    const results=[];
+    await Promise.all(us.docs.map(async u=>{
+      try{
+        const bs=await getDocs(collection(db,'users',u.id,'bookings'));
+        bs.forEach(x=>{const d=x.data();if(d.shop===partner.shop)results.push({id:x.id,uid:u.id,uname:u.data().name||u.data().email||u.id,...d})});
+      }catch(e){}
+    }));
+    results.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    bkAll=results;
+    if(!results.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="calendar"></i>Belum ada booking untuk cabang ini.</div>`;icons();return}
+    em.innerHTML='';
+    tb.innerHTML=results.map(b=>{
+      const d=b.date?new Date(b.date+'T00:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short'}):'—';
+      const st=b.status==='done'?'<span class="tag ok">selesai</span>':'<span class="tag pend">aktif</span>';
+      return`<tr>
+        <td><b>${b.uname}</b><br><span class="hint">${b.uid.slice(0,8)}…</span></td>
+        <td>${b.service||'—'}</td>
+        <td>${b.barber||'—'}</td>
+        <td class="mono">${d} • ${b.time||'—'}</td>
+        <td><span class="tag ${b.paid?'ok':'pend'}">${b.paid?'terbayar':'di kasir'}</span></td>
+        <td>${st}</td>
+        <td><div class="rowact">
+          ${b.status==='active'?`<button type="button" class="icbtn ok" data-bkdone="${b.uid}|${b.id}" title="Tandai selesai"><i data-lucide="check"></i></button>`:''}
+          <button type="button" class="icbtn del" data-bkdel="${b.uid}|${b.id}" title="Hapus"><i data-lucide="trash-2"></i></button>
+        </div></td>
+      </tr>`}).join('');
+  }catch(e){em.innerHTML='';toast('err','Gagal memuat booking: '+aerr(e))}
+  icons();
+}
+ $('#bkRows').addEventListener('click',async e=>{
+  const dn=e.target.closest('[data-bkdone]'), dl=e.target.closest('[data-bkdel]');
+  if(dn){
+    const [uid,id]=dn.dataset.bkdone.split('|');
+    const b=bkAll.find(x=>x.uid===uid&&x.id===id); if(!b)return;
+    const bbtn=dn; busy(bbtn,true,'…');
+    try{
+      await updateDoc(doc(db,'users',uid,'bookings',id),{status:'done'});
+      const batch=writeBatch(db);
+      batch.set(doc(collection(db,'users',uid,'notifs')),{
+        icon:'check',title:'Layanan selesai',
+        body:`${b.service} di ${partner.shop} selesai. Terima kasih!`,
+        detail:`Layanan ${b.service} bersama ${b.barber||'kapster'} di ${partner.shop}, ${b.time||''} telah ditandai selesai oleh kasir. Jangan lupa kumpulkan Kappoint dari transaksi berikutnya!`,
+        read:false,ts:Date.now()
+      });
+      await batch.commit();
+      toast('ok','Booking ditandai selesai.');
+      loadBookings();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(bbtn,false)}
+  }
+  if(dl){
+    const [uid,id]=dl.dataset.bkdel.split('|');
+    const b=bkAll.find(x=>x.uid===uid&&x.id===id);
+    if(!confirm('Hapus booking ini?'))return;
+    try{
+      await deleteDoc(doc(db,'users',uid,'bookings',id));
+      if(b)pushCancelNote(uid,b);
+      toast('ok','Booking dihapus.'); loadBookings();
+    }catch(err){toast('err',aerr(err))}
+  }
+});
+function pushCancelNote(uid,b){
+  addDoc(collection(db,'users',uid,'notifs'),{
+    icon:'x-circle',title:'Booking dihapus',
+    body:`Booking ${b.service} di ${partner.shop} dihapus oleh kasir.`,
+    detail:`Booking ${b.service} pada ${b.time||'—'} di ${partner.shop} dihapus oleh kasir. Silakan book ulang jika masih ingin reservasi.`,
+    read:false,ts:Date.now()
+  }).catch(()=>{});
+}
+/* import addDoc lazily agar tidak double */
+import { addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* ================= TOP UP ================= */
+let vouchers=[], payments=[];
+async function loadTopup(){
+  try{
+    const [v,p]=await Promise.all([
+      getDocs(collection(db,'vouchers')),
+      getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(120))),
+    ]);
+    vouchers=v.docs.map(d=>({id:d.id,...d.data()}));
+    payments=p.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){toast('err',aerr(e))}
+  renderVouchers(); renderTopupTx();
+}
+function renderVouchers(){
+  const tb=$('#vcRows'), em=$('#vcEmpty');
+  if(!vouchers.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="ticket"></i>Belum ada voucher.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=vouchers.map(v=>`
+    <tr><td class="mono"><b>${v.id}</b></td><td class="num">${fmtIDR(v.value)}</td>
+    <td><span class="tag ${v.used?'used':'ok'}">${v.used?'terpakai (1x)':'aktif'}</span></td>
+    <td class="hint">${v.usedBy||'—'}</td></tr>`).join('');
+  icons();
+}
+function genVoucherCode(){
+  const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  let c='KAP-';
+  for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];
+  return c;
+}
+ $('#formVoucher').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const val=+($('#vcValue').value.replace(/\D/g,'')||0);
+  clearErr('vcValue');
+  if(!val)return showErr('vcValue','Nilai saldo wajib diisi.');
+  if(val<1000)return showErr('vcValue','Minimal Rp1.000.');
+  const b=$('#formVoucher [type=submit]'); busy(b,true,'Membuat kode…');
+  try{
+    let code='';
+    for(let i=0;i<6;i++){
+      code=genVoucherCode();
+      const ex=await getDoc(doc(db,'vouchers',code));
+      if(!ex.exists())break;
+      code='';
+    }
+    if(!code)throw new Error('Gagal membuat kode unik — coba lagi.');
+    await setDoc(doc(db,'vouchers',code),{value:val,used:false,usedBy:null,createdAt:Date.now(),createdBy:partner.email});
+    $('#vcValue').value='';
+    $('#vcResult').hidden=false;
+    $('#vcResult').innerHTML=`
+      <div class="wd-code">
+        <div style="text-align:left">
+          <span class="hint">Voucher ${fmtIDR(val)} — sekali pakai</span><br>
+          <b>${code}</b>
+        </div>
+      </div>`;
+    toast('ok',`Voucher ${code} (${fmtIDR(val)}) aktif — serahkan ke member.`);
+    loadTopup();
+  }catch(err){toast('err',err.message||aerr(err))}
+  finally{busy(b,false)}
+});
+function renderTopupTx(){
+  const tx=payments.filter(p=>p.kind==='topup');
+  const tb=$('#tpRows'), em=$('#tpEmpty');
+  if(!tx.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="wallet"></i>Belum ada transaksi top up.</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=tx.map(t=>{
+    const isPend=t.method==='qris'&&t.status==='pending';
+    return`<tr>
+      <td>${dtLab(t.createdAt)}</td>
+      <td><b>${t.name||'—'}</b></td>
+      <td class="num">${fmtIDR(t.total)}</td>
+      <td class="mono">${t.code||'—'}</td>
+      <td>${wdTag(t.status)}${t.rejectReason?`<br><span class="hint">${t.rejectReason}</span>`:''}</td>
+      <td><div class="rowact">
+        ${isPend?`
+          <button type="button" class="icbtn ok" data-tpok="${t.id}" title="Setujui — saldo masuk ke member"><i data-lucide="check"></i></button>
+          <button type="button" class="icbtn del" data-tpno="${t.id}" title="Tolak pengajuan"><i data-lucide="x"></i></button>`
+        :`<span class="hint">—</span>`}
+      </div></td>
+    </tr>`}).join('');
+  icons();
+}
+ $('#tpRows').addEventListener('click',async e=>{
+  const ok=e.target.closest('[data-tpok]'), no=e.target.closest('[data-tpno]');
+  const rec=id=>payments.find(p=>p.id===id);
+  if(ok){
+    const w=rec(ok.dataset.tpok); if(!w)return;
+    if(!w.uid)return toast('err','Data pengajuan tidak memiliki uid member.');
+    if(!confirm(`Setujui top up QRIS ${fmtIDR(w.total)} dari ${w.name||'member'}?\nKode: ${w.code}\nPastikan pembayaran sudah diterima.`))return;
+    const b=ok; busy(b,true,'…');
+    try{
+      const earn=Math.max(1,Math.floor((w.total||0)/10000));
+      const batch=writeBatch(db);
+      batch.update(doc(db,'payments',w.id),{status:'paid',approvedAt:Date.now(),approvedBy:partner.email});
+      batch.update(doc(db,'users',w.uid),{saldo:increment(w.total||0),points:increment(earn)});
+      batch.set(doc(collection(db,'users',w.uid,'txns')),{
+        dir:'in',title:'Top Up Kappoint',sub:'QRIS • '+(w.code||'—'),amt:w.total||0,ts:Date.now()
+      });
+      batch.set(doc(collection(db,'users',w.uid,'notifs')),{
+        icon:'wallet',title:'Top up disetujui',
+        body:`${fmtIDR(w.total)} masuk ke saldo Kappointmu.`,
+        detail:`Pembayaran QRIS sebesar ${fmtIDR(w.total)} dengan kode ${w.code||'—'} telah diverifikasi di kasir ${partner.shop||'partner'}. Saldo baru sudah masuk dan bonus ${earn} Kappoint ditambahkan.`,
+        read:false,ts:Date.now()
+      });
+      await batch.commit();
+      toast('ok',`Topup disetujui — ${fmtIDR(w.total)} masuk ke saldo ${w.name||'member'}.`);
+      loadTopup();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+  }
+  if(no){
+    const w=rec(no.dataset.tpno); if(!w)return;
+    if(!w.uid)return toast('err','Data pengajuan tidak memiliki uid member.');
+    const reason=prompt(`Tolak pengajuan top up QRIS ${fmtIDR(w.total)} dari ${w.name||'member'}?\nKode: ${w.code}\n\nAlasan (opsional, dikirim ke member):`);
+    if(reason===null)return;
+    const b=no; busy(b,true,'…');
+    try{
+      const batch=writeBatch(db);
+      batch.update(doc(db,'payments',w.id),{status:'rejected',rejectedAt:Date.now(),rejectedBy:partner.email,rejectReason:reason||''});
+      batch.set(doc(collection(db,'users',w.uid,'notifs')),{
+        icon:'x-circle',title:'Top up ditolak',
+        body:`Pengajuan ${fmtIDR(w.total)} ditolak.${reason?` Alasan: ${reason}`:''}`,
+        detail:`Pengajuan top up QRIS sebesar ${fmtIDR(w.total)} dengan kode ${w.code||'—'} ditolak di kasir.${reason?` Alasan: ${reason}.`:''} Tidak ada saldo yang terpotong — silakan ajukan ulang.`,
+        read:false,ts:Date.now()
+      });
+      await batch.commit();
+      toast('ok','Pengajuan top up ditolak.');
+      loadTopup();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+  }
+});
+
+/* ================= WITHDRAW ================= */
+let wdAll=[];
+ $('#btnReloadWd').onclick=loadWithdraw;
+async function loadWithdraw(){
+  const tb=$('#wdRows'), em=$('#wdEmpty');
+  tb.innerHTML=''; em.innerHTML='<div class="empty" style="margin-top:14px">Memuat pengajuan…</div>'; icons();
+  try{
+    const s=await getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(200)));
+    payments=s.docs.map(d=>({id:d.id,...d.data()}));
+    wdAll=payments.filter(p=>p.kind==='withdraw');
+  }catch(e){toast('err','Gagal memuat withdraw: '+aerr(e));wdAll=[]}
+  renderWithdraw();
+}
+function renderWithdraw(){
+  const pend=wdAll.filter(w=>w.status==='pending');
+  const totPend=pend.reduce((a,w)=>a+(w.total||0),0);
+  const list=wdFilter==='all'?wdAll:wdAll.filter(w=>w.status===wdFilter);
+  const tb=$('#wdRows'), em=$('#wdEmpty');
+  if(!list.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="banknote"></i>${wdFilter==='all'?'Belum ada pengajuan penarikan.':'Tidak ada data pada filter ini.'}</div>`;icons();return}
+  em.innerHTML='';
+  tb.innerHTML=list.map(w=>{
+    const isPend=w.status==='pending';
+    return`<tr>
+      <td>${dtLab(w.createdAt)}</td>
+      <td><b>${w.name||'—'}</b></td>
+      <td class="mono">${w.code||'—'}</td>
+      <td>${w.method==='barcode'?'<span class="tag ok">barcode kasir</span>':'<span class="tag used">kode member</span>'}</td>
+      <td class="num">${fmtIDR(w.total)}</td>
+      <td>${wdTag(w.status)}${w.rejectReason?`<br><span class="hint">${w.rejectReason}</span>`:''}</td>
+      <td><div class="rowact">
+        ${isPend?(w.method==='barcode'
+          ?`<button type="button" class="icbtn del" data-wdcx="${w.id}" title="Batalkan barcode — belum dipakai member"><i data-lucide="x"></i></button>`
+          :`<button type="button" class="icbtn ok" data-wdok="${w.id}" title="Setujui — uang tunai diserahkan"><i data-lucide="check"></i></button>
+            <button type="button" class="icbtn del" data-wdno="${w.id}" title="Tolak — saldo dikembalikan"><i data-lucide="x"></i></button>`)
+        :`<span class="hint">selesai</span>`}
+      </div></td>
+    </tr>`}).join('');
+  icons();
+}
+let wdFilter='all';
+ $('#btnReloadWd').onclick=loadWithdraw;
+ $('#wdFilters').addEventListener('click',e=>{
+  const b=e.target.closest('.wdf'); if(!b)return;
+  wdFilter=b.dataset.f;
+  $$('#wdFilters .wdf').forEach(x=>x.classList.toggle('active',x===b));
+  renderWithdraw();
+});
+ $('#wdRows').addEventListener('click',async e=>{
+  const ok=e.target.closest('[data-wdok]'), no=e.target.closest('[data-wdno]'), cx=e.target.closest('[data-wdcx]');
+  const rec=id=>wdAll.find(w=>w.id===id);
+  if(cx){
+    const w=rec(cx.dataset.wdcx); if(!w)return;
+    if(!confirm(`Batalkan barcode penarikan ${w.code} (${fmtIDR(w.total)})?\nTidak ada saldo terpotong karena barcode belum discan member.`))return;
+    const b=cx; busy(b,true,'…');
+    try{
+      await updateDoc(doc(db,'payments',w.id),{status:'rejected',rejectedAt:Date.now(),rejectedBy:partner.email,rejectReason:'Dibatalkan kasir — barcode tidak dipakai'});
+      toast('ok','Barcode penarikan dibatalkan.');
+      loadWithdraw();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+    return;
+  }
+  if(ok){
+    const w=rec(ok.dataset.wdok); if(!w)return;
+    if(!w.uid)return toast('err','Data penarikan tidak memiliki uid member.');
+    if(!confirm(`Setujui penarikan ${fmtIDR(w.total)} oleh ${w.name}?\nKode: ${w.code}\nPastikan uang tunai sudah diserahkan ke member.`))return;
+    const b=ok; busy(b,true,'…');
+    try{
+      const batch=writeBatch(db);
+      batch.update(doc(db,'payments',w.id),{status:'approved',approvedAt:Date.now(),approvedBy:partner.email,shop:partner.shop});
+      batch.set(doc(collection(db,'users',w.uid,'notifs')),{
+        icon:'banknote',title:'Penarikan disetujui',
+        body:`Kode ${w.code} • ${fmtIDR(w.total)} telah dicairkan di ${partner.shop}.`,
+        detail:`Penarikan sebesar ${fmtIDR(w.total)} dengan kode ${w.code} telah disetujui dan dicairkan di kasir ${partner.shop||'partner'}. Terima kasih telah menggunakan dompet Kappoint.`,
+        read:false,ts:Date.now()
+      });
+      await batch.commit();
+      toast('ok','Penarikan disetujui.');
+      loadWithdraw();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+  }
+  if(no){
+    const w=rec(no.dataset.wdno); if(!w)return;
+    if(!w.uid)return toast('err','Data penarikan tidak memiliki uid member — tidak bisa refund otomatis.');
+    const reason=prompt(`Tolak penarikan ${fmtIDR(w.total)} oleh ${w.name}?\nKode: ${w.code}\n\nAlasan penolakan (opsional, dikirim ke member):`);
+    if(reason===null)return;
+    const b=no; busy(b,true,'…');
+    try{
+      const batch=writeBatch(db);
+      batch.update(doc(db,'payments',w.id),{status:'rejected',rejectedAt:Date.now(),rejectedBy:partner.email,rejectReason:reason||''});
+      batch.update(doc(db,'users',w.uid),{saldo:increment(w.total)});
+      batch.set(doc(collection(db,'users',w.uid,'txns')),{
+        dir:'in',title:'Refund penarikan',
+        sub:`Penarikan ditolak • ${w.code||'—'}`,
+        amt:w.total,ts:Date.now()
+      });
+      batch.set(doc(collection(db,'users',w.uid,'notifs')),{
+        icon:'undo-2',title:'Penarikan ditolak — saldo dikembalikan',
+        body:`${fmtIDR(w.total)} dikembalikan ke saldo Kappointmu.${reason?` Alasan: ${reason}`:''}`,
+        detail:`Pengajuan penarikan ${fmtIDR(w.total)} dengan kode ${w.code||'—'} di ${partner.shop||'partner'} ditolak kasir.${reason?` Alasan: ${reason}.`:''} Nominal sudah dikembalikan penuh ke saldo Kappoint dan tercatat di riwayat transaksi.`,
+        read:false,ts:Date.now()
+      });
+      await batch.commit();
+      toast('ok',`Ditolak — ${fmtIDR(w.total)} dikembalikan ke saldo ${w.name||'member'}.`);
+      loadWithdraw();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+  }
+});
+
+/* ================= PENARIKAN CASH — BARCODE KASIR ================= */
+function qrSVG(text){
+  const N=25;
+  let seed=2166136261>>>0;
+  for(let i=0;i<text.length;i++){seed^=text.charCodeAt(i);seed=Math.imul(seed,16777619)>>>0}
+  const rnd=()=>{seed^=seed<<13;seed>>>=0;seed^=seed>>>17;seed^=seed<<5;seed>>>=0;return seed/4294967296};
+  const fd=(r,c)=>r===0||r===6||c===0||c===6||(r>=2&&r<=4&&c>=2&&c<=4);
+  let d='';
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    let dark;
+    if(r<7&&c<7)dark=fd(r,c);
+    else if(r<7&&c>=N-7)dark=fd(r,c-(N-7));
+    else if(r>=N-7&&c<7)dark=fd(r-(N-7),c);
+    else if(r===6||c===6)dark=((r+c)%2)===0;
+    else dark=rnd()>0.52;
+    if(dark)d+=`M${c} ${r}h1v1h-1z`;
+  }
+  return`<svg viewBox="0 0 ${N} ${N}" shape-rendering="crispEdges"><rect width="${N}" height="${N}" fill="#fff"/><path d="${d}" fill="#0B0B0C"/></svg>`;
+}
+function genWdCode(){
+  const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  let c='WD-';
+  for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];
+  return c;
+}
+ $('#formWdBc').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const v=+($('#wbcAmt').value.replace(/\D/g,'')||0);
+  clearErr('wbcAmt');
+  if(!v)return showErr('wbcAmt','Jumlah penarikan wajib diisi.');
+  if(v<20000)return showErr('wbcAmt','Minimal Rp20.000.');
+  if(v>20000000)return showErr('wbcAmt','Maksimal Rp20.000.000.');
+  const b=$('#formWdBc [type=submit]'); busy(b,true,'Membuat barcode…');
+  try{
+    let code='';
+    for(let i=0;i<6;i++){
+      code=genWdCode();
+      const ex=await getDoc(doc(db,'payments',code));
+      if(!ex.exists())break;
+      code='';
+    }
+    if(!code)throw new Error('Gagal membuat kode unik — coba lagi.');
+    await setDoc(doc(db,'payments',code),{
+      kind:'withdraw', method:'barcode', total:v, code,
+      status:'pending', createdAt:Date.now(), createdBy:partner.email, shop:partner.shop
+    });
+    $('#wbcAmt').value='';
+    $('#wbcResult').innerHTML=`
+      <div style="text-align:center">
+        <div style="width:min(230px,78%);margin:0 auto 12px;background:#fff;border-radius:14px;padding:12px;box-shadow:0 12px 28px -14px rgba(11,47,209,.4)">${qrSVG('KAPPER|WD|'+code+'|'+v)}</div>
+        <div class="wd-code" style="justify-content:center;margin-bottom:10px"><b>${code}</b></div>
+        <p class="hint">Nilai <b>${fmtIDR(v)}</b> — tunjukkan barcode ini ke member untuk discan di aplikasi Kapper. Sekali pakai.</p>
+      </div>`;
+    icons();
+    toast('ok',`Barcode penarikan ${fmtIDR(v)} siap — kode ${code}.`);
+    loadWithdraw();
+  }catch(err){toast('err',err.message||aerr(err))}
+  finally{busy(b,false)}
+});
+
+/* ================= INIT ================= */
+icons();
+</script>
+</body>
+</html>
