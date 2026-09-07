@@ -4,24 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ============ SEO META ============ -->
 <title>Kapper — Booking Barbershop, Dompet Kappoint & Loyalitas</title>
-<meta name="description" content="Kapper: booking barbershop tanpa antrian, dompet digital Kappoint, top up via voucher & QRIS, point loyalty kapper-club Bronze sampai Black. Bayar dengan Kappoint, QRIS, atau di kasir.">
-<meta name="keywords" content="kapper, barbershop, booking barbershop, kappoint, haircut, cukur, rambut, barber, loyalty, qris, dompet digital">
+<meta name="description" content="Kapper: booking barbershop tanpa antrian, dompet digital Kappoint, top up via voucher & QRIS, point loyalty kapper-club Bronze sampai Black.">
+<meta name="keywords" content="kapper, barbershop, booking barbershop, kappoint, haircut, cukur, barber, loyalty, qris">
 <meta name="author" content="Kapper Indonesia">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B2FD1">
-<meta name="color-scheme" content="light">
-<meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://kappointbarbershop.vercel.app/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kapper">
 <meta property="og:title" content="Kapper — Cukur Tanpa Antrian">
-<meta property="og:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi. Top up via voucher atau QRIS, kumpulkan poin, naik tier kapper-club.">
+<meta property="og:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
 <meta property="og:image" content="opengraph.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:locale" content="id_ID">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -30,63 +25,57 @@
 <meta name="twitter:image" content="opengraph.png">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Kapper">
+<meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk" />
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23ffffff'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="icon" type="image/png" id="favicon" href="">
 <link rel="apple-touch-icon" id="appleIcon" href="">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --paper:#FAFAF7; --white:#fff; --ink:#0B0B0C; --muted:#63625C; --line:#E7E6E0;
-  --blue:#0B2FD1; --blue-dark:#081F8F; --blue-tint:#EDF1FC; --red:#C0392B; --ok:#2FA36B;
-  --r-lg:22px;
+  --paper:#FAFAF7; --ink:#0B0B0C; --muted:#63625C; --line:#E7E6E0;
+  --blue:#0B2FD1; --blue-dark:#081F8F; --blue-tint:#EDF1FC; --red:#C0392B; --ok:#2FA36B; --r-lg:22px;
 }
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{font-family:'Archivo',sans-serif;background:var(--paper);color:var(--ink);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{display:block}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 ::selection{background:var(--blue);color:#fff}
 .mono{font-family:'Spline Sans Mono',monospace}
 .display{font-stretch:118%;font-weight:900;text-transform:uppercase;letter-spacing:-.015em;line-height:1}
 .container{max-width:1160px;margin:0 auto;padding:0 24px}
 
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:14.5px;letter-spacing:.01em;transition:.22s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:14.5px;transition:.22s;white-space:nowrap}
 .btn svg{width:17px;height:17px}
 .btn-sm{padding:10px 19px;font-size:13.5px}
-.btn-solid{background:var(--ink);color:#fff}
-.btn-solid:hover{background:#2A2A28;transform:translateY(-1px)}
-.btn-blue{background:var(--blue);color:#fff}
-.btn-blue:hover{background:var(--blue-dark);transform:translateY(-1px)}
-.btn-ghost{border:1.5px solid var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:#fff}
-.btn-ghost-inv{border:1.5px solid rgba(255,255,255,.5);color:#fff}
-.btn-ghost-inv:hover{background:#fff;color:var(--ink)}
-.btn-line{border:1.5px solid var(--line);background:#fff}
-.btn-line:hover{border-color:var(--ink)}
+.btn-solid{background:var(--ink);color:#fff}.btn-solid:hover{background:#2A2A28;transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.btn-ghost{border:1.5px solid var(--ink)}.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-ghost-inv{border:1.5px solid rgba(255,255,255,.5);color:#fff}.btn-ghost-inv:hover{background:#fff;color:var(--ink)}
+.btn-line{border:1.5px solid var(--line);background:#fff}.btn-line:hover{border-color:var(--ink)}
 .btn:disabled{opacity:.55;cursor:default;transform:none}
 .spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;flex:none}
 @keyframes sp{to{transform:rotate(360deg)}}
 
 .inp.invalid{border-color:var(--red);background:#FDF6F5}
-.f-err-txt{display:none;color:var(--red);font-size:12.5px;margin:6px 2px 0;line-height:1.45}
+.f-err-txt{display:none;color:var(--red);font-size:12.5px;margin:6px 2px 0}
 .f-err-txt.show{display:block}
 .pw-wrap{position:relative}
 .pw-wrap .inp{padding-right:48px}
-.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:.15s}
+.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--muted)}
 .pw-eye:hover{color:var(--ink);background:#F1F0EA}
 .pw-eye svg{width:16px;height:16px}
 .strength{display:flex;align-items:center;gap:9px;margin-top:9px}
 .strength i{height:5px;flex:1;background:#F1F0EA;border-radius:99px;position:relative;overflow:hidden}
 .strength i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:var(--sc,var(--ok));transition:.3s}
-.strength span{font-size:11px;font-family:'Spline Sans Mono';color:var(--muted);min-width:44px;text-align:right}
+.strength span{font-size:11px;font-family:'Spline Sans Mono';color:var(--muted)}
 
 .fempty{border:1.5px dashed var(--line);border-radius:16px;padding:22px 18px;text-align:center;color:var(--muted);font-size:13px;background:#fff;line-height:1.7}
 .fempty b{color:var(--ink)}
@@ -95,7 +84,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
 .wd-ok{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:4px 0 16px}
 .wd-ok-ic{width:52px;height:52px;border-radius:50%;background:var(--blue-tint);color:var(--blue);display:grid;place-items:center}
-.wd-ok-ic svg{width:24px;height:24px}
 .wd-ok b{font-size:16px}
 .wd-ok p{font-size:13.5px;color:var(--muted);max-width:38ch;margin:0}
 .wd-code{margin-top:6px;border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:16px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -107,7 +95,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand-mark{width:34px;height:34px;border-radius:10px;background:var(--ink);display:grid;place-items:center;color:#fff;flex:none}
 .brand-mark svg{width:17px;height:17px}
-.brand-name{font-weight:900;font-stretch:120%;letter-spacing:-.01em;font-size:19px}
+.brand-name{font-weight:900;font-stretch:120%;font-size:19px}
 .topbar-actions{display:flex;align-items:center;gap:10px}
 .topbar-note{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:10px}
 
@@ -121,7 +109,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .fnav-link:hover{color:var(--ink);background:#F1F0EA}
 .fnav-link.active{background:var(--ink);color:#fff}
 .fnav-right{display:flex;align-items:center;gap:8px;position:relative}
-.cloud-pill{display:inline-flex;align-items:center;gap:6px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.18em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.cloud-pill{display:inline-flex;align-items:center;gap:6px;font-family:'Spline Sans Mono';font-size:9px;letter-spacing:.18em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
 .cloud-pill i{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
 .cloud-pill.off i{background:var(--red)}
 .icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;position:relative;transition:.2s}
@@ -133,7 +121,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .dd-head{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line)}
 .dd-head b{font-size:14px}
 .link-btn{font-size:12px;font-weight:600;color:var(--blue)}
-.link-btn:hover{text-decoration:underline}
 .dd-list{max-height:330px;overflow-y:auto}
 .notif-item{display:flex;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:.15s;background:#fff}
 .notif-item:last-child{border-bottom:none}
@@ -144,7 +131,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .n-title{font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:7px}
 .n-title svg{width:14px;height:14px;color:var(--blue)}
 .n-body{font-size:12.5px;color:var(--muted);margin:2px 0}
-.n-time{font-size:10.5px;color:var(--muted);font-family:'Spline Sans Mono';letter-spacing:.06em}
+.n-time{font-size:10.5px;color:var(--muted);font-family:'Spline Sans Mono'}
 .n-more{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--blue);font-weight:600;margin-top:2px}
 .n-more svg{width:12px;height:12px}
 .notif-empty{padding:34px 18px;text-align:center;color:var(--muted);font-size:13.5px}
@@ -167,12 +154,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .ticker.show{transform:translate(-50%,0)}
 .tk-live{display:flex;align-items:center;gap:8px;font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.22em;font-weight:600;flex:none}
 .tk-dot{width:7px;height:7px;border-radius:50%;background:#7C9BFF;animation:pulse 1.6s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,155,255,.55)}50%{box-shadow:0 0 0 6px rgba(124,155,255,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,155,255,.55)}50%{box-shadow:0 0 0 9px rgba(124,155,255,0)}}
 .tk-view{flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .tk-track{display:flex;width:max-content;animation:mq 28s linear infinite}
 .ticker:hover .tk-track{animation-play-state:paused}
-.tk-group{display:flex;align-items:center;gap:36px;padding-right:36px;white-space:nowrap;font-family:'Spline Sans Mono';font-size:11.5px;letter-spacing:.05em}
-.tk-item{display:inline-flex;align-items:center;gap:9px;color:#C9C8C1}
+.tk-group{display:flex;align-items:center;gap:36px;padding-right:36px;white-space:nowrap;font-family:'Spline Sans Mono';font-size:11.5px}
 .tk-item .tk-txt{color:#C9C8C1}
 .tk-item.mine .tk-txt{color:#fff;font-weight:600}
 .tk-sep{width:5px;height:5px;border-radius:50%;background:#4A4A45;flex:none}
@@ -187,11 +173,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 .hero-stat{margin-top:52px;padding-top:30px;border-top:1px solid var(--line);display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .stat-num{font-family:'Spline Sans Mono';font-weight:600;font-size:clamp(38px,4.6vw,58px);letter-spacing:-.03em;line-height:1}
-.stat-label{font-size:13px;color:var(--muted);padding-bottom:5px;max-width:230px;line-height:1.45}
+.stat-label{font-size:13px;color:var(--muted);padding-bottom:5px;max-width:230px}
 .g-tiers{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
 .g-tier{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border:1px solid var(--line);border-radius:999px;color:var(--muted);transition:.35s}
 .g-tier.on{border-color:var(--ink);color:var(--ink);background:#fff;font-weight:600}
-.g-cap{margin-top:13px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.g-cap{margin-top:13px;font-size:12px;color:var(--muted)}
 
 .card-scene{perspective:1400px}
 .kcard{position:relative;aspect-ratio:1.62;border-radius:24px;padding:25px 27px;color:#fff;background:var(--cbg,#2B1A0D);transition:background .5s ease,transform .35s ease-out;transform-style:preserve-3d;box-shadow:0 34px 70px -26px rgba(8,8,12,.45);overflow:hidden}
@@ -205,36 +191,33 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .kcard-sheen{position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,78%) var(--my,18%),rgba(255,255,255,.13),transparent 60%);pointer-events:none}
 .kcard-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between}
 .kc-top{display:flex;justify-content:space-between;align-items:flex-start}
-.kc-brand{font-weight:900;font-stretch:122%;font-size:21px;letter-spacing:.01em}
-.kc-brand sup{font-size:9px;font-weight:600}
-.kc-sub{display:block;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;opacity:.65;margin-top:5px;font-weight:500}
+.kc-brand{font-weight:900;font-stretch:122%;font-size:21px}
+.kc-brand sup{font-size:9px}
+.kc-sub{display:block;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;opacity:.65;margin-top:5px}
 .kc-club{text-align:right;font-family:'Spline Sans Mono';font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
-.kc-tier{display:inline-block;margin-top:7px;font-size:10.5px;font-weight:600;letter-spacing:.2em;color:var(--cacc);border:1px solid var(--cacc);border-radius:999px;padding:4px 13px;transition:.4s}
+.kc-tier{display:inline-block;margin-top:7px;font-size:10.5px;font-weight:600;letter-spacing:.2em;color:var(--cacc);border:1px solid var(--cacc);border-radius:999px;padding:4px 13px}
 .kc-mid{display:flex;justify-content:space-between;align-items:center}
-.kc-chip{color:var(--cacc);transition:color .5s}
+.kc-chip{color:var(--cacc)}
 .kc-ctl{opacity:.85}
 .kc-numwrap{display:flex;align-items:center;gap:10px}
 .kc-num{font-size:clamp(15px,1.8vw,19px);letter-spacing:.13em;font-weight:500}
-.kc-eye{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.28);transition:.2s;flex:none}
-.kc-eye:hover{color:#fff;background:rgba(255,255,255,.12)}
+.kc-eye{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.28);flex:none}
 .kc-eye svg{width:13px;height:13px}
 .kc-bot{display:flex;justify-content:space-between;align-items:flex-end}
 .kc-label{display:block;font-family:'Spline Sans Mono';font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.55;margin-bottom:4px}
 .kc-holder{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.kc-points{font-size:15px;font-weight:600;color:var(--cacc);transition:color .5s}
+.kc-points{font-size:15px;font-weight:600;color:var(--cacc)}
 
 .wallet-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:start}
-.wallet-panel{margin-top:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
+.wallet-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
 .wp-label{font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 .wp-saldo{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.wp-saldo-num{font-family:'Spline Sans Mono';font-size:clamp(27px,3vw,35px);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-top:4px}
+.wp-saldo-num{font-family:'Spline Sans Mono';font-size:clamp(27px,3vw,35px);font-weight:600;letter-spacing:-.02em;margin-top:4px}
 .wp-points{text-align:right}
 .wp-points b{display:block;font-family:'Spline Sans Mono';font-size:21px;font-weight:600;color:var(--blue);margin-top:4px}
 .tier-chips{display:flex;gap:6px;margin:18px 0;padding:5px;background:#F4F3EE;border-radius:999px}
 .tier-chip{flex:1;padding:9px 4px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:.2s;font-family:'Spline Sans Mono'}
-.tier-chip:hover{color:var(--ink);background:rgba(11,47,209,.06)}
 .tier-chip.active{background:var(--ink);color:#fff}
-.tier-chip.active:hover{background:var(--ink);color:#fff}
 .wallet-actions{display:flex;gap:9px;flex-wrap:wrap}
 .wallet-actions .btn{flex:1;justify-content:center;min-width:150px;padding:12px 16px}
 .zero-hint{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:13px 15px;background:var(--blue-tint);border-radius:14px;font-size:12.5px;color:var(--blue-dark)}
@@ -268,7 +251,6 @@ section.block{padding:80px 0}
 .cat-idx{font-family:'Spline Sans Mono';font-size:12px;color:var(--muted)}
 .cat-name{font-weight:700;font-size:16.5px;transition:.2s}
 .cat-price{font-family:'Spline Sans Mono';font-size:13px;color:var(--muted)}
-.cat-item:hover .cat-name{transform:translateX(6px)}
 .cat-item.active .cat-name,.cat-item.active .cat-idx{color:var(--blue)}
 .cat-detail{position:sticky;top:110px}
 .cd-kicker{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
@@ -291,14 +273,14 @@ section.block{padding:80px 0}
 .addbtn:hover{background:var(--ink);color:#fff}
 .addbtn svg{width:16px;height:16px}
 .stepper{display:flex;align-items:center;gap:2px;background:var(--ink);border-radius:999px;padding:3px;color:#fff}
-.stepper button{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:.15s}
+.stepper button{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;color:#fff}
 .stepper button:hover{background:rgba(255,255,255,.2)}
 .stepper button svg{width:13px;height:13px}
 .stepper b{font-family:'Spline Sans Mono';font-size:13px;min-width:24px;text-align:center}
 
 .cartbar{position:fixed;bottom:20px;left:50%;transform:translate(-50%,calc(100% + 40px));z-index:95;display:flex;align-items:center;gap:16px;background:var(--ink);color:#fff;border-radius:999px;padding:9px 9px 9px 14px;box-shadow:0 22px 50px -16px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.22,1,.3,1);max-width:calc(100vw - 28px)}
 .cartbar.show{transform:translate(-50%,0)}
-.cb-clear{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#A7A69F;transition:.15s;flex:none}
+.cb-clear{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#A7A69F}
 .cb-clear:hover{color:#fff;background:rgba(255,255,255,.12)}
 .cb-clear svg{width:15px;height:15px}
 .cb-info{display:flex;align-items:baseline;gap:9px;white-space:nowrap}
@@ -337,7 +319,6 @@ section.block{padding:80px 0}
 .chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
 .slot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .slot{padding:10px 4px;border:1.5px solid var(--line);border-radius:10px;font-family:'Spline Sans Mono';font-size:12.5px;background:#fff;transition:.18s}
-.slot:hover{border-color:var(--ink)}
 .slot.active{background:var(--blue);border-color:var(--blue);color:#fff}
 .f-err{color:var(--red);font-size:13px;margin-top:14px;display:none}
 .f-err.show{display:block}
@@ -349,7 +330,7 @@ section.block{padding:80px 0}
 .bk-meta{font-size:12.5px;color:var(--muted);font-family:'Spline Sans Mono';margin-top:4px}
 .bk-status{display:inline-block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border:1px solid;border-radius:999px;padding:2px 9px;margin-left:8px}
 .bk-status.pend{color:var(--muted);border-color:var(--muted)}
-.bk-cancel{font-size:12.5px;font-weight:600;color:var(--muted);border-bottom:1px solid currentColor;flex:none}
+.bk-cancel{font-size:12.5px;font-weight:600;color:var(--muted);border-bottom:1px solid currentColor}
 .bk-cancel:hover{color:var(--red)}
 .bk-empty{border:1.5px dashed var(--line);border-radius:16px;padding:38px 20px;text-align:center;color:var(--muted);font-size:13.5px}
 .bk-empty svg{width:26px;height:26px;margin:0 auto 10px;opacity:.4}
@@ -359,7 +340,6 @@ section.block{padding:80px 0}
 .mem-row:hover{border-color:var(--ink)}
 .mem-row.current{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
 .mem-row.dark{background:var(--ink);border-color:var(--ink);color:#fff}
-.mem-row.dark:hover{border-color:#3A3A38}
 .mem-name{font-size:clamp(28px,3.4vw,42px)}
 .mem-req{font-family:'Spline Sans Mono';font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .mem-perks{font-size:14.5px;color:var(--muted);max-width:56ch}
@@ -389,24 +369,22 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .modal-panel{position:relative;width:min(470px,100%);background:#fff;border-radius:24px;padding:30px;transform:translateY(16px) scale(.98);transition:.35s cubic-bezier(.22,1,.3,1);max-height:90vh;overflow-y:auto}
 .modal.open{visibility:visible;opacity:1}
 .modal.open .modal-panel{transform:none}
-.modal-x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;transition:.2s;z-index:2}
+.modal-x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;z-index:2}
 .modal-x:hover{background:#F1F0EA}
 .modal-x svg{width:16px;height:16px}
 .m-title{font-size:27px;margin:6px 0}
 .m-sub{color:var(--muted);font-size:14px}
-.amt-wrap{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;transition:.2s;margin-top:4px}
-.amt-wrap:focus-within{border-color:var(--ink)}
+.amt-wrap{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;margin-top:4px}
 .amt-wrap span{font-family:'Spline Sans Mono';color:var(--muted)}
 .amt-wrap input{border:none;outline:none;padding:14px 10px;font-family:'Spline Sans Mono';font-size:17px;font-weight:600;width:100%;background:none}
 .amt-wrap.invalid{border-color:var(--red)}
 .nominal-chip{flex:1;min-width:70px;padding:14px 8px;border:1.5px solid var(--line);border-radius:14px;font-family:'Spline Sans Mono';font-weight:600;font-size:13.5px;text-align:center;transition:.18s;background:#fff}
-.nominal-chip:hover{border-color:var(--ink)}
 .nominal-chip.active{border-color:var(--blue);color:var(--blue);background:var(--blue-tint)}
 .auth-tabs{display:flex;background:#F4F3EE;border-radius:999px;padding:5px;margin:20px 0 22px}
 .auth-tab{flex:1;padding:10px;border-radius:999px;font-weight:600;font-size:14px;color:var(--muted);transition:.2s}
 .auth-tab.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
 .points-hero{display:flex;justify-content:space-between;align-items:flex-end;margin:18px 0 8px}
-.points-big{font-family:'Spline Sans Mono';font-size:44px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.points-big{font-family:'Spline Sans Mono';font-size:44px;font-weight:600;line-height:1}
 .progress{height:7px;background:#F1F0EA;border-radius:999px;overflow:hidden;margin:14px 0 8px}
 .progress i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .6s}
 .reward{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -428,7 +406,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .nd-hero{display:flex;gap:14px;align-items:center;padding:16px 0 4px}
 .nd-icon{width:46px;height:46px;border-radius:14px;background:var(--blue-tint);color:var(--blue);display:grid;place-items:center;flex:none}
 .nd-icon svg{width:20px;height:20px}
-.nd-time{font-family:'Spline Sans Mono';font-size:11px;color:var(--muted);letter-spacing:.08em}
+.nd-time{font-family:'Spline Sans Mono';font-size:11px;color:var(--muted)}
 .nd-body{color:#3E3D38;font-size:14.5px;margin-top:10px}
 .nd-code{margin-top:14px;border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
 .nd-code svg{width:16px;height:16px;color:var(--blue)}
@@ -445,7 +423,6 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .pm-card:hover{border-color:var(--ink)}
 .pm-card.active{border-color:var(--blue);background:var(--blue-tint);box-shadow:0 0 0 1px var(--blue)}
 .pm-card.off{opacity:.55}
-.pm-card.off:hover{border-color:var(--line)}
 .pm-ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;background:#F4F3EE;color:var(--ink);transition:.18s}
 .pm-card.active .pm-ic{background:var(--blue);color:#fff}
 .pm-ic svg{width:18px;height:18px}
@@ -467,13 +444,25 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .v-in{display:flex;gap:8px}
 .v-in .inp{text-transform:uppercase;font-family:'Spline Sans Mono';letter-spacing:.08em}
 
+/* ---------- Banner download app di login ---------- */
+.dl-ad{
+  margin-top:22px;display:flex;align-items:center;gap:14px;
+  background:var(--ink);color:#fff;border-radius:16px;padding:14px 16px;
+  text-decoration:none;transition:.2s;
+}
+.dl-ad:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
+.dl-ad .dl-ic{width:40px;height:40px;border-radius:12px;background:var(--blue);color:#fff;display:grid;place-items:center;flex:none}
+.dl-ad .dl-ic svg{width:18px;height:18px}
+.dl-ad p{flex:1;margin:0;font-size:12.5px;line-height:1.45;color:#C9C8C1;text-align:left}
+.dl-ad p b{color:#fff}
+.dl-ad .btn{padding:9px 16px;font-size:12.5px;flex:none}
+@media(max-width:420px){.dl-ad{flex-wrap:wrap}.dl-ad .btn{width:100%;justify-content:center}}
+
 .toasts{position:fixed;bottom:22px;right:22px;z-index:300;display:flex;flex-direction:column;gap:10px;max-width:min(370px,calc(100vw - 40px))}
 .toast{display:flex;gap:12px;align-items:flex-start;background:var(--ink);color:#fff;padding:14px 18px;border-radius:14px;box-shadow:0 18px 40px -14px rgba(0,0,0,.4);transform:translateX(24px);opacity:0;transition:.4s cubic-bezier(.22,1,.3,1);font-size:13.5px;line-height:1.5}
 .toast.show{transform:none;opacity:1}
 .toast svg{width:17px;height:17px;flex:none;margin-top:2px}
-.toast.ok svg{color:#7C9BFF}
-.toast.err svg{color:#FF8A7A}
-.toast.info svg{color:#D8D7D0}
+.toast.ok svg{color:#7C9BFF}.toast.err svg{color:#FF8A7A}.toast.info svg{color:#D8D7D0}
 
 @media(max-width:980px){
   .hero{grid-template-columns:1fr;gap:48px;padding-top:56px}
@@ -574,11 +563,11 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <div class="container">
       <div class="sec-head reveal">
         <div><span class="sec-label">Tentang Kapper</span><h2 class="sec-title display">Satu aplikasi,<br>tiga ritual.</h2></div>
-        <p class="sec-note">Kapper lahir dari kebiasaan sederhana: rambut butuh jadwal, bukan antrean. Kami membangun infrastruktur di baliknya.</p>
+        <p class="sec-note">Kapper lahir dari kebiasaan sederhana: rambut butuh jadwal, bukan antrean.</p>
       </div>
-      <div class="about-row reveal"><span class="about-num">/ 01</span><h3 class="about-title display">Booking presisi</h3><p class="about-text">Pilih barbershop, barber, dan jam yang pas. Kursimu dikunci — tanpa telepon menunggu, tanpa menunggu bangku.</p></div>
+      <div class="about-row reveal"><span class="about-num">/ 01</span><h3 class="about-title display">Booking presisi</h3><p class="about-text">Pilih barbershop, barber, dan jam yang pas. Kursimu dikunci — tanpa telepon menunggu.</p></div>
       <div class="about-row reveal"><span class="about-num">/ 02</span><h3 class="about-title display">Dompet Kappoint</h3><p class="about-text">Top up lewat kode voucher atau ajukan QRIS — saldo masuk setelah admin memverifikasi. Butuh tunai? Tarik di kasir dengan kode sekali pakai.</p></div>
-      <div class="about-row reveal"><span class="about-num">/ 03</span><h3 class="about-title display">Loyalitas yang nyata</h3><p class="about-text">Setiap transaksi menanam Kappoint. Tukar jadi layanan gratis, atau biarkan tumbuh menaikkan tier kamu — dari Bronze sampai Black.</p></div>
+      <div class="about-row reveal"><span class="about-num">/ 03</span><h3 class="about-title display">Loyalitas yang nyata</h3><p class="about-text">Setiap transaksi menanam Kappoint. Tukar jadi layanan gratis, atau biarkan tumbuh menaikkan tier kamu.</p></div>
     </div>
   </section>
 </div>
@@ -642,7 +631,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
               <span class="sec-label" id="greetTier">kapper-club bronze</span>
               <h2 class="sec-title display">Halo, <span id="greetName">Member</span>.</h2>
             </div>
-            <p class="sec-note">Data kamu tersimpan.</p>
+            <p class="sec-note">Data kamu tersinkron real-time lewat Kapperbase.</p>
           </div>
           <div class="wallet-grid">
             <div class="card-scene" id="cardScene">
@@ -685,7 +674,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
                 <button class="tier-chip" data-tier="platinum">Platinum</button>
                 <button class="tier-chip" data-tier="black">Black</button>
               </div>
-              <p class="hint" style="font-size:11.5px;color:var(--muted);margin:-8px 0 12px">Tier mengikuti membership — klik tier lain untuk syarat upgrade.</p>
+              <p style="font-size:11.5px;color:var(--muted);margin:-8px 0 12px">Tier mengikuti membership — klik tier lain untuk syarat upgrade.</p>
               <div class="wallet-actions">
                 <button class="btn btn-blue" id="actTopup"><i data-lucide="plus"></i>Top Up</button>
                 <button class="btn btn-ghost" id="actWithdraw"><i data-lucide="arrow-down-to-line"></i>Tarik di Barbershop</button>
@@ -781,7 +770,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">kapper-club</span><h2 class="sec-title display">Membership</h2></div>
-            <p class="sec-note">Empat tier, satu prinsip: makin sering rapi, makin banyak keuntungan. Naik tier dengan Kappoint.</p>
+            <p class="sec-note">Tier &amp; hadiah diatur admin di menu Loyalty.</p>
           </div>
           <div id="memberList" class="reveal"></div>
         </div>
@@ -840,7 +829,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       </div>
     </div>
     <div class="ft-bot">
-      <span>&copy; <span id="year"></span> Kapper Indonesia.</span>
+      <span>&copy; <span id="year"></span> Kapper Indonesia<span id="visitCount"></span></span>
       <span>Powered by BARBERMAN.ID &amp; Unspoken</span>
     </div>
   </div>
@@ -852,7 +841,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Selamat datang</span>
     <h3 class="m-title display">Masuk ke Kapper</h3>
-    <p class="m-sub" id="authSub">Akun baru mulai dengan hal baru.</p>
+    <p class="m-sub" id="authSub">Autentikasi email. Akun baru mulai dengan hal baru.</p>
     <div class="auth-tabs" id="authTabs">
       <button class="auth-tab active" data-auth-tab="login">Masuk</button>
       <button class="auth-tab" data-auth-tab="signup">Daftar</button>
@@ -893,6 +882,11 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       <button type="submit" class="btn btn-blue full" id="btnDoSignup">Buat Akun Gratis</button>
     </form>
     <p class="m-sub" style="margin-top:16px;text-align:center;font-size:12.5px">Dengan lanjut, kamu setuju pada Syarat &amp; Privasi Kapper.</p>
+    <a class="dl-ad" href="https://kappointbarbershop.vercel.app/kappin.html" target="_blank" rel="noopener">
+      <span class="dl-ic"><i data-lucide="smartphone"></i></span>
+      <p><b>Dapatkan Aplikasi Kappoint</b><br>Booking, saldo &amp; Kappoint di genggamanmu — unduh sekarang.</p>
+      <span class="btn btn-blue"><i data-lucide="download"></i>Download</span>
+    </a>
   </div>
 </div>
 
@@ -1012,6 +1006,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       <p class="f-err-txt" id="err-wdAmt"></p>
       <p class="wp-label" style="margin-top:12px">Saldo tersedia: <b id="wdBalance" style="color:var(--ink)">Rp0</b></p>
       <button type="button" class="btn btn-blue full" id="wdGo"><i data-lucide="arrow-down-to-line"></i>Buat Kode Penarikan</button>
+      <button type="button" class="btn btn-line full" id="wdScan" style="margin-top:10px"><i data-lucide="scan-line"></i>Scan Barcode dari Kasir</button>
     </div>
     <div id="wdResult" hidden>
       <div class="wd-ok">
@@ -1032,6 +1027,25 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <button type="button" class="btn btn-solid" id="wdrDone" style="flex:1;justify-content:center">Selesai</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Scanner barcode penarikan dari kasir -->
+<div class="modal" id="mScan">
+  <div class="modal-panel" style="text-align:center">
+    <button class="modal-x" data-close><i data-lucide="x"></i></button>
+    <span class="sec-label">Tarik Tunai</span>
+    <h3 class="m-title display">Scan Barcode Kasir</h3>
+    <p class="m-sub">Arahkan kamera ke barcode penarikan yang ditampilkan kasir — saldo berkurang sesuai nominal.</p>
+    <div style="position:relative;border-radius:16px;overflow:hidden;background:#000;margin-top:16px;aspect-ratio:1">
+      <video id="scanVideo" playsinline muted style="width:100%;height:100%;object-fit:cover"></video>
+      <div style="position:absolute;inset:0;display:grid;place-items:center;pointer-events:none">
+        <div style="width:62%;aspect-ratio:1;border:2.5px solid var(--blue-soft);border-radius:20px;box-shadow:0 0 0 9999px rgba(0,0,0,.45)"></div>
+      </div>
+      <p id="scanStatus" style="position:absolute;bottom:10px;left:10px;right:10px;margin:0;color:#fff;background:rgba(0,0,0,.55);border-radius:10px;padding:6px 10px;font-size:12px">Menyalakan kamera…</p>
+    </div>
+    <button type="button" class="btn btn-line full" id="scanManual" style="margin-top:14px"><i data-lucide="keyboard"></i>Masukkan Kode Manual</button>
+    <p class="qris-note">Barcode sekali pakai — pastikan jumlahnya sesuai uang tunai yang diterima dari kasir.</p>
   </div>
 </div>
 
@@ -1061,9 +1075,9 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       <div>
         <div class="pf-btns">
           <button type="button" class="btn btn-line btn-sm" id="pfUpload"><i data-lucide="camera"></i>Ubah Foto</button>
-          <button type="button" class="btn btn-ghost btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
+          <button type="button" class="btn btn-line btn-sm" id="pfRemove" hidden><i data-lucide="trash-2"></i>Hapus</button>
         </div>
-        <p class="pf-hint">Upload dari perangkat — tersimpan di dokumen.</p>
+        <p class="pf-hint">Upload dari perangkat — tersimpan di dokumen users/{uid}.</p>
         <input type="file" id="profFile" accept="image/*" hidden>
       </div>
     </div>
@@ -1155,46 +1169,45 @@ async function copyText(txt,label='Teks'){
 
 /* ================= STATE ================= */
 const state={loggedIn:false,uid:null,name:'',email:'',avatar:'',cardNo:'',balance:0,points:0,tier:'bronze',usedVouchers:[]};
-const TIERS=[{key:'bronze',label:'Bronze'},{key:'gold',label:'Gold'},{key:'platinum',label:'Platinum'},{key:'black',label:'Black'}];
+let TIERS=[{key:'bronze',label:'Bronze'},{key:'gold',label:'Gold'},{key:'platinum',label:'Platinum'},{key:'black',label:'Black'}];
 const tierIdx=k=>TIERS.findIndex(t=>t.key===k);
-const tierLabel=k=>TIERS[tierIdx(k)].label;
+const tierLabel=k=>TIERS[tierIdx(k)]?.label||k;
 
 /* ================= KATALOG: 100% FIRESTORE =================
    barbershops → { name, barbers:[], services:[{name,price,dur,desc}] }
-   barbers     → { shop, name } (opsional, digabung)
-   products    → { name, desc, price, img }                      */
+   products    → { name, desc, price, img }   */
 let txns=[], notifs=[], bookings=[];
 let SHOPS=[], BARBERS_BY_SHOP={}, PRODUCTS=[];
 const SLOTS=['10:00','10:30','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
-const MEMBERSHIP=[
+let MEMBERSHIP=[
   {key:'bronze',name:'Bronze',req:'0 poin',pts:0,perks:['Cashback 1% setiap transaksi','Booking standar','Riwayat transaksi penuh']},
   {key:'gold',name:'Gold',req:'1.000 poin',pts:1000,perks:['Cashback 2,5%','Prioritas slot booking','Gratis minuman tiap kunjungan','Voucher ulang tahun']},
   {key:'platinum',name:'Platinum',req:'5.000 poin',pts:5000,perks:['Cashback 4%','1x haircut gratis / bulan','Guest pass untuk teman','Layanan dukungan khusus']},
   {key:'black',name:'Black',req:'20.000 poin • undangan',pts:20000,dark:true,perks:['Semua benefit Platinum','Barber pribadi on-call','Akses event tertutup','Limit tarik tunai 2x lipat']},
 ];
-const REWARDS=[
+let REWARDS=[
   {name:'Gratis minuman di barbershop partner',cost:250},
   {name:'Beard trim gratis',cost:900},
   {name:'Potongan 25% untuk haircut',cost:1200},
   {name:'Haircut gratis penuh',cost:2800},
 ];
-const PT=[{min:0,label:'Bronze'},{min:1000,label:'Gold'},{min:5000,label:'Platinum'},{min:20000,label:'Black'}];
+let PT=[{min:0,label:'Bronze'},{min:1000,label:'Gold'},{min:5000,label:'Platinum'},{min:20000,label:'Black'}];
 const G_CAP={bronze:'kapper-club bronze — mulai dari nol, cashback 1%',gold:'kapper-club gold — cashback 2,5% & slot prioritas',platinum:'kapper-club platinum — haircut gratis tiap bulan',black:'kapper-club black — undangan saja'};
 const PM_LABEL={kappoint:'Kappoint',qris:'QRIS',tempat:'bayar di tempat'};
-const FALLBACK_FEED=['Slot pagi mulai ramai — book kursimu sekarang','Cashback mingguan aktif untuk semua tier','+100 Kappoint dari pembayaran QRIS pertama','Member baru bergabung tiap menit — jangan kalah'];
+const FALLBACK_FEED=['Slot pagi mulai ramai — book kursimu sekarang','Cashback mingguan aktif untuk semua tier','Top up QRIS diverifikasi admin — saldo masuk otomatis','Member baru bergabung tiap menit'];
 const AUTH_ERR={
   'auth/invalid-email':'Format email tidak valid.','auth/missing-password':'Masukkan password.',
   'auth/weak-password':'Password terlalu lemah — minimal 6 karakter.','auth/email-already-in-use':'Email sudah terdaftar — coba masuk.',
   'auth/invalid-credential':'Email atau password salah.','auth/user-not-found':'Akun tidak ditemukan.',
   'auth/wrong-password':'Password salah.','auth/too-many-requests':'Terlalu banyak percobaan. Coba lagi nanti.',
-  'auth/operation-not-allowed':'Email/Password belum diaktifkan di Firebase Console → Authentication → Sign-in method.',
+  'auth/operation-not-allowed':'Email/Password belum diaktifkan di Firebase Console.',
   'auth/network-request-failed':'Koneksi bermasalah. Cek internet kamu.',
 };
 const aerr=e=>AUTH_ERR[e?.code]||e?.message||'Terjadi kesalahan.';
 
 let cloudOK=true, cloudWarned=false;
 function cloudFail(e){
-  if(!cloudWarned){cloudWarned=true;cloudOK=false;setCloudPill();toast('err','Firestore tidak dapat diakses — cek rules/internet. ('+(e?.code||'')+')');}
+  if(!cloudWarned){cloudWarned=true;cloudOK=false;setCloudPill();toast('err','Firestore tidak dapat diakses — cek rules/internet.');}
   console.warn('[cloud]',e);
 }
 function setCloudPill(){
@@ -1226,7 +1239,7 @@ function makeFavicon(){
     const url=c.toDataURL('image/png');
     const f=$('#favicon'), a=$('#appleIcon');
     if(f)f.href=url; if(a)a.href=url;
-  }catch(e){console.warn('favicon',e)}
+  }catch(e){}
 }
 
 /* ================= VALIDASI INLINE ================= */
@@ -1251,7 +1264,6 @@ function clearErr(id){
   const show=inp.type==='password';
   inp.type=show?'text':'password';
   b.innerHTML=`<i data-lucide="${show?'eye-off':'eye'}"></i>`;
-  b.title=show?'Sembunyikan password':'Tampilkan password';
   icons(); inp.focus();
 }));
  $('#regPass').addEventListener('input',function(){
@@ -1279,7 +1291,7 @@ function toast(type,msg){
   setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400)},3400);
 }
 function openModal(id){$('#'+id).classList.add('open');document.body.style.overflow='hidden'}
-function closeModal(m){m.classList.remove('open');document.body.style.overflow='';if(m.id==='mPay')stopQris();if(m.id==='mTopup')stopTQ()}
+function closeModal(m){m.classList.remove('open');document.body.style.overflow='';if(m.id==='mPay')stopQris();if(m.id==='mTopup')stopTQ();if(m.id==='mScan')stopScanCam()}
  $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))closeModal(m)}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal.open').forEach(closeModal);closeDrops()}});
 function busy(btn,on,txt){
@@ -1294,7 +1306,6 @@ function animateNum(el,from,to,fmt){
     el.textContent=fmt(Math.round(from+(to-from)*e));
     if(p<1)requestAnimationFrame(f)})(t0);
 }
-/* Saldo: update lokal (animasi) + increment Firestore — tersinkron via snapshot */
 function setBalance(delta){
   const from=state.balance; state.balance+=delta;
   animateNum($('#saldoVal'),from,state.balance,v=>'Rp'+idFmt(v));
@@ -1490,7 +1501,7 @@ let signupBusy=false;
 });
  $('#pdLogout').onclick=async()=>{ try{await signOut(auth)}catch(e){toast('err',aerr(e))} };
 
-/* ================= AUTH STATE + REALTIME SNAPSHOTS ================= */
+/* ================= AUTH STATE + SNAPSHOTS ================= */
 let unsubs=[];
 async function ensureUserDoc(user,nm){
   const name=nm||user.displayName||user.email.split('@')[0].replace(/^./,c=>c.toUpperCase());
@@ -1513,7 +1524,6 @@ async function hydrateUser(user){
     });
     if(!d.cardNo&&cloudOK)updateDoc(U(),{cardNo:state.cardNo}).catch(()=>{});
   }catch(e){ cloudFail(e); state.name=user.displayName||user.email.split('@')[0]; }
-  /* --- Live snapshot: saldo, poin, tier, nama, avatar --- */
   unsubs.push(onSnapshot(doc(db,'users',user.uid),s=>{
     if(!s.exists())return; const d=s.data();
     if(state.balance!==(d.saldo||0)){
@@ -1534,22 +1544,18 @@ async function hydrateUser(user){
     if(state.avatar!==(d.avatar||'')){state.avatar=d.avatar||'';setAvatarImgs();}
     state.usedVouchers=d.usedVouchers||[];
   },e=>cloudFail(e)));
-  /* --- Live snapshot: riwayat transaksi --- */
   unsubs.push(onSnapshot(query(UCOL('txns'),orderBy('ts','desc'),limit(60)),s=>{
     txns=s.docs.map(d=>({id:d.id,...d.data()}));
     renderHistory();
-  },e=>{}));
-  /* --- Live snapshot: booking --- */
+  },()=>{}));
   unsubs.push(onSnapshot(query(UCOL('bookings'),orderBy('createdAt','desc'),limit(60)),s=>{
     bookings=s.docs.map(d=>({id:d.id,...d.data()}));
     renderBookings();
-  },e=>{}));
-  /* --- Live snapshot: notifikasi (topup disetujui dll. muncul instan) --- */
+  },()=>{}));
   unsubs.push(onSnapshot(query(UCOL('notifs'),orderBy('ts','desc'),limit(40)),s=>{
     notifs=s.docs.map(d=>({id:d.id,...d.data()}));
     renderNotifs();
-  },e=>{}));
-  /* --- Feed global untuk ticker --- */
+  },()=>{}));
   const fq=query(collection(db,'feed'),orderBy('createdAt','desc'),limit(12));
   unsubs.push(onSnapshot(fq,s=>{
     s.docChanges().forEach(ch=>{
@@ -1624,7 +1630,6 @@ function attachTilt(scene,card){
 attachTilt($('#cardScene'),$('#kcard'));
 attachTilt($('#gScene'),$('#gcard'));
 
-/* ---- Tier chips: sesuai membership ---- */
  $('#tierChips').addEventListener('click',async e=>{
   const b=e.target.closest('.tier-chip'); if(!b)return;
   const key=b.dataset.tier;
@@ -1664,7 +1669,6 @@ function seedTicker(){
     {text:'Cashback mingguan aktif untuk semua tier kapper-club',mine:false},
     {text:'Top up QRIS diverifikasi admin — saldo masuk otomatis',mine:false},
     {text:'Haircut gratis berhasil ditukar seorang member',mine:false},
-    {text:'Barber baru bergabung — cek cabang favoritmu',mine:false},
   ];
 }
 function renderTicker(){
@@ -1697,7 +1701,7 @@ function simEntry(){
 setInterval(()=>{ if(state.loggedIn)localTicker({text:simEntry(),mine:false}); },12000);
  $('#tickerBar').onclick=()=>switchTab('book');
 
-/* ================= RIWAYAT (Firestore, live) ================= */
+/* ================= RIWAYAT ================= */
 function whenLabel(ts){
   const sod=x=>{const d=new Date(x);d.setHours(0,0,0,0);return d.getTime()};
   const diff=(sod(Date.now())-sod(ts))/864e5;
@@ -1739,7 +1743,7 @@ function renderHistory(){
 });
  $('#histToggle').onclick=()=>{histAll=!histAll;renderHistory()};
 
-/* ================= NOTIFIKASI (Firestore, live) ================= */
+/* ================= NOTIFIKASI ================= */
 function addNotif(icon,title,body,extra={}){
   if(state.uid&&cloudOK){
     addDoc(UCOL('notifs'),{icon,title,body,...extra,read:false,ts:Date.now()}).catch(cloudFail);
@@ -1788,11 +1792,8 @@ function openNotifDetail(i){
   notifs.forEach(n=>n.read=true); renderNotifs();
   if(cloudOK&&state.uid){
     const b=writeBatch(db);
-    notifs.forEach(n=>{if(!n.read===false)b.update});
-    /* tandai semua yang belum terbaca */
-    const b2=writeBatch(db);
-    notifs.forEach(n=>{if(!n.read)b2.update(doc(db,'users',state.uid,'notifs',n.id),{read:true})});
-    b2.commit().catch(cloudFail);
+    notifs.forEach(n=>{if(!n.read)b.update(doc(db,'users',state.uid,'notifs',n.id),{read:true})});
+    b.commit().catch(cloudFail);
   }
 };
  $('#ndCodeBox').addEventListener('click',()=>copyText($('#ndCode').textContent,'Kode'));
@@ -1848,6 +1849,22 @@ document.addEventListener('click',e=>{
   if(!state.loggedIn){$('#tentang').scrollIntoView({behavior:'smooth'});return}
   const d=INFO.about; $('#infoTitle').textContent=d.t; $('#infoBody').innerHTML=d.b; openModal('mInfo');
 };
+
+/* ================= LOYALTY DARI FIRESTORE ================= */
+async function loadLoyalty(){
+  try{
+    const s=await getDoc(doc(db,'config','loyalty'));
+    if(s.exists()){
+      const d=s.data();
+      if(Array.isArray(d.tiers)&&d.tiers.length)MEMBERSHIP=d.tiers;
+      if(Array.isArray(d.rewards)&&d.rewards.length)REWARDS=d.rewards;
+    }
+  }catch(e){cloudFail(e)}
+  TIERS=MEMBERSHIP.map(m=>({key:m.key,label:m.name}));
+  PT=MEMBERSHIP.map(m=>({min:m.pts||0,label:m.name})).sort((a,b)=>a.min-b.min);
+  if(state.tier&&!TIERS.some(t=>t.key===state.tier))state.tier=TIERS[0]?.key||'bronze';
+  renderRewards(); updatePtsMeta(); renderMembership(); syncTierUI();
+}
 
 /* ================= LOAD KATALOG DARI FIRESTORE ================= */
 async function loadCatalog(){
@@ -1916,9 +1933,7 @@ function buildCatalogUI(){
   renderProducts(); renderCatList(); renderCatDetail(); icons();
 }
 
-/* ================= TOP UP: FIRESTORE =================
-   Voucher → runTransaction(vouchers/{kode}) → saldo via increment
-   QRIS    → payments (pending) → admin approve → saldo masuk otomatis (snapshot) */
+/* ================= TOP UP: FIRESTORE ================= */
 let topMethod='voucher', tqLeft=0, tqInt=null;
 function stopTQ(){clearInterval(tqInt);tqInt=null}
 function topAmount(){return +($('#topupAmt').value.replace(/\D/g,'')||0)}
@@ -1973,7 +1988,6 @@ fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
 });
  $('#topMethod').addEventListener('click',e=>{const c=e.target.closest('.pm-card');if(c)selectTopMethod(c.dataset.tm)});
  $('#voucherCode').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#voucherApply').click()}});
-/* --- Voucher: transaksi atomik di Firestore --- */
  $('#voucherApply').onclick=async function(){
   clearErr('voucherCode');
   if(!state.uid||!cloudOK)return toast('err','Koneksi Firestore bermasalah — coba lagi nanti.');
@@ -2005,7 +2019,6 @@ fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
   pushTicker(`Top up ${fmtIDR(value)} via voucher ${raw} berhasil`,true);
   toast('ok',`Voucher ${raw} berhasil — ${fmtIDR(value)} masuk ke saldo!`);
 };
-/* --- QRIS: kirim pengajuan pending ke Firestore, saldo masuk saat admin approve --- */
  $('#tqGo').onclick=async function(){
   clearErr('topupAmt');
   const v=topAmount();
@@ -2031,7 +2044,7 @@ fmtInput($('#topupAmt')); fmtInput($('#wdAmt'));
 };
  $('#actTopup').onclick=openTopup;
 
-/* ================= TARIK TUNAI (pending → admin verifikasi) ================= */
+/* ================= TARIK TUNAI ================= */
 let wdShop='Barbershop Partner';
  $('#wdShops').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
   $$('#wdShops .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');wdShop=b.dataset.val});
@@ -2077,6 +2090,103 @@ let wdShop='Barbershop Partner';
   $('#wdForm').hidden=false; $('#wdResult').hidden=true;
 };
 
+/* ================= SCAN BARCODE PENARIKAN (dari kasir) ================= */
+let scanStream=null, scanRAF=null;
+function stopScanCam(){
+  cancelAnimationFrame(scanRAF); scanRAF=null;
+  if(scanStream){scanStream.getTracks().forEach(t=>t.stop());scanStream=null}
+}
+async function startScan(){
+  const st=$('#scanStatus');
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    st.textContent='Kamera tidak didukung browser ini — gunakan kode manual.';
+    return;
+  }
+  try{
+    scanStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+    const v=$('#scanVideo');
+    v.srcObject=scanStream; await v.play();
+    st.textContent='Arahkan kamera ke barcode…';
+    tickScan();
+  }catch(e){
+    st.textContent='Kamera tidak dapat diakses — gunakan kode manual.';
+    toast('err','Kamera butuh izin & koneksi HTTPS.');
+  }
+}
+function tickScan(){
+  const v=$('#scanVideo');
+  if(!scanStream||!v||v.readyState!==v.HAVE_ENOUGH_DATA){scanRAF=requestAnimationFrame(tickScan);return}
+  const c=document.createElement('canvas');
+  c.width=v.videoWidth; c.height=v.videoHeight;
+  const x=c.getContext('2d');
+  x.drawImage(v,0,0);
+  const img=x.getImageData(0,0,c.width,c.height);
+  const res=jsQR(img.data,img.width,img.height,{inversionAttempts:'dontInvert'});
+  if(res&&res.data){stopScanCam();handleWdBarcode(res.data)}
+  else scanRAF=requestAnimationFrame(tickScan);
+}
+function handleWdBarcode(raw){
+  const p=String(raw).split('|');
+  if(p[0]!=='KAPPER'||p[1]!=='WD')return toast('err','Barcode ini bukan kode penarikan Kapper.');
+  confirmWdBarcode(p[2],+(p[3]||0));
+}
+async function confirmWdBarcode(code,amtHint){
+  if(!state.uid||!cloudOK)return toast('err','Koneksi Firestore bermasalah — coba lagi nanti.');
+  code=String(code||'').trim().toUpperCase();
+  if(!code)return toast('err','Kode kosong.');
+  let d;
+  try{
+    const s=await getDoc(doc(db,'payments',code));
+    if(!s.exists())return toast('err','Barcode tidak dikenali.');
+    d=s.data();
+  }catch(e){return toast('err',aerr(e))}
+  if(d.kind!=='withdraw'||d.method!=='barcode')return toast('err','Barcode bukan untuk penarikan tunai.');
+  if(d.status!=='pending')return toast('err','Barcode sudah pernah dipakai (sekali pakai).');
+  const v=+d.total||amtHint||0;
+  if(v<20000)return toast('err','Nilai barcode tidak valid.');
+  if(v>state.balance)return toast('err',`Saldo kurang — butuh ${fmtIDR(v)}, saldo kamu ${fmtIDR(state.balance)}.`);
+  if(!confirm(`Tarik tunai ${fmtIDR(v)}?\n\nSaldo: ${fmtIDR(state.balance)} → ${fmtIDR(state.balance-v)}.\nAmbil uang tunai dari kasir setelah konfirmasi.`))return;
+  let ok=true;
+  try{
+    await runTransaction(db,async t=>{
+      const s2=await t.get(doc(db,'payments',code));
+      if(!s2.exists())throw new Error('Barcode tidak dikenali.');
+      if(s2.data().status!=='pending')throw new Error('Barcode sudah pernah dipakai.');
+      t.update(doc(db,'payments',code),{status:'paid',uid:state.uid,name:state.name,usedAt:Date.now()});
+    });
+  }catch(e){ok=false;toast('err',e.message||aerr(e))}
+  if(!ok)return;
+  setBalance(-v);
+  addTxn('out','Tarik tunai — Barcode','Penarikan di kasir • '+code,v);
+  addNotif('banknote','Tarik tunai berhasil',`${fmtIDR(v)} via barcode ${code}.`,{
+    detail:`Penarikan tunai sebesar ${fmtIDR(v)} dengan barcode ${code} berhasil. Saldo tersisa: ${fmtIDR(state.balance)}. Pastikan uang tunai sudah kamu terima dari kasir.`,
+    code,codeLabel:'Kode penarikan'});
+  pushTicker(`Tarik tunai ${fmtIDR(v)} via barcode ${code}`,true);
+  toast('ok',`Tarik tunai ${fmtIDR(v)} berhasil — saldo berkurang. Jangan lupa ambil uangnya!`);
+}
+ $('#wdScan').onclick=()=>{openModal('mScan');icons();startScan()};
+ $('#scanManual').onclick=()=>{
+  stopScanCam();
+  const c=prompt('Masukkan kode di bawah barcode kasir (cth. WD-A1B2C3):');
+  if(c)confirmWdBarcode(c);
+};
+
+/* ================= TRAFFIC PENGUNJUNG ================= */
+function dayKey(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+async function trackVisit(){
+  try{
+    if(sessionStorage.getItem('kapper_visit')===dayKey())return;
+    sessionStorage.setItem('kapper_visit',dayKey());
+    const b=writeBatch(db);
+    b.set(doc(db,'stats','traffic'),{total:increment(1)},{merge:true});
+    b.set(doc(db,'traffic',dayKey()),{date:dayKey(),count:increment(1)},{merge:true});
+    await b.commit();
+  }catch(e){}
+}
+
 /* ================= POINT LOYALTY ================= */
 function updatePtsMeta(){
   let idx=0; PT.forEach((p,i)=>{if(state.points>=p.min)idx=i});
@@ -2111,7 +2221,7 @@ function renderRewards(){
 });
  $('#actPoints').onclick=()=>openModal('mPoints');
 
-/* ================= KATEGORI (layanan per cabang) ================= */
+/* ================= KATEGORI ================= */
 let catActive=0;
  $('#homeShopChips').addEventListener('click',e=>{
   const b=e.target.closest('[data-home]'); if(!b)return;
@@ -2171,7 +2281,7 @@ function renderCatDetail(){
   catActive=+b.dataset.i; renderCatList(); renderCatDetail();
 });
 
-/* ================= PRODUCT (foto dari Firestore / Cloudinary) ================= */
+/* ================= PRODUCT ================= */
 const cart=new Map();
 const cartCount=()=>{let n=0;cart.forEach(q=>n+=q);return n};
 const cartTotal=()=>{let t=0;cart.forEach((q,id)=>t+=(PRODUCTS[id]?.price||0)*q);return t};
@@ -2247,7 +2357,7 @@ function renderCartBar(){
   });
 };
 
-/* ================= BOOK (harga layanan cabang terpilih) ================= */
+/* ================= BOOK ================= */
 const bookState={shop:'',barber:'',time:null};
  $('#slotGrid').innerHTML=SLOTS.map(s=>`<button type="button" class="slot" data-val="${s}">${s}</button>`).join('');
  $('#homeShopChips').addEventListener('click',e=>{
@@ -2512,7 +2622,7 @@ const revIO=new IntersectionObserver(es=>es.forEach(x=>{
 /* ================= INFO ================= */
 const INFO={
   about:{t:'Tentang Kami',b:`<p>Kapper adalah platform booking barbershop dengan dompet digital Kappoint dan program loyalitas kapper-club. Sejak 2021, kami menghubungkan 1.240+ barbershop dengan 2,4 juta pengguna di 14 kota Indonesia.</p><p>Misi kami sederhana: ritual rambut yang rapi seharusnya semudah membuka aplikasi.</p>`},
-  contact:{t:'Kontak',b:`<p><b>Email</b> — kapperstudio1@gmail.com</p><p><b>Telepon</b> — +62 21 5099 7700</p><p><b>Kantor</b> — Depok, Cimanggis Super indo</p><p>Jam operasional: Senin–Minggu, 09.00–21.00 WIB.</p>`},
+  contact:{t:'Kontak',b:`<p><b>Email</b> — kapperstudio1@gmail.com</p><p><b>Telepon</b> — +62 21 5099 7700</p><p><b>Kantor</b> — Depok, Cimanggis Area Super Indo</p><p>Jam operasional: Senin–Minggu, 09.00–21.00 WIB.</p>`},
   terms:{t:'Syarat & Ketentuan',b:`<p>Dengan menggunakan Kapper, kamu setuju untuk menggunakan aplikasi sebagaimana mestinya: satu akun per orang, saldo Kappoint bukan alat pembayaran umum, dan penarikan tunai hanya berlaku di barbershop partner dengan kode sekali pakai yang ditunjukkan ke kasir.</p><p>Booking yang dibatalkan kurang dari 3 jam sebelum jadwal dapat dikenakan biaya sesuai kebijakan barbershop.</p>`},
   privacy:{t:'Privasi',b:`<p>Kami hanya mengumpulkan data yang dibutuhkan untuk menjalankan layanan: identitas akun, riwayat transaksi, dan preferensi booking. Data tersimpan aman di Firebase dan tidak pernah dijual ke pihak ketiga.</p><p>Kamu bisa meminta ekspor atau penghapusan akun kapan saja lewat hello@kapper.id.</p>`},
 };
@@ -2520,11 +2630,16 @@ const INFO={
 /* ================= INIT ================= */
  $('#year').textContent=new Date().getFullYear();
 makeFavicon();
+trackVisit();
+getDoc(doc(db,'stats','traffic')).then(s=>{
+  if(s.exists()&&s.data().total)$('#visitCount').textContent=' — '+idFmt(s.data().total)+' kunjungan';
+}).catch(()=>{});
 applyGuestTier(); resetTicker(); setCloudPill();
 buildCatalogUI();
 renderHistory(); renderNotifs(); renderBookings(); renderRewards(); updatePtsMeta();
 renderMembership(); renderCartBar(); icons();
 loadCatalog();
+loadLoyalty();
 </script>
 </body>
 </html>
