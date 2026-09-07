@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ============ SEO META ============ -->
 <title>Kapper Admin — Panel Pengelolaan Barbershop</title>
-<meta name="description" content="Panel admin Kapper: kelola cabang dengan layanan & harga per cabang, voucher topup, booking member, loyalty, produk dengan upload foto Cloudinary, notifikasi, dan penarikan tunai.">
-<meta name="keywords" content="kapper admin, panel admin barbershop, kelola kappoint, voucher topup, cloudinary, booking barbershop">
+<meta name="description" content="Panel admin Kapper: kelola cabang dengan layanan & harga per cabang, voucher topup, booking member, loyalty, produk dengan upload foto Kapperbase, notifikasi, penarikan tunai via barcode, dan traffic pengunjung.">
+<meta name="keywords" content="kapper admin, panel admin barbershop, kelola kappoint, voucher topup, Kapperbase, booking barbershop">
 <meta name="author" content="Kapper Indonesia">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0B0B0C">
@@ -25,8 +24,9 @@
 <meta name="twitter:title" content="Kapper Admin — Panel Pengelolaan">
 <meta name="twitter:description" content="Kelola cabang, layanan per cabang, voucher, booking, loyalty, produk, dan akun member Kapper.">
 <meta name="twitter:image" content="ogkapper.jpg">
+<meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk" />
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='34' fill='%23ffffff'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="icon" type="image/png" id="favicon" href="">
 <link rel="apple-touch-icon" id="appleIcon" href="">
 
@@ -166,7 +166,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .wdf{padding:7px 15px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--muted);transition:.18s}
 .wdf.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
 
-/* Daftar layanan per cabang */
 .sv-list{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px}
 .sv-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-bottom:1px solid var(--line);background:#fff}
 .sv-row:last-child{border-bottom:none}
@@ -238,12 +237,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       </div>
     </div>
     <h1 class="login-title display">Masuk Admin</h1>
-    <p class="hint" style="margin-bottom:6px">Hanya untuk tim Kapper. Belum punya akses? Hubungi superadmin.</p>
+    <p class="hint" style="margin-bottom:6px">Hanya untuk tim &amp; partner Kapper. Belum punya akses? Hubungi Kappin.</p>
     <form id="formLogin" novalidate>
       <label class="f-label" for="admEmail">Email admin</label>
       <input class="inp" type="email" id="admEmail" placeholder="admin@kapper.id" autocomplete="email">
       <p class="f-err-txt" id="err-admEmail"></p>
-      <label class="f-label" for="admPass">Password</label>
+      <label class="f-label">Password</label>
       <div class="pw-wrap">
         <input class="inp" type="password" id="admPass" placeholder="password admin" autocomplete="current-password">
         <button type="button" class="pw-eye" data-eye="admPass"><i data-lucide="eye"></i></button>
@@ -251,7 +250,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       <p class="f-err-txt" id="err-admPass"></p>
       <button type="submit" class="btn btn-blue" id="btnLogin" style="width:100%;justify-content:center;margin-top:20px"><i data-lucide="log-in"></i>Masuk ke Panel</button>
     </form>
-    <p class="hint" style="margin-top:14px;text-align:center">Akun admin pertama otomatis menjadi superadmin.</p>
+    <p class="hint" style="margin-top:14px;text-align:center">Akun admin pertama otomatis menjadi Kappin.</p>
   </div>
 </div>
 
@@ -275,9 +274,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         <button class="nav-item" data-page="product"><i data-lucide="package"></i>Product</button>
         <button class="nav-item" data-page="notif"><i data-lucide="bell"></i>Notifikasi</button>
         <button class="nav-item" data-page="account"><i data-lucide="users"></i>Account</button>
+        <button class="nav-item" data-page="traffic"><i data-lucide="activity"></i>Traffic</button>
       </nav>
       <div class="topbar-right">
-        <span class="cloud-pill" id="cloudPill"><i></i>Kapperbase</span>
+        <span class="cloud-pill" id="cloudPill"><i></i>Kapperbase </span>
         <div style="position:relative">
           <button class="profile-btn" id="profileBtn">
             <span class="avatar" id="hdAvatar">A</span>
@@ -290,7 +290,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
               <div style="min-width:0">
                 <div class="dd-name" id="ddName">Admin</div>
                 <div class="dd-mail" id="ddEmail">—</div>
-                <span class="dd-role">Superadmin</span>
+                <span class="dd-role" id="ddRole">Kappin</span>
               </div>
             </div>
             <button class="dd-item" id="ddProfile"><i data-lucide="user"></i>Halaman Profil</button>
@@ -307,7 +307,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-dashboard">
       <div class="page-head">
         <h1 class="page-title display">Dashboard</h1>
-        <p class="page-sub">Ringkasan data langsung dari Kapperbase.</p>
+        <p class="page-sub">Ringkasan data langsung dari project kapperstudio.</p>
       </div>
       <div class="stats" id="statBox"></div>
       <div class="card">
@@ -316,11 +316,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       </div>
     </section>
 
-    <!-- ============ CABANG + LAYANAN PER CABANG ============ -->
+    <!-- ============ CABANG + LAYANAN ============ -->
     <section id="pg-cabang" hidden>
       <div class="page-head">
         <h1 class="page-title display">Cabang &amp; Layanan</h1>
-        <p class="page-sub">Koleksi <span class="mono">barbershops</span> — tiap cabang punya <span class="mono">barbers[]</span> dan <span class="mono">services[]</span> sendiri (nama, harga, durasi). Tidak ada lagi layanan global.</p>
+        <p class="page-sub">Koleksi <span class="mono">barbershops</span> — tiap cabang punya <span class="mono">barbers[]</span> dan <span class="mono">services[]</span> sendiri (nama, harga, durasi).</p>
       </div>
       <div class="grid2">
         <form class="card" id="formShop">
@@ -339,7 +339,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-topup" hidden>
       <div class="page-head">
         <h1 class="page-title display">Top Up</h1>
-        <p class="page-sub">Generate kode voucher sekali pakai, kelola barcode QRIS, dan verifikasi pengajuan top up QRIS member.</p>
+        <p class="page-sub">Generate kode voucher sekali pakai, barcode penarikan cash, kelola barcode QRIS, dan verifikasi pengajuan top up QRIS member.</p>
       </div>
       <div class="grid2" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
         <form class="card" id="formVoucher">
@@ -353,13 +353,30 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         </form>
         <div class="card">
           <h3 class="display" style="font-size:17px">Barcode pengajuan topup</h3>
-          <p class="hint" style="margin-top:4px">Gambar diunggah ke Kapperbase, linknya disimpan di <span class="mono">config/topup</span>.</p>
+          <p class="hint" style="margin-top:4px">Gambar diunggah ke Cloudinary, linknya disimpan di <span class="mono">config/topup</span>.</p>
           <div id="bcPreview" style="margin-top:14px"></div>
           <input type="file" id="bcFile" accept="image/*" hidden>
           <div style="display:flex;gap:8px;margin-top:14px">
             <button type="button" class="btn btn-blue" id="btnBcUpload" style="flex:1;justify-content:center"><i data-lucide="upload"></i>Upload Barcode</button>
             <button type="button" class="btn btn-danger" id="btnBcDel"><i data-lucide="trash-2"></i></button>
           </div>
+        </div>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
+        <form class="card" id="formWdBc">
+          <h3 class="display" style="font-size:17px">Penarikan Cash — Barcode</h3>
+          <p class="hint" style="margin-top:4px">Siapkan uang tunai di kasir, buat barcode sesuai jumlah, lalu minta member scan dari aplikasi. Saldo member otomatis berkurang sesuai nominal — sekali pakai.</p>
+          <label class="f-label">Jumlah penarikan (Rp)</label>
+          <input class="inp mono" id="wbcAmt" inputmode="numeric" placeholder="100000">
+          <p class="f-err-txt" id="err-wbcAmt"></p>
+          <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="qr-code"></i>Generate Barcode</button>
+        </form>
+        <div class="card">
+          <h3 class="display" style="font-size:17px">Barcode aktif</h3>
+          <div id="wbcResult" style="margin-top:14px">
+            <div class="empty"><i data-lucide="qr-code"></i>Belum ada barcode. Buat lewat form di samping.</div>
+          </div>
+          <p class="hint" style="margin-top:12px">Status &amp; pemakaiannya bisa dipantau di menu <b>Withdraw</b>.</p>
         </div>
       </div>
       <div class="card" style="margin-bottom:18px">
@@ -395,7 +412,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-withdraw" hidden>
       <div class="page-head">
         <h1 class="page-title display">Withdraw</h1>
-        <p class="page-sub">Pengajuan tarik tunai member di kasir barbershop. <b>Setujui</b> setelah kasir menyerahkan uang — <b>Tolak</b> untuk mengembalikan saldo otomatis ke member.</p>
+        <p class="page-sub">Pengajuan tarik tunai member. <b>Setujui</b> setelah kasir menyerahkan uang — <b>Tolak</b> untuk mengembalikan saldo otomatis. Barcode kasir yang belum dipakai bisa dibatalkan.</p>
       </div>
       <div class="stats" id="wdStats"></div>
       <div class="card">
@@ -403,15 +420,15 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
           <h3 class="display" style="font-size:17px">Daftar penarikan</h3>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
             <div class="wdfilters" id="wdFilters">
-              <button class="wdf active" data-f="all">Semua</button>
-              <button class="wdf" data-f="pending">Pending</button>
-              <button class="wdf" data-f="approved">Disetujui</button>
-              <button class="wdf" data-f="rejected">Ditolak</button>
+              <button type="button" class="wdf active" data-f="all">Semua</button>
+              <button type="button" class="wdf" data-f="pending">Pending</button>
+              <button type="button" class="wdf" data-f="approved">Disetujui</button>
+              <button type="button" class="wdf" data-f="rejected">Ditolak</button>
             </div>
             <button class="btn btn-line btn-sm" id="btnReloadWd"><i data-lucide="refresh-cw"></i>Muat ulang</button>
           </div>
         </div>
-        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Kode</th><th>Barbershop</th><th>Jumlah</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="wdRows"></tbody></table></div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Waktu</th><th>Member</th><th>Kode</th><th>Tipe / Cabang</th><th>Jumlah</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="wdRows"></tbody></table></div>
         <div id="wdEmpty"></div>
       </div>
     </section>
@@ -440,7 +457,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-product" hidden>
       <div class="page-head">
         <h1 class="page-title display">Product</h1>
-        <p class="page-sub">Foto <b>wajib</b> diunggah ke <b>Kapperbase</b> (cloud <span class="mono">o9nnrrra</span> · preset <span class="mono">kapper.studio</span>) — yang tersimpan di Kapperbase.</p>
+        <p class="page-sub">Foto <b>wajib</b> diunggah ke <b>Cloudinary</b> (cloud <span class="mono">o9nnrrra</span> · preset <span class="mono">kapper.studio</span>) — yang tersimpan di Firestore hanya link CDN-nya, tanpa fallback seed.</p>
       </div>
       <div class="grid2">
         <form class="card" id="formProduct">
@@ -475,7 +492,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-notif" hidden>
       <div class="page-head">
         <h1 class="page-title display">Notifikasi</h1>
-        <p class="page-sub">Kirim pengumuman ke <b>semua akun member</b>. Untuk satu akun saja, gunakan tombol 🔔 di halaman <b>Account</b>.</p>
+        <p class="page-sub">Kirim pengumuman ke <b>semua akun</b>. Untuk satu akun saja, gunakan tombol 🔔 di halaman <b>Account</b>.</p>
       </div>
       <div class="grid2">
         <form class="card" id="formNotif">
@@ -495,7 +512,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         <div class="card">
           <h3 class="display" style="font-size:17px;margin-bottom:6px">Tips</h3>
           <p class="hint">Ikon populer: <span class="mono">megaphone · gift · badge-percent · calendar-check · sparkles · coins · wallet · ticket</span>.</p>
-          <p class="hint" style="margin-top:10px">Pengiriman berjalan per-batch.</p>
+          <p class="hint" style="margin-top:10px">Pengiriman berjalan per-batch (maks 400 dokumen per batch) agar aman dari limit Kapperbase.</p>
         </div>
       </div>
     </section>
@@ -504,16 +521,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <section id="pg-account" hidden>
       <div class="page-head">
         <h1 class="page-title display">Account</h1>
-        <p class="page-sub">Kelola akun member. Tombol 🔔 mengirim notifikasi <b>hanya ke akun tersebut</b>.</p>
+        <p class="page-sub">Kelola akun: lihat saldo &amp; poin, buat akun <b>Member</b> atau <b>Partner Admin</b>, kirim notifikasi per akun, reset password, hapus.</p>
       </div>
       <div class="grid2">
         <form class="card" id="formAddUser">
-          <h3 class="display" style="font-size:17px">Tambah akun member</h3>
+          <h3 class="display" style="font-size:17px">Tambah akun baru</h3>
           <label class="f-label">Nama lengkap</label>
           <input class="inp" id="auName" placeholder="cth. Rizky Pratama">
           <p class="f-err-txt" id="err-auName"></p>
           <label class="f-label">Email</label>
-          <input class="inp" type="email" id="auEmail" placeholder="member@email.com">
+          <input class="inp" type="email" id="auEmail" placeholder="email@email.com">
           <p class="f-err-txt" id="err-auEmail"></p>
           <label class="f-label">Password (min. 6 karakter)</label>
           <div class="pw-wrap">
@@ -521,17 +538,39 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
             <button type="button" class="pw-eye" data-eye="auPass"><i data-lucide="eye"></i></button>
           </div>
           <p class="f-err-txt" id="err-auPass"></p>
+          <label class="f-label">Peran akun</label>
+          <div class="wdfilters" id="auRole" style="margin-top:0">
+            <button type="button" class="wdf active" data-role="member">Member</button>
+            <button type="button" class="wdf" data-role="partner">Partner Admin</button>
+          </div>
+          <div id="auShopWrap" hidden>
+            <label class="f-label">Cabang yang dikelola (partner)</label>
+            <select class="inp" id="auShop"></select>
+          </div>
           <button type="submit" class="btn btn-blue" style="margin-top:18px;width:100%;justify-content:center"><i data-lucide="user-plus"></i>Buat Akun</button>
-          <p class="hint" style="margin-top:10px">Dibuat lewat app sekunder — sesi admin kamu tidak terganggu.</p>
+          <p class="hint" style="margin-top:10px">Partner Admin otomatis dapat akses login ke panel ini. Dibuat lewat app sekunder — sesi kamu tidak terganggu.</p>
         </form>
         <div class="card">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
             <h3 class="display" style="font-size:17px">Daftar akun</h3>
             <button class="btn btn-line btn-sm" id="btnReloadUsers"><i data-lucide="refresh-cw"></i>Muat ulang</button>
           </div>
-          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Member</th><th>Saldo</th><th>Poin</th><th>Tier</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="acRows"></tbody></table></div>
+          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Akun</th><th>Saldo</th><th>Poin</th><th>Tier</th><th>Peran</th><th style="text-align:right">Aksi</th></tr></thead><tbody id="acRows"></tbody></table></div>
           <div id="acEmpty"></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ TRAFFIC ============ -->
+    <section id="pg-traffic" hidden>
+      <div class="page-head">
+        <h1 class="page-title display">Traffic Pengunjung</h1>
+        <p class="page-sub">Setiap kali website Kapper dibuka (index &amp; display), kunjungan tercatat otomatis ke Kapperbase.</p>
+      </div>
+      <div class="stats" id="trStats"></div>
+      <div class="card">
+        <h3 class="display" style="font-size:17px;margin-bottom:16px">7 hari terakhir</h3>
+        <div id="trChart" style="display:flex;align-items:flex-end;gap:10px;height:200px"></div>
       </div>
     </section>
 
@@ -581,10 +620,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
           </div>
           <div class="card">
             <h3 class="display" style="font-size:17px;margin-bottom:8px">Info akun</h3>
-            <div class="kv"><span>Peran</span><b>SUPERADMIN</b></div>
+            <div class="kv"><span>Peran</span><b id="pfRole">Kappin</b></div>
             <div class="kv"><span>UID</span><b id="pfUid">—</b></div>
             <div class="kv"><span>Login via</span><b>EMAIL / PASSWORD</b></div>
-            <div class="kv"><span>Penyimpanan foto</span><b>CLOUDINARY</b></div>
+            <div class="kv"><span>Penyimpanan foto</span><b>Kapperbase</b></div>
             <div class="kv"><span>Akun dibuat</span><b id="pfSince">—</b></div>
           </div>
         </div>
@@ -779,7 +818,7 @@ async function checkAdmin(u){
   if(s.exists())return true;
   const all=await getDocs(collection(db,'admins'));
   if(all.empty){
-    await setDoc(ref,{email:u.email,bootstrap:true,createdAt:Date.now()});
+    await setDoc(ref,{email:u.email,bootstrap:true,role:'superadmin',createdAt:Date.now()});
     toast('ok','Akun ini ditetapkan sebagai superadmin (bootstrap).');
     return true;
   }
@@ -822,6 +861,8 @@ function renderAdminIdentity(){
   $('#hdName').textContent=nm.split(' ')[0];
   $('#ddName').textContent=nm;
   $('#ddEmail').textContent=em;
+  $('#ddRole').textContent=admin?.role==='partner'?('Partner · '+(admin?.shop||'')):'Superadmin';
+  $('#pfRole').textContent=(admin?.role==='partner'?'PARTNER ADMIN':'SUPERADMIN')+(admin?.shop?' · '+(admin.shop).toUpperCase():'');
   ['#hdAvatar','#ddAvatar','#pfAva'].forEach(sel=>{
     const el=$(sel); if(!el)return;
     if(av)el.innerHTML=`<img src="${av}" alt="Foto admin">`;
@@ -837,7 +878,7 @@ onAuthStateChanged(auth,async u=>{
     if(!ok){await signOut(auth);return}
     let extra={};
     try{const s=await getDoc(doc(db,'admins',u.uid));if(s.exists())extra=s.data()}catch(e){}
-    admin={uid:u.uid,email:u.email,name:extra.name||u.displayName||'Admin',avatar:extra.avatar||'',createdAt:extra.createdAt||null};
+    admin={uid:u.uid,email:u.email,name:extra.name||u.displayName||'Admin',avatar:extra.avatar||'',role:extra.role||'superadmin',shop:extra.shop||'',createdAt:extra.createdAt||null};
     renderAdminIdentity();
     $('#viewLogin').hidden=true; $('#viewApp').hidden=false;
     switchPage('dashboard');
@@ -869,7 +910,8 @@ function loadPage(p){
   if(p==='loyalty')loadLoyalty();
   if(p==='product')loadProducts();
   if(p==='notif')loadNotifMeta();
-  if(p==='account')loadUsers();
+  if(p==='account'){loadUsers();if(!shops.length)loadShops();}
+  if(p==='traffic')loadTraffic();
 }
 
 /* ================= HALAMAN PROFIL ================= */
@@ -942,18 +984,20 @@ async function loadDashboard(){
   const box=$('#statBox');
   box.innerHTML='<div class="stat"><span>Memuat…</span></div>';
   try{
-    const [us,sh,pr,vc,pay]=await Promise.all([
+    const [us,sh,pr,vc,pay,sTot]=await Promise.all([
       getDocs(collection(db,'users')),
       getDocs(collection(db,'barbershops')),
       getDocs(collection(db,'products')),
       getDocs(collection(db,'vouchers')),
       getDocs(query(collection(db,'payments'),orderBy('createdAt','desc'),limit(50))),
+      getDoc(doc(db,'stats','traffic')),
     ]);
     const payments=pay.docs.map(d=>d.data());
     const omzet=payments.filter(p=>p.status==='paid'&&p.method!=='points'&&p.kind!=='withdraw').reduce((a,p)=>a+(p.total||0),0);
     const vAktif=[...vc.docs].filter(d=>!d.data().used).length;
     const wdPend=payments.filter(p=>p.kind==='withdraw'&&p.status==='pending').length;
     const totSv=sh.docs.reduce((a,d)=>a+((d.data().services||[]).length),0);
+    const visits=sTot.exists()?(sTot.data().total||0):0;
     box.innerHTML=`
       <div class="stat blue"><span>Member</span><b>${idFmt(us.size)}</b></div>
       <div class="stat"><span>Cabang</span><b>${idFmt(sh.size)}</b></div>
@@ -961,6 +1005,7 @@ async function loadDashboard(){
       <div class="stat"><span>Produk</span><b>${idFmt(pr.size)}</b></div>
       <div class="stat"><span>Voucher aktif</span><b>${idFmt(vAktif)}</b></div>
       <div class="stat ${wdPend?'warn':''}"><span>Withdraw pending</span><b>${idFmt(wdPend)}</b></div>
+      <div class="stat"><span>Kunjungan website</span><b>${idFmt(visits)}</b></div>
       <div class="stat"><span>Omzet (50 terakhir)</span><b>${fmtIDR(omzet)}</b></div>`;
     const rows=payments.slice(0,10).map(p=>`
       <tr><td>${dtLab(p.createdAt)}</td><td>${p.name||'—'}</td><td>${p.kind||'—'}</td><td>${p.method||'—'}</td><td class="num">${fmtIDR(p.total||0)}</td>
@@ -1009,7 +1054,7 @@ async function loadShops(){
       };
     });
   }catch(e){toast('err',aerr(e))}
-  renderShops();
+  renderShops(); fillShopSelect();
 }
 function renderShops(){
   const el=$('#shopList');
@@ -1027,7 +1072,6 @@ function renderShops(){
           <button type="button" class="icbtn del" data-dlsh="${s.id}" title="Hapus cabang"><i data-lucide="trash-2"></i></button>
         </div>
       </div>
-
       <label class="f-label">Barber di cabang ini</label>
       <div class="chips" style="margin-bottom:10px">
         ${s.barbers.length?s.barbers.map(b=>`<span class="chip">${b}<button type="button" data-rmbb="${s.id}|${b}" title="Hapus barber"><i data-lucide="x"></i></button></span>`).join(''):'<span class="hint">Belum ada barber.</span>'}
@@ -1036,7 +1080,6 @@ function renderShops(){
         <input class="inp" placeholder="Nama barber baru…" style="flex:1;padding:9px 13px">
         <button type="submit" class="btn btn-solid btn-sm"><i data-lucide="user-plus"></i>Tambah</button>
       </form>
-
       <label class="f-label">Layanan &amp; harga cabang ini</label>
       ${sv.length?`<div class="sv-list">${sv.map((v,i)=>`
         <div class="sv-row">
@@ -1050,7 +1093,7 @@ function renderShops(){
             <button type="button" class="icbtn del" data-dlsv="${s.id}|${i}" title="Hapus layanan"><i data-lucide="trash-2"></i></button>
           </div>
         </div>`).join('')}</div>`
-      :`<div class="sv-list" style="padding:14px;text-align:center" class="hint"><span class="hint">Belum ada layanan di cabang ini — tambahkan di bawah.</span></div>`}
+      :`<div class="sv-list" style="padding:14px;text-align:center"><span class="hint">Belum ada layanan di cabang ini — tambahkan di bawah.</span></div>`}
       <form class="sv-add" data-addsv="${s.id}">
         <input class="inp" name="nm" placeholder="Nama layanan">
         <input class="inp mono" name="pr" inputmode="numeric" placeholder="Harga Rp">
@@ -1094,7 +1137,6 @@ function renderShops(){
     catch(err){toast('err',aerr(err))}
     return;
   }
-  /* Edit layanan per cabang */
   if(edv){
     const [id,idx]=edv.dataset.edsv.split('|');
     const s=shops.find(x=>x.id===id); if(!s)return;
@@ -1115,7 +1157,6 @@ function renderShops(){
     });
     return;
   }
-  /* Hapus layanan per cabang */
   if(dlv){
     const [id,idx]=dlv.dataset.dlsv.split('|');
     const s=shops.find(x=>x.id===id); if(!s)return;
@@ -1228,6 +1269,67 @@ function genVoucherCode(){
   }catch(err){toast('err',err.message||aerr(err))}
   finally{busy(b,false)}
 });
+
+/* ===== PENARIKAN CASH — BARCODE ===== */
+function qrSVG(text){
+  const N=25;
+  let seed=2166136261>>>0;
+  for(let i=0;i<text.length;i++){seed^=text.charCodeAt(i);seed=Math.imul(seed,16777619)>>>0}
+  const rnd=()=>{seed^=seed<<13;seed>>>=0;seed^=seed>>>17;seed^=seed<<5;seed>>>=0;return seed/4294967296};
+  const fd=(r,c)=>r===0||r===6||c===0||c===6||(r>=2&&r<=4&&c>=2&&c<=4);
+  let d='';
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    let dark;
+    if(r<7&&c<7)dark=fd(r,c);
+    else if(r<7&&c>=N-7)dark=fd(r,c-(N-7));
+    else if(r>=N-7&&c<7)dark=fd(r-(N-7),c);
+    else if(r===6||c===6)dark=((r+c)%2)===0;
+    else dark=rnd()>0.52;
+    if(dark)d+=`M${c} ${r}h1v1h-1z`;
+  }
+  return`<svg viewBox="0 0 ${N} ${N}" shape-rendering="crispEdges"><rect width="${N}" height="${N}" fill="#fff"/><path d="${d}" fill="#0B0B0C"/></svg>`;
+}
+function genWdCode(){
+  const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  let c='WD-';
+  for(let i=0;i<6;i++)c+=A[Math.floor(Math.random()*A.length)];
+  return c;
+}
+ $('#formWdBc').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const v=+($('#wbcAmt').value.replace(/\D/g,'')||0);
+  clearErr('wbcAmt');
+  if(!v)return showErr('wbcAmt','Jumlah penarikan wajib diisi.');
+  if(v<20000)return showErr('wbcAmt','Minimal Rp20.000.');
+  if(v>20000000)return showErr('wbcAmt','Maksimal Rp20.000.000.');
+  const b=$('#formWdBc [type=submit]'); busy(b,true,'Membuat barcode…');
+  try{
+    let code='';
+    for(let i=0;i<6;i++){
+      code=genWdCode();
+      const ex=await getDoc(doc(db,'payments',code));
+      if(!ex.exists())break;
+      code='';
+    }
+    if(!code)throw new Error('Gagal membuat kode unik — coba lagi.');
+    await setDoc(doc(db,'payments',code),{
+      kind:'withdraw', method:'barcode', total:v, code,
+      status:'pending', createdAt:Date.now(), createdBy:admin.email
+    });
+    $('#wbcAmt').value='';
+    $('#wbcResult').innerHTML=`
+      <div style="text-align:center">
+        <div style="width:min(230px,78%);margin:0 auto 12px;background:#fff;border-radius:14px;padding:12px;box-shadow:0 12px 28px -14px rgba(11,47,209,.4)">${qrSVG('KAPPER|WD|'+code+'|'+v)}</div>
+        <div class="wd-code" style="justify-content:center;margin-bottom:10px"><b>${code}</b></div>
+        <p class="hint">Nilai <b>${fmtIDR(v)}</b> — tunjukkan barcode ini ke member untuk discan di aplikasi Kapper. Sekali pakai.</p>
+      </div>`;
+    icons();
+    toast('ok',`Barcode penarikan ${fmtIDR(v)} siap — kode ${code}.`);
+    loadTopup();
+  }catch(err){toast('err',err.message||aerr(err))}
+  finally{busy(b,false)}
+});
+
 function renderTopupTx(){
   const tx=payments.filter(p=>p.kind==='topup');
   const tb=$('#tpRows'), em=$('#tpEmpty');
@@ -1411,20 +1513,33 @@ function renderWithdraw(){
       <td>${dtLab(w.createdAt)}</td>
       <td><b>${w.name||'—'}</b></td>
       <td class="mono">${w.code||'—'}</td>
-      <td>${w.shop||'—'}</td>
+      <td>${w.method==='barcode' ? '<span class="tag ok">barcode kasir</span>' : (w.shop||'—')}</td>
       <td class="num">${fmtIDR(w.total)}</td>
       <td>${wdTag(w.status)}${w.rejectReason?`<br><span class="hint">${w.rejectReason}</span>`:''}</td>
       <td><div class="rowact">
-        ${isPend?`
-          <button type="button" class="icbtn ok" data-wdok="${w.id}" title="Setujui — kasir sudah menyerahkan uang"><i data-lucide="check"></i></button>
-          <button type="button" class="icbtn del" data-wdno="${w.id}" title="Tolak — saldo dikembalikan"><i data-lucide="x"></i></button>`
+        ${isPend?(w.method==='barcode'
+          ?`<button type="button" class="icbtn del" data-wdcx="${w.id}" title="Batalkan barcode — belum dipakai member"><i data-lucide="x"></i></button>`
+          :`<button type="button" class="icbtn ok" data-wdok="${w.id}" title="Setujui — kasir sudah menyerahkan uang"><i data-lucide="check"></i></button>
+            <button type="button" class="icbtn del" data-wdno="${w.id}" title="Tolak — saldo dikembalikan"><i data-lucide="x"></i></button>`)
         :`<span class="hint">selesai</span>`}
       </div></td>
     </tr>`}).join('');
   icons();
 }
  $('#wdRows').addEventListener('click',async e=>{
-  const ok=e.target.closest('[data-wdok]'), no=e.target.closest('[data-wdno]');
+  const ok=e.target.closest('[data-wdok]'), no=e.target.closest('[data-wdno]'), cx=e.target.closest('[data-wdcx]');
+  if(cx){
+    const w=wdAll.find(x=>x.id===cx.dataset.wdcx); if(!w)return;
+    if(!confirm(`Batalkan barcode penarikan ${w.code} (${fmtIDR(w.total)})?\nTidak ada saldo terpotong karena barcode belum discan member.`))return;
+    const b=cx; busy(b,true,'…');
+    try{
+      await updateDoc(doc(db,'payments',w.id),{status:'rejected',rejectedAt:Date.now(),rejectedBy:admin.email,rejectReason:'Dibatalkan admin — barcode tidak dipakai'});
+      toast('ok','Barcode penarikan dibatalkan.');
+      loadWithdraw();
+    }catch(err){toast('err',aerr(err))}
+    finally{busy(b,false)}
+    return;
+  }
   const rec=id=>wdAll.find(w=>w.id===id);
   if(ok){
     const w=rec(ok.dataset.wdok); if(!w)return;
@@ -1546,7 +1661,7 @@ function renderLoyalty(){
 };
 function rewardsClean(){return loyalty.rewards.filter(r=>r.name&&r.cost)}
 
-/* ================= PRODUCT (foto Cloudinary — wajib, tanpa seed) ================= */
+/* ================= PRODUCT (foto Cloudinary — wajib) ================= */
 let products=[], prImgFile=null, prImgUrl='', prLocalUrl='';
 async function loadProducts(){
   try{
@@ -1716,12 +1831,15 @@ async function loadUsers(){
 }
 function renderUsers(){
   const tb=$('#acRows'), em=$('#acEmpty');
-  if(!usersAll.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="users"></i>Belum ada akun member.</div>`;icons();return}
+  if(!usersAll.length){tb.innerHTML='';em.innerHTML=`<div class="empty" style="margin-top:14px"><i data-lucide="users"></i>Belum ada akun terdaftar.</div>`;icons();return}
   em.innerHTML='';
   tb.innerHTML=usersAll.map(u=>`
     <tr><td><b>${u.name||'—'}</b><br><span class="hint">${u.email||''}</span></td>
     <td class="num">${fmtIDR(u.saldo)}</td><td class="num">${idFmt(u.points)}</td>
     <td><span class="tag ok">${(u.tier||'bronze').toUpperCase()}</span></td>
+    <td>${u.role==='partner'
+      ?`<span class="tag pend" title="Cabang: ${u.shop||'—'}">Partner Admin</span>`
+      :`<span class="tag used">Member</span>`}</td>
     <td><div class="rowact">
       <button type="button" class="icbtn bell" data-ntf="${u.id}" title="Kirim notifikasi ke akun ini"><i data-lucide="bell"></i></button>
       <button type="button" class="icbtn" data-rspw="${u.id}" title="Kirim email reset password"><i data-lucide="key-round"></i></button>
@@ -1729,16 +1847,32 @@ function renderUsers(){
     </div></td></tr>`).join('');
   icons();
 }
+/* Peran akun: member / partner admin */
+let auRole='member';
+ $('#auRole').addEventListener('click',e=>{
+  const b=e.target.closest('.wdf'); if(!b)return;
+  auRole=b.dataset.role;
+  $$('#auRole .wdf').forEach(x=>x.classList.toggle('active',x===b));
+  $('#auShopWrap').hidden=auRole!=='partner';
+});
+function fillShopSelect(){
+  const sel=$('#auShop');
+  sel.innerHTML=shops.length
+    ?shops.map(s=>`<option value="${s.name}">${s.name}</option>`).join('')
+    :`<option value="">— Belum ada cabang —</option>`;
+}
  $('#formAddUser').addEventListener('submit',async e=>{
   e.preventDefault();
   let ok=true;
   const nm=$('#auName').value.trim(), em=$('#auEmail').value.trim(), pw=$('#auPass').value;
+  const shop=$('#auShop').value;
   ['auName','auEmail','auPass'].forEach(clearErr);
   if(!nm)ok=showErr('auName','Nama wajib diisi.');
   if(!em)ok=showErr('auEmail','Email wajib diisi.');
   else if(!vEmail(em))ok=showErr('auEmail','Format email tidak valid.');
   if(!pw)ok=showErr('auPass','Password wajib diisi.');
   else if(pw.length<6)ok=showErr('auPass','Minimal 6 karakter.');
+  if(auRole==='partner'&&!shop)ok=showErr('auEmail','Pilih cabang untuk partner admin.');
   if(!ok)return;
   const b=$('#formAddUser [type=submit]');
   busy(b,true,'Membuat akun…');
@@ -1746,13 +1880,27 @@ function renderUsers(){
     const cred=await createUserWithEmailAndPassword(secAuth,em,pw);
     const uid=cred.user.uid;
     await signOut(secAuth);
+    const role=auRole;
     await setDoc(doc(db,'users',uid),{
-      name:nm,email:em,avatar:'',saldo:0,points:0,tier:'bronze',
+      name:nm,email:em,avatar:'',saldo:0,points:0,tier:'bronze',role,
+      shop:role==='partner'?shop:'',
       usedVouchers:[],cardNo:genCardNo(uid),createdAt:Date.now()
     });
+    if(role==='partner'){
+      await setDoc(doc(db,'admins',uid),{
+        email:em,name:nm,role:'partner',shop,
+        createdAt:Date.now(),addedBy:admin.email
+      });
+      toast('ok',`Partner Admin ${nm} dibuat — bisa login ke admin panel & mengelola ${shop}.`);
+    }else{
+      toast('ok',`Member ${nm} berhasil dibuat.`);
+    }
     $('#auName').value='';$('#auEmail').value='';$('#auPass').value='';
-    toast('ok',`Akun ${nm} berhasil dibuat.`); loadUsers();
-  }catch(err){toast('err',aerr(err))}
+    loadUsers();
+  }catch(err){
+    if(err.code==='auth/email-already-in-use')showErr('auEmail','Email sudah terdaftar.');
+    else toast('err',aerr(err));
+  }
   finally{busy(b,false)}
 });
 function genCardNo(seedStr){
@@ -1796,6 +1944,7 @@ let notifUid='';
         }
       }
       await deleteDoc(doc(db,'users',u.id));
+      try{await deleteDoc(doc(db,'admins',u.id))}catch(e){}
       toast('ok','Akun & datanya dihapus.'); loadUsers();
     }catch(err){toast('err',aerr(err))}
   }
@@ -1820,6 +1969,39 @@ let notifUid='';
   }catch(err){toast('err',aerr(err))}
   finally{busy(b,false)}
 };
+
+/* ================= TRAFFIC PENGUNJUNG ================= */
+function dayKey(off=0){
+  const d=new Date(Date.now()-off*864e5);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+async function loadTraffic(){
+  const st=$('#trStats');
+  st.innerHTML='<div class="stat"><span>Memuat…</span></div>';
+  try{
+    const sTot=await getDoc(doc(db,'stats','traffic'));
+    const tot=sTot.exists()?(sTot.data().total||0):0;
+    const keys=[...Array(7)].map((_,i)=>dayKey(6-i));
+    const docs7=await Promise.all(keys.map(k=>getDoc(doc(db,'traffic',k))));
+    const arr=docs7.map((s,i)=>({date:keys[i],count:s.exists()?(s.data().count||0):0}));
+    const week=arr.reduce((a,x)=>a+x.count,0);
+    const monthDocs=await getDocs(query(collection(db,'traffic'),orderBy('date','desc'),limit(30)));
+    let month=0; monthDocs.forEach(x=>month+=x.data().count||0);
+    st.innerHTML=`
+      <div class="stat blue"><span>Total kunjungan</span><b>${idFmt(tot)}</b></div>
+      <div class="stat"><span>Hari ini</span><b>${idFmt(arr[6].count)}</b></div>
+      <div class="stat"><span>7 hari terakhir</span><b>${idFmt(week)}</b></div>
+      <div class="stat"><span>30 hari terakhir</span><b>${idFmt(month)}</b></div>`;
+    const max=Math.max(1,...arr.map(a=>a.count));
+    $('#trChart').innerHTML=arr.map(a=>`
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end">
+        <span class="hint mono">${idFmt(a.count)}</span>
+        <div style="width:100%;height:${Math.max(6,a.count/max*130)}px;background:linear-gradient(180deg,var(--blue-soft),var(--blue));border-radius:8px 8px 3px 3px;transition:height .5s"></div>
+        <span class="hint mono" style="font-size:10px">${a.date.slice(5)}</span>
+      </div>`).join('');
+  }catch(e){st.innerHTML='';toast('err','Gagal memuat traffic: '+aerr(e))}
+  icons();
+}
 
 /* ================= INIT ================= */
 icons();
