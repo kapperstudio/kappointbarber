@@ -1,42 +1,228 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Kapper — Booking Barbershop, Dompet Kappoint & Loyalitas</title>
-<meta name="description" content="Kapper: booking barbershop tanpa antrian, dompet digital Kappoint, top up via voucher & QRIS, point loyalty kapper-club Bronze sampai Black.">
-<meta name="keywords" content="kapper, barbershop, booking barbershop, kappoint, haircut, cukur, barber, loyalty, qris">
-<meta name="author" content="Kapper Indonesia">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0B2FD1">
-<link rel="canonical" href="https://kappointbarbershop.vercel.app/">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Kapper">
-<meta property="og:title" content="Kapper — Cukur Tanpa Antrian">
-<meta property="og:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
-<meta property="og:image" content="opengraph.png">
-<meta property="og:locale" content="id_ID">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kapper — Cukur Tanpa Antrian">
-<meta name="twitter:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
-<meta name="twitter:image" content="opengraph.png">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Kapper">
-<meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk" />
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
-<link rel="icon" type="image/png" id="favicon" href="">
-<link rel="apple-touch-icon" id="appleIcon" href="">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kapper — Booking Barbershop, Dompet Kappoint & Loyalitas</title>
+  
+  <meta name="description" content="Kapper: booking barbershop tanpa antrian, dompet digital Kappoint, top up via voucher & QRIS, point loyalty kapper-club Bronze sampai Black.">
+  
+  <meta name="keywords" content="kapper, barbershop, booking barbershop, kappoint, haircut, cukur, barber, loyalty, qris">
+  
+  <meta name="author" content="Kapper Indonesia">
+  <meta name="robots" content="index, follow">
+  
+  <meta name="theme-color" content="#0B2FD1">
+  
+  <link rel="canonical" href="https://kappointbarbershop.vercel.app/">
+  
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kapper">
+  <meta property="og:title" content="Kapper — Cukur Tanpa Antrian">
+  <meta property="og:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
+  <meta property="og:image" content="opengraph.png">
+  <meta property="og:locale" content="id_ID">
+  
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kapper — Cukur Tanpa Antrian">
+  <meta name="twitter:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
+  <meta name="twitter:image" content="opengraph.png">
+  
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Kapper">
+  
+  
+  <meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk">
+  
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
+  
+  <link rel="icon" type="image/png" id="favicon" href="">
+  <link rel="apple-touch-icon" id="appleIcon" href="">
+  
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  
+  
+  
+  <!-- ===============================
+     KAPPOINT AI / GOOGLE SCHEMA
+================================ -->
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        
+        {
+          "@type": [
+            "LocalBusiness",
+            "BarberShop"
+          ],
+          
+          "@id": "https://kappointbarbershop.vercel.app/#barbershop",
+          
+          "name": "Kappoint by Kapper Studio",
+          
+          "alternateName": "Kapper Studio",
+          
+          "url": "https://kappointbarbershop.vercel.app/",
+          
+          "logo": "https://kappointbarbershop.vercel.app/opengraph.png",
+          
+          "image": "https://kappointbarbershop.vercel.app/opengraph.png",
+          
+          "description": "Kappoint by Kapper Studio adalah barbershop modern di Cimanggis, Depok yang menyediakan haircut profesional, booking online, dompet Kappoint, dan program loyalitas kapper-club.",
+          
+          
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Depok",
+            "addressRegion": "Jawa Barat",
+            "addressCountry": "Indonesia"
+          },
+          
+          
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "09:00",
+            "closes": "21:00"
+          },
+          
+          
+          "priceRange": "40.000",
+          
+          
+          "serviceType": [
+            "Haircut",
+            "Barber",
+            "Hair Treatment",
+            "Hair Coloring",
+            "Perming"
+          ],
+          
+          
+          "sameAs": [
+            "https://www.instagram.com/kapper.studio",
+            "https://www.tiktok.com/@kapper.studio"
+          ]
+        },
+        
+        
+        {
+          "@type": "AggregateRating",
+          
+          "itemReviewed": {
+            "@id": "https://kappointbarbershop.vercel.app/"
+          },
+          
+          "ratingValue": "5",
+          
+          "reviewCount": "1"
+        },
+        
+        
+        {
+          "@type": "Review",
+          
+          "itemReviewed": {
+            "@id": "https://kappointbarbershop.vercel.app/"
+          },
+          
+          "author": {
+            "@type": "Person",
+            "name": "Aditya Mahendra"
+          },
+          
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          
+          "reviewBody": "Barbershop modern dengan pelayanan profesional dan booking online yang mudah."
+        },
+        
+        
+        {
+          "@type": "FAQPage",
+          
+          "mainEntity": [
+            
+            {
+              "@type": "Question",
+              "name": "Kapper Studio by BARBERMAN.ID berada dimana?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kapper Studio berada di Cimanggis, Depok."
+              }
+            },
+            
+            
+            {
+              "@type": "Question",
+              "name": "Jam buka Kapper Studio kapan?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kappoint buka setiap hari pukul 09:00 sampai 21:00."
+              }
+            },
+            
+            
+            {
+              "@type": "Question",
+              "name": "Apakah bisa booking haircut online?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya, pelanggan dapat melakukan booking haircut melalui website Kappoint."
+              }
+            },
+            
+            
+            {
+              "@type": "Question",
+              "name": "Apa layanan Kappoint?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kappoint menyediakan haircut, colouring, perming, downperm, shaving, hairwash, dan treatment rambut."
+              }
+            }
+            
+          ]
+        }
+        
+      ]
+    }
+  </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
