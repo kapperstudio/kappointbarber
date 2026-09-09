@@ -1,350 +1,238 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-
-<title>Kappoint by Kapper Studio — Booking Barbershop, Dompet Digital & Loyalty</title>
-
-
-<meta name="description" content="Kappoint by Kapper Studio: booking barbershop tanpa antrian, dompet digital, top up QRIS, membership dan loyalty point untuk pelanggan.">
-
-
-<meta name="keywords" content="kapper, kappoint, kapper studio, barbershop depok, barber cimanggis, booking haircut, qris, loyalty">
-
-
-<meta name="author" content="Kappoint by Kapper Studio">
-
-<meta name="robots" content="index, follow">
-
-<meta name="theme-color" content="#0B2FD1">
-
-
-<link rel="canonical" href="https://kappointbarbershop.vercel.app/">
-
-
-
-<!-- OPEN GRAPH -->
-
-<meta property="og:type" content="website">
-
-<meta property="og:site_name" content="Kappoint">
-
-<meta property="og:title" content="Kappoint by Kapper Studio — Cukur Tanpa Antrian">
-
-<meta property="og:description" content="Booking barbershop, dompet Kappoint, membership dan loyalty dalam satu aplikasi.">
-
-<meta property="og:image" content="https://kappointbarbershop.vercel.app/opengraph.png">
-
-<meta property="og:url" content="https://kappointbarbershop.vercel.app/">
-
-<meta property="og:locale" content="id_ID">
-
-
-
-
-<!-- TWITTER -->
-
-<meta name="twitter:card" content="summary_large_image">
-
-<meta name="twitter:title" content="Kappoint by Kapper Studio">
-
-<meta name="twitter:description" content="Booking haircut online, dompet digital dan loyalty point.">
-
-<meta name="twitter:image" content="https://kappointbarbershop.vercel.app/opengraph.png">
-
-
-
-
-<!-- GOOGLE VERIFICATION -->
-
-<meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk">
-
-
-
-
-<!-- PWA -->
-
-<link rel="manifest" href="/manifest.json">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-title" content="Kappoint">
-
-
-
-
-<!-- FAVICON -->
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
-
-
-<link rel="apple-touch-icon" href="/icon-192.png">
-
-
-
-
-<!-- FONT -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
-
-
-<!-- SCRIPT -->
-
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
-
-
-
-
-<!-- GOOGLE STRUCTURED DATA -->
-
-<script type="application/ld+json">
-
-{
-"@context":"https://schema.org",
-
-"@graph":[
-
-
-{
-
-"@type":[
-"LocalBusiness",
-"BarberShop"
-],
-
-"@id":"https://kappointbarbershop.vercel.app/#barbershop",
-
-"name":"Kappoint by Kapper Studio",
-
-"alternateName":"Kapper Studio",
-
-"url":"https://kappointbarbershop.vercel.app/",
-
-"logo":"https://kappointbarbershop.vercel.app/opengraph.png",
-
-"image":"https://kappointbarbershop.vercel.app/opengraph.png",
-
-
-"description":"Kappoint by Kapper Studio adalah barbershop modern di Cimanggis Depok dengan layanan haircut profesional, booking online, dompet digital dan program loyalty.",
-
-
-"address":{
-
-"@type":"PostalAddress",
-
-"addressLocality":"Cimanggis",
-
-"addressRegion":"Jawa Barat",
-
-"addressCountry":"Indonesia"
-
-},
-
-
-"openingHoursSpecification":{
-
-"@type":"OpeningHoursSpecification",
-
-"dayOfWeek":[
-"Monday",
-"Tuesday",
-"Wednesday",
-"Thursday",
-"Friday",
-"Saturday",
-"Sunday"
-],
-
-"opens":"09:00",
-
-"closes":"21:00"
-
-},
-
-
-"priceRange":"Rp40.000 - Rp150.000",
-
-
-"serviceType":[
-
-"Haircut",
-
-"Barber",
-
-"Hair Treatment",
-
-"Hair Coloring",
-
-"Perming",
-
-"Downperm",
-
-"Shaving"
-
-],
-
-
-"sameAs":[
-
-"https://www.instagram.com/kapper.studio",
-
-"https://www.tiktok.com/@kapper.studio"
-
-]
-
-},
-
-
-
-{
-
-"@type":"WebSite",
-
-"name":"Kappoint",
-
-"url":"https://kappointbarbershop.vercel.app/",
-
-
-"potentialAction":{
-
-"@type":"SearchAction",
-
-"target":"https://kappointbarbershop.vercel.app/?q={search_term_string}",
-
-"query-input":"required name=search_term_string"
-
-}
-
-},
-
-
-
-{
-
-"@type":"SoftwareApplication",
-
-"name":"Kappoint",
-
-"applicationCategory":"LifestyleApplication",
-
-"operatingSystem":"Android",
-
-"description":"Aplikasi booking barbershop, dompet digital, membership dan loyalty point.",
-
-"url":"https://kappointbarbershop.vercel.app/keppin.html"
-
-},
-
-
-
-{
-
-"@type":"FAQPage",
-
-"mainEntity":[
-
-
-{
-
-"@type":"Question",
-
-"name":"Kappoint by Kapper Studio berada dimana?",
-
-"acceptedAnswer":{
-
-"@type":"Answer",
-
-"text":"Kappoint by Kapper Studio berada di Cimanggis, Depok, Jawa Barat."
-
-}
-
-},
-
-
-{
-
-"@type":"Question",
-
-"name":"Jam buka Kapper Studio kapan?",
-
-"acceptedAnswer":{
-
-"@type":"Answer",
-
-"text":"Kapper Studio buka setiap hari pukul 09:00 sampai 21:00."
-
-}
-
-},
-
-
-{
-
-"@type":"Question",
-
-"name":"Apakah bisa booking haircut online?",
-
-"acceptedAnswer":{
-
-"@type":"Answer",
-
-"text":"Ya, pelanggan dapat melakukan booking haircut melalui website Kappoint."
-
-}
-
-},
-
-
-{
-
-"@type":"Question",
-
-"name":"Apa layanan Kappoint?",
-
-"acceptedAnswer":{
-
-"@type":"Answer",
-
-"text":"Kappoint menyediakan haircut, colouring, perming, downperm, shaving, hairwash dan treatment rambut."
-
-}
-
-}
-
-
-]
-
-}
-
-
-]
-
-}
-
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kapper — Booking Barbershop, Dompet Kappoint & Loyalitas</title>
+  
+  <meta name="description" content="Kapper: booking barbershop tanpa antrian, dompet digital Kappoint, top up via voucher & QRIS, point loyalty kapper-club Bronze sampai Black.">
+  
+  <meta name="keywords" content="kapper, barbershop, booking barbershop, kappoint, haircut, cukur, barber, loyalty, qris">
+  
+  <meta name="author" content="Kapper Indonesia">
+  <meta name="robots" content="index, follow">
+  
+  <meta name="theme-color" content="#0B2FD1">
+  
+  <link rel="canonical" href="https://kappointbarbershop.vercel.app/">
+  
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kapper">
+  <meta property="og:title" content="Kapper — Cukur Tanpa Antrian">
+  <meta property="og:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
+  <meta property="og:image" content="opengraph.png">
+  <meta property="og:locale" content="id_ID">
+  
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kapper — Cukur Tanpa Antrian">
+  <meta name="twitter:description" content="Booking barbershop, dompet Kappoint, dan loyalitas dalam satu aplikasi.">
+  <meta name="twitter:image" content="opengraph.png">
+  
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Kapper">
+  
+  
+  <meta name="google-site-verification" content="_kz4usmizqsd_RCqwGG1CuEUGc_TDs2X687BBFBPyMk">
+  
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0B0C'/%3E%3Ccircle cx='48' cy='16' r='8' fill='%230B2FD1'/%3E%3Ctext x='18' y='37' font-family='Arial' font-weight='900' font-size='34' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
+  
+  <link rel="icon" type="image/png" id="favicon" href="">
+  <link rel="apple-touch-icon" id="appleIcon" href="">
+  
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  
+  
+  
+  <!-- ===============================
+     KAPPOINT AI / GOOGLE SCHEMA
+================================ -->
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        
+        {
+          "@type": [
+            "LocalBusiness",
+            "BarberShop"
+          ],
+          
+          "@id": "https://kappointbarbershop.vercel.app/#barbershop",
+          
+          "name": "Kappoint by Kapper Studio",
+          
+          "alternateName": "Kapper Studio",
+          
+          "url": "https://kappointbarbershop.vercel.app/",
+          
+          "logo": "https://kappointbarbershop.vercel.app/opengraph.png",
+          
+          "image": "https://kappointbarbershop.vercel.app/opengraph.png",
+          
+          "description": "Kappoint by Kapper Studio adalah barbershop modern di Cimanggis, Depok yang menyediakan haircut profesional, booking online, dompet Kappoint, dan program loyalitas kapper-club.",
+          
+          
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Depok",
+            "addressRegion": "Jawa Barat",
+            "addressCountry": "Indonesia"
+          },
+          
+          
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "09:00",
+            "closes": "21:00"
+          },
+          
+          
+          "priceRange": "40.000",
+          
+          
+          "serviceType": [
+            "Haircut",
+            "Barber",
+            "Hair Treatment",
+            "Hair Coloring",
+            "Perming"
+          ],
+          
+          
+          "sameAs": [
+            "https://www.instagram.com/kapper.studio",
+            "https://www.tiktok.com/@kapper.studio"
+          ]
+        },
+        
+        
+        {
+          "@type": "AggregateRating",
+          
+          "itemReviewed": {
+            "@id": "https://kappointbarbershop.vercel.app/"
+          },
+          
+          "ratingValue": "5",
+          
+          "reviewCount": "1"
+        },
+        
+        
+        {
+          "@type": "Review",
+          
+          "itemReviewed": {
+            "@id": "https://kappointbarbershop.vercel.app/"
+          },
+          
+          "author": {
+            "@type": "Person",
+            "name": "Aditya Mahendra"
+          },
+          
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          
+          "reviewBody": "Barbershop modern dengan pelayanan profesional dan booking online yang mudah."
+        },
+        
+        
+        {
+          "@type": "FAQPage",
+          
+          "mainEntity": [
+            
+            {
+              "@type": "Question",
+              "name": "Kapper Studio by BARBERMAN.ID berada dimana?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kapper Studio berada di Cimanggis, Depok."
+              }
+            },
+            
+            
+            {
+              "@type": "Question",
+              "name": "Jam buka Kapper Studio kapan?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kappoint buka setiap hari pukul 09:00 sampai 21:00."
+              }
+            },
+            
+            
+            {
+              "@type": "Question",
+              "name": "Apakah bisa booking haircut online?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya, pelanggan dapat melakukan booking haircut melalui website Kappoint."
+              }
+            },
+            
+            
+            {
+              "@type": "Question",
+              "name": "Apa layanan Kappoint?",
+              
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kappoint menyediakan haircut, colouring, perming, downperm, shaving, hairwash, dan treatment rambut."
+              }
+            }
+            
+          ]
+        }
+        
+      ]
+    }
+  </script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;max-width:100%}
 :root{
   --paper:#FAFAF7; --ink:#0B0B0C; --muted:#63625C; --line:#E7E6E0;
   --blue:#0B2FD1; --blue-dark:#081F8F; --blue-tint:#EDF1FC; --red:#C0392B; --ok:#2FA36B; --r-lg:22px;
 }
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Archivo',sans-serif;background:var(--paper);color:var(--ink);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:100%;scrollbar-gutter:stable;min-height:-webkit-fill-available}
-html,body{min-height:-webkit-fill-available}
+html{scroll-behavior:smooth;overflow-x:clip}
+html,body{max-width:100vw;min-height:-webkit-fill-available}
+body{font-family:'Archivo',sans-serif;background:var(--paper);color:var(--ink);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:100%;scrollbar-gutter:stable;overflow-x:clip}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 img,video{max-width:100%}
 ::selection{background:var(--blue);color:#fff}
@@ -388,7 +276,7 @@ img,video{max-width:100%}
 .wd-ok p{font-size:13.5px;color:var(--muted);max-width:38ch;margin:0}
 .wd-code{margin-top:6px;border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:16px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .wd-code .wp-label{display:block;margin-bottom:2px}
-.wd-code b{font-family:'Spline Sans Mono';letter-spacing:.2em;font-size:21px;color:var(--blue-dark)}
+.wd-code b{font-family:'Spline Sans Mono';letter-spacing:.2em;font-size:21px;color:var(--blue-dark);word-break:break-all}
 
 .topbar{border-bottom:1px solid var(--line);position:relative;z-index:50}
 .topbar-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
@@ -416,7 +304,7 @@ img,video{max-width:100%}
 .icon-btn:hover{border-color:var(--ink)}
 .icon-btn svg{width:17px;height:17px}
 .badge{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--blue);color:#fff;font-family:'Spline Sans Mono';font-size:10px;font-weight:600;display:grid;place-items:center}
-.dropdown{position:absolute;top:calc(100% + 12px);right:0;width:330px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px -20px rgba(10,10,10,.3);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;z-index:120;overflow:hidden}
+.dropdown{position:absolute;top:calc(100% + 12px);right:0;width:330px;max-width:calc(100vw - 28px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px -20px rgba(10,10,10,.3);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;z-index:120;overflow:hidden}
 .dropdown.open{opacity:1;visibility:visible;transform:none}
 .dd-head{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line)}
 .dd-head b{font-size:14px}
@@ -449,9 +337,9 @@ img,video{max-width:100%}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px;flex:none;overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 
-.ticker{position:fixed;top:82px;left:50%;transform:translate(-50%,-240%);width:min(780px,calc(100% - 28px));z-index:98;display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 9px 8px 15px;box-shadow:0 14px 34px -16px rgba(0,0,0,.45);transition:transform .55s cubic-bezier(.22,1,.3,1);cursor:pointer}
+.ticker{position:fixed;top:82px;left:12px;right:12px;transform:translateY(-240%);z-index:98;display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 9px 8px 15px;box-shadow:0 14px 34px -16px rgba(0,0,0,.45);transition:transform .55s cubic-bezier(.22,1,.3,1);cursor:pointer;margin:0 auto;max-width:780px}
 .ticker:hover{background:#161618}
-.ticker.show{transform:translate(-50%,0)}
+.ticker.show{transform:translateY(0)}
 .tk-live{display:flex;align-items:center;gap:8px;font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.22em;font-weight:600;flex:none}
 .tk-dot{width:7px;height:7px;border-radius:50%;background:#7C9BFF;animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(124,155,255,.55)}50%{box-shadow:0 0 0 9px rgba(124,155,255,0)}}
@@ -464,7 +352,7 @@ img,video{max-width:100%}
 .tk-sep{width:5px;height:5px;border-radius:50%;background:#4A4A45;flex:none}
 .tk-new{background:var(--blue);color:#fff;font-size:8.5px;letter-spacing:.16em;padding:2px 8px;border-radius:999px;font-weight:600;flex:none}
 
-.hero{padding:76px 24px 96px;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:start}
+.hero{padding:76px 24px 96px;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:start;max-width:100%;overflow-wrap:anywhere}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
 .eyebrow::before{content:"";width:26px;height:2px;background:var(--blue)}
 .hero h1{font-size:clamp(46px,6.4vw,86px)}
@@ -480,13 +368,13 @@ img,video{max-width:100%}
 .g-cap{margin-top:13px;font-size:12px;color:var(--muted)}
 
 .card-scene{perspective:1400px}
-.kcard{position:relative;aspect-ratio:1.62;border-radius:24px;padding:25px 27px;color:#fff;background:var(--cbg,#2B1A0D);transition:background .5s ease,transform .35s ease-out;transform-style:preserve-3d;box-shadow:0 34px 70px -26px rgba(8,8,12,.45);overflow:hidden}
+.kcard{position:relative;width:100%;max-width:560px;aspect-ratio:1.62;border-radius:clamp(16px,3vw,24px);padding:clamp(16px,3vw,27px);color:#fff;background:var(--cbg,#2B1A0D);transition:background .5s ease,transform .35s ease-out;transform-style:preserve-3d;box-shadow:0 34px 70px -26px rgba(8,8,12,.45);overflow:hidden}
 .tier-bronze{--cacc:#D9A26B;--cbg:#2B1A0D}
 .tier-gold{--cacc:#E5C36A;--cbg:#221A06}
 .tier-platinum{--cacc:#C9D2DC;--cbg:#171C22}
 .tier-black{--cacc:#5F86FF;--cbg:#07070A}
 .kcard-lines{position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 1px,transparent 1px 9px);pointer-events:none}
-.kcard-ring{position:absolute;width:300px;height:300px;border-radius:50%;border:1.5px solid var(--cacc);opacity:.26;right:-90px;bottom:-120px;transition:border-color .5s}
+.kcard-ring{position:absolute;width:min(300px,55%);aspect-ratio:1;border-radius:50%;border:1.5px solid var(--cacc);opacity:.26;right:-20%;bottom:-35%;transition:border-color .5s}
 .kcard-ring::after{content:"";position:absolute;inset:26px;border-radius:50%;border:1px solid var(--cacc);opacity:.6}
 .kcard-sheen{position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,78%) var(--my,18%),rgba(255,255,255,.13),transparent 60%);pointer-events:none}
 .kcard-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between}
@@ -500,22 +388,22 @@ img,video{max-width:100%}
 .kc-chip{color:var(--cacc)}
 .kc-ctl{opacity:.85}
 .kc-numwrap{display:flex;align-items:center;gap:10px}
-.kc-num{font-size:clamp(15px,1.8vw,19px);letter-spacing:.13em;font-weight:500}
+.kc-num{font-size:clamp(13px,1.8vw,19px);letter-spacing:.13em;font-weight:500}
 .kc-eye{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.28);flex:none}
 .kc-eye svg{width:13px;height:13px}
-.kc-bot{display:flex;justify-content:space-between;align-items:flex-end}
+.kc-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
 .kc-label{display:block;font-family:'Spline Sans Mono';font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.55;margin-bottom:4px}
 .kc-holder{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.kc-points{font-size:15px;font-weight:600;color:var(--cacc)}
+.kc-points{font-size:15px;font-weight:600;color:var(--cacc);white-space:nowrap}
 
 .wallet-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:start}
 .wallet-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
 .wp-label{font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.wp-saldo{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.wp-saldo-num{font-family:'Spline Sans Mono';font-size:clamp(27px,3vw,35px);font-weight:600;letter-spacing:-.02em;margin-top:4px}
+.wp-saldo{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.wp-saldo-num{font-family:'Spline Sans Mono';font-size:clamp(24px,3vw,35px);font-weight:600;letter-spacing:-.02em;margin-top:4px}
 .wp-points{text-align:right}
 .wp-points b{display:block;font-family:'Spline Sans Mono';font-size:21px;font-weight:600;color:var(--blue);margin-top:4px}
-.tier-chips{display:flex;gap:6px;margin:18px 0;padding:5px;background:#F4F3EE;border-radius:999px}
+.tier-chips{display:flex;gap:6px;margin:18px 0;padding:5px;background:#F4F3EE;border-radius:999px;max-width:100%}
 .tier-chip{flex:1;padding:9px 4px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:.2s;font-family:'Spline Sans Mono'}
 .tier-chip.active{background:var(--ink);color:#fff}
 .wallet-actions{display:flex;gap:9px;flex-wrap:wrap}
@@ -567,9 +455,9 @@ section.block{padding:80px 0}
 .pcard-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;flex:1}
 .pcard-name{font-weight:700;font-size:15.5px}
 .pcard-desc{font-size:13px;color:var(--muted);flex:1}
-.pcard-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.pcard-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}
 .pcard-price{font-family:'Spline Sans Mono';font-weight:600;font-size:14.5px}
-.addbtn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;transition:.18s}
+.addbtn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;transition:.18s;flex:none}
 .addbtn:hover{background:var(--ink);color:#fff}
 .addbtn svg{width:16px;height:16px}
 .stepper{display:flex;align-items:center;gap:2px;background:var(--ink);border-radius:999px;padding:3px;color:#fff}
@@ -577,16 +465,17 @@ section.block{padding:80px 0}
 .stepper button svg{width:13px;height:13px}
 .stepper b{font-family:'Spline Sans Mono';font-size:13px;min-width:24px;text-align:center}
 
-.cartbar{position:fixed;bottom:20px;left:50%;transform:translate(-50%,calc(100% + 40px));z-index:95;display:flex;align-items:center;gap:16px;background:var(--ink);color:#fff;border-radius:999px;padding:9px 9px 9px 14px;box-shadow:0 22px 50px -16px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.22,1,.3,1);max-width:calc(100vw - 28px)}
-.cartbar.show{transform:translate(-50%,0)}
-.cb-clear{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#A7A69F}
+.cartbar{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:12px;right:12px;transform:translateY(calc(100% + 40px));z-index:95;display:flex;align-items:center;gap:16px;background:var(--ink);color:#fff;border-radius:999px;padding:9px 9px 9px 14px;box-shadow:0 22px 50px -16px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.22,1,.3,1);margin:0 auto;max-width:640px}
+.cartbar.show{transform:translateY(0)}
+.cb-clear{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#A7A69F;flex:none}
+.cb-clear:hover{color:#fff;background:rgba(255,255,255,.12)}
 .cb-clear svg{width:15px;height:15px}
-.cb-info{display:flex;align-items:baseline;gap:9px;white-space:nowrap}
+.cb-info{display:flex;align-items:baseline;gap:9px;white-space:nowrap;overflow:hidden;flex:1}
 .cb-info b{font-size:14.5px}
 .cb-info .sep{color:#5A5A55}
 .cb-total{font-family:'Spline Sans Mono';font-weight:600;font-size:15px}
 
-.hist-filters{display:flex;gap:5px;background:#F4F3EE;border-radius:999px;padding:5px}
+.hist-filters{display:flex;gap:5px;background:#F4F3EE;border-radius:999px;padding:5px;max-width:100%}
 .hf{padding:8px 17px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:.2s}
 .hf.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
 .listbox{border-top:1px solid var(--line)}
@@ -599,7 +488,7 @@ section.block{padding:80px 0}
 .tx-ic svg{width:18px;height:18px}
 .tx-title{font-weight:600;font-size:14.5px}
 .tx-sub{font-size:12.5px;color:var(--muted)}
-.tx-amt{font-family:'Spline Sans Mono';font-weight:600;font-size:15px}
+.tx-amt{font-family:'Spline Sans Mono';font-weight:600;font-size:15px;white-space:nowrap}
 .tx-amt.in{color:var(--blue)}
 .hist-more{margin-top:22px;text-align:center}
 .hist-empty{border:1.5px dashed var(--line);border-radius:18px;padding:44px 20px;text-align:center;color:var(--muted);font-size:13.5px;background:#fff}
@@ -611,8 +500,9 @@ section.block{padding:80px 0}
 .f-label:first-child{margin-top:0}
 .inp{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff;transition:.2s;appearance:none;-webkit-appearance:none}
 .inp:focus{outline:none;border-color:var(--ink)}
-.chip-row{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;transition:.18s;background:#fff}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.chip-row::-webkit-scrollbar{display:none}
+.chip{padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;transition:.18s;background:#fff;white-space:nowrap}
 .chip:hover{border-color:var(--ink)}
 .chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
 .slot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -660,7 +550,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .ft-col b{display:block;font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B8A83;margin-bottom:16px;font-weight:500}
 .ft-col a,.ft-col span.fl{display:block;color:#DDDCD6;text-decoration:none;font-size:14px;padding:5px 0;transition:.15s}
 .ft-col a:hover{color:#fff;padding-left:5px}
-.ft-bot{display:flex;justify-content:space-between;gap:16px;padding:22px 0 30px;border-top:1px solid rgba(255,255,255,.14);color:#8B8A83;font-size:12.5px;flex-wrap:wrap;font-family:'Spline Sans Mono'}
+.ft-bot{display:flex;justify-content:space-between;gap:12px;padding:22px 0 30px;border-top:1px solid rgba(255,255,255,.14);color:#8B8A83;font-size:12.5px;flex-wrap:wrap;font-family:'Spline Sans Mono';overflow-wrap:anywhere}
 
 .modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;visibility:hidden;opacity:0;transition:.25s}
 .modal::before{content:"";position:absolute;inset:0;background:rgba(12,12,14,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -693,7 +583,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .dl-ad .dl-ic svg{width:18px;height:18px}
 .dl-ad p{flex:1;margin:0;font-size:12.5px;line-height:1.45;color:#C9C8C1;text-align:left}
 .dl-ad p b{color:#fff}
-.dl-ad .btn{padding:9px 16px;font-size:12.5px;flex:none}
+.dl-ad .btn{padding:9px 16px;font-size:12.5px;flex:none;max-width:100%}
 
 .points-hero{display:flex;justify-content:space-between;align-items:flex-end;margin:18px 0 8px}
 .points-big{font-family:'Spline Sans Mono';font-size:44px;font-weight:600;line-height:1}
@@ -722,7 +612,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .nd-body{color:#3E3D38;font-size:14.5px;margin-top:10px}
 .nd-code{margin-top:14px;border:1.5px dashed var(--blue);background:var(--blue-tint);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
 .nd-code svg{width:16px;height:16px;color:var(--blue)}
-.nd-code b{font-family:'Spline Sans Mono';letter-spacing:.14em;font-size:15px;color:var(--blue-dark)}
+.nd-code b{font-family:'Spline Sans Mono';letter-spacing:.14em;font-size:15px;color:var(--blue-dark);word-break:break-all}
 
 .pay-items{margin:20px 0 4px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .pay-item{display:flex;justify-content:space-between;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);font-size:13.5px;background:#fff}
@@ -748,7 +638,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
 .qris-svg{width:176px;height:176px;background:#fff;border-radius:14px;padding:11px;margin:0 auto 12px;box-shadow:0 12px 28px -14px rgba(11,47,209,.3)}
 .qris-svg svg{width:100%;height:100%;display:block}
 .qris-meta{display:flex;justify-content:center;align-items:center;gap:16px;font-size:12px;flex-wrap:wrap}
-.qris-code{font-family:'Spline Sans Mono';letter-spacing:.08em;color:var(--muted)}
+.qris-code{font-family:'Spline Sans Mono';letter-spacing:.08em;color:var(--muted);word-break:break-all}
 .qris-count{font-family:'Spline Sans Mono';color:var(--blue-dark);font-weight:600}
 .qris-note{font-size:12px;color:var(--muted);margin-top:8px}
 .earn-note{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:12px;font-size:12px;color:var(--blue);font-family:'Spline Sans Mono'}
@@ -797,8 +687,6 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
   .wd-code{flex-direction:column;align-items:stretch;text-align:center}
 }
 @media(max-width:600px){
-  .cartbar{left:14px;right:14px;transform:translateY(calc(100% + 46px));padding:8px 8px 8px 14px;gap:12px}
-  .cartbar.show{transform:translateY(0)}
   .cb-info .sep{display:none}
   .cartbar .btn{padding:11px 18px}
   .tk-live span{display:none}
@@ -955,7 +843,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
   </nav>
 
   <div class="ticker" id="tickerBar" title="Klik untuk buka Book">
-    <span class="tk-live"><span class="tk-dot"></span><span>News</span></span>
+    <span class="tk-live"><span class="tk-dot"></span><span>NEWS</span></span>
     <div class="tk-view"><div class="tk-track" id="tkTrack"></div></div>
   </div>
 
@@ -968,7 +856,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
               <span class="sec-label" id="greetTier">kapper-club bronze</span>
               <h2 class="sec-title display">Halo, <span id="greetName">Member</span>.</h2>
             </div>
-            <p class="sec-note">Data kamu tersinkron real-time lewat Kapperbase.</p>
+            <p class="sec-note">Data kamu tersimpan aman.</p>
           </div>
           <div class="wallet-grid">
             <div class="card-scene" id="cardScene">
@@ -1095,7 +983,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">Kapper Store</span><h2 class="sec-title display">Product</h2></div>
-            <p class="sec-note">Foto produk dimuat dari Kapperbase.</p>
+            <p class="sec-note">Foto produk dimuat.</p>
           </div>
           <div class="prod-grid reveal" id="prodGrid"></div>
         </div>
@@ -1107,7 +995,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
         <div class="container">
           <div class="sec-head reveal">
             <div><span class="sec-label">kapper-club</span><h2 class="sec-title display">Membership</h2></div>
-            <p class="sec-note">Tier &amp; hadiah dimuat dari Kapperbase — diatur admin di menu Loyalty.</p>
+            <p class="sec-note">Tier &amp; hadiah dimuat dari KAPPERBASE — diatur admin di menu Loyalty.</p>
           </div>
           <div id="memberList" class="reveal"></div>
         </div>
@@ -1160,7 +1048,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
       </div>
       <div class="ft-col">
         <b>Kontak</b>
-        <a href="mailto:hello@kapper.id">kapperstudio1@gmail.com </a>
+        <a href="mailto:hello@kapper.id">kapperstudio1@gmail.com</a>
         <a href="tel:+622150997700">+62 21 5099 7700</a>
         <span class="fl">Senin–Minggu, 09.00–21.00 WIB</span>
       </div>
@@ -1178,7 +1066,7 @@ footer{background:var(--ink);color:#fff;margin-top:40px}
     <button class="modal-x" data-close><i data-lucide="x"></i></button>
     <span class="sec-label">Selamat datang</span>
     <h3 class="m-title display">Masuk ke Kapper</h3>
-    <p class="m-sub" id="authSub">Akun baru mulai dengan saldo Rp0.</p>
+    <p class="m-sub" id="authSub">Autentikasi email. Akun baru mulai dengan saldo Rp0.</p>
     <div class="auth-tabs" id="authTabs">
       <button class="auth-tab active" data-auth-tab="login">Masuk</button>
       <button class="auth-tab" data-auth-tab="signup">Daftar</button>
@@ -1625,7 +1513,8 @@ function toast(type,msg){
 }
 function openModal(id){histPush();$('#'+id).classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(m){
-  if(histDepth>0){histBack();return}
+  if(histDepth>0&&!closing){histBack();return}
+  closing=false;
   m.classList.remove('open');document.body.style.overflow='';
   if(m.id==='mPay')stopQris();if(m.id==='mTopup')stopTQ();if(m.id==='mScan')stopScanCam();
 }
@@ -1636,20 +1525,46 @@ function busy(btn,on,txt){
   else{btn.disabled=false;btn.innerHTML=btn.dataset.h||btn.innerHTML;icons()}
 }
 
-/* ================= BACK HISTORY ================= */
-let histStack=[], histDepth=0;
-function snapshotState(){
-  return{tab:currentTab,modal:$$('.modal.open').map(m=>m.id)};
-}
+/* ================= BACK HISTORY (fixed) ================= */
+let histStack=[];
+let histDepth=0;
+let closing=false;
+
 function histPush(){
   histStack.push(snapshotState());
   histDepth++;
   history.pushState({d:histDepth},'');
 }
+function snapshotState(){
+  return{tab:currentTab,modal:$$('.modal.open').map(m=>m.id)};
+}
+/* dipanggil dari tombol X / klik luar / Escape: tarik satu entri history */
+function histBack(){
+  if(histDepth<=0){
+    history.back();
+    return;
+  }
+  closing=true;
+  history.back();
+}
+/* tombol back browser: buka kembali state sebelumnya */
+window.addEventListener('popstate',()=>{
+  closing=false;
+  if(histDepth>0){
+    histStack.pop();
+    histDepth=Math.max(0,histDepth-1);
+    const st=histStack[histStack.length-1]||{tab:'home',modal:[]};
+    restoreState(st);
+  }else{
+    restoreState({tab:'home',modal:[]});
+  }
+});
 function restoreState(st){
   $$('.modal.open').forEach(m=>{
     m.classList.remove('open');
-    if(m.id==='mPay')stopQris();if(m.id==='mTopup')stopTQ();if(m.id==='mScan')stopScanCam();
+    if(m.id==='mPay')stopQris();
+    if(m.id==='mTopup')stopTQ();
+    if(m.id==='mScan')stopScanCam();
   });
   document.body.style.overflow='';
   if(st.tab&&st.tab!==currentTab){
@@ -1660,20 +1575,11 @@ function restoreState(st){
   }
   (st.modal||[]).slice().reverse().forEach(id=>{
     const el=document.getElementById(id);
-    if(el){el.classList.add('open');document.body.style.overflow='hidden';if(id==='mScan')startScan()}
+    if(el){el.classList.add('open');document.body.style.overflow='hidden'}
   });
 }
-window.addEventListener('popstate',()=>{
-  if(histDepth>0){
-    histStack.pop();
-    histDepth=Math.max(0,histDepth-1);
-    restoreState(histStack[histStack.length-1]||{tab:'home',modal:[]});
-  }else{
-    restoreState({tab:'home',modal:[]});
-  }
-});
 document.addEventListener('keydown',e=>{
-  if(e.altKey&&e.key==='ArrowLeft'&&histDepth>0){e.preventDefault();history.back()}
+  if(e.altKey&&e.key==='ArrowLeft'){e.preventDefault();histBack()}
 });
 
 /* ================= ANIMASI ANGKA ================= */
@@ -3006,7 +2912,7 @@ const INFO={
   about:{t:'Tentang Kami',b:`<p>Kapper adalah platform booking barbershop dengan dompet digital Kappoint dan program loyalitas kapper-club. Sejak 2021, kami menghubungkan 1.240+ barbershop dengan 2,4 juta pengguna di 14 kota Indonesia.</p><p>Misi kami sederhana: ritual rambut yang rapi seharusnya semudah membuka aplikasi.</p>`},
   contact:{t:'Kontak',b:`<p><b>Email</b> — kapperstudio1@gmail.com</p><p><b>Telepon</b> — +62 21 5099 7700</p><p><b>Kantor</b> — Depok, Cimanggis Area Super Indo</p><p>Jam operasional: Senin–Minggu, 09.00–21.00 WIB.</p>`},
   terms:{t:'Syarat & Ketentuan',b:`<p>Dengan menggunakan Kapper, kamu setuju untuk menggunakan aplikasi sebagaimana mestinya: satu akun per orang, saldo Kappoint bukan alat pembayaran umum, dan penarikan tunai hanya berlaku di barbershop partner dengan kode sekali pakai yang ditunjukkan ke kasir.</p><p>Booking yang dibatalkan kurang dari 3 jam sebelum jadwal dapat dikenakan biaya sesuai kebijakan barbershop.</p>`},
-  privacy:{t:'Privasi',b:`<p>Kami hanya mengumpulkan data yang dibutuhkan untuk menjalankan layanan: identitas akun, riwayat transaksi, dan preferensi booking. Data tersimpan aman di Firebase dan tidak pernah dijual ke pihak ketiga.</p><p>Kamu bisa meminta ekspor atau penghapusan akun kapan saja lewat hello@kapper.id.</p>`},
+  privacy:{t:'Privasi',b:`<p>Kami hanya mengumpulkan data yang dibutuhkan untuk menjalankan layanan: identitas akun, riwayat transaksi, dan preferensi booking. Data tersimpan aman di Firebase dan tidak pernah dijual ke pihak ketiga.</p><p>Kamu bisa meminta ekspor atau penghapusan akun kapan saja lewat kapperstudio1@gmail.com.</p>`},
 };
 
 /* ================= INIT ================= */
